@@ -41,11 +41,25 @@
                             800: '#155e75',
                             900: '#164e63',
                             950: '#083344',
+                        },
+                        warm: {
+                            50: '#fefcf8',
+                            100: '#fdf6ed',
+                            200: '#fae9d8',
+                            300: '#f5d9be',
+                            400: '#eec49f',
+                            500: '#e5ab7c',
+                            600: '#d4905d',
+                            700: '#b87746',
+                            800: '#96603a',
+                            900: '#784d31',
+                            950: '#4d301e',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
+                        hand: ['"Caveat"', '"Segoe Script"', 'cursive'],
                     }
                 }
             }
@@ -53,10 +67,14 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600;700&display=swap');
 
         * {
             font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .font-hand {
+            font-family: 'Caveat', 'Segoe Script', cursive;
         }
 
         .font-mono {
@@ -64,99 +82,150 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: #0f172a;
+            background-color: #fcfaf7;
+            color: #1a1614;
         }
 
         .nav-blur {
-            background: rgba(248, 250, 252, 0.85);
+            background: rgba(252, 250, 247, 0.88);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+            border-bottom: 1px solid rgba(210, 190, 170, 0.25);
         }
 
-        .card-minimal {
+        .card-warm {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            border: 1px solid #ece3da;
+            border-radius: 16px;
+            transition: all 0.25s ease;
         }
 
-        .card-minimal:hover {
-            border-color: #22c55e;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.06);
-        }
-
-        .badge-minimal {
-            background: #f1f5f9;
-            color: #334155;
-            padding: 0.2rem 0.7rem;
-            border-radius: 9999px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.01em;
-            border: 1px solid #e2e8f0;
-        }
-
-        .badge-minimal-green {
-            background: #f0fdf4;
-            color: #15803d;
-            border-color: #bbf7d0;
-        }
-
-        .badge-minimal-cyan {
-            background: #ecfeff;
-            color: #0e7490;
-            border-color: #a5f3fc;
-        }
-
-        .divider-light {
-            height: 1px;
-            background: #e2e8f0;
-            width: 100%;
+        .card-warm:hover {
+            border-color: #b87746;
+            box-shadow: 0 8px 24px rgba(184, 119, 70, 0.06);
         }
 
         .tag {
             display: inline-block;
-            padding: 0.15rem 0.6rem;
+            padding: 0.15rem 0.7rem;
             border-radius: 9999px;
             font-size: 0.65rem;
             font-weight: 500;
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
+            background: #f5efe9;
+            color: #5a4a3a;
+            border: 1px solid #e8ddd2;
             letter-spacing: 0.01em;
         }
 
         .tag-green {
-            background: #f0fdf4;
-            color: #15803d;
-            border-color: #bbf7d0;
+            background: #f0f7ee;
+            color: #2d6a4f;
+            border-color: #c5dfc0;
         }
 
         .tag-cyan {
-            background: #ecfeff;
-            color: #0e7490;
-            border-color: #a5f3fc;
+            background: #ecf7f9;
+            color: #1a6375;
+            border-color: #b5dce6;
         }
 
-        /* Scrollbar minimal */
+        .divider-warm {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dccfc4, transparent);
+            width: 100%;
+        }
+
+        .divider-dot {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 0;
+        }
+        .divider-dot span {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #dccfc4;
+        }
+
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #f5efe9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
+            background: #c9b8a8;
             border-radius: 20px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
+            background: #b8a494;
         }
 
-        /* Smooth section transition */
         section {
             scroll-margin-top: 80px;
+        }
+
+        /* Hand-drawn squiggle decoration */
+        .squiggle {
+            display: inline-block;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            line-height: 0.6;
+            color: #b87746;
+            opacity: 0.5;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+
+        .personal-quote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: #784d31;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Subtle texture overlay */
+        .texture-overlay {
+            background-image: radial-gradient(circle at 20% 30%, rgba(184, 119, 70, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(184, 119, 70, 0.02) 0%, transparent 50%);
+        }
+
+        .btn-warm {
+            background: #b87746;
+            color: white;
+            transition: all 0.2s ease;
+        }
+        .btn-warm:hover {
+            background: #96603a;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(184, 119, 70, 0.2);
+        }
+
+        .btn-outline-warm {
+            border: 1px solid #dccfc4;
+            color: #5a4a3a;
+            transition: all 0.2s ease;
+        }
+        .btn-outline-warm:hover {
+            border-color: #b87746;
+            color: #b87746;
+            background: rgba(184, 119, 70, 0.04);
+        }
+
+        .interest-icon {
+            transition: transform 0.2s ease;
+        }
+        .interest-icon:hover {
+            transform: scale(1.08) rotate(-2deg);
+        }
+
+        .hand-drawn-line {
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #dccfc4 0px, #dccfc4 4px, transparent 4px, transparent 8px);
+            width: 60px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -169,163 +238,189 @@
             <div class="flex justify-between items-center">
 
                 <div class="flex items-center gap-1">
-                    <span class="text-xl font-bold tracking-tight text-slate-800">
-                        <span class="text-green-600">V</span>R<span class="text-cyan-500">.</span>
+                    <span class="text-xl font-bold tracking-tight text-stone-800">
+                        <span class="text-[#b87746]">V</span>R<span class="text-[#0891b2]">.</span>
                     </span>
-                    <span class="hidden sm:inline text-xs text-slate-400 font-mono ml-1">/engineer</span>
+                    <span class="hidden sm:inline text-xs text-stone-400 font-mono ml-1">/engineer</span>
                 </div>
 
-                <!-- Desktop -->
                 <div class="hidden md:flex items-center space-x-6 text-sm">
-                    <a href="#home" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Beranda</a>
-                    <a href="#about" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Tentang</a>
-                    <a href="#skills" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Keahlian</a>
-                    <a href="#journey" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Perjalanan</a>
-                    <a href="#achievements" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Prestasi</a>
-                    <a href="#portfolio" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Portofolio</a>
-                    <a href="#contact" class="text-slate-500 hover:text-green-600 transition-colors font-medium">Kontak</a>
+                    <a href="#home" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Beranda</a>
+                    <a href="#about" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Tentang</a>
+                    <a href="#skills" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Keahlian</a>
+                    <a href="#journey" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Perjalanan</a>
+                    <a href="#achievements" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Prestasi</a>
+                    <a href="#portfolio" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Portofolio</a>
+                    <a href="#contact" class="text-stone-500 hover:text-[#b87746] transition-colors font-medium">Kontak</a>
                 </div>
 
-                <!-- Mobile toggle -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-800 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-stone-600 hover:text-stone-800 focus:outline-none">
                         <i data-lucide="menu" class="w-5 h-5"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-b border-slate-200 w-full">
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-b border-stone-200/60 w-full">
             <div class="px-4 py-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Beranda</a>
-                <a href="#about" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Tentang</a>
-                <a href="#skills" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Keahlian</a>
-                <a href="#journey" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Perjalanan</a>
-                <a href="#achievements" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Prestasi</a>
-                <a href="#portfolio" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Portofolio</a>
-                <a href="#contact" class="block px-3 py-2 text-sm text-slate-600 hover:text-green-600 hover:bg-slate-50 rounded-md">Kontak</a>
+                <a href="#home" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Beranda</a>
+                <a href="#about" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Tentang</a>
+                <a href="#skills" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Keahlian</a>
+                <a href="#journey" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Perjalanan</a>
+                <a href="#achievements" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Prestasi</a>
+                <a href="#portfolio" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Portofolio</a>
+                <a href="#contact" class="block px-3 py-2 text-sm text-stone-600 hover:text-[#b87746] hover:bg-stone-50 rounded-md">Kontak</a>
             </div>
         </div>
     </nav>
 
     <!-- ========== HERO ========== -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 bg-gradient-to-b from-slate-50 to-white">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 texture-overlay">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 border border-green-200/60 mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span class="text-xs font-medium text-green-700 tracking-wide">Teknologi Rekayasa Komputer</span>
+
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#b87746] animate-pulse"></span>
+                <span class="text-xs font-medium text-stone-600 tracking-wide">Teknologi Rekayasa Komputer</span>
             </div>
 
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4 tracking-tight leading-[1.1]">
-                Varian <span class="text-green-600">Rhesa</span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-stone-900 mb-3 tracking-tight leading-[1.1]">
+                Varian <span class="text-[#b87746]">Rhesa</span>
             </h1>
 
-            <p class="text-xl text-slate-500 font-medium mb-2">Junior Software Engineer</p>
+            <p class="text-xl text-stone-500 font-medium mb-1">Junior Software Engineer</p>
 
-            <p class="text-sm text-slate-400 max-w-xl mx-auto leading-relaxed mb-8">
-                <span class="text-green-600 font-medium">Web</span> ·
-                <span class="text-cyan-600 font-medium">IoT</span> ·
-                <span class="text-green-600 font-medium">AI</span> ·
-                <span class="text-cyan-600 font-medium">Robotika</span>
+            <div class="personal-quote max-w-sm mx-auto mt-2 mb-5">
+                “Kode yang baik adalah cerita yang jelas.”
+            </div>
+
+            <p class="text-sm text-stone-400 max-w-xl mx-auto leading-relaxed mb-7">
+                <span class="text-[#2d6a4f] font-medium">Web</span> ·
+                <span class="text-[#1a6375] font-medium">IoT</span> ·
+                <span class="text-[#2d6a4f] font-medium">AI</span> ·
+                <span class="text-[#1a6375] font-medium">Robotika</span>
+                <br />
+                <span class="text-stone-300 text-xs">— membangun solusi, bukan sekadar kode —</span>
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-3">
-                <a href="#contact" class="px-7 py-2.5 rounded-full bg-green-600 hover:bg-green-700 text-white font-medium text-sm transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4"></i> Hubungi
+                <a href="#contact" class="px-7 py-2.5 rounded-full btn-warm font-medium text-sm flex items-center justify-center gap-2 shadow-sm">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Ngobrol Yuk
                 </a>
-                <a href="#portfolio" class="px-7 py-2.5 rounded-full border border-slate-300 hover:border-green-500 text-slate-700 hover:text-green-700 font-medium text-sm transition-all flex items-center justify-center gap-2">
+                <a href="#portfolio" class="px-7 py-2.5 rounded-full btn-outline-warm font-medium text-sm flex items-center justify-center gap-2">
                     <i data-lucide="folder-git" class="w-4 h-4"></i> Lihat Karya
                 </a>
+            </div>
+
+            <div class="divider-dot mt-10">
+                <span></span><span></span><span></span><span></span><span></span>
             </div>
         </div>
     </section>
 
     <!-- ========== ABOUT ========== -->
-    <section id="about" class="py-16 bg-white border-t border-slate-100">
+    <section id="about" class="py-16 bg-white border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
 
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Tentang Saya</h2>
-                    <div class="divider-light mb-5"></div>
-                    <div class="space-y-4 text-slate-600 text-sm leading-relaxed">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="font-hand text-2xl text-[#b87746]">✦</span>
+                        <h2 class="text-2xl font-bold text-stone-900">Tentang Saya</h2>
+                    </div>
+                    <div class="divider-warm mb-5"></div>
+                    <div class="space-y-4 text-stone-600 text-sm leading-relaxed">
+
                         <p>
-                            Mahasiswa <span class="text-green-700 font-medium">Teknologi Rekayasa Komputer</span>
-                            di Politeknik Negeri Samarinda dengan latar belakang
-                            <span class="text-cyan-700 font-medium">Rekayasa Perangkat Lunak</span> (RPL).
+                            Saya mahasiswa <span class="text-[#2d6a4f] font-medium">Teknologi Rekayasa Komputer</span>
+                            di Politeknik Negeri Samarinda. Sebelumnya, saya belajar
+                            <span class="text-[#1a6375] font-medium">Rekayasa Perangkat Lunak</span>
+                            di SMK — jadi saya tumbuh dengan kode dan logika.
                         </p>
+
                         <p>
-                            Menguasai <span class="text-green-700 font-medium">Python</span>,
-                            <span class="text-cyan-700 font-medium">C++</span>, dan
-                            <span class="text-green-700 font-medium">Java</span>, serta pengembangan
-                            <span class="text-cyan-700 font-medium">Web</span> dan
-                            <span class="text-green-700 font-medium">Mobile</span> (Flutter).
-                            Tertarik pada <span class="text-cyan-700 font-medium">Robotika</span> dan
-                            <span class="text-green-700 font-medium">Internet of Things (IoT)</span>.
+                            Saya suka membangun sesuatu yang nyata: dari <span class="text-[#2d6a4f] font-medium">web app</span>
+                            yang membantu orang, sampai <span class="text-[#1a6375] font-medium">robot</span>
+                            yang bisa bergerak sendiri. Buat saya, teknologi itu alat, tapi yang lebih penting
+                            adalah <span class="text-stone-700 font-medium">dampaknya</span>.
                         </p>
-                        <p>
-                            Terbiasa dengan <span class="text-cyan-700 font-medium">GitHub</span>,
-                            <span class="text-green-700 font-medium">Linux</span>, dan
-                            <span class="text-cyan-700 font-medium">Android Studio</span>.
-                            Selalu antusias mempelajari teknologi baru untuk menciptakan solusi nyata.
+
+                        <p class="personal-quote text-base mt-2">
+                            “Saya percaya bahwa kode terbaik adalah yang
+                            <span class="text-[#b87746]">mengerti manusia</span> di balik layar.”
+                        </p>
+
+                        <p class="text-stone-400 text-xs">
+                            <span class="font-hand text-[#b87746] text-base">ps.</span> Saya juga suka kopi, dan sering
+                            menemukan solusi sambil ngopi ☕
                         </p>
                     </div>
                 </div>
 
-                <!-- Profile card minimal -->
-                <div class="card-minimal p-6 bg-slate-50/50">
+                <!-- Profile card -->
+                <div class="card-warm p-6 bg-[#fcf9f6]">
                     <div class="flex items-center gap-5">
-                        <div class="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden border-2 border-green-200">
+                        <div class="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden border-2 border-[#dccfc4]">
                             <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
                             alt="Foto Varian Rhesa"
                             class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-slate-900">Varian Rhesa</h3>
-                            <p class="text-sm text-slate-500">Junior Software Engineer</p>
+                            <h3 class="text-lg font-semibold text-stone-900">Varian Rhesa</h3>
+                            <p class="text-sm text-stone-500">Junior Software Engineer</p>
                             <div class="flex items-center gap-2 mt-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                <span class="text-xs text-slate-400">siap kolaborasi</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#b87746]"></span>
+                                <span class="text-xs text-stone-400">open to chat</span>
                             </div>
                         </div>
                     </div>
-                    <div class="divider-light my-4"></div>
-                    <ul class="space-y-2 text-sm text-slate-600">
+                    <div class="divider-warm my-4"></div>
+                    <ul class="space-y-2 text-sm text-stone-600">
                         <li class="flex items-center gap-3">
-                            <i data-lucide="map-pin" class="text-green-600 w-4 h-4"></i>
+                            <i data-lucide="map-pin" class="text-[#b87746] w-4 h-4"></i>
                             Samarinda, Kalimantan Timur
                         </li>
                         <li class="flex items-center gap-3">
-                            <i data-lucide="book-open" class="text-cyan-600 w-4 h-4"></i>
+                            <i data-lucide="book-open" class="text-[#1a6375] w-4 h-4"></i>
                             D4 TRK · Politeknik Negeri Samarinda
                         </li>
                         <li class="flex items-center gap-3">
-                            <i data-lucide="briefcase" class="text-green-600 w-4 h-4"></i>
+                            <i data-lucide="briefcase" class="text-[#b87746] w-4 h-4"></i>
                             Intern @ Balai Monitor Spektrum
                         </li>
                     </ul>
+                    <div class="divider-warm my-4"></div>
+                    <div class="flex flex-wrap gap-2 text-xs text-stone-400">
+                        <span class="flex items-center gap-1"><i data-lucide="coffee" class="w-3 h-3"></i> kopi</span>
+                        <span class="flex items-center gap-1"><i data-lucide="book" class="w-3 h-3"></i> baca</span>
+                        <span class="flex items-center gap-1"><i data-lucide="bike" class="w-3 h-3"></i> sepeda</span>
+                        <span class="flex items-center gap-1"><i data-lucide="music" class="w-3 h-3"></i> musik</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========== SKILLS ========== -->
-    <section id="skills" class="py-16 bg-slate-50/70 border-t border-slate-100">
+    <section id="skills" class="py-16 bg-[#fcf9f6] border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold text-slate-900">Keahlian Teknis</h2>
-                <p class="text-sm text-slate-400 mt-1">— perangkat lunak, perangkat keras, dan alat —</p>
+                <div class="flex items-center justify-center gap-2">
+                    <span class="font-hand text-2xl text-[#b87746]">⚡</span>
+                    <h2 class="text-2xl font-bold text-stone-900">Keahlian Teknis</h2>
+                </div>
+                <p class="text-sm text-stone-400 mt-1">— yang saya pelajari dan saya pakai —</p>
+                <div class="hand-drawn-line mt-2"></div>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-                <div class="card-minimal p-5">
+                <div class="card-warm p-5">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-8 h-8 rounded-full bg-green-50 border border-green-200 flex items-center justify-center">
-                            <i data-lucide="code-2" class="text-green-600 w-4 h-4"></i>
+                        <div class="w-8 h-8 rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center">
+                            <i data-lucide="code-2" class="text-[#2d6a4f] w-4 h-4"></i>
                         </div>
-                        <h3 class="text-sm font-semibold text-slate-800">Programming</h3>
+                        <h3 class="text-sm font-semibold text-stone-800">Programming</h3>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="tag tag-green">Python</span>
@@ -338,12 +433,12 @@
                     </div>
                 </div>
 
-                <div class="card-minimal p-5">
+                <div class="card-warm p-5">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-8 h-8 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                            <i data-lucide="smartphone" class="text-cyan-600 w-4 h-4"></i>
+                        <div class="w-8 h-8 rounded-full bg-[#ecf7f9] border border-[#b5dce6] flex items-center justify-center">
+                            <i data-lucide="smartphone" class="text-[#1a6375] w-4 h-4"></i>
                         </div>
-                        <h3 class="text-sm font-semibold text-slate-800">Web &amp; Mobile</h3>
+                        <h3 class="text-sm font-semibold text-stone-800">Web &amp; Mobile</h3>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="tag">HTML/CSS</span>
@@ -355,12 +450,12 @@
                     </div>
                 </div>
 
-                <div class="card-minimal p-5">
+                <div class="card-warm p-5">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-8 h-8 rounded-full bg-green-50 border border-green-200 flex items-center justify-center">
-                            <i data-lucide="cpu" class="text-green-600 w-4 h-4"></i>
+                        <div class="w-8 h-8 rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center">
+                            <i data-lucide="cpu" class="text-[#2d6a4f] w-4 h-4"></i>
                         </div>
-                        <h3 class="text-sm font-semibold text-slate-800">IoT &amp; Hardware</h3>
+                        <h3 class="text-sm font-semibold text-stone-800">IoT &amp; Hardware</h3>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="tag tag-green">Arduino IDE</span>
@@ -370,12 +465,12 @@
                     </div>
                 </div>
 
-                <div class="card-minimal p-5">
+                <div class="card-warm p-5">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-8 h-8 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                            <i data-lucide="terminal" class="text-cyan-600 w-4 h-4"></i>
+                        <div class="w-8 h-8 rounded-full bg-[#ecf7f9] border border-[#b5dce6] flex items-center justify-center">
+                            <i data-lucide="terminal" class="text-[#1a6375] w-4 h-4"></i>
                         </div>
-                        <h3 class="text-sm font-semibold text-slate-800">Tools &amp; DevOps</h3>
+                        <h3 class="text-sm font-semibold text-stone-800">Tools &amp; DevOps</h3>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="tag">Git/GitHub</span>
@@ -391,37 +486,41 @@
     </section>
 
     <!-- ========== JOURNEY ========== -->
-    <section id="journey" class="py-16 bg-white border-t border-slate-100">
+    <section id="journey" class="py-16 bg-white border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold text-slate-900 text-center mb-10">Perjalanan &amp; Pengalaman</h2>
+            <div class="text-center mb-10">
+                <span class="font-hand text-2xl text-[#b87746]">📖</span>
+                <h2 class="text-2xl font-bold text-stone-900">Perjalanan &amp; Pengalaman</h2>
+                <p class="text-sm text-stone-400 mt-1">— dari bangku sekolah sampai dunia kerja —</p>
+            </div>
 
             <div class="grid md:grid-cols-2 gap-10">
 
                 <!-- Pendidikan -->
                 <div>
                     <div class="flex items-center gap-2 mb-5">
-                        <i data-lucide="book-open" class="text-green-600 w-5 h-5"></i>
-                        <h3 class="text-lg font-semibold text-slate-800">Pendidikan</h3>
+                        <i data-lucide="book-open" class="text-[#2d6a4f] w-5 h-5"></i>
+                        <h3 class="text-lg font-semibold text-stone-800">Pendidikan</h3>
                     </div>
-                    <div class="space-y-1 border-l-2 border-green-200 ml-2">
+                    <div class="space-y-1 border-l-2 border-[#c5dfc0] ml-2">
 
                         <div class="relative pl-6 pb-7">
-                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-green-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2022 — Sekarang</div>
-                            <h4 class="text-base font-semibold text-slate-900">Politeknik Negeri Samarinda</h4>
-                            <div class="text-sm text-slate-500">D4 · Teknologi Rekayasa Komputer</div>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                                Skripsi: <span class="text-green-700">"Rancang Bangun Sistem Pemadam Kebakaran Ruangan Berbasi IoT dengan Metode Algoritma C4.5"</span>
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-[#2d6a4f] border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-[#1a6375] font-mono mb-0.5">2022 — Sekarang</div>
+                            <h4 class="text-base font-semibold text-stone-900">Politeknik Negeri Samarinda</h4>
+                            <div class="text-sm text-stone-500">D4 · Teknologi Rekayasa Komputer</div>
+                            <p class="text-xs text-stone-400 mt-1 leading-relaxed">
+                                Skripsi: <span class="text-[#2d6a4f]">"IoT-based Smart Fire Suppression System dengan Algoritma C4.5"</span>
                             </p>
-                            <p class="text-xs text-slate-400">Kursus: Web Development, CCNA, IoT Engineering</p>
+                            <p class="text-xs text-stone-400">Kursus: Web Development, CCNA, IoT Engineering</p>
                         </div>
 
                         <div class="relative pl-6 pb-2">
-                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-green-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2019 — 2022</div>
-                            <h4 class="text-base font-semibold text-slate-900">SMK Negeri 7 Samarinda</h4>
-                            <div class="text-sm text-slate-500">Rekayasa Perangkat Lunak</div>
-                            <p class="text-xs text-slate-400">Dasar-dasar pengembangan software &amp; pemrograman</p>
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-[#2d6a4f] border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-[#1a6375] font-mono mb-0.5">2019 — 2022</div>
+                            <h4 class="text-base font-semibold text-stone-900">SMK Negeri 7 Samarinda</h4>
+                            <div class="text-sm text-stone-500">Rekayasa Perangkat Lunak</div>
+                            <p class="text-xs text-stone-400">Dasar-dasar coding &amp; pengembangan software</p>
                         </div>
                     </div>
                 </div>
@@ -429,17 +528,17 @@
                 <!-- Pengalaman -->
                 <div>
                     <div class="flex items-center gap-2 mb-5">
-                        <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
-                        <h3 class="text-lg font-semibold text-slate-800">Pengalaman</h3>
+                        <i data-lucide="briefcase" class="text-[#1a6375] w-5 h-5"></i>
+                        <h3 class="text-lg font-semibold text-stone-800">Pengalaman</h3>
                     </div>
-                    <div class="space-y-1 border-l-2 border-cyan-200 ml-2">
+                    <div class="space-y-1 border-l-2 border-[#b5dce6] ml-2">
 
                         <div class="relative pl-6 pb-7">
-                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">Feb 2026 — Mei 2026</div>
-                            <h4 class="text-base font-semibold text-slate-900">Balai Monitor Spektrum Frekuensi Radio</h4>
-                            <div class="text-sm text-slate-500">Intern · Full Stack Developer</div>
-                            <ul class="text-xs text-slate-500 space-y-0.5 mt-1 list-disc list-inside leading-relaxed">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-[#1a6375] border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-[#1a6375] font-mono mb-0.5">Feb 2026 — Mei 2026</div>
+                            <h4 class="text-base font-semibold text-stone-900">Balai Monitor Spektrum Frekuensi Radio</h4>
+                            <div class="text-sm text-stone-500">Intern · Full Stack Developer</div>
+                            <ul class="text-xs text-stone-500 space-y-0.5 mt-1 list-disc list-inside leading-relaxed">
                                 <li>Membangun PWA untuk monitoring spektrum</li>
                                 <li>Integrasi Firebase Realtime Database</li>
                                 <li>Admin Dashboard (HTML, CSS, Bootstrap, JS)</li>
@@ -451,11 +550,11 @@
                         </div>
 
                         <div class="relative pl-6 pb-2">
-                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2020</div>
-                            <h4 class="text-base font-semibold text-slate-900">PPTIK ITB · Online Internship</h4>
-                            <div class="text-sm text-slate-500">Magang Industri &amp; Pengembangan Software</div>
-                            <p class="text-xs text-slate-400">Pengalaman virtual yang memperluas wawasan teknologi</p>
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-[#1a6375] border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-[#1a6375] font-mono mb-0.5">2020</div>
+                            <h4 class="text-base font-semibold text-stone-900">PPTIK ITB · Online Internship</h4>
+                            <div class="text-sm text-stone-500">Magang Industri &amp; Pengembangan Software</div>
+                            <p class="text-xs text-stone-400">Pengalaman virtual yang memperluas wawasan</p>
                         </div>
                     </div>
                 </div>
@@ -464,25 +563,28 @@
     </section>
 
     <!-- ========== ACHIEVEMENTS ========== -->
-    <section id="achievements" class="py-16 bg-slate-50/70 border-t border-slate-100">
+    <section id="achievements" class="py-16 bg-[#fcf9f6] border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold text-slate-900 text-center mb-8">🏆 Prestasi</h2>
+            <div class="text-center mb-8">
+                <span class="font-hand text-3xl text-[#b87746]">🏆</span>
+                <h2 class="text-2xl font-bold text-stone-900">Prestasi</h2>
+            </div>
 
-            <div class="card-minimal p-6 max-w-2xl mx-auto">
+            <div class="card-warm p-6 max-w-2xl mx-auto">
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-                    <div class="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center flex-shrink-0">
-                        <i data-lucide="award" class="text-green-600 w-7 h-7"></i>
+                    <div class="w-16 h-16 rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="award" class="text-[#2d6a4f] w-7 h-7"></i>
                     </div>
                     <div class="flex-1 text-center sm:text-left">
-                        <div class="inline-block px-3 py-0.5 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-medium mb-1.5">
+                        <div class="inline-block px-3 py-0.5 rounded-full bg-[#f0f7ee] border border-[#c5dfc0] text-[#2d6a4f] text-xs font-medium mb-1.5">
                             2023
                         </div>
-                        <h3 class="text-lg font-semibold text-slate-900">Juara 3 Kontes Robot Cerdas</h3>
-                        <p class="text-sm text-slate-500">Provinsi Kalimantan Timur</p>
-                        <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                            Meraih posisi ke-3 sebagai <span class="text-green-700 font-medium">Programmer Robot</span>.
-                            Bertanggung jawab atas logika pemrograman yang memungkinkan robot
-                            menyelesaikan rintangan secara cerdas dan efisien.
+                        <h3 class="text-lg font-semibold text-stone-900">Juara 3 Kontes Robot Cerdas</h3>
+                        <p class="text-sm text-stone-500">Provinsi Kalimantan Timur</p>
+                        <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+                            Saya bertanggung jawab sebagai <span class="text-[#2d6a4f] font-medium">Programmer Robot</span>.
+                            Menulis logika yang membuat robot bisa membaca medan dan mengambil keputusan secara mandiri.
+                            Pengalaman ini mengajarkan saya bahwa <span class="text-[#b87746]">kegagalan adalah bagian dari proses belajar</span>.
                         </p>
                     </div>
                 </div>
@@ -491,169 +593,175 @@
     </section>
 
     <!-- ========== PORTFOLIO (Sertifikat & Proyek) ========== -->
-    <section id="portfolio" class="py-16 bg-white border-t border-slate-100">
+    <section id="portfolio" class="py-16 bg-white border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold text-slate-900 text-center mb-2">Portofolio &amp; Sertifikat</h2>
-            <p class="text-sm text-slate-400 text-center mb-8">— karya dan pengakuan —</p>
+            <div class="text-center mb-8">
+                <span class="font-hand text-2xl text-[#b87746]">📁</span>
+                <h2 class="text-2xl font-bold text-stone-900">Portofolio &amp; Sertifikat</h2>
+                <p class="text-sm text-stone-400 mt-1">— karya yang saya kerjakan dengan hati —</p>
+            </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
                 <!-- 1. Dicoding -->
-                <div class="card-minimal p-5 text-center hover:border-green-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-green-50 border border-green-200 flex items-center justify-center mb-3">
-                        <i data-lucide="badge-check" class="text-green-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#b87746] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center mb-3">
+                        <i data-lucide="badge-check" class="text-[#2d6a4f] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">Dicoding Android Pemula</h4>
-                    <p class="text-xs text-slate-400 font-mono">Sertifikat</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">📄 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">Dicoding Android Pemula</h4>
+                    <p class="text-xs text-stone-400 font-mono">Sertifikat</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">Belajar Membuat Aplikasi Android untuk Pemula</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">📄 placeholder</div>
                 </div>
 
                 <!-- 2. CCNA -->
-                <div class="card-minimal p-5 text-center hover:border-cyan-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="network" class="text-cyan-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#1a6375] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#ecf7f9] border border-[#b5dce6] flex items-center justify-center mb-3">
+                        <i data-lucide="network" class="text-[#1a6375] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">CCNAv7 · Cisco</h4>
-                    <p class="text-xs text-slate-400 font-mono">Sertifikat</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">Switching, Routing, and Wireless Essentials</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">📄 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">CCNAv7 · Cisco</h4>
+                    <p class="text-xs text-stone-400 font-mono">Sertifikat</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">Switching, Routing, and Wireless Essentials</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">📄 placeholder</div>
                 </div>
 
                 <!-- 3. PWA -->
-                <div class="card-minimal p-5 text-center hover:border-green-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-green-50 border border-green-200 flex items-center justify-center mb-3">
-                        <i data-lucide="monitor" class="text-green-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#b87746] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center mb-3">
+                        <i data-lucide="monitor" class="text-[#2d6a4f] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">PWA Spektrum Monitoring</h4>
-                    <p class="text-xs text-slate-400 font-mono">Proyek Internship</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">Firebase · QR Code · AI Chatbot (Llama)</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">🔧 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">PWA Spektrum Monitoring</h4>
+                    <p class="text-xs text-stone-400 font-mono">Proyek Internship</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">Firebase · QR Code · AI Chatbot (Llama)</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">🔧 placeholder</div>
                 </div>
 
                 <!-- 4. IoT Fire Suppression -->
-                <div class="card-minimal p-5 text-center hover:border-cyan-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="flame" class="text-cyan-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#1a6375] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#ecf7f9] border border-[#b5dce6] flex items-center justify-center mb-3">
+                        <i data-lucide="flame" class="text-[#1a6375] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">IoT Smart Fire Suppression</h4>
-                    <p class="text-xs text-slate-400 font-mono">Skripsi</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">ESP32 · C4.5 Algorithm · Sensor</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">🔧 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">IoT Smart Fire Suppression</h4>
+                    <p class="text-xs text-stone-400 font-mono">Skripsi</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">ESP32 · C4.5 Algorithm · Sensor</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">🔧 placeholder</div>
                 </div>
 
                 <!-- 5. Bahasa -->
-                <div class="card-minimal p-5 text-center hover:border-green-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-green-50 border border-green-200 flex items-center justify-center mb-3">
-                        <i data-lucide="languages" class="text-green-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#b87746] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#f0f7ee] border border-[#c5dfc0] flex items-center justify-center mb-3">
+                        <i data-lucide="languages" class="text-[#2d6a4f] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">English B2 · Mandarin HSK1</h4>
-                    <p class="text-xs text-slate-400 font-mono">Sertifikat Bahasa</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">Kemampuan bahasa asing</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">📄 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">English B2 · Mandarin HSK1</h4>
+                    <p class="text-xs text-stone-400 font-mono">Sertifikat Bahasa</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">Kemampuan bahasa asing</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">📄 placeholder</div>
                 </div>
 
                 <!-- 6. Robotika -->
-                <div class="card-minimal p-5 text-center hover:border-cyan-300">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="bot" class="text-cyan-600 w-6 h-6"></i>
+                <div class="card-warm p-5 text-center hover:border-[#1a6375] transition-all">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-[#ecf7f9] border border-[#b5dce6] flex items-center justify-center mb-3">
+                        <i data-lucide="bot" class="text-[#1a6375] w-6 h-6"></i>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-800">Robot Cerdas · Juara 3</h4>
-                    <p class="text-xs text-slate-400 font-mono">Proyek Robotika</p>
-                    <div class="divider-light my-2.5"></div>
-                    <p class="text-xs text-slate-500">Algoritma navigasi, logika cerdas</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-mono">🤖 placeholder</div>
+                    <h4 class="text-sm font-semibold text-stone-800">Robot Cerdas · Juara 3</h4>
+                    <p class="text-xs text-stone-400 font-mono">Proyek Robotika</p>
+                    <div class="divider-warm my-2.5"></div>
+                    <p class="text-xs text-stone-500">Algoritma navigasi, logika cerdas</p>
+                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-[#f5efe9] border border-[#e8ddd2] text-stone-400 text-[10px] font-mono">🤖 placeholder</div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ========== LANGUAGES & CERTIFICATIONS (ringkas) ========== -->
-    <section class="py-12 bg-slate-50/70 border-t border-slate-100">
+    <!-- ========== LANGUAGES & CERTIFICATIONS ========== -->
+    <section class="py-12 bg-[#fcf9f6] border-t border-[#ece3da]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid sm:grid-cols-2 gap-8">
 
                 <div>
                     <div class="flex items-center gap-2 mb-3">
-                        <i data-lucide="languages" class="text-green-600 w-5 h-5"></i>
-                        <h3 class="text-base font-semibold text-slate-800">Bahasa</h3>
+                        <i data-lucide="languages" class="text-[#b87746] w-5 h-5"></i>
+                        <h3 class="text-base font-semibold text-stone-800">Bahasa yang Saya Pakai</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="tag tag-green">🇮🇩 Indonesia <span class="font-normal text-green-600">(Native)</span></span>
-                        <span class="tag tag-cyan">🇬🇧 English <span class="font-normal text-cyan-600">(B2)</span></span>
-                        <span class="tag">🇨🇳 Mandarin <span class="font-normal text-slate-500">(HSK 1)</span></span>
+                        <span class="tag tag-green">🇮🇩 Indonesia <span class="font-normal text-[#2d6a4f]">(Native)</span></span>
+                        <span class="tag tag-cyan">🇬🇧 English <span class="font-normal text-[#1a6375]">(B2)</span></span>
+                        <span class="tag">🇨🇳 Mandarin <span class="font-normal text-stone-500">(HSK 1)</span></span>
                     </div>
+                    <p class="text-xs text-stone-400 mt-2">— masih belajar, karena bahasa itu jembatan —</p>
                 </div>
 
                 <div>
                     <div class="flex items-center gap-2 mb-3">
-                        <i data-lucide="badge-check" class="text-cyan-600 w-5 h-5"></i>
-                        <h3 class="text-base font-semibold text-slate-800">Sertifikasi</h3>
+                        <i data-lucide="badge-check" class="text-[#1a6375] w-5 h-5"></i>
+                        <h3 class="text-base font-semibold text-stone-800">Sertifikasi</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="tag tag-green">📱 Dicoding Android</span>
                         <span class="tag tag-cyan">🌐 CCNAv7 Cisco</span>
                     </div>
+                    <p class="text-xs text-stone-400 mt-2">— bukti bahwa saya suka belajar hal baru —</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-16 bg-white border-t border-slate-100">
+    <section id="contact" class="py-16 bg-white border-t border-[#ece3da]">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl font-bold text-slate-900 mb-2">Mari Terhubung</h2>
-            <p class="text-sm text-slate-400 mb-8">— tertarik untuk berkolaborasi? —</p>
+            <span class="font-hand text-3xl text-[#b87746]">💬</span>
+            <h2 class="text-2xl font-bold text-stone-900 mb-2">Mari Terhubung</h2>
+            <p class="text-sm text-stone-400 mb-8">— saya suka ngobrol tentang kode, robot, atau sekadar kopi —</p>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
                 <a href="mailto:rhesa719@gmail.com"
-                class="card-minimal p-4 hover:border-green-400 transition-all">
+                class="card-warm p-4 hover:border-[#b87746] transition-all hover:-translate-y-0.5">
                 <div class="flex justify-center mb-1.5">
-                    <i data-lucide="mail" class="text-green-600 w-5 h-5"></i>
+                    <i data-lucide="mail" class="text-[#b87746] w-5 h-5"></i>
                 </div>
-                <h4 class="text-sm font-medium text-slate-700">Email</h4>
-                <p class="text-xs text-slate-400 font-mono break-all">rhesa719@gmail.com</p>
+                <h4 class="text-sm font-medium text-stone-700">Email</h4>
+                <p class="text-xs text-stone-400 font-mono break-all">rhesa719@gmail.com</p>
             </a>
 
             <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank"
-            class="card-minimal p-4 hover:border-cyan-400 transition-all">
+            class="card-warm p-4 hover:border-[#1a6375] transition-all hover:-translate-y-0.5">
             <div class="flex justify-center mb-1.5">
-                <i data-lucide="linkedin" class="text-cyan-600 w-5 h-5"></i>
+                <i data-lucide="linkedin" class="text-[#1a6375] w-5 h-5"></i>
             </div>
-            <h4 class="text-sm font-medium text-slate-700">LinkedIn</h4>
-            <p class="text-xs text-slate-400">Varian Rhesa</p>
+            <h4 class="text-sm font-medium text-stone-700">LinkedIn</h4>
+            <p class="text-xs text-stone-400">Varian Rhesa</p>
         </a>
 
         <a href="tel:+6289519628044"
-        class="card-minimal p-4 hover:border-green-400 transition-all">
+        class="card-warm p-4 hover:border-[#b87746] transition-all hover:-translate-y-0.5">
         <div class="flex justify-center mb-1.5">
-            <i data-lucide="phone" class="text-green-600 w-5 h-5"></i>
+            <i data-lucide="phone" class="text-[#b87746] w-5 h-5"></i>
         </div>
-        <h4 class="text-sm font-medium text-slate-700">Telepon</h4>
-        <p class="text-xs text-slate-400 font-mono">0895-1962-8044</p>
+        <h4 class="text-sm font-medium text-stone-700">Telepon</h4>
+        <p class="text-xs text-stone-400 font-mono">0895-1962-8044</p>
     </a>
 
     <a href="https://github.com/Varian719" target="_blank"
-    class="card-minimal p-4 hover:border-cyan-400 transition-all">
+    class="card-warm p-4 hover:border-[#1a6375] transition-all hover:-translate-y-0.5">
     <div class="flex justify-center mb-1.5">
-        <i data-lucide="github" class="text-cyan-600 w-5 h-5"></i>
+        <i data-lucide="github" class="text-[#1a6375] w-5 h-5"></i>
     </div>
-    <h4 class="text-sm font-medium text-slate-700">GitHub</h4>
-    <p class="text-xs text-slate-400 font-mono">Varian719</p>
+    <h4 class="text-sm font-medium text-stone-700">GitHub</h4>
+    <p class="text-xs text-stone-400 font-mono">Varian719</p>
 </a>
 
 </div>
 
-<div class="mt-10 pt-6 border-t border-slate-200">
-    <p class="text-xs text-slate-400">
-        &copy; 2026 Varian Rhesa · dibuat dengan minimalis
+<div class="mt-10 pt-6 border-t border-[#ece3da]">
+    <p class="text-xs text-stone-400">
+        &copy; 2026 Varian Rhesa · dibuat dengan <span class="text-[#b87746]">♥</span> dan kopi
     </p>
 </div>
 </div>
