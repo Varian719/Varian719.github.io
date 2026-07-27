@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varian Rhesa · Junior Software Engineer</title>
 
-    <!-- Tailwind + Lucide -->
     <script src="https://cdn.tailwindcss.com">
     </script>
     <script src="https://unpkg.com/lucide@latest">
@@ -91,17 +90,27 @@
             border-bottom: 1px solid rgba(13, 17, 13, 0.06);
         }
 
-        .card-professional {
+        .card-blog {
             background: #ffffff;
             border: 1px solid #e2e8e4;
             border-radius: 16px;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .card-professional:hover {
+        .card-blog:hover {
             border-color: #0aaf69;
             box-shadow: 0 8px 30px rgba(10, 175, 105, 0.08);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+        }
+
+        .card-blog .card-image {
+            height: 180px;
+            background: linear-gradient(135deg, #e6f7f0, #ecfeff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
         }
 
         .tag {
@@ -163,7 +172,6 @@
             scroll-margin-top: 80px;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -182,25 +190,22 @@
             background: linear-gradient(180deg, #f8faf9 0%, #ffffff 100%);
         }
 
-        .gradient-section {
-            background: linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
+        .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 12px;
+            padding: 1.25rem;
         }
 
-        .timeline-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #0aaf69;
-            background: #0aaf69;
-            position: absolute;
-            left: -7px;
-            top: 4px;
-        }
-
-        .timeline-dot-cyan {
-            box-shadow: 0 0 0 2px #06b6d4;
-            background: #06b6d4;
+        .sidebar-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #415541;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #e6f7f0;
+            padding-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -209,7 +214,7 @@
 
     <!-- ========== NAVBAR ========== -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
 
                 <a href="#home" class="flex items-center gap-2 group">
@@ -222,10 +227,8 @@
                 <div class="hidden md:flex items-center gap-8 text-sm">
                     <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Beranda</a>
                     <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Tentang</a>
-                    <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Keahlian</a>
-                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Perjalanan</a>
-                    <a href="#achievements" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Prestasi</a>
                     <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Portofolio</a>
+                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Kontak</a>
                 </div>
 
@@ -241,425 +244,358 @@
             <div class="px-4 py-3 space-y-1">
                 <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Beranda</a>
                 <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Tentang</a>
-                <a href="#skills" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Keahlian</a>
-                <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Perjalanan</a>
-                <a href="#achievements" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Prestasi</a>
                 <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Portofolio</a>
+                <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Perjalanan</a>
                 <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Kontak</a>
             </div>
         </div>
     </nav>
 
     <!-- ========== HERO ========== -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 gradient-hero">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
 
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-200/60 mb-6">
-                <span class="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
-                <span class="text-xs font-medium text-primary-700 tracking-wider">Teknologi Rekayasa Komputer</span>
-            </div>
+                <!-- Kiri: Teks -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-200/60 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
+                        <span class="text-xs font-medium text-primary-700 tracking-wider">Teknologi Rekayasa Komputer</span>
+                    </div>
 
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-dark-900 mb-4 tracking-tight leading-[1.1]">
-                Varian <span class="text-primary-600">Rhesa</span>
-            </h1>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-dark-900 mb-4 tracking-tight leading-[1.1]">
+                        Varian <span class="text-primary-600">Rhesa</span>
+                    </h1>
 
-            <p class="text-xl md:text-2xl text-dark-500 font-medium mb-2">Junior Software Engineer</p>
+                    <p class="text-xl text-dark-500 font-medium mb-2">Junior Software Engineer</p>
 
-            <div class="flex items-center justify-center gap-2 text-sm text-dark-400 mb-6">
-                <span class="w-1 h-1 rounded-full bg-primary-400"></span>
-                <span>Web</span>
-                <span class="w-1 h-1 rounded-full bg-cyan-400"></span>
-                <span>IoT</span>
-                <span class="w-1 h-1 rounded-full bg-primary-400"></span>
-                <span>AI</span>
-                <span class="w-1 h-1 rounded-full bg-cyan-400"></span>
-                <span>Robotika</span>
-            </div>
+                    <div class="flex items-center gap-3 text-sm text-dark-400 mb-4">
+                        <span class="tag tag-primary">Web</span>
+                        <span class="tag tag-cyan">IoT</span>
+                        <span class="tag tag-primary">AI</span>
+                        <span class="tag tag-cyan">Robotika</span>
+                    </div>
 
-            <p class="text-dark-400 max-w-xl mx-auto leading-relaxed mb-8 text-sm">
-                Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
-            </p>
+                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm">
+                        Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
+                        Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.
+                    </p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="px-8 py-3 rounded-full btn-primary font-medium text-sm flex items-center justify-center gap-2 shadow-sm">
-                    <i data-lucide="mail" class="w-4 h-4"></i> Hubungi Saya
-                </a>
-                <a href="#portfolio" class="px-8 py-3 rounded-full btn-outline font-medium text-sm flex items-center justify-center gap-2">
-                    <i data-lucide="folder-git" class="w-4 h-4"></i> Lihat Portofolio
-                </a>
-            </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#contact" class="px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Hubungi
+                        </a>
+                        <a href="#portfolio" class="px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
+                            <i data-lucide="folder-git" class="w-4 h-4"></i> Lihat Karya
+                        </a>
+                    </div>
+                </div>
 
-            <div class="mt-12 flex justify-center gap-4 text-dark-300">
-                <span class="text-xs">⬇ Scroll untuk menjelajah</span>
+                <!-- Kanan: Featured Image / Ilustrasi -->
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-200 shadow-xl">
+                        <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
+                        alt="Varian Rhesa"
+                        class="w-full h-full object-cover" />
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-primary-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+                        #Engineer
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== ABOUT ========== -->
-    <section id="about" class="py-20 bg-white border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark-900">Tentang Saya</h2>
+    <!-- ========== PORTFOLIO GRID (seperti grid resep) ========== -->
+    <section id="portfolio" class="py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-dark-900">Karya &amp; Sertifikat</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3">Proyek dan pengakuan yang telah saya raih</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
-                    <p>
-                        Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span>
-                        di Politeknik Negeri Samarinda dengan latar belakang
-                        <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.
-                    </p>
-                    <p>
-                        Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>,
-                        <span class="text-cyan-600 font-medium">Mobile</span>, dan
-                        <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi
-                        terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.
-                    </p>
-                    <p>
-                        Saat ini saya sedang menyelesaikan skripsi tentang
-                        <span class="text-primary-600 font-medium">"IoT-based Smart Fire Suppression System"</span>
-                        menggunakan algoritma C4.5.
-                    </p>
-                    <div class="flex flex-wrap gap-3 pt-2">
-                        <span class="tag tag-primary">Python</span>
-                        <span class="tag tag-cyan">C++</span>
-                        <span class="tag tag-primary">Java</span>
-                        <span class="tag">Flutter</span>
-                        <span class="tag tag-cyan">IoT</span>
+                <!-- Kartu 1 -->
+                <div class="card-blog">
+                    <div class="card-image bg-primary-50">
+                        <i data-lucide="badge-check" class="text-primary-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary">Sertifikat</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-lg">Dicoding Android Pemula</h3>
+                        <p class="text-dark-500 text-sm mt-1">Belajar Membuat Aplikasi Android untuk Pemula</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
                     </div>
                 </div>
 
-                <div class="card-professional p-8 bg-dark-50/30">
-                    <div class="flex items-center gap-5 mb-6">
-                        <div class="w-24 h-24 flex-shrink-0 rounded-full overflow-hidden border-3 border-primary-200 shadow-md">
-                            <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
-                            alt="Foto Varian Rhesa"
-                            class="w-full h-full object-cover" />
+                <!-- Kartu 2 -->
+                <div class="card-blog">
+                    <div class="card-image bg-cyan-50">
+                        <i data-lucide="network" class="text-cyan-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan">Sertifikat</span>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-dark-900">Varian Rhesa</h3>
-                            <p class="text-dark-500 text-sm">Junior Software Engineer</p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="w-2 h-2 rounded-full bg-primary-500"></span>
-                                <span class="text-xs text-dark-400">Tersedia untuk kolaborasi</span>
+                        <h3 class="font-semibold text-dark-900 text-lg">CCNAv7 · Cisco</h3>
+                        <p class="text-dark-500 text-sm mt-1">Switching, Routing, and Wireless Essentials</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 3 -->
+                <div class="card-blog">
+                    <div class="card-image bg-primary-50">
+                        <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary">Proyek</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-lg">PWA Spektrum Monitoring</h3>
+                        <p class="text-dark-500 text-sm mt-1">Firebase · QR Code · AI Chatbot</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 placeholder</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 4 -->
+                <div class="card-blog">
+                    <div class="card-image bg-cyan-50">
+                        <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan">Skripsi</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-lg">IoT Smart Fire Suppression</h3>
+                        <p class="text-dark-500 text-sm mt-1">ESP32 · C4.5 Algorithm · Sensor</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 placeholder</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 5 -->
+                <div class="card-blog">
+                    <div class="card-image bg-primary-50">
+                        <i data-lucide="languages" class="text-primary-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary">Sertifikat</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-lg">English B2 · Mandarin HSK1</h3>
+                        <p class="text-dark-500 text-sm mt-1">Kemampuan bahasa asing</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 6 -->
+                <div class="card-blog">
+                    <div class="card-image bg-cyan-50">
+                        <i data-lucide="bot" class="text-cyan-500 w-12 h-12"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan">Proyek</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-lg">Robot Cerdas · Juara 3</h3>
+                        <p class="text-dark-500 text-sm mt-1">Algoritma navigasi, logika cerdas</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">🤖 placeholder</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT + SIDEBAR (seperti blog dengan sidebar) ========== -->
+    <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+
+                <!-- Konten Utama (2/3) -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl font-bold text-dark-900 mb-4">Tentang Saya</h2>
+                    <div class="divider-custom max-w-xs mb-5"></div>
+
+                    <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
+                        <p>
+                            Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span>
+                            di Politeknik Negeri Samarinda dengan latar belakang
+                            <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.
+                        </p>
+                        <p>
+                            Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>,
+                            <span class="text-cyan-600 font-medium">Mobile</span>, dan
+                            <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi
+                            terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.
+                        </p>
+                        <p>
+                            Saat ini saya sedang menyelesaikan skripsi tentang
+                            <span class="text-primary-600 font-medium">"IoT-based Smart Fire Suppression System"</span>
+                            menggunakan algoritma C4.5.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag tag-primary">Java</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag tag-cyan">IoT</span>
+                        </div>
+                    </div>
+
+                    <!-- Prestasi -->
+                    <div class="mt-8 bg-white rounded-xl border border-dark-100 p-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="award" class="text-primary-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="inline-block px-2 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-medium mb-1">
+                                    2023
+                                </div>
+                                <h4 class="font-semibold text-dark-900">Juara 3 Kontes Robot Cerdas</h4>
+                                <p class="text-dark-500 text-sm">Provinsi Kalimantan Timur</p>
+                                <p class="text-dark-500 text-sm mt-1">
+                                    Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>.
+                                    Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="divider-custom opacity-20 mb-4"></div>
-                    <ul class="space-y-3 text-sm text-dark-600">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i>
-                            Samarinda, Kalimantan Timur
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i>
-                            D4 TRK · Politeknik Negeri Samarinda
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i>
-                            Intern @ Balai Monitor Spektrum Frekuensi Radio
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SKILLS ========== -->
-    <section id="skills" class="py-20 gradient-section border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark-900">Keahlian Teknis</h2>
-                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                <p class="text-dark-400 text-sm mt-3">Teknologi dan alat yang saya kuasai</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                <div class="card-professional p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
-                            <i data-lucide="code-2" class="text-primary-600 w-5 h-5"></i>
-                        </div>
-                        <h3 class="font-semibold text-dark-800">Programming</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="tag tag-primary">Python</span>
-                        <span class="tag">Java</span>
-                        <span class="tag tag-cyan">C++</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">PHP</span>
-                        <span class="tag tag-primary">Dart</span>
-                        <span class="tag">Visual Basic</span>
-                    </div>
                 </div>
 
-                <div class="card-professional p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                            <i data-lucide="smartphone" class="text-cyan-600 w-5 h-5"></i>
-                        </div>
-                        <h3 class="font-semibold text-dark-800">Web &amp; Mobile</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">Bootstrap</span>
-                        <span class="tag tag-cyan">REST API</span>
-                        <span class="tag tag-primary">PWA</span>
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Cloudflare Pages</span>
-                    </div>
-                </div>
+                <!-- Sidebar (1/3) -->
+                <div class="space-y-6">
 
-                <div class="card-professional p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
-                            <i data-lucide="cpu" class="text-primary-600 w-5 h-5"></i>
+                    <!-- Profil Singkat -->
+                    <div class="sidebar-card">
+                        <h4>Profil</h4>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-200 flex-shrink-0">
+                                <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
+                                alt="Varian Rhesa"
+                                class="w-full h-full object-cover" />
+                            </div>
+                            <div>
+                                <p class="font-semibold text-dark-900">Varian Rhesa</p>
+                                <p class="text-xs text-dark-500">Junior Software Engineer</p>
+                            </div>
                         </div>
-                        <h3 class="font-semibold text-dark-800">IoT &amp; Hardware</h3>
+                        <ul class="space-y-2 text-sm text-dark-600">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i>
+                                Samarinda, Kaltim
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i>
+                                D4 TRK · Politani Samarinda
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i>
+                                Intern @ Balai Monitor Spektrum
+                            </li>
+                        </ul>
                     </div>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="tag tag-primary">Arduino IDE</span>
-                        <span class="tag tag-cyan">ESP32</span>
-                        <span class="tag">Microcontroller C++</span>
-                        <span class="tag tag-primary">Robotika</span>
-                    </div>
-                </div>
 
-                <div class="card-professional p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                            <i data-lucide="terminal" class="text-cyan-600 w-5 h-5"></i>
+                    <!-- Bahasa -->
+                    <div class="sidebar-card">
+                        <h4>Bahasa</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag tag-primary">🇮🇩 Indonesia</span>
+                            <span class="tag tag-cyan">🇬🇧 English B2</span>
+                            <span class="tag">🇨🇳 Mandarin HSK1</span>
                         </div>
-                        <h3 class="font-semibold text-dark-800">Tools &amp; DevOps</h3>
                     </div>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="tag">Git/GitHub</span>
-                        <span class="tag">Linux CLI</span>
-                        <span class="tag tag-primary">VS Code</span>
-                        <span class="tag tag-cyan">Android Studio</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Cloudflare Workers</span>
+
+                    <!-- Sertifikasi -->
+                    <div class="sidebar-card">
+                        <h4>Sertifikasi</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag tag-primary">📱 Dicoding Android</span>
+                            <span class="tag tag-cyan">🌐 CCNAv7 Cisco</span>
+                        </div>
                     </div>
+
+                    <!-- Keahlian -->
+                    <div class="sidebar-card">
+                        <h4>Keahlian</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag tag-primary">Java</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag tag-primary">Dart</span>
+                            <span class="tag tag-cyan">Flutter</span>
+                            <span class="tag">Git</span>
+                            <span class="tag tag-primary">Linux</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========== EXPERIENCE ========== -->
-    <section id="experience" class="py-20 bg-white border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+    <section id="experience" class="py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-dark-900">Perjalanan &amp; Pengalaman</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-10">
 
-                <!-- Pendidikan -->
                 <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <i data-lucide="book-open" class="text-primary-600 w-6 h-6"></i>
-                        <h3 class="text-xl font-bold text-dark-800">Pendidikan</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                        <i data-lucide="book-open" class="text-primary-600 w-5 h-5"></i>
+                        Pendidikan
+                    </h3>
                     <div class="space-y-0 border-l-2 border-primary-200 ml-3">
-
-                        <div class="relative pl-8 pb-10">
-                            <div class="timeline-dot"></div>
+                        <div class="relative pl-8 pb-8">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5">2022 — Sekarang</div>
                             <h4 class="text-lg font-semibold text-dark-900">Politeknik Negeri Samarinda</h4>
                             <div class="text-sm text-dark-500">D4 · Teknologi Rekayasa Komputer</div>
-                            <p class="text-xs text-dark-400 mt-1 leading-relaxed">
-                                Skripsi: <span class="text-primary-600">"IoT-based Smart Fire Suppression System dengan Algoritma C4.5"</span>
-                            </p>
-                            <p class="text-xs text-dark-400">Kursus: Web Development, CCNA, IoT Engineering</p>
+                            <p class="text-xs text-dark-400 mt-1">Skripsi: IoT-based Smart Fire Suppression System</p>
                         </div>
-
                         <div class="relative pl-8 pb-4">
-                            <div class="timeline-dot"></div>
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5">2019 — 2022</div>
                             <h4 class="text-lg font-semibold text-dark-900">SMK Negeri 7 Samarinda</h4>
                             <div class="text-sm text-dark-500">Rekayasa Perangkat Lunak</div>
-                            <p class="text-xs text-dark-400">Dasar-dasar pengembangan software &amp; pemrograman</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pengalaman -->
                 <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <i data-lucide="briefcase" class="text-cyan-600 w-6 h-6"></i>
-                        <h3 class="text-xl font-bold text-dark-800">Pengalaman</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                        <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
+                        Pengalaman
+                    </h3>
                     <div class="space-y-0 border-l-2 border-cyan-200 ml-3">
-
-                        <div class="relative pl-8 pb-10">
-                            <div class="timeline-dot timeline-dot-cyan"></div>
+                        <div class="relative pl-8 pb-8">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5">Feb 2026 — Mei 2026</div>
                             <h4 class="text-lg font-semibold text-dark-900">Balai Monitor Spektrum Frekuensi Radio</h4>
                             <div class="text-sm text-dark-500">Intern · Full Stack Developer</div>
-                            <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside leading-relaxed">
-                                <li>Membangun PWA untuk monitoring spektrum</li>
-                                <li>Integrasi Firebase Realtime Database</li>
-                                <li>Admin Dashboard (HTML, CSS, Bootstrap, JS)</li>
-                                <li>Sistem manajemen hardware berbasis QR Code</li>
-                                <li>Ekspor PDF &amp; CSV</li>
-                                <li>Integrasi AI chatbot (Llama API)</li>
-                                <li>Deploy di Cloudflare Pages</li>
+                            <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside">
+                                <li>PWA + Firebase Realtime Database</li>
+                                <li>Admin Dashboard · QR Code System</li>
+                                <li>AI Chatbot (Llama API) · Cloudflare Pages</li>
                             </ul>
                         </div>
-
                         <div class="relative pl-8 pb-4">
-                            <div class="timeline-dot timeline-dot-cyan"></div>
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5">2020</div>
                             <h4 class="text-lg font-semibold text-dark-900">PPTIK ITB · Online Internship</h4>
                             <div class="text-sm text-dark-500">Magang Industri &amp; Pengembangan Software</div>
-                            <p class="text-xs text-dark-400">Pengalaman virtual yang memperluas wawasan teknologi</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== ACHIEVEMENTS ========== -->
-    <section id="achievements" class="py-20 gradient-section border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark-900">🏆 Prestasi</h2>
-                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-            </div>
-
-            <div class="card-professional p-8 max-w-3xl mx-auto">
-                <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                    <div class="w-20 h-20 rounded-full bg-primary-50 border-2 border-primary-200 flex items-center justify-center flex-shrink-0">
-                        <i data-lucide="award" class="text-primary-600 w-10 h-10"></i>
-                    </div>
-                    <div class="flex-1 text-center sm:text-left">
-                        <div class="inline-block px-3 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-medium mb-1.5">
-                            2023
-                        </div>
-                        <h3 class="text-xl font-bold text-dark-900">Juara 3 Kontes Robot Cerdas</h3>
-                        <p class="text-sm text-dark-500">Provinsi Kalimantan Timur</p>
-                        <p class="text-sm text-dark-600 mt-3 leading-relaxed">
-                            Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>.
-                            Menulis logika pemrograman yang memungkinkan robot menyelesaikan rintangan
-                            secara cerdas dan efisien.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PORTFOLIO ========== -->
-    <section id="portfolio" class="py-20 bg-white border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark-900">Portofolio &amp; Sertifikat</h2>
-                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                <p class="text-dark-400 text-sm mt-3">Karya dan pengakuan yang telah saya raih</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <div class="card-professional p-6 text-center hover:border-primary-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center mb-3">
-                        <i data-lucide="badge-check" class="text-primary-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">Dicoding Android Pemula</h4>
-                    <p class="text-xs text-dark-400 font-mono">Sertifikat</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">📄 placeholder</div>
-                </div>
-
-                <div class="card-professional p-6 text-center hover:border-cyan-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="network" class="text-cyan-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">CCNAv7 · Cisco</h4>
-                    <p class="text-xs text-dark-400 font-mono">Sertifikat</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">Switching, Routing, and Wireless Essentials</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">📄 placeholder</div>
-                </div>
-
-                <div class="card-professional p-6 text-center hover:border-primary-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center mb-3">
-                        <i data-lucide="monitor" class="text-primary-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">PWA Spektrum Monitoring</h4>
-                    <p class="text-xs text-dark-400 font-mono">Proyek Internship</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">Firebase · QR Code · AI Chatbot (Llama)</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">🔧 placeholder</div>
-                </div>
-
-                <div class="card-professional p-6 text-center hover:border-cyan-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="flame" class="text-cyan-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">IoT Smart Fire Suppression</h4>
-                    <p class="text-xs text-dark-400 font-mono">Skripsi</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">ESP32 · C4.5 Algorithm · Sensor</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">🔧 placeholder</div>
-                </div>
-
-                <div class="card-professional p-6 text-center hover:border-primary-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center mb-3">
-                        <i data-lucide="languages" class="text-primary-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">English B2 · Mandarin HSK1</h4>
-                    <p class="text-xs text-dark-400 font-mono">Sertifikat Bahasa</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">Kemampuan bahasa asing</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">📄 placeholder</div>
-                </div>
-
-                <div class="card-professional p-6 text-center hover:border-cyan-300">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center mb-3">
-                        <i data-lucide="bot" class="text-cyan-600 w-7 h-7"></i>
-                    </div>
-                    <h4 class="font-semibold text-dark-800">Robot Cerdas · Juara 3</h4>
-                    <p class="text-xs text-dark-400 font-mono">Proyek Robotika</p>
-                    <div class="divider-custom opacity-20 my-3"></div>
-                    <p class="text-xs text-dark-500">Algoritma navigasi, logika cerdas</p>
-                    <div class="mt-3 inline-block px-3 py-0.5 rounded-full bg-dark-50 border border-dark-200 text-dark-400 text-[10px] font-mono">🤖 placeholder</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== LANGUAGES & CERTIFICATIONS ========== -->
-    <section class="py-12 gradient-section border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 gap-8">
-
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="languages" class="text-primary-500 w-5 h-5"></i>
-                        <h3 class="text-base font-semibold text-dark-800">Bahasa</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag tag-primary">🇮🇩 Indonesia <span class="font-normal">(Native)</span></span>
-                        <span class="tag tag-cyan">🇬🇧 English <span class="font-normal">(B2)</span></span>
-                        <span class="tag">🇨🇳 Mandarin <span class="font-normal text-dark-400">(HSK 1)</span></span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="badge-check" class="text-cyan-500 w-5 h-5"></i>
-                        <h3 class="text-base font-semibold text-dark-800">Sertifikasi</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag tag-primary">📱 Dicoding Android</span>
-                        <span class="tag tag-cyan">🌐 CCNAv7 Cisco</span>
                     </div>
                 </div>
             </div>
@@ -667,17 +603,17 @@
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-20 bg-white border-t border-dark-100">
+    <section id="contact" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-dark-900 mb-3">Mari Terhubung</h2>
             <div class="divider-custom max-w-xs mx-auto mb-6"></div>
-            <p class="text-dark-400 text-sm mb-10">Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.</p>
+            <p class="text-dark-400 text-sm mb-8">Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.</p>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
                 <a href="mailto:rhesa719@gmail.com"
-                class="card-professional p-5 hover:border-primary-300 transition-all hover:-translate-y-1">
-                <div class="flex justify-center mb-2">
+                class="bg-white border border-dark-100 rounded-xl p-4 hover:border-primary-300 transition-all hover:-translate-y-1">
+                <div class="flex justify-center mb-1.5">
                     <i data-lucide="mail" class="text-primary-500 w-6 h-6"></i>
                 </div>
                 <h4 class="text-sm font-medium text-dark-700">Email</h4>
@@ -685,8 +621,8 @@
             </a>
 
             <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank"
-            class="card-professional p-5 hover:border-cyan-300 transition-all hover:-translate-y-1">
-            <div class="flex justify-center mb-2">
+            class="bg-white border border-dark-100 rounded-xl p-4 hover:border-cyan-300 transition-all hover:-translate-y-1">
+            <div class="flex justify-center mb-1.5">
                 <i data-lucide="linkedin" class="text-cyan-500 w-6 h-6"></i>
             </div>
             <h4 class="text-sm font-medium text-dark-700">LinkedIn</h4>
@@ -694,8 +630,8 @@
         </a>
 
         <a href="tel:+6289519628044"
-        class="card-professional p-5 hover:border-primary-300 transition-all hover:-translate-y-1">
-        <div class="flex justify-center mb-2">
+        class="bg-white border border-dark-100 rounded-xl p-4 hover:border-primary-300 transition-all hover:-translate-y-1">
+        <div class="flex justify-center mb-1.5">
             <i data-lucide="phone" class="text-primary-500 w-6 h-6"></i>
         </div>
         <h4 class="text-sm font-medium text-dark-700">Telepon</h4>
@@ -703,8 +639,8 @@
     </a>
 
     <a href="https://github.com/Varian719" target="_blank"
-    class="card-professional p-5 hover:border-cyan-300 transition-all hover:-translate-y-1">
-    <div class="flex justify-center mb-2">
+    class="bg-white border border-dark-100 rounded-xl p-4 hover:border-cyan-300 transition-all hover:-translate-y-1">
+    <div class="flex justify-center mb-1.5">
         <i data-lucide="github" class="text-cyan-500 w-6 h-6"></i>
     </div>
     <h4 class="text-sm font-medium text-dark-700">GitHub</h4>
@@ -712,14 +648,23 @@
 </a>
 
 </div>
-
-<div class="mt-12 pt-6 border-t border-dark-100">
-    <p class="text-xs text-dark-400">
-        &copy; 2026 Varian Rhesa · Dibangun dengan <span class="text-primary-500">♥</span>
-    </p>
-</div>
 </div>
 </section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs">
+            &copy; 2026 Varian Rhesa · Dibangun dengan <span class="text-primary-400">♥</span> dan kode
+        </p>
+        <div class="flex justify-center gap-4 mt-2 text-xs">
+            <a href="#home" class="hover:text-primary-400 transition-colors">Beranda</a>
+            <a href="#about" class="hover:text-primary-400 transition-colors">Tentang</a>
+            <a href="#portfolio" class="hover:text-primary-400 transition-colors">Portofolio</a>
+            <a href="#contact" class="hover:text-primary-400 transition-colors">Kontak</a>
+        </div>
+    </div>
+</footer>
 
 <!-- ========== JAVASCRIPT ========== -->
 <script>
