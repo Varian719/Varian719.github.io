@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Varian Rhesa · Junior Software Engineer</title>
+    <title>Varian Rhesa · Steampunk Engineer</title>
 
     <!-- Tailwind + Lucide -->
     <script src="https://cdn.tailwindcss.com">
@@ -16,13 +16,62 @@
             theme: {
                 extend: {
                     colors: {
-                        slate: {
-                            850: '#0f1a0f',
-                            950: '#070d02',
+                        brass: {
+                            50: '#fbf5e8',
+                            100: '#f5e5c8',
+                            200: '#eacc9d',
+                            300: '#ddb072',
+                            400: '#c9924a',
+                            500: '#b87a3a',
+                            600: '#9e6230',
+                            700: '#7e4c28',
+                            800: '#633d22',
+                            900: '#4e3220',
+                            950: '#2f1d12',
+                        },
+                        bronze: {
+                            50: '#f7f0e7',
+                            100: '#ede0d1',
+                            200: '#dcc0a8',
+                            300: '#c79d7b',
+                            400: '#b07d55',
+                            500: '#96653f',
+                            600: '#7a4f32',
+                            700: '#603e2a',
+                            800: '#4c3122',
+                            900: '#3a261b',
+                            950: '#241810',
+                        },
+                        copper: {
+                            50: '#fcf2e8',
+                            100: '#f7dfcc',
+                            200: '#efc09e',
+                            300: '#e49d6b',
+                            400: '#d67e45',
+                            500: '#c0652e',
+                            600: '#a04f24',
+                            700: '#7d3d1e',
+                            800: '#62311a',
+                            900: '#4c2716',
+                            950: '#2f180d',
+                        },
+                        gear: {
+                            50: '#f5f0ea',
+                            100: '#e8dfd4',
+                            200: '#d2c2b0',
+                            300: '#b8a187',
+                            400: '#9e8260',
+                            500: '#856945',
+                            600: '#6b5133',
+                            700: '#543f28',
+                            800: '#40301f',
+                            900: '#2f2317',
+                            950: '#1d150e',
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['"Courier New"', 'monospace'],
+                        display: ['"Georgia"', 'serif'],
                     }
                 }
             }
@@ -30,220 +79,238 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
 
+        * {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+        }
+
+        .font-display {
+            font-family: 'Special Elite', 'Georgia', serif;
+        }
+
+        /* Steampunk background texture */
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: #1d150e;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(184, 122, 58, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(192, 101, 46, 0.06) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, rgba(255, 215, 150, 0.02) 0px, rgba(255, 215, 150, 0.02) 2px, transparent 2px, transparent 6px);
         }
 
-        .glass-nav {
-            background-color: rgba(7, 13, 2, 0.92);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(34, 197, 94, 0.12);
+        .glass-steam {
+            background: rgba(47, 29, 18, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(184, 122, 58, 0.25);
+            box-shadow: inset 0 0 30px rgba(184, 122, 58, 0.05);
         }
 
-        /* Gradien khusus hijau → cyan */
-        .gradient-primary {
-            background: linear-gradient(135deg, #22c55e 0%, #06b6d4 100%);
+        .border-brass {
+            border-color: #b87a3a;
         }
-        .gradient-primary-text {
-            background: linear-gradient(135deg, #22c55e 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .border-brass-light {
+            border-color: rgba(184, 122, 58, 0.3);
         }
-        .gradient-primary-border {
-            border-image: linear-gradient(135deg, #22c55e, #06b6d4) 1;
+        .text-brass {
+            color: #b87a3a;
         }
-        .hover-glow-green:hover {
-            box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+        .text-copper-light {
+            color: #d67e45;
         }
-        .hover-glow-cyan:hover {
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
-        }
-        .bg-green-cyan-gradient {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(6, 182, 212, 0.08));
-        }
-        .border-green-cyan {
-            border-color: rgba(34, 197, 94, 0.25);
-        }
-        .border-green-cyan-light {
-            border-color: rgba(34, 197, 94, 0.12);
-        }
-        .badge-green-cyan {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(6, 182, 212, 0.15));
-            color: #22c55e;
-        }
-        .badge-cyan {
-            background: rgba(6, 182, 212, 0.15);
-            color: #22d3ee;
-        }
-        .badge-green {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
+        .bg-brass-glow {
+            background: radial-gradient(circle at center, rgba(184, 122, 58, 0.12), transparent 70%);
         }
 
-        /* Animasi subtle */
-        .fade-in-up {
-            animation: fadeUp 0.6s ease-out forwards;
+        .steampunk-card {
+            background: rgba(46, 30, 20, 0.7);
+            border: 1px solid rgba(184, 122, 58, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(184, 122, 58, 0.04);
+            transition: all 0.3s ease;
         }
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .steampunk-card:hover {
+            border-color: #d67e45;
+            box-shadow: 0 8px 30px rgba(184, 122, 58, 0.15), inset 0 0 50px rgba(214, 126, 69, 0.06);
+            transform: translateY(-2px);
         }
-        .delay-1 {
-            animation-delay: 0.1s;
+
+        .gear-icon {
+            filter: drop-shadow(0 0 6px rgba(184, 122, 58, 0.3));
         }
-        .delay-2 {
-            animation-delay: 0.2s;
+
+        .divider-steam {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b87a3a, #d67e45, #b87a3a, transparent);
+            opacity: 0.4;
+            margin: 1.5rem 0;
         }
-        .delay-3 {
-            animation-delay: 0.3s;
+
+        .badge-steam {
+            background: rgba(184, 122, 58, 0.15);
+            border: 1px solid rgba(184, 122, 58, 0.25);
+            color: #d67e45;
+            padding: 0.2rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .steampunk-border {
+            border-image: linear-gradient(135deg, #b87a3a, #d67e45, #b87a3a) 1;
+            border-width: 1px;
+            border-style: solid;
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f1a0f;
+            background: #1d150e;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #22c55e, #06b6d4);
-            border-radius: 8px;
+            background: linear-gradient(180deg, #b87a3a, #d67e45);
+            border-radius: 20px;
+            border: 1px solid #7e4c28;
         }
     </style>
 </head>
 
-<body class="bg-slate-950 text-slate-200 selection:bg-green-500/30">
+<body class="text-amber-100 selection:bg-amber-600/30">
 
     <!-- ========== NAVBAR ========== -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
 
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-extrabold gradient-primary-text tracking-tight">
-                        VR.
+                <!-- Logo Steampunk -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl font-display text-amber-400 tracking-wider drop-shadow-[0_0_8px_rgba(184,122,58,0.3)]">
+                        ⚙ VR.
                     </span>
+                    <span class="hidden sm:inline text-xs text-amber-500/60 border-l border-amber-500/30 pl-3 italic">Steam &amp; Code</span>
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Beranda</a>
-                    <a href="#about" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Tentang</a>
-                    <a href="#skills" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Keahlian</a>
-                    <a href="#journey" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Perjalanan</a>
-                    <a href="#achievements" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Prestasi</a>
-                    <a href="#contact" class="text-slate-300 hover:text-green-400 transition-colors text-sm font-medium">Kontak</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Beranda</a>
+                    <a href="#about" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Tentang</a>
+                    <a href="#skills" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Keahlian</a>
+                    <a href="#journey" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Perjalanan</a>
+                    <a href="#achievements" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Prestasi</a>
+                    <a href="#portfolio" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Portofolio</a>
+                    <a href="#contact" class="text-amber-300/80 hover:text-amber-400 transition-colors text-sm font-medium tracking-wider">Kontak</a>
                 </div>
 
                 <!-- Mobile Toggle -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
-                        <i data-lucide="menu"></i>
+                    <button id="mobile-menu-btn" class="text-amber-300 hover:text-amber-400 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-sm border-t border-green-cyan-light absolute w-full">
+        <div id="mobile-menu" class="hidden md:hidden glass-steam border-t border-brass-light absolute w-full">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Beranda</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Tentang</a>
-                <a href="#skills" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Keahlian</a>
-                <a href="#journey" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Perjalanan</a>
-                <a href="#achievements" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Prestasi</a>
-                <a href="#contact" class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md">Kontak</a>
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Beranda</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Tentang</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Keahlian</a>
+                <a href="#journey" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Perjalanan</a>
+                <a href="#achievements" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Prestasi</a>
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Portofolio</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-400 hover:bg-amber-900/20 rounded-md">Kontak</a>
             </div>
         </div>
     </nav>
 
     <!-- ========== HERO ========== -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <!-- Background glow -->
-        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-green-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl"></div>
+        <!-- Background efek uap & roda gigi -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-10 left-10 w-40 h-40 opacity-10">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-amber-600 animate-spin-slow" style="animation-duration: 30s;">
+                    <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+                    <circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="absolute bottom-20 right-10 w-56 h-56 opacity-10">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-amber-500 animate-spin-slow" style="animation-duration: 40s; animation-direction: reverse;">
+                    <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="8 4"/>
+                    <circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
         </div>
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <div class="inline-block px-5 py-1.5 rounded-full bg-green-cyan-gradient border border-green-cyan mb-5">
-                <span class="text-green-400 font-medium text-sm tracking-wide">Teknologi Rekayasa Komputer · Politeknik Negeri Samarinda</span>
+            <div class="inline-block px-5 py-1.5 rounded-full border border-amber-500/30 bg-amber-900/10 backdrop-blur-sm mb-5">
+                <span class="text-amber-400 font-medium text-sm tracking-widest uppercase">⚙ Teknologi Rekayasa Komputer</span>
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight leading-[1.1]">
-                Hi, Saya <br class="sm:hidden" />
-                <span class="gradient-primary-text">Varian Rhesa</span>
+            <h1 class="text-5xl md:text-7xl font-display text-amber-100 mb-4 leading-[1.1] drop-shadow-[0_2px_10px_rgba(184,122,58,0.2)]">
+                Varian <span class="text-amber-400">Rhesa</span>
             </h1>
+            <p class="text-2xl md:text-3xl font-mono text-amber-300/80 mb-3 tracking-wider">Junior Software Engineer</p>
 
-            <p class="text-xl md:text-2xl text-slate-400 mb-3 font-medium">
-                Junior Software Engineer
-            </p>
-
-            <p class="text-base text-slate-400/80 max-w-2xl mx-auto leading-relaxed mb-8">
-                Menggabungkan rekayasa perangkat lunak &amp; perangkat keras.
-                Spesialisasi dalam <span class="text-green-400">Web Development</span>,
-                <span class="text-cyan-400">IoT</span>, dan
-                <span class="text-green-300">AI-powered applications</span>.
+            <p class="text-base text-amber-200/60 max-w-2xl mx-auto leading-relaxed mb-8 font-mono">
+                <span class="text-amber-400">Web</span> · <span class="text-amber-300">IoT</span> · <span class="text-amber-400">AI</span> · <span class="text-amber-300">Robotika</span>
+                <br class="sm:hidden" />
+                <span class="text-amber-200/50 text-sm">— menggabungkan kode &amp; mesin —</span>
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="px-8 py-3.5 rounded-full gradient-primary text-white font-semibold transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 flex items-center justify-center gap-2">
-                    Hubungi Saya <i data-lucide="mail" class="w-4 h-4"></i>
+                <a href="#contact" class="px-8 py-3.5 rounded-full bg-amber-700 hover:bg-amber-600 text-amber-50 font-bold transition-all shadow-lg shadow-amber-700/30 hover:shadow-amber-600/50 hover:scale-105 flex items-center justify-center gap-2 border border-amber-500/20">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Hubungi Saya
                 </a>
-                <a href="#achievements" class="px-8 py-3.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition-all hover:border-green-500/50 flex items-center justify-center gap-2">
-                    Lihat Prestasi <i data-lucide="award" class="w-4 h-4"></i>
+                <a href="#portfolio" class="px-8 py-3.5 rounded-full bg-transparent hover:bg-amber-900/30 text-amber-300 font-bold border border-amber-500/30 hover:border-amber-400 transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
+                    <i data-lucide="cog" class="w-4 h-4"></i> Lihat Karya
                 </a>
             </div>
         </div>
     </section>
 
     <!-- ========== ABOUT ========== -->
-    <section id="about" class="py-20 bg-slate-900/60 border-t border-green-cyan-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="py-20 relative">
+        <div class="absolute inset-0 bg-amber-900/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
 
-                <!-- Profile Card -->
+                <!-- Profile Card Steampunk -->
                 <div class="relative group">
-                    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-green-500/30 to-cyan-500/30 blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
-                    <div class="relative bg-slate-800/80 rounded-2xl p-8 border border-green-cyan backdrop-blur-sm">
+                    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-amber-600/20 to-amber-800/20 blur opacity-30 group-hover:opacity-60 transition duration-700"></div>
+                    <div class="relative steampunk-card rounded-2xl p-8">
                         <div class="flex items-center gap-6 mb-6">
-                            <div class="w-24 h-24 flex-shrink-0">
+                            <div class="w-24 h-24 flex-shrink-0 border-2 border-amber-500/40 rounded-full p-1 shadow-[0_0_20px_rgba(184,122,58,0.15)]">
                                 <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
-                                alt="Foto Profil Varian Rhesa"
-                                class="w-full h-full rounded-full object-cover border-2 border-green-400 shadow-lg shadow-green-500/20" />
+                                alt="Foto Varian Rhesa"
+                                class="w-full h-full rounded-full object-cover" />
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white">Varian Rhesa</h3>
-                                <p class="text-green-400 text-sm font-medium">Junior Software Engineer</p>
+                                <h3 class="text-xl font-display text-amber-200">Varian Rhesa</h3>
+                                <p class="text-amber-400 text-sm font-mono">⚙ Junior Engineer</p>
                                 <div class="flex items-center gap-1 mt-1">
-                                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                                    <span class="text-xs text-slate-400">Tersedia untuk kolaborasi</span>
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                                    <span class="text-xs text-amber-300/60">siap kolaborasi</span>
                                 </div>
                             </div>
                         </div>
-                        <ul class="space-y-3 text-slate-300">
+                        <ul class="space-y-3 text-amber-300/70 font-mono text-sm">
                             <li class="flex items-center gap-3">
-                                <i data-lucide="map-pin" class="text-cyan-400 w-5 h-5"></i>
+                                <i data-lucide="map-pin" class="text-amber-400 w-4 h-4"></i>
                                 Samarinda, Kalimantan Timur
                             </li>
                             <li class="flex items-center gap-3">
-                                <i data-lucide="book-open" class="text-green-400 w-5 h-5"></i>
-                                Mahasiswa D4 TRK · Politeknik Negeri Samarinda
+                                <i data-lucide="book-open" class="text-amber-400 w-4 h-4"></i>
+                                D4 TRK · Politeknik Negeri Samarinda
                             </li>
                             <li class="flex items-center gap-3">
-                                <i data-lucide="briefcase" class="text-cyan-400 w-5 h-5"></i>
-                                Intern @ Balai Monitor Spektrum Frekuensi Radio
+                                <i data-lucide="briefcase" class="text-amber-400 w-4 h-4"></i>
+                                Intern @ Balai Monitor Spektrum
                             </li>
                         </ul>
                     </div>
@@ -251,28 +318,25 @@
 
                 <!-- Deskripsi -->
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-6">Tentang Saya</h2>
-                    <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
+                    <h2 class="text-3xl font-display text-amber-200 mb-5">Tentang Saya</h2>
+                    <div class="divider-steam"></div>
+                    <div class="space-y-4 text-amber-200/70 font-mono text-base leading-relaxed">
                         <p>
-                            Saya adalah mahasiswa <span class="text-green-300">Teknologi Rekayasa Komputer</span>
-                            di Politeknik Negeri Samarinda dengan latar belakang kuat dalam
-                            <span class="text-cyan-300">Rekayasa Perangkat Lunak</span> (RPL).
+                            Saya adalah mahasiswa <span class="text-amber-400">Teknologi Rekayasa Komputer</span>
+                            dengan latar belakang <span class="text-amber-300">Rekayasa Perangkat Lunak</span>.
+                            Terampil dalam <span class="text-amber-400">Python</span>,
+                            <span class="text-amber-300">C++</span>, dan
+                            <span class="text-amber-400">Java</span>, serta pengembangan
+                            <span class="text-amber-300">Web</span> dan
+                            <span class="text-amber-400">Mobile</span> (Flutter).
                         </p>
                         <p>
-                            Memiliki keahlian dalam pemrograman <span class="text-green-300">Python</span>,
-                            <span class="text-cyan-300">C++</span>, dan
-                            <span class="text-green-300">Java</span>, serta pengembangan aplikasi
-                            <span class="text-cyan-300">Web</span> dan
-                            <span class="text-green-300">Android</span> menggunakan Flutter.
-                            Saya memiliki ketertarikan mendalam pada dunia
-                            <span class="text-cyan-300">Robotika</span> dan
-                            <span class="text-green-300">Internet of Things (IoT)</span>.
-                        </p>
-                        <p>
-                            Terbiasa bekerja dengan ekosistem <span class="text-cyan-300">GitHub</span>,
-                            <span class="text-green-300">Linux</span>, serta
-                            <span class="text-cyan-300">Android Studio</span>. Saya selalu bersemangat
-                            untuk belajar teknologi baru dan menerapkannya dalam solusi nyata.
+                            Saya memiliki ketertarikan mendalam pada <span class="text-amber-300">Robotika</span>
+                            dan <span class="text-amber-400">Internet of Things (IoT)</span>.
+                            Terbiasa dengan <span class="text-amber-300">GitHub</span>,
+                            <span class="text-amber-400">Linux</span>, dan
+                            <span class="text-amber-300">Android Studio</span>.
+                            Selalu bersemangat mengeksplorasi teknologi baru untuk solusi nyata.
                         </p>
                     </div>
                 </div>
@@ -281,77 +345,75 @@
     </section>
 
     <!-- ========== SKILLS ========== -->
-    <section id="skills" class="py-20 bg-slate-950">
+    <section id="skills" class="py-20 bg-[#2f1d12]/60 border-t border-amber-500/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Keahlian Teknis</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Kombinasi kemampuan pengembangan software, embedded systems, dan cloud.
-                </p>
+                <h2 class="text-3xl md:text-4xl font-display text-amber-200 mb-2">Keahlian Teknis</h2>
+                <p class="text-amber-300/50 font-mono text-sm">— perangkat lunak, mesin, dan kode —</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <!-- 1. Programming -->
-                <div class="bg-slate-800/40 p-6 rounded-xl border border-green-cyan-light hover:border-green-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/5">
-                    <div class="w-12 h-12 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
-                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                <div class="steampunk-card p-6 rounded-xl">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+                        <i data-lucide="code-2" class="text-amber-400 w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Programming</h3>
+                    <h3 class="text-lg font-display text-amber-200 mb-3">Programming</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Python</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Java</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">C++</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">JavaScript</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">PHP</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Dart</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Visual Basic</span>
+                        <span class="badge-steam">Python</span>
+                        <span class="badge-steam">Java</span>
+                        <span class="badge-steam">C++</span>
+                        <span class="badge-steam">JavaScript</span>
+                        <span class="badge-steam">PHP</span>
+                        <span class="badge-steam">Dart</span>
+                        <span class="badge-steam">Visual Basic</span>
                     </div>
                 </div>
 
                 <!-- 2. Web & Mobile -->
-                <div class="bg-slate-800/40 p-6 rounded-xl border border-green-cyan-light hover:border-cyan-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/5">
-                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
-                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                <div class="steampunk-card p-6 rounded-xl">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+                        <i data-lucide="smartphone" class="text-amber-400 w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Web &amp; Mobile</h3>
+                    <h3 class="text-lg font-display text-amber-200 mb-3">Web &amp; Mobile</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">HTML/CSS</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Bootstrap</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">REST API</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">PWA</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Flutter</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Cloudflare Pages</span>
+                        <span class="badge-steam">HTML/CSS</span>
+                        <span class="badge-steam">Bootstrap</span>
+                        <span class="badge-steam">REST API</span>
+                        <span class="badge-steam">PWA</span>
+                        <span class="badge-steam">Flutter</span>
+                        <span class="badge-steam">Cloudflare Pages</span>
                     </div>
                 </div>
 
                 <!-- 3. IoT & Hardware -->
-                <div class="bg-slate-800/40 p-6 rounded-xl border border-green-cyan-light hover:border-green-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/5">
-                    <div class="w-12 h-12 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
-                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                <div class="steampunk-card p-6 rounded-xl">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+                        <i data-lucide="cpu" class="text-amber-400 w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-3">IoT &amp; Hardware</h3>
+                    <h3 class="text-lg font-display text-amber-200 mb-3">IoT &amp; Hardware</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Arduino IDE</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">ESP32</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Microcontroller (C++)</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Robotika</span>
+                        <span class="badge-steam">Arduino IDE</span>
+                        <span class="badge-steam">ESP32</span>
+                        <span class="badge-steam">Microcontroller (C++)</span>
+                        <span class="badge-steam">Robotika</span>
                     </div>
                 </div>
 
                 <!-- 4. Tools -->
-                <div class="bg-slate-800/40 p-6 rounded-xl border border-green-cyan-light hover:border-cyan-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/5">
-                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
-                        <i data-lucide="terminal" class="w-6 h-6"></i>
+                <div class="steampunk-card p-6 rounded-xl">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+                        <i data-lucide="terminal" class="text-amber-400 w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Tools &amp; DevOps</h3>
+                    <h3 class="text-lg font-display text-amber-200 mb-3">Tools &amp; DevOps</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Git/GitHub</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Linux CLI</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">VS Code</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Android Studio</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Docker</span>
-                        <span class="px-3 py-1 bg-slate-700/60 text-slate-300 rounded-full text-xs font-medium border border-slate-600/50">Cloudflare Workers</span>
+                        <span class="badge-steam">Git/GitHub</span>
+                        <span class="badge-steam">Linux CLI</span>
+                        <span class="badge-steam">VS Code</span>
+                        <span class="badge-steam">Android Studio</span>
+                        <span class="badge-steam">Docker</span>
+                        <span class="badge-steam">Cloudflare Workers</span>
                     </div>
                 </div>
             </div>
@@ -359,37 +421,38 @@
     </section>
 
     <!-- ========== JOURNEY ========== -->
-    <section id="journey" class="py-20 bg-slate-900/60 border-t border-green-cyan-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Pendidikan &amp; Pengalaman</h2>
+    <section id="journey" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-amber-900/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <h2 class="text-3xl md:text-4xl font-display text-amber-200 mb-12 text-center">Perjalanan &amp; Pengalaman</h2>
 
             <div class="grid md:grid-cols-2 gap-12">
 
                 <!-- Pendidikan -->
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <i data-lucide="book-open" class="text-green-400 w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold text-white">Pendidikan</h3>
+                        <i data-lucide="book-open" class="text-amber-400 w-6 h-6"></i>
+                        <h3 class="text-2xl font-display text-amber-200">Pendidikan</h3>
                     </div>
-                    <div class="space-y-2 border-l-2 border-green-500/30 ml-3">
+                    <div class="space-y-2 border-l-2 border-amber-500/30 ml-3">
 
                         <div class="relative pl-8 pb-8">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 shadow-lg shadow-green-500/30"></div>
-                            <div class="text-sm text-cyan-400 mb-0.5 font-mono">2022 — Sekarang</div>
-                            <h4 class="text-xl font-bold text-white">Politeknik Negeri Samarinda</h4>
-                            <div class="text-slate-400 font-medium">D4 · Teknologi Rekayasa Komputer</div>
-                            <p class="text-slate-500 text-sm leading-relaxed mt-1">
-                                Skripsi: <span class="text-green-300">"IoT-based Smart Fire Suppression System menggunakan Algoritma C4.5"</span>
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-400 shadow-lg shadow-amber-500/30"></div>
+                            <div class="text-sm text-amber-400 mb-0.5 font-mono">2022 — Sekarang</div>
+                            <h4 class="text-xl font-display text-amber-100">Politeknik Negeri Samarinda</h4>
+                            <div class="text-amber-300/70 font-mono text-sm">D4 · Teknologi Rekayasa Komputer</div>
+                            <p class="text-amber-300/50 text-sm leading-relaxed mt-1">
+                                Skripsi: <span class="text-amber-300">"IoT-based Smart Fire Suppression System menggunakan Algoritma C4.5"</span>
                             </p>
-                            <p class="text-slate-500 text-sm">Kursus: Web Development, CCNA, IoT Engineering</p>
+                            <p class="text-amber-300/40 text-sm">Kursus: Web Development, CCNA, IoT Engineering</p>
                         </div>
 
                         <div class="relative pl-8 pb-4">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 shadow-lg shadow-green-500/30"></div>
-                            <div class="text-sm text-cyan-400 mb-0.5 font-mono">2019 — 2022</div>
-                            <h4 class="text-xl font-bold text-white">SMK Negeri 7 Samarinda</h4>
-                            <div class="text-slate-400 font-medium">Rekayasa Perangkat Lunak</div>
-                            <p class="text-slate-500 text-sm">Dasar-dasar pengembangan software &amp; pemrograman</p>
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-400 shadow-lg shadow-amber-500/30"></div>
+                            <div class="text-sm text-amber-400 mb-0.5 font-mono">2019 — 2022</div>
+                            <h4 class="text-xl font-display text-amber-100">SMK Negeri 7 Samarinda</h4>
+                            <div class="text-amber-300/70 font-mono text-sm">Rekayasa Perangkat Lunak</div>
+                            <p class="text-amber-300/40 text-sm">Dasar-dasar pengembangan software &amp; pemrograman</p>
                         </div>
                     </div>
                 </div>
@@ -397,33 +460,33 @@
                 <!-- Pengalaman -->
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <i data-lucide="briefcase" class="text-cyan-400 w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold text-white">Pengalaman</h3>
+                        <i data-lucide="briefcase" class="text-amber-400 w-6 h-6"></i>
+                        <h3 class="text-2xl font-display text-amber-200">Pengalaman</h3>
                     </div>
-                    <div class="space-y-2 border-l-2 border-cyan-500/30 ml-3">
+                    <div class="space-y-2 border-l-2 border-amber-500/30 ml-3">
 
                         <div class="relative pl-8 pb-8">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-to-r from-cyan-500 to-green-500 shadow-lg shadow-cyan-500/30"></div>
-                            <div class="text-sm text-cyan-400 mb-0.5 font-mono">Feb 2026 — Mei 2026</div>
-                            <h4 class="text-xl font-bold text-white">Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda</h4>
-                            <div class="text-slate-400 font-medium">Intern · Full Stack Developer</div>
-                            <ul class="text-slate-400 text-sm space-y-1 mt-2 list-disc list-inside leading-relaxed">
-                                <li>Membangun PWA untuk monitoring spektrum frekuensi</li>
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-400 shadow-lg shadow-amber-500/30"></div>
+                            <div class="text-sm text-amber-400 mb-0.5 font-mono">Feb 2026 — Mei 2026</div>
+                            <h4 class="text-xl font-display text-amber-100">Balai Monitor Spektrum Frekuensi Radio</h4>
+                            <div class="text-amber-300/70 font-mono text-sm">Intern · Full Stack Developer</div>
+                            <ul class="text-amber-300/60 text-sm space-y-1 mt-2 list-disc list-inside leading-relaxed">
+                                <li>Membangun PWA untuk monitoring spektrum</li>
                                 <li>Integrasi Firebase Realtime Database</li>
-                                <li>Admin Dashboard dengan HTML, CSS, Bootstrap &amp; JavaScript</li>
+                                <li>Admin Dashboard (HTML, CSS, Bootstrap, JS)</li>
                                 <li>Sistem manajemen hardware berbasis QR Code</li>
-                                <li>Ekspor data ke PDF &amp; CSV</li>
-                                <li>Integrasi AI chatbot memakai Llama API</li>
-                                <li>Deploy aplikasi di Cloudflare Pages</li>
+                                <li>Ekspor PDF &amp; CSV</li>
+                                <li>Integrasi AI chatbot (Llama API)</li>
+                                <li>Deploy di Cloudflare Pages</li>
                             </ul>
                         </div>
 
                         <div class="relative pl-8 pb-4">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-to-r from-cyan-500 to-green-500 shadow-lg shadow-cyan-500/30"></div>
-                            <div class="text-sm text-cyan-400 mb-0.5 font-mono">2020</div>
-                            <h4 class="text-xl font-bold text-white">PPTIK ITB · Online Internship</h4>
-                            <div class="text-slate-400 font-medium">Magang Industri &amp; Pengembangan Software</div>
-                            <p class="text-slate-500 text-sm">Pengalaman virtual yang memperluas wawasan teknologi</p>
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-400 shadow-lg shadow-amber-500/30"></div>
+                            <div class="text-sm text-amber-400 mb-0.5 font-mono">2020</div>
+                            <h4 class="text-xl font-display text-amber-100">PPTIK ITB · Online Internship</h4>
+                            <div class="text-amber-300/70 font-mono text-sm">Magang Industri &amp; Pengembangan Software</div>
+                            <p class="text-amber-300/40 text-sm">Pengalaman virtual yang memperluas wawasan teknologi</p>
                         </div>
                     </div>
                 </div>
@@ -432,27 +495,23 @@
     </section>
 
     <!-- ========== ACHIEVEMENTS ========== -->
-    <section id="achievements" class="py-20 bg-slate-950 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-500/5 to-transparent pointer-events-none"></div>
+    <section id="achievements" class="py-20 bg-[#2f1d12]/60 border-t border-amber-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-display text-amber-200 mb-12 text-center">🏆 Prestasi</h2>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">🏆 Prestasi Unggulan</h2>
-
-            <div class="bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl p-1 border border-green-cyan max-w-3xl mx-auto hover:shadow-2xl hover:shadow-green-500/10 transition-all">
-                <div class="bg-slate-900/60 rounded-xl p-8 flex flex-col md:flex-row gap-6 items-center">
-
-                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center flex-shrink-0 border border-yellow-500/30">
-                        <i data-lucide="award" class="text-yellow-400 w-12 h-12"></i>
+            <div class="steampunk-card rounded-2xl p-1 max-w-3xl mx-auto">
+                <div class="bg-[#2f1d12]/40 rounded-xl p-8 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="w-24 h-24 rounded-full border-2 border-amber-500/30 bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="award" class="text-amber-400 w-12 h-12"></i>
                     </div>
-
                     <div class="flex-1 text-center md:text-left">
-                        <div class="inline-block px-4 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-bold rounded-full border border-yellow-500/20 mb-2">
+                        <div class="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono rounded-full mb-2">
                             🏅 2023
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-1">Juara 3 Kontes Robot Cerdas</h3>
-                        <p class="text-slate-400 font-medium mb-2">Provinsi Kalimantan Timur</p>
-                        <p class="text-slate-300 leading-relaxed text-sm">
-                            Meraih posisi ke-3 sebagai <span class="text-green-300">Programmer Robot</span>.
+                        <h3 class="text-2xl font-display text-amber-100 mb-1">Juara 3 Kontes Robot Cerdas</h3>
+                        <p class="text-amber-300/60 font-mono text-sm mb-2">Provinsi Kalimantan Timur</p>
+                        <p class="text-amber-200/60 text-sm leading-relaxed">
+                            Meraih posisi ke-3 sebagai <span class="text-amber-300">Programmer Robot</span>.
                             Bertanggung jawab atas logika pemrograman yang memungkinkan robot
                             menyelesaikan rintangan secara cerdas dan efisien.
                         </p>
@@ -462,43 +521,116 @@
         </div>
     </section>
 
-    <!-- ========== LANGUAGES & CERTIFICATIONS ========== -->
-    <section id="certifications" class="py-16 bg-slate-900/40 border-t border-green-cyan-light">
+    <!-- ========== PORTFOLIO (Sertifikat & Proyek) ========== -->
+    <section id="portfolio" class="py-20 relative">
+        <div class="absolute inset-0 bg-amber-900/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-display text-amber-200 mb-4 text-center">Portofolio &amp; Sertifikat</h2>
+            <p class="text-amber-300/50 text-center font-mono text-sm mb-12">— karya dan pengakuan —</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- Placeholder 1: Sertifikat Dicoding -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="badge-check" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">Dicoding · Android Pemula</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Sertifikat</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">Belajar Membuat Aplikasi Android untuk Pemula</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">📜 placeholder</div>
+                </div>
+
+                <!-- Placeholder 2: Sertifikat CCNA -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="network" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">CCNAv7 · Cisco</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Sertifikat</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">Switching, Routing, and Wireless Essentials</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">📜 placeholder</div>
+                </div>
+
+                <!-- Placeholder 3: Proyek PWA -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="monitor" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">PWA Spektrum Monitoring</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Proyek Internship</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">Firebase, QR Code, AI Chatbot (Llama)</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">🔧 placeholder</div>
+                </div>
+
+                <!-- Placeholder 4: Proyek IoT Fire Suppression -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="flame" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">IoT Smart Fire Suppression</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Skripsi</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">ESP32, C4.5 Algorithm, Sensor</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">🔧 placeholder</div>
+                </div>
+
+                <!-- Placeholder 5: Sertifikat Bahasa Inggris -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="languages" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">English B2 · Mandarin HSK1</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Sertifikat Bahasa</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">Kemampuan bahasa asing</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">📜 placeholder</div>
+                </div>
+
+                <!-- Placeholder 6: Proyek Robotika -->
+                <div class="steampunk-card rounded-xl p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-amber-500/20 bg-amber-500/5 flex items-center justify-center mb-4 group-hover:border-amber-400 transition-colors">
+                        <i data-lucide="bot" class="text-amber-400 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-display text-amber-200 text-lg">Robot Cerdas · Juara 3</h4>
+                    <p class="text-amber-300/50 text-sm font-mono mt-1">Proyek Robotika</p>
+                    <div class="divider-steam my-3 opacity-30"></div>
+                    <p class="text-amber-300/40 text-xs font-mono">Algoritma navigasi, logika cerdas</p>
+                    <div class="mt-3 inline-block px-4 py-1 border border-amber-500/20 rounded-full text-amber-400/60 text-xs font-mono">🤖 placeholder</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LANGUAGES & CERTIFICATIONS (ringkas) ========== -->
+    <section id="certifications" class="py-16 bg-[#2f1d12]/40 border-t border-amber-500/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-10">
 
-                <!-- Bahasa -->
                 <div>
                     <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="languages" class="text-cyan-400 w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold text-white">Bahasa</h3>
+                        <i data-lucide="languages" class="text-amber-400 w-6 h-6"></i>
+                        <h3 class="text-2xl font-display text-amber-200">Bahasa</h3>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-slate-800/60 rounded-lg border border-green-cyan-light text-slate-300 text-sm font-medium flex items-center gap-2">
-                            🇮🇩 Indonesia <span class="text-green-400 text-xs">(Native)</span>
-                        </span>
-                        <span class="px-4 py-2 bg-slate-800/60 rounded-lg border border-green-cyan-light text-slate-300 text-sm font-medium flex items-center gap-2">
-                            🇬🇧 English <span class="text-cyan-400 text-xs">(B2)</span>
-                        </span>
-                        <span class="px-4 py-2 bg-slate-800/60 rounded-lg border border-green-cyan-light text-slate-300 text-sm font-medium flex items-center gap-2">
-                            🇨🇳 Mandarin <span class="text-green-400 text-xs">(HSK 1)</span>
-                        </span>
+                        <span class="px-4 py-2 steampunk-card rounded-lg text-amber-300/80 text-sm font-mono">🇮🇩 Indonesia <span class="text-amber-400 text-xs">(Native)</span></span>
+                        <span class="px-4 py-2 steampunk-card rounded-lg text-amber-300/80 text-sm font-mono">🇬🇧 English <span class="text-amber-400 text-xs">(B2)</span></span>
+                        <span class="px-4 py-2 steampunk-card rounded-lg text-amber-300/80 text-sm font-mono">🇨🇳 Mandarin <span class="text-amber-400 text-xs">(HSK 1)</span></span>
                     </div>
                 </div>
 
-                <!-- Sertifikasi -->
                 <div>
                     <div class="flex items-center gap-3 mb-5">
-                        <i data-lucide="badge-check" class="text-green-400 w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold text-white">Sertifikasi</h3>
+                        <i data-lucide="badge-check" class="text-amber-400 w-6 h-6"></i>
+                        <h3 class="text-2xl font-display text-amber-200">Sertifikasi</h3>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-slate-800/60 rounded-lg border border-green-cyan-light text-slate-300 text-sm font-medium">
-                            📱 Belajar Membuat Aplikasi Android untuk Pemula · Dicoding
-                        </span>
-                        <span class="px-4 py-2 bg-slate-800/60 rounded-lg border border-green-cyan-light text-slate-300 text-sm font-medium">
-                            🌐 CCNAv7: Switching, Routing, and Wireless Essentials · Cisco
-                        </span>
+                        <span class="px-4 py-2 steampunk-card rounded-lg text-amber-300/80 text-sm font-mono">📱 Dicoding Android</span>
+                        <span class="px-4 py-2 steampunk-card rounded-lg text-amber-300/80 text-sm font-mono">🌐 CCNAv7 Cisco</span>
                     </div>
                 </div>
             </div>
@@ -506,61 +638,54 @@
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-20 bg-slate-950 border-t border-green-cyan-light">
+    <section id="contact" class="py-20 bg-[#1d150e] border-t border-amber-500/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Mari Terhubung</h2>
-            <p class="text-slate-400 mb-12 max-w-xl mx-auto">
-                Tertarik untuk berkolaborasi atau diskusi tentang proyek?
-                Jangan ragu untuk menghubungi saya.
-            </p>
+            <h2 class="text-3xl md:text-4xl font-display text-amber-200 mb-4">Mari Terhubung</h2>
+            <p class="text-amber-300/50 font-mono text-sm mb-12">— kirim pesan melalui asap dan uap —</p>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-                <!-- Email -->
                 <a href="mailto:rhesa719@gmail.com"
-                class="p-5 bg-slate-800/60 rounded-xl border border-green-cyan-light hover:border-green-500 hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+                class="steampunk-card rounded-xl p-5 hover:border-amber-400 transition-all hover:-translate-y-1">
                 <div class="flex justify-center mb-2">
-                    <i data-lucide="mail" class="text-green-400 w-7 h-7 group-hover:scale-110 transition-transform"></i>
+                    <i data-lucide="mail" class="text-amber-400 w-7 h-7"></i>
                 </div>
-                <h4 class="text-white font-semibold text-sm">Email</h4>
-                <p class="text-slate-400 text-xs break-all">rhesa719@gmail.com</p>
+                <h4 class="text-amber-200 font-display text-sm">Email</h4>
+                <p class="text-amber-300/50 text-xs font-mono break-all">rhesa719@gmail.com</p>
             </a>
 
-            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank"
-            class="p-5 bg-slate-800/60 rounded-xl border border-green-cyan-light hover:border-cyan-500 hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+            class="steampunk-card rounded-xl p-5 hover:border-amber-400 transition-all hover:-translate-y-1">
             <div class="flex justify-center mb-2">
-                <i data-lucide="linkedin" class="text-cyan-400 w-7 h-7 group-hover:scale-110 transition-transform"></i>
+                <i data-lucide="linkedin" class="text-amber-400 w-7 h-7"></i>
             </div>
-            <h4 class="text-white font-semibold text-sm">LinkedIn</h4>
-            <p class="text-slate-400 text-xs">Varian Rhesa</p>
+            <h4 class="text-amber-200 font-display text-sm">LinkedIn</h4>
+            <p class="text-amber-300/50 text-xs font-mono">Varian Rhesa</p>
         </a>
 
-        <!-- Phone -->
         <a href="tel:+6289519628044"
-        class="p-5 bg-slate-800/60 rounded-xl border border-green-cyan-light hover:border-green-500 hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+        class="steampunk-card rounded-xl p-5 hover:border-amber-400 transition-all hover:-translate-y-1">
         <div class="flex justify-center mb-2">
-            <i data-lucide="phone" class="text-green-400 w-7 h-7 group-hover:scale-110 transition-transform"></i>
+            <i data-lucide="phone" class="text-amber-400 w-7 h-7"></i>
         </div>
-        <h4 class="text-white font-semibold text-sm">Telepon</h4>
-        <p class="text-slate-400 text-xs">0895-1962-8044</p>
+        <h4 class="text-amber-200 font-display text-sm">Telepon</h4>
+        <p class="text-amber-300/50 text-xs font-mono">0895-1962-8044</p>
     </a>
 
-    <!-- GitHub -->
     <a href="https://github.com/Varian719" target="_blank"
-    class="p-5 bg-slate-800/60 rounded-xl border border-green-cyan-light hover:border-cyan-500 hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+    class="steampunk-card rounded-xl p-5 hover:border-amber-400 transition-all hover:-translate-y-1">
     <div class="flex justify-center mb-2">
-        <i data-lucide="github" class="text-cyan-400 w-7 h-7 group-hover:scale-110 transition-transform"></i>
+        <i data-lucide="github" class="text-amber-400 w-7 h-7"></i>
     </div>
-    <h4 class="text-white font-semibold text-sm">GitHub</h4>
-    <p class="text-slate-400 text-xs">Varian719</p>
+    <h4 class="text-amber-200 font-display text-sm">GitHub</h4>
+    <p class="text-amber-300/50 text-xs font-mono">Varian719</p>
 </a>
 
 </div>
 
-<div class="mt-12 pt-6 border-t border-green-cyan-light/30">
-    <p class="text-slate-500 text-sm">
-        &copy; 2026 Varian Rhesa · Dibuat dengan HTML &amp; Tailwind CSS
+<div class="mt-12 pt-6 border-t border-amber-500/10">
+    <p class="text-amber-300/30 text-xs font-mono">
+        &copy; 2026 Varian Rhesa · Dibangun dengan kode dan uap
     </p>
 </div>
 </div>
@@ -568,30 +693,26 @@
 
 <!-- ========== JAVASCRIPT ========== -->
 <script>
-    // Icon Lucide
     lucide.createIcons();
 
-    // Mobile Menu Toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
     });
 
-    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
-            navbar.classList.add('glass-nav', 'shadow-lg');
-            navbar.classList.remove('bg-transparent', 'py-4');
+            navbar.classList.add('glass-steam', 'shadow-lg');
+            navbar.classList.remove('bg-transparent', 'py-3');
             navbar.classList.add('py-2');
         } else {
-            navbar.classList.remove('glass-nav', 'shadow-lg', 'py-2');
-            navbar.classList.add('bg-transparent', 'py-4');
+            navbar.classList.remove('glass-steam', 'shadow-lg', 'py-2');
+            navbar.classList.add('bg-transparent', 'py-3');
         }
     });
 
-    // Tutup mobile menu saat klik link
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
