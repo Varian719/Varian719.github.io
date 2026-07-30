@@ -110,6 +110,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
         .card-blog .card-image img {
@@ -125,6 +126,43 @@
             width: 100%;
             height: 100%;
             font-size: 3rem;
+        }
+
+        .card-image .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-image:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-overlay button,
+        .image-overlay a {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            padding: 0.6rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-overlay button:hover,
+        .image-overlay a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
 
         .tag {
@@ -228,7 +266,7 @@
             padding-bottom: 0.5rem;
         }
 
-        /* Modal overlay */
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -268,13 +306,74 @@
         .modal-close:hover {
             transform: scale(1.1);
         }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+        .fade-in-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+        .fade-in-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+        .fade-in-up.delay-4 {
+            transition-delay: 0.4s;
+        }
+        .fade-in-up.delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        .lang-btn {
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #677767;
+        }
+
+        .lang-btn:hover {
+            color: #0aaf69;
+        }
+
+        .lang-btn.active {
+            background: #0aaf69;
+            color: white;
+            border-color: #0aaf69;
+        }
+
+        .lang-btn:not(.active):hover {
+            border-color: #dce3dd;
+        }
+
+        .lang-divider {
+            color: #dce3dd;
+            font-weight: 300;
+        }
     </style>
 </head>
 
 <body>
 
     <!-- ========== NAVBAR ========== -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
 
@@ -285,16 +384,34 @@
                     <span class="hidden sm:inline text-xs text-dark-400 font-mono bg-dark-50 px-2 py-0.5 rounded-full">/engineer</span>
                 </a>
 
-                <div class="hidden md:flex items-center gap-8 text-sm">
-                    <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Beranda</a>
-                    <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Tentang</a>
-                    <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Portofolio</a>
-                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Resume</a>
-                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Perjalanan</a>
-                    <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Kontak</a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_home">Beranda</a>
+                    <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_about">Tentang</a>
+                    <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_portfolio">Portofolio</a>
+                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_resume">Resume</a>
+                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_experience">Perjalanan</a>
+                    <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_contact">Kontak</a>
+
+                    <!-- Language Toggle Desktop -->
+                    <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
+                        <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+                    </span>
                 </div>
 
-                <div class="md:hidden">
+                <!-- Mobile toggle + Language -->
+                <div class="md:hidden flex items-center gap-3">
+                    <span class="flex items-center gap-1 text-xs">
+                        <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+                    </span>
                     <button id="mobile-menu-btn" class="text-dark-600 hover:text-dark-900 focus:outline-none">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
@@ -302,55 +419,60 @@
             </div>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-sm border-b border-dark-100 w-full shadow-sm">
             <div class="px-4 py-3 space-y-1">
-                <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Beranda</a>
-                <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Tentang</a>
-                <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Portofolio</a>
-                <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Resume</a>
-                <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Perjalanan</a>
-                <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Kontak</a>
+                <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_home">Beranda</a>
+                <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_about">Tentang</a>
+                <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_portfolio">Portofolio</a>
+                <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_resume">Resume</a>
+                <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_experience">Perjalanan</a>
+                <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_contact">Kontak</a>
             </div>
         </div>
     </nav>
+
+    <!-- ========== IMAGE MODAL ========== -->
+    <div id="imageModal" class="modal-overlay" onclick="closeImageModal(event)">
+        <button class="modal-close" onclick="closeImageModal(event)">✕</button>
+        <img id="modalImage" src="" alt="Preview" onclick="event.stopPropagation()" />
+    </div>
 
     <!-- ========== HERO ========== -->
     <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
 
-                <!-- Kiri: Teks -->
-                <div>
+                <div class="fade-in-up">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-dark-900 mb-4 tracking-tight leading-[1.1]">
                         Varian <span class="text-primary-600">Rhesa</span>
                     </h1>
 
-                    <p class="text-xl text-dark-500 font-medium mb-2">Junior Software Engineer</p>
+                    <p class="text-xl text-dark-500 font-medium mb-2" data-i18n="hero_title">Junior Software Engineer</p>
 
                     <div class="flex items-center gap-3 text-sm text-dark-400 mb-4">
-                        <span class="tag tag-primary">Web</span>
-                        <span class="tag tag-cyan">IoT</span>
-                        <span class="tag tag-primary">AI</span>
-                        <span class="tag tag-cyan">Robotika</span>
+                        <span class="tag tag-primary" data-i18n="tag_web">Web</span>
+                        <span class="tag tag-cyan" data-i18n="tag_iot">IoT</span>
+                        <span class="tag tag-primary" data-i18n="tag_ai">AI</span>
+                        <span class="tag tag-cyan" data-i18n="tag_robotics">Robotika</span>
                     </div>
 
-                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm">
+                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm" data-i18n="hero_desc">
                         Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
                         Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.
                     </p>
 
                     <div class="flex flex-wrap gap-3">
                         <a href="#contact" class="px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
-                            <i data-lucide="mail" class="w-4 h-4"></i> Hubungi
+                            <i data-lucide="mail" class="w-4 h-4"></i> <span data-i18n="btn_contact">Hubungi</span>
                         </a>
                         <a href="#portfolio" class="px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
-                            <i data-lucide="folder-git" class="w-4 h-4"></i> Lihat Karya
+                            <i data-lucide="folder-git" class="w-4 h-4"></i> <span data-i18n="btn_works">Lihat Karya</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Kanan: Featured Image -->
-                <div class="relative flex justify-center">
+                <div class="relative flex justify-center fade-in-up delay-2">
                     <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-200 shadow-xl">
                         <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
                         alt="Varian Rhesa"
@@ -367,50 +489,66 @@
     <!-- ========== PORTFOLIO GRID ========== -->
     <section id="portfolio" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-dark-900">Karya &amp; Sertifikat</h2>
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900" data-i18n="portfolio_title">Karya &amp; Sertifikat</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                <p class="text-dark-400 text-sm mt-3">Proyek dan pengakuan yang telah saya raih</p>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="portfolio_sub">Proyek dan pengakuan yang telah saya raih</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- 1. Dicoding Android -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-1">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
                         alt="Sertifikat Dicoding Android Pemula"
                         loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-primary">Sertifikat</span>
+                            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">Dicoding Android Pemula</h3>
-                        <p class="text-dark-500 text-sm mt-1">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="dicoding_desc">Belajar Membuat Aplikasi Android untuk Pemula</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
                 </div>
 
                 <!-- 2. CCNAv7 -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-2">
                     <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
                         alt="Sertifikat CCNAv7 Cisco"
                         loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-cyan">Sertifikat</span>
+                            <span class="tag tag-cyan" data-i18n="certificate">Sertifikat</span>
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">CCNAv7 · Cisco</h3>
-                        <p class="text-dark-500 text-sm mt-1">Switching, Routing, and Wireless Essentials</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="ccna_desc">Switching, Routing, and Wireless Essentials</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
                 </div>
 
                 <!-- 3. PWA Spektrum Monitoring -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-3">
                     <div class="card-image bg-primary-50">
                         <div class="icon-placeholder">
                             <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
@@ -418,16 +556,16 @@
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-primary">Proyek</span>
+                            <span class="tag tag-primary" data-i18n="project">Proyek</span>
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">PWA Spektrum Monitoring</h3>
-                        <p class="text-dark-500 text-sm mt-1">Firebase · QR Code · AI Chatbot</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 placeholder</p>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="pwa_desc">Firebase · QR Code · AI Chatbot</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 <span data-i18n="placeholder">placeholder</span></p>
                     </div>
                 </div>
 
                 <!-- 4. IoT Smart Fire Suppression + Jurnal -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-4">
                     <div class="card-image bg-cyan-50">
                         <div class="icon-placeholder">
                             <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
@@ -435,11 +573,11 @@
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-cyan">Skripsi</span>
-                            <span class="tag tag-primary">📄 Jurnal</span>
+                            <span class="tag tag-cyan" data-i18n="thesis">Skripsi</span>
+                            <span class="tag tag-primary">📄 <span data-i18n="journal">Jurnal</span></span>
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">IoT Smart Fire Suppression</h3>
-                        <p class="text-dark-500 text-sm mt-1 leading-relaxed">
+                        <p class="text-dark-500 text-sm mt-1 leading-relaxed" data-i18n="thesis_desc">
                             Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5
                         </p>
                         <div class="mt-3">
@@ -447,46 +585,62 @@
                                target="_blank"
                                class="inline-flex items-center gap-1.5 btn-primary btn-sm font-medium">
                                 <i data-lucide="external-link" class="w-3 h-3"></i>
-                                Baca Jurnal
+                                <span data-i18n="read_journal">Baca Jurnal</span>
                             </a>
                         </div>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Jurnal terbit 2026</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="journal_published">Jurnal terbit 2026</span></p>
                     </div>
                 </div>
 
                 <!-- 5. Sertifikat Magang Balmon -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-5">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
                         alt="Sertifikat Magang Balai Monitor Spektrum"
                         loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-primary">Sertifikat</span>
-                            <span class="tag tag-cyan">Magang</span>
+                            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
+                            <span class="tag tag-cyan" data-i18n="internship">Magang</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">Magang Balmon Samarinda</h3>
-                        <p class="text-dark-500 text-sm mt-1">Full Stack Developer · PWA · Firebase</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
+                        <h3 class="font-semibold text-dark-900 text-lg" data-i18n="balmon_title">Magang Balmon Samarinda</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="balmon_desc">Full Stack Developer · PWA · Firebase</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
                 </div>
 
                 <!-- 6. Robot Cerdas Juara 3 -->
-                <div class="card-blog">
+                <div class="card-blog fade-in-up delay-3">
                     <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
                         alt="Sertifikat Juara 3 Kontes Robot Cerdas"
                         loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-cyan">Proyek</span>
-                            <span class="tag tag-primary">🏆 Juara 3</span>
+                            <span class="tag tag-cyan" data-i18n="project">Proyek</span>
+                            <span class="tag tag-primary">🏆 <span data-i18n="champion">Juara 3</span></span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">Robot Cerdas · KRC 2023</h3>
-                        <p class="text-dark-500 text-sm mt-1">Algoritma navigasi, logika cerdas</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
+                        <h3 class="font-semibold text-dark-900 text-lg" data-i18n="krc_title">Robot Cerdas · KRC 2023</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="krc_desc">Algoritma navigasi, logika cerdas</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
                 </div>
 
@@ -497,75 +651,65 @@
     <!-- ========== RESUME / CV SECTION ========== -->
     <section id="resume" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-dark-900">📄 Resume / CV</h2>
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                <p class="text-dark-400 text-sm mt-3">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
             </div>
 
-            <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden">
-                <!-- Gambar Resume -->
-                <div class="relative cursor-pointer" onclick="openModal()">
+            <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
+                <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
                     <img src="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
                          alt="Resume Varian Rhesa"
                          class="w-full max-h-[600px] object-contain bg-white"
                          loading="lazy" />
                     <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-6 opacity-0 hover:opacity-100 transition-opacity">
                         <span class="bg-dark-900/70 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm">
-                            <i data-lucide="maximize" class="w-4 h-4 inline mr-1"></i> Klik untuk memperbesar
+                            <i data-lucide="maximize" class="w-4 h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
                         </span>
                     </div>
                 </div>
 
-                <!-- Tombol Aksi -->
                 <div class="p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
-                    <button onclick="openModal()"
+                    <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')"
                             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary font-medium text-sm">
                         <i data-lucide="maximize" class="w-4 h-4"></i>
-                        Lihat Fullscreen
+                        <span data-i18n="fullscreen">Layar Penuh</span>
                     </button>
-                    <a href="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+                    <a href="https://drive.google.com/uc?export=download&id=1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
                        download="Resume_Varian_Rhesa.jpg"
                        target="_blank"
                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-outline font-medium text-sm">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        ⬇️ Unduh Resume
+                        ⬇️ <span data-i18n="download">Unduh Resume</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== MODAL FULLSCREEN RESUME ========== -->
-    <div id="resumeModal" class="modal-overlay" onclick="closeModal(event)">
-        <button class="modal-close" onclick="closeModal(event)">✕</button>
-        <img src="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
-             alt="Resume Varian Rhesa - Fullscreen"
-             onclick="event.stopPropagation()" />
-    </div>
-
     <!-- ========== ABOUT + SIDEBAR ========== -->
     <section id="about" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-8">
 
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold text-dark-900 mb-4">Tentang Saya</h2>
+                <div class="lg:col-span-2 fade-in-up">
+                    <h2 class="text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
                     <div class="divider-custom max-w-xs mb-5"></div>
 
                     <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
-                        <p>
+                        <p data-i18n="about_p1">
                             Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span>
                             di Politeknik Negeri Samarinda dengan latar belakang
                             <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.
                         </p>
-                        <p>
+                        <p data-i18n="about_p2">
                             Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>,
                             <span class="text-cyan-600 font-medium">Mobile</span>, dan
                             <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi
                             terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.
                         </p>
-                        <p>
+                        <p data-i18n="about_p3">
                             Saat ini saya sedang menyelesaikan skripsi tentang
                             <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span>
                             yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).
@@ -579,7 +723,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 bg-white rounded-xl border border-dark-100 p-5">
+                    <div class="mt-8 bg-white rounded-xl border border-dark-100 p-5 fade-in-up delay-2">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="award" class="text-primary-600 w-6 h-6"></i>
@@ -588,9 +732,9 @@
                                 <div class="inline-block px-2 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-medium mb-1">
                                     2023
                                 </div>
-                                <h4 class="font-semibold text-dark-900">Juara 3 Kontes Robot Cerdas</h4>
-                                <p class="text-dark-500 text-sm">Provinsi Kalimantan Timur</p>
-                                <p class="text-dark-500 text-sm mt-1">
+                                <h4 class="font-semibold text-dark-900" data-i18n="achievement_title">Juara 3 Kontes Robot Cerdas</h4>
+                                <p class="text-dark-500 text-sm" data-i18n="achievement_loc">Provinsi Kalimantan Timur</p>
+                                <p class="text-dark-500 text-sm mt-1" data-i18n="achievement_desc">
                                     Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>.
                                     Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.
                                 </p>
@@ -600,10 +744,10 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="space-y-6">
+                <div class="space-y-6 fade-in-up delay-3">
 
                     <div class="sidebar-card">
-                        <h4>Profil</h4>
+                        <h4 data-i18n="profile">Profil</h4>
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-200 flex-shrink-0">
                                 <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
@@ -612,44 +756,44 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-dark-900">Varian Rhesa</p>
-                                <p class="text-xs text-dark-500">Junior Software Engineer</p>
+                                <p class="text-xs text-dark-500" data-i18n="hero_title">Junior Software Engineer</p>
                             </div>
                         </div>
                         <ul class="space-y-2 text-sm text-dark-600">
                             <li class="flex items-center gap-2">
                                 <i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i>
-                                Samarinda, Kaltim
+                                <span data-i18n="location">Samarinda, Kaltim</span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i>
-                                D4 TRK · Politani Samarinda
+                                <span data-i18n="education_short">D4 TRK · Politani Samarinda</span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i>
-                                Intern @ Balai Monitor Spektrum
+                                <span data-i18n="experience_short">Intern @ Balai Monitor Spektrum</span>
                             </li>
                         </ul>
                     </div>
 
                     <div class="sidebar-card">
-                        <h4>Bahasa</h4>
+                        <h4 data-i18n="languages">Bahasa</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tag tag-primary">🇮🇩 Indonesia</span>
-                            <span class="tag tag-cyan">🇬🇧 English B2</span>
-                            <span class="tag">🇨🇳 Mandarin HSK1</span>
+                            <span class="tag tag-primary">🇮🇩 <span data-i18n="lang_id">Indonesia</span></span>
+                            <span class="tag tag-cyan">🇬🇧 <span data-i18n="lang_en">English B2</span></span>
+                            <span class="tag">🇨🇳 <span data-i18n="lang_zh">Mandarin HSK1</span></span>
                         </div>
                     </div>
 
                     <div class="sidebar-card">
-                        <h4>Sertifikasi</h4>
+                        <h4 data-i18n="certifications">Sertifikasi</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="tag tag-primary">📱 Dicoding Android</span>
-                            <span class="tag tag-cyan">🌐 CCNAv7 Cisco</span>
+                            <span class="tag tag-primary">📱 <span data-i18n="cert_dicoding">Dicoding Android</span></span>
+                            <span class="tag tag-cyan">🌐 <span data-i18n="cert_ccna">CCNAv7 Cisco</span></span>
                         </div>
                     </div>
 
                     <div class="sidebar-card">
-                        <h4>Keahlian</h4>
+                        <h4 data-i18n="skills">Keahlian</h4>
                         <div class="flex flex-wrap gap-1.5">
                             <span class="tag tag-primary">Python</span>
                             <span class="tag tag-cyan">C++</span>
@@ -671,63 +815,63 @@
     <!-- ========== EXPERIENCE ========== -->
     <section id="experience" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-dark-900">Perjalanan &amp; Pengalaman</h2>
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10">
 
-                <div>
+                <div class="fade-in-up delay-1">
                     <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
                         <i data-lucide="book-open" class="text-primary-600 w-5 h-5"></i>
-                        Pendidikan
+                        <span data-i18n="education">Pendidikan</span>
                     </h3>
                     <div class="space-y-0 border-l-2 border-primary-200 ml-3">
                         <div class="relative pl-8 pb-8">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2022 — Sekarang</div>
-                            <h4 class="text-lg font-semibold text-dark-900">Politeknik Negeri Samarinda</h4>
-                            <div class="text-sm text-dark-500">D4 · Teknologi Rekayasa Komputer</div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — Sekarang</div>
+                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
+                            <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer</div>
                             <p class="text-xs text-dark-400 mt-1">
-                                Skripsi: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771"
+                                <span data-i18n="thesis">Skripsi</span>: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771"
                                            target="_blank"
                                            class="text-primary-600 hover:underline">
-                                    Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5
+                                    <span data-i18n="thesis_title">Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5</span>
                                 </a>
                             </p>
                         </div>
                         <div class="relative pl-8 pb-4">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2019 — 2022</div>
-                            <h4 class="text-lg font-semibold text-dark-900">SMK Negeri 7 Samarinda</h4>
-                            <div class="text-sm text-dark-500">Rekayasa Perangkat Lunak</div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_smk_date">2019 — 2022</div>
+                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="edu_smk_name">SMK Negeri 7 Samarinda</h4>
+                            <div class="text-sm text-dark-500" data-i18n="edu_smk_major">Rekayasa Perangkat Lunak</div>
                         </div>
                     </div>
                 </div>
 
-                <div>
+                <div class="fade-in-up delay-2">
                     <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
                         <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
-                        Pengalaman
+                        <span data-i18n="experience">Pengalaman</span>
                     </h3>
                     <div class="space-y-0 border-l-2 border-cyan-200 ml-3">
                         <div class="relative pl-8 pb-8">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">Feb 2026 — Mei 2026</div>
-                            <h4 class="text-lg font-semibold text-dark-900">Balai Monitor Spektrum Frekuensi Radio</h4>
-                            <div class="text-sm text-dark-500">Intern · Full Stack Developer</div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_balmon_date">Feb 2026 — Mei 2026</div>
+                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="exp_balmon_name">Balai Monitor Spektrum Frekuensi Radio</h4>
+                            <div class="text-sm text-dark-500" data-i18n="exp_balmon_role">Intern · Full Stack Developer</div>
                             <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside">
-                                <li>PWA + Firebase Realtime Database</li>
-                                <li>Admin Dashboard · QR Code System</li>
-                                <li>AI Chatbot (Llama API) · Cloudflare Pages</li>
+                                <li data-i18n="exp_balmon_li1">PWA + Firebase Realtime Database</li>
+                                <li data-i18n="exp_balmon_li2">Admin Dashboard · QR Code System</li>
+                                <li data-i18n="exp_balmon_li3">AI Chatbot (Llama API) · Cloudflare Pages</li>
                             </ul>
                         </div>
                         <div class="relative pl-8 pb-4">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5">2020</div>
-                            <h4 class="text-lg font-semibold text-dark-900">PPTIK ITB · Online Internship</h4>
-                            <div class="text-sm text-dark-500">Magang Industri &amp; Pengembangan Software</div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_itb_date">2020</div>
+                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="exp_itb_name">PPTIK ITB · Online Internship</h4>
+                            <div class="text-sm text-dark-500" data-i18n="exp_itb_role">Magang Industri &amp; Pengembangan Software</div>
                         </div>
                     </div>
                 </div>
@@ -738,18 +882,20 @@
     <!-- ========== CONTACT ========== -->
     <section id="contact" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-dark-900 mb-3">Mari Terhubung</h2>
-            <div class="divider-custom max-w-xs mx-auto mb-6"></div>
-            <p class="text-dark-400 text-sm mb-8">Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.</p>
+            <div class="fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900 mb-3" data-i18n="contact_title">Mari Terhubung</h2>
+                <div class="divider-custom max-w-xs mx-auto mb-6"></div>
+                <p class="text-dark-400 text-sm mb-8" data-i18n="contact_desc">Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.</p>
+            </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 fade-in-up delay-1">
 
                 <a href="mailto:rhesa719@gmail.com"
                 class="bg-white border border-dark-100 rounded-xl p-4 hover:border-primary-300 transition-all hover:-translate-y-1">
                 <div class="flex justify-center mb-1.5">
                     <i data-lucide="mail" class="text-primary-500 w-6 h-6"></i>
                 </div>
-                <h4 class="text-sm font-medium text-dark-700">Email</h4>
+                <h4 class="text-sm font-medium text-dark-700" data-i18n="email">Email</h4>
                 <p class="text-xs text-dark-400 font-mono break-all">rhesa719@gmail.com</p>
             </a>
 
@@ -767,7 +913,7 @@
         <div class="flex justify-center mb-1.5">
             <i data-lucide="phone" class="text-primary-500 w-6 h-6"></i>
         </div>
-        <h4 class="text-sm font-medium text-dark-700">Telepon</h4>
+        <h4 class="text-sm font-medium text-dark-700" data-i18n="phone">Telepon</h4>
         <p class="text-xs text-dark-400 font-mono">0895-1962-8044</p>
     </a>
 
@@ -788,67 +934,410 @@
 <footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p class="text-xs">
-            &copy; 2026 Varian Rhesa · Dibangun dengan <span class="text-primary-400">♥</span> dan kode
+            &copy; 2026 Varian Rhesa · <span data-i18n="footer_built">Dibangun dengan</span> <span class="text-primary-400">♥</span> <span data-i18n="footer_code">dan kode</span>
         </p>
         <div class="flex justify-center gap-4 mt-2 text-xs">
-            <a href="#home" class="hover:text-primary-400 transition-colors">Beranda</a>
-            <a href="#about" class="hover:text-primary-400 transition-colors">Tentang</a>
-            <a href="#portfolio" class="hover:text-primary-400 transition-colors">Portofolio</a>
-            <a href="#resume" class="hover:text-primary-400 transition-colors">Resume</a>
-            <a href="#contact" class="hover:text-primary-400 transition-colors">Kontak</a>
+            <a href="#home" class="hover:text-primary-400 transition-colors" data-i18n="nav_home">Beranda</a>
+            <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
+            <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
+            <a href="#resume" class="hover:text-primary-400 transition-colors" data-i18n="nav_resume">Resume</a>
+            <a href="#contact" class="hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
         </div>
     </div>
 </footer>
 
 <!-- ========== JAVASCRIPT ========== -->
 <script>
+    // ============================================================
+    // 1. LUCIDE ICONS
+    // ============================================================
     lucide.createIcons();
 
-    // Mobile menu
+    // ============================================================
+    // 2. MOBILE MENU
+    // ============================================================
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
     });
-
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            navbar.classList.add('nav-blur');
-            navbar.classList.remove('bg-transparent', 'py-4');
-            navbar.classList.add('py-3');
-        } else {
-            navbar.classList.remove('nav-blur', 'py-3');
-            navbar.classList.add('bg-transparent', 'py-4');
-        }
-    });
-
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
         });
     });
 
-    // ========== MODAL RESUME ==========
-    function openModal() {
-        document.getElementById('resumeModal').classList.add('active');
+    // ============================================================
+    // 3. NAVBAR SCROLL
+    // ============================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('nav-blur');
+            navbar.classList.remove('bg-transparent', 'py-3');
+            navbar.classList.add('py-2');
+        } else {
+            navbar.classList.remove('nav-blur', 'py-2');
+            navbar.classList.add('bg-transparent', 'py-3');
+        }
+    });
+
+    // ============================================================
+    // 4. IMAGE MODAL
+    // ============================================================
+    function openImageModal(src) {
+        const modal = document.getElementById('imageModal');
+        const img = document.getElementById('modalImage');
+        img.src = src;
+        modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    function closeModal(e) {
+    function closeImageModal(e) {
         if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
-        document.getElementById('resumeModal').classList.remove('active');
+        document.getElementById('imageModal').classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Tutup modal dengan tombol ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.getElementById('resumeModal').classList.remove('active');
+            document.getElementById('imageModal').classList.remove('active');
             document.body.style.overflow = '';
         }
     });
+
+    // ============================================================
+    // 5. SCROLL ANIMATIONS (Intersection Observer)
+    // ============================================================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+        observer.observe(el);
+    });
+
+    // ============================================================
+    // 6. LANGUAGE TOGGLE
+    // ============================================================
+    const translations = {
+        'id': {
+            // Navigation
+            'nav_home': 'Beranda',
+            'nav_about': 'Tentang',
+            'nav_portfolio': 'Portofolio',
+            'nav_resume': 'Resume',
+            'nav_experience': 'Perjalanan',
+            'nav_contact': 'Kontak',
+            // Hero
+            'hero_title': 'Junior Software Engineer',
+            'tag_web': 'Web',
+            'tag_iot': 'IoT',
+            'tag_ai': 'AI',
+            'tag_robotics': 'Robotika',
+            'hero_desc': 'Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.',
+            'btn_contact': 'Hubungi',
+            'btn_works': 'Lihat Karya',
+            // Portfolio
+            'portfolio_title': 'Karya &amp; Sertifikat',
+            'portfolio_sub': 'Proyek dan pengakuan yang telah saya raih',
+            'certificate': 'Sertifikat',
+            'project': 'Proyek',
+            'thesis': 'Skripsi',
+            'internship': 'Magang',
+            'journal': 'Jurnal',
+            'read_journal': 'Baca Jurnal',
+            'journal_published': 'Jurnal terbit 2026',
+            'dicoding_desc': 'Belajar Membuat Aplikasi Android untuk Pemula',
+            'ccna_desc': 'Switching, Routing, and Wireless Essentials',
+            'pwa_desc': 'Firebase · QR Code · AI Chatbot',
+            'thesis_desc': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
+            'balmon_title': 'Magang Balmon Samarinda',
+            'balmon_desc': 'Full Stack Developer · PWA · Firebase',
+            'krc_title': 'Robot Cerdas · KRC 2023',
+            'krc_desc': 'Algoritma navigasi, logika cerdas',
+            'champion': 'Juara 3',
+            'placeholder': 'placeholder',
+            // Resume
+            'resume_title': '📄 Resume / CV',
+            'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
+            'fullscreen': 'Layar Penuh',
+            'download': 'Unduh Resume',
+            'click_to_enlarge': 'Klik untuk memperbesar',
+            // About
+            'about_title': 'Tentang Saya',
+            'about_p1': 'Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
+            'about_p2': 'Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.',
+            'about_p3': 'Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).',
+            'achievement_title': 'Juara 3 Kontes Robot Cerdas',
+            'achievement_loc': 'Provinsi Kalimantan Timur',
+            'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
+            // Sidebar
+            'profile': 'Profil',
+            'languages': 'Bahasa',
+            'certifications': 'Sertifikasi',
+            'skills': 'Keahlian',
+            'location': 'Samarinda, Kaltim',
+            'education_short': 'D4 TRK · Politani Samarinda',
+            'experience_short': 'Intern @ Balai Monitor Spektrum',
+            'lang_id': 'Indonesia',
+            'lang_en': 'English B2',
+            'lang_zh': 'Mandarin HSK1',
+            'cert_dicoding': 'Dicoding Android',
+            'cert_ccna': 'CCNAv7 Cisco',
+            // Experience
+            'journey_title': 'Perjalanan &amp; Pengalaman',
+            'education': 'Pendidikan',
+            'edu_polita_date': '2022 — Sekarang',
+            'edu_polita_name': 'Politeknik Negeri Samarinda',
+            'edu_polita_major': 'D4 · Teknologi Rekayasa Komputer',
+            'thesis_title': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
+            'edu_smk_date': '2019 — 2022',
+            'edu_smk_name': 'SMK Negeri 7 Samarinda',
+            'edu_smk_major': 'Rekayasa Perangkat Lunak',
+            'experience': 'Pengalaman',
+            'exp_balmon_date': 'Feb 2026 — Mei 2026',
+            'exp_balmon_name': 'Balai Monitor Spektrum Frekuensi Radio',
+            'exp_balmon_role': 'Intern · Full Stack Developer',
+            'exp_balmon_li1': 'PWA + Firebase Realtime Database',
+            'exp_balmon_li2': 'Admin Dashboard · QR Code System',
+            'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
+            'exp_itb_date': '2020',
+            'exp_itb_name': 'PPTIK ITB · Online Internship',
+            'exp_itb_role': 'Magang Industri &amp; Pengembangan Software',
+            // Contact
+            'contact_title': 'Mari Terhubung',
+            'contact_desc': 'Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.',
+            'email': 'Email',
+            'phone': 'Telepon',
+            // Footer
+            'footer_built': 'Dibangun dengan',
+            'footer_code': 'dan kode',
+        },
+        'en': {
+            // Navigation
+            'nav_home': 'Home',
+            'nav_about': 'About',
+            'nav_portfolio': 'Portfolio',
+            'nav_resume': 'Resume',
+            'nav_experience': 'Journey',
+            'nav_contact': 'Contact',
+            // Hero
+            'hero_title': 'Junior Software Engineer',
+            'tag_web': 'Web',
+            'tag_iot': 'IoT',
+            'tag_ai': 'AI',
+            'tag_robotics': 'Robotics',
+            'hero_desc': 'Building impactful tech solutions — from web apps to smart robots. I believe the best code understands the human behind the screen.',
+            'btn_contact': 'Contact',
+            'btn_works': 'View Works',
+            // Portfolio
+            'portfolio_title': 'Works &amp; Certificates',
+            'portfolio_sub': 'Projects and recognitions I have achieved',
+            'certificate': 'Certificate',
+            'project': 'Project',
+            'thesis': 'Thesis',
+            'internship': 'Internship',
+            'journal': 'Journal',
+            'read_journal': 'Read Journal',
+            'journal_published': 'Journal published 2026',
+            'dicoding_desc': 'Learn to Make Android Apps for Beginners',
+            'ccna_desc': 'Switching, Routing, and Wireless Essentials',
+            'pwa_desc': 'Firebase · QR Code · AI Chatbot',
+            'thesis_desc': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
+            'balmon_title': 'Balmon Samarinda Internship',
+            'balmon_desc': 'Full Stack Developer · PWA · Firebase',
+            'krc_title': 'Smart Robot · KRC 2023',
+            'krc_desc': 'Navigation algorithms, intelligent logic',
+            'champion': '3rd Place',
+            'placeholder': 'placeholder',
+            // Resume
+            'resume_title': '📄 Resume / CV',
+            'resume_desc': 'Summary of my professional journey — click to enlarge',
+            'fullscreen': 'Fullscreen',
+            'download': 'Download Resume',
+            'click_to_enlarge': 'Click to enlarge',
+            // About
+            'about_title': 'About Me',
+            'about_p1': 'I am a <span class="text-primary-600 font-medium">Computer Engineering Technology</span> student at Samarinda State Polytechnic with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
+            'about_p2': 'I am interested in <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, and <span class="text-primary-600 font-medium">IoT</span> development. I believe the best technology provides real solutions to everyday problems.',
+            'about_p3': 'I am currently completing my thesis on <span class="text-primary-600 font-medium">"Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm"</span> which has been published in the Journal of Integrated Industrial Engineering (JUTIN).',
+            'achievement_title': '3rd Place Smart Robot Competition',
+            'achievement_loc': 'East Kalimantan Province',
+            'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
+            // Sidebar
+            'profile': 'Profile',
+            'languages': 'Languages',
+            'certifications': 'Certifications',
+            'skills': 'Skills',
+            'location': 'Samarinda, East Kalimantan',
+            'education_short': 'D4 TRK · Samarinda State Polytechnic',
+            'experience_short': 'Intern @ Spectrum Monitoring Center',
+            'lang_id': 'Indonesian',
+            'lang_en': 'English B2',
+            'lang_zh': 'Mandarin HSK1',
+            'cert_dicoding': 'Dicoding Android',
+            'cert_ccna': 'CCNAv7 Cisco',
+            // Experience
+            'journey_title': 'Journey &amp; Experience',
+            'education': 'Education',
+            'edu_polita_date': '2022 — Present',
+            'edu_polita_name': 'Samarinda State Polytechnic',
+            'edu_polita_major': 'D4 · Computer Engineering Technology',
+            'thesis_title': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
+            'edu_smk_date': '2019 — 2022',
+            'edu_smk_name': 'SMK Negeri 7 Samarinda',
+            'edu_smk_major': 'Software Engineering',
+            'experience': 'Experience',
+            'exp_balmon_date': 'Feb 2026 — May 2026',
+            'exp_balmon_name': 'Spectrum Monitoring Center',
+            'exp_balmon_role': 'Intern · Full Stack Developer',
+            'exp_balmon_li1': 'PWA + Firebase Realtime Database',
+            'exp_balmon_li2': 'Admin Dashboard · QR Code System',
+            'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
+            'exp_itb_date': '2020',
+            'exp_itb_name': 'PPTIK ITB · Online Internship',
+            'exp_itb_role': 'Industrial Internship &amp; Software Development',
+            // Contact
+            'contact_title': 'Let\'s Connect',
+            'contact_desc': 'Interested in collaborating or discussing? Contact me.',
+            'email': 'Email',
+            'phone': 'Phone',
+            // Footer
+            'footer_built': 'Built with',
+            'footer_code': 'and code',
+        },
+        'zh': {
+            // Navigation
+            'nav_home': '主页',
+            'nav_about': '关于',
+            'nav_portfolio': '作品集',
+            'nav_resume': '简历',
+            'nav_experience': '历程',
+            'nav_contact': '联系',
+            // Hero
+            'hero_title': '初级软件工程师',
+            'tag_web': 'Web',
+            'tag_iot': '物联网',
+            'tag_ai': '人工智能',
+            'tag_robotics': '机器人学',
+            'hero_desc': '构建有影响力的技术解决方案 — 从 Web 应用到智能机器人。我相信最好的代码能理解屏幕背后的人。',
+            'btn_contact': '联系',
+            'btn_works': '查看作品',
+            // Portfolio
+            'portfolio_title': '作品与证书',
+            'portfolio_sub': '我完成的项目和获得的认可',
+            'certificate': '证书',
+            'project': '项目',
+            'thesis': '论文',
+            'internship': '实习',
+            'journal': '期刊',
+            'read_journal': '阅读期刊',
+            'journal_published': '期刊发表于 2026 年',
+            'dicoding_desc': '学习为初学者制作 Android 应用',
+            'ccna_desc': '交换、路由和无线基础',
+            'pwa_desc': 'Firebase · 二维码 · AI 聊天机器人',
+            'thesis_desc': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
+            'balmon_title': 'Balmon 三马林达实习',
+            'balmon_desc': '全栈开发 · PWA · Firebase',
+            'krc_title': '智能机器人 · KRC 2023',
+            'krc_desc': '导航算法，智能逻辑',
+            'champion': '第三名',
+            'placeholder': '占位符',
+            // Resume
+            'resume_title': '📄 简历 / CV',
+            'resume_desc': '我的职业历程概述 — 点击放大',
+            'fullscreen': '全屏',
+            'download': '下载简历',
+            'click_to_enlarge': '点击放大',
+            // About
+            'about_title': '关于我',
+            'about_p1': '我是三马林达国立理工学院的 <span class="text-primary-600 font-medium">计算机工程技术</span> 专业学生，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
+            'about_p2': '我对 <span class="text-primary-600 font-medium">Web</span>、<span class="text-cyan-600 font-medium">移动</span> 和 <span class="text-primary-600 font-medium">物联网</span> 开发感兴趣。我相信最好的技术能为日常问题提供真正的解决方案。',
+            'about_p3': '我目前正在完成我的论文 <span class="text-primary-600 font-medium">"基于物联网和 C4.5 算法的室内灭火系统设计与开发"</span>，该论文已发表在《工业工程综合期刊》(JUTIN) 上。',
+            'achievement_title': '智能机器人竞赛第三名',
+            'achievement_loc': '东加里曼丹省',
+            'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
+            // Sidebar
+            'profile': '个人资料',
+            'languages': '语言',
+            'certifications': '认证',
+            'skills': '技能',
+            'location': '三马林达, 东加里曼丹',
+            'education_short': 'D4 TRK · 三马林达国立理工学院',
+            'experience_short': '实习 @ 频谱监测中心',
+            'lang_id': '印尼语',
+            'lang_en': '英语 B2',
+            'lang_zh': '普通话 HSK1',
+            'cert_dicoding': 'Dicoding Android',
+            'cert_ccna': 'CCNAv7 Cisco',
+            // Experience
+            'journey_title': '历程与经验',
+            'education': '教育',
+            'edu_polita_date': '2022 — 至今',
+            'edu_polita_name': '三马林达国立理工学院',
+            'edu_polita_major': 'D4 · 计算机工程技术',
+            'thesis_title': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
+            'edu_smk_date': '2019 — 2022',
+            'edu_smk_name': 'SMK Negeri 7 三马林达',
+            'edu_smk_major': '软件工程',
+            'experience': '经验',
+            'exp_balmon_date': '2026年2月 — 2026年5月',
+            'exp_balmon_name': '频谱监测中心',
+            'exp_balmon_role': '实习 · 全栈开发',
+            'exp_balmon_li1': 'PWA + Firebase 实时数据库',
+            'exp_balmon_li2': '管理后台 · 二维码系统',
+            'exp_balmon_li3': 'AI 聊天机器人 (Llama API) · Cloudflare Pages',
+            'exp_itb_date': '2020',
+            'exp_itb_name': 'PPTIK ITB · 在线实习',
+            'exp_itb_role': '工业实习与软件开发',
+            // Contact
+            'contact_title': '联系我',
+            'contact_desc': '有兴趣合作或讨论？联系我。',
+            'email': '邮箱',
+            'phone': '电话',
+            // Footer
+            'footer_built': '用',
+            'footer_code': '和代码构建',
+        }
+    };
+
+    function setLanguage(lang) {
+        // Update all elements with data-i18n
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const translation = translations[lang]?.[key];
+            if (translation) {
+                el.innerHTML = translation;
+            }
+        });
+
+        // Update active button state
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('preferred_lang', lang);
+
+        // Reinitialize Lucide icons to update any new ones
+        lucide.createIcons();
+    }
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('preferred_lang') || 'id';
+    setLanguage(savedLang);
 </script>
 
 </body>
