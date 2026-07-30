@@ -106,10 +106,24 @@
 
         .card-blog .card-image {
             height: 180px;
-            background: linear-gradient(135deg, #e6f7f0, #ecfeff);
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-blog .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-blog .card-image .icon-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
             font-size: 3rem;
         }
 
@@ -301,7 +315,7 @@
         </div>
     </section>
 
-    <!-- ========== PORTFOLIO GRID (seperti grid resep) ========== -->
+    <!-- ========== PORTFOLIO GRID ========== -->
     <section id="portfolio" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
@@ -312,10 +326,12 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Kartu 1 -->
+                <!-- 1. Dicoding Android - Sertifikat -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
-                        <i data-lucide="badge-check" class="text-primary-500 w-12 h-12"></i>
+                        <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
+                        alt="Sertifikat Dicoding Android Pemula"
+                        loading="lazy" />
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
@@ -323,14 +339,16 @@
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">Dicoding Android Pemula</h3>
                         <p class="text-dark-500 text-sm mt-1">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
                     </div>
                 </div>
 
-                <!-- Kartu 2 -->
+                <!-- 2. CCNAv7 - Sertifikat -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
-                        <i data-lucide="network" class="text-cyan-500 w-12 h-12"></i>
+                        <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
+                        alt="Sertifikat CCNAv7 Cisco"
+                        loading="lazy" />
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
@@ -338,14 +356,16 @@
                         </div>
                         <h3 class="font-semibold text-dark-900 text-lg">CCNAv7 · Cisco</h3>
                         <p class="text-dark-500 text-sm mt-1">Switching, Routing, and Wireless Essentials</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
                     </div>
                 </div>
 
-                <!-- Kartu 3 -->
+                <!-- 3. PWA Spektrum Monitoring - Proyek (ikon) -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
-                        <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
+                        <div class="icon-placeholder">
+                            <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
@@ -357,10 +377,12 @@
                     </div>
                 </div>
 
-                <!-- Kartu 4 -->
+                <!-- 4. IoT Smart Fire Suppression - Skripsi (ikon) -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
-                        <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
+                        <div class="icon-placeholder">
+                            <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
@@ -372,33 +394,39 @@
                     </div>
                 </div>
 
-                <!-- Kartu 5 -->
+                <!-- 5. Sertifikat Magang Balmon - Sertifikat (GAMBAR BARU) -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
-                        <i data-lucide="languages" class="text-primary-500 w-12 h-12"></i>
+                        <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
+                        alt="Sertifikat Magang Balai Monitor Spektrum"
+                        loading="lazy" />
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-primary">Sertifikat</span>
+                            <span class="tag tag-cyan">Magang</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">English B2 · Mandarin HSK1</h3>
-                        <p class="text-dark-500 text-sm mt-1">Kemampuan bahasa asing</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 placeholder</p>
+                        <h3 class="font-semibold text-dark-900 text-lg">Magang Balmon Samarinda</h3>
+                        <p class="text-dark-500 text-sm mt-1">Full Stack Developer · PWA · Firebase</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
                     </div>
                 </div>
 
-                <!-- Kartu 6 -->
+                <!-- 6. Robot Cerdas Juara 3 - Sertifikat KRC -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
-                        <i data-lucide="bot" class="text-cyan-500 w-12 h-12"></i>
+                        <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
+                        alt="Sertifikat Juara 3 Kontes Robot Cerdas"
+                        loading="lazy" />
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-cyan">Proyek</span>
+                            <span class="tag tag-primary">🏆 Juara 3</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">Robot Cerdas · Juara 3</h3>
+                        <h3 class="font-semibold text-dark-900 text-lg">Robot Cerdas · KRC 2023</h3>
                         <p class="text-dark-500 text-sm mt-1">Algoritma navigasi, logika cerdas</p>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">🤖 placeholder</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 Sertifikat</p>
                     </div>
                 </div>
 
@@ -406,12 +434,11 @@
         </div>
     </section>
 
-    <!-- ========== ABOUT + SIDEBAR (seperti blog dengan sidebar) ========== -->
+    <!-- ========== ABOUT + SIDEBAR ========== -->
     <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-8">
 
-                <!-- Konten Utama (2/3) -->
                 <div class="lg:col-span-2">
                     <h2 class="text-3xl font-bold text-dark-900 mb-4">Tentang Saya</h2>
                     <div class="divider-custom max-w-xs mb-5"></div>
@@ -442,7 +469,6 @@
                         </div>
                     </div>
 
-                    <!-- Prestasi -->
                     <div class="mt-8 bg-white rounded-xl border border-dark-100 p-5">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
@@ -463,10 +489,9 @@
                     </div>
                 </div>
 
-                <!-- Sidebar (1/3) -->
+                <!-- Sidebar -->
                 <div class="space-y-6">
 
-                    <!-- Profil Singkat -->
                     <div class="sidebar-card">
                         <h4>Profil</h4>
                         <div class="flex items-center gap-3 mb-3">
@@ -496,7 +521,6 @@
                         </ul>
                     </div>
 
-                    <!-- Bahasa -->
                     <div class="sidebar-card">
                         <h4>Bahasa</h4>
                         <div class="flex flex-wrap gap-2">
@@ -506,7 +530,6 @@
                         </div>
                     </div>
 
-                    <!-- Sertifikasi -->
                     <div class="sidebar-card">
                         <h4>Sertifikasi</h4>
                         <div class="flex flex-wrap gap-2">
@@ -515,7 +538,6 @@
                         </div>
                     </div>
 
-                    <!-- Keahlian -->
                     <div class="sidebar-card">
                         <h4>Keahlian</h4>
                         <div class="flex flex-wrap gap-1.5">
