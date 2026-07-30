@@ -227,6 +227,47 @@
             border-bottom: 2px solid #e6f7f0;
             padding-bottom: 0.5rem;
         }
+
+        /* Modal overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -248,6 +289,7 @@
                     <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Beranda</a>
                     <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Tentang</a>
                     <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Portofolio</a>
+                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Resume</a>
                     <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium">Kontak</a>
                 </div>
@@ -265,6 +307,7 @@
                 <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Beranda</a>
                 <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Tentang</a>
                 <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Portofolio</a>
+                <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Resume</a>
                 <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Perjalanan</a>
                 <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg">Kontak</a>
             </div>
@@ -306,7 +349,7 @@
                     </div>
                 </div>
 
-                <!-- Kanan: Featured Image / Ilustrasi -->
+                <!-- Kanan: Featured Image -->
                 <div class="relative flex justify-center">
                     <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-200 shadow-xl">
                         <img src="https://i.ibb.co.com/Q8VSLDs/Formal-photo.jpg"
@@ -332,7 +375,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- 1. Dicoding Android - Sertifikat -->
+                <!-- 1. Dicoding Android -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
@@ -349,7 +392,7 @@
                     </div>
                 </div>
 
-                <!-- 2. CCNAv7 - Sertifikat -->
+                <!-- 2. CCNAv7 -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
@@ -366,7 +409,7 @@
                     </div>
                 </div>
 
-                <!-- 3. PWA Spektrum Monitoring - Proyek (ikon) -->
+                <!-- 3. PWA Spektrum Monitoring -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
                         <div class="icon-placeholder">
@@ -383,7 +426,7 @@
                     </div>
                 </div>
 
-                <!-- 4. IoT Smart Fire Suppression - Skripsi + LINK JURNAL -->
+                <!-- 4. IoT Smart Fire Suppression + Jurnal -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
                         <div class="icon-placeholder">
@@ -411,7 +454,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Sertifikat Magang Balmon - Sertifikat -->
+                <!-- 5. Sertifikat Magang Balmon -->
                 <div class="card-blog">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
@@ -429,7 +472,7 @@
                     </div>
                 </div>
 
-                <!-- 6. Robot Cerdas Juara 3 - Sertifikat KRC -->
+                <!-- 6. Robot Cerdas Juara 3 -->
                 <div class="card-blog">
                     <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
@@ -451,8 +494,58 @@
         </div>
     </section>
 
+    <!-- ========== RESUME / CV SECTION ========== -->
+    <section id="resume" class="py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-dark-900">📄 Resume / CV</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden">
+                <!-- Gambar Resume -->
+                <div class="relative cursor-pointer" onclick="openModal()">
+                    <img src="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+                         alt="Resume Varian Rhesa"
+                         class="w-full max-h-[600px] object-contain bg-white"
+                         loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-6 opacity-0 hover:opacity-100 transition-opacity">
+                        <span class="bg-dark-900/70 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm">
+                            <i data-lucide="maximize" class="w-4 h-4 inline mr-1"></i> Klik untuk memperbesar
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tombol Aksi -->
+                <div class="p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
+                    <button onclick="openModal()"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary font-medium text-sm">
+                        <i data-lucide="maximize" class="w-4 h-4"></i>
+                        Lihat Fullscreen
+                    </button>
+                    <a href="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+                       download="Resume_Varian_Rhesa.jpg"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-outline font-medium text-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        ⬇️ Unduh Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MODAL FULLSCREEN RESUME ========== -->
+    <div id="resumeModal" class="modal-overlay" onclick="closeModal(event)">
+        <button class="modal-close" onclick="closeModal(event)">✕</button>
+        <img src="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+             alt="Resume Varian Rhesa - Fullscreen"
+             onclick="event.stopPropagation()" />
+    </div>
+
     <!-- ========== ABOUT + SIDEBAR ========== -->
-    <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
+    <section id="about" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-8">
 
@@ -576,7 +669,7 @@
     </section>
 
     <!-- ========== EXPERIENCE ========== -->
-    <section id="experience" class="py-16 bg-white border-t border-dark-100">
+    <section id="experience" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-dark-900">Perjalanan &amp; Pengalaman</h2>
@@ -643,7 +736,7 @@
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-16 bg-dark-50/30 border-t border-dark-100">
+    <section id="contact" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-dark-900 mb-3">Mari Terhubung</h2>
             <div class="divider-custom max-w-xs mx-auto mb-6"></div>
@@ -701,6 +794,7 @@
             <a href="#home" class="hover:text-primary-400 transition-colors">Beranda</a>
             <a href="#about" class="hover:text-primary-400 transition-colors">Tentang</a>
             <a href="#portfolio" class="hover:text-primary-400 transition-colors">Portofolio</a>
+            <a href="#resume" class="hover:text-primary-400 transition-colors">Resume</a>
             <a href="#contact" class="hover:text-primary-400 transition-colors">Kontak</a>
         </div>
     </div>
@@ -710,12 +804,14 @@
 <script>
     lucide.createIcons();
 
+    // Mobile menu
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
     });
 
+    // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -732,6 +828,26 @@
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
         });
+    });
+
+    // ========== MODAL RESUME ==========
+    function openModal() {
+        document.getElementById('resumeModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(e) {
+        if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
+        document.getElementById('resumeModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Tutup modal dengan tombol ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.getElementById('resumeModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 </script>
 
