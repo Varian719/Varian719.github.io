@@ -188,6 +188,18 @@
             border-color: #a5f3fc;
         }
 
+        .tag-office {
+            background: #fef3e2;
+            color: #8b5e3c;
+            border-color: #f5d9b8;
+        }
+
+        .tag-google {
+            background: #e8f0fe;
+            color: #1a5a8a;
+            border-color: #c5d8f0;
+        }
+
         .divider-custom {
             height: 2px;
             background: linear-gradient(90deg, transparent, #0aaf69, #06b6d4, #0aaf69, transparent);
@@ -390,6 +402,7 @@
                     <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_about">Tentang</a>
                     <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_portfolio">Portofolio</a>
                     <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_resume">Resume</a>
+                    <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_skills">Keahlian</a>
                     <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_experience">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_contact">Kontak</a>
 
@@ -426,6 +439,7 @@
                 <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_about">Tentang</a>
                 <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_portfolio">Portofolio</a>
                 <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_resume">Resume</a>
+                <a href="#skills" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_skills">Keahlian</a>
                 <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_experience">Perjalanan</a>
                 <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_contact">Kontak</a>
             </div>
@@ -659,7 +673,7 @@
 
             <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
                 <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
-                    <img src="https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+                    <img src="https://lh3.googleusercontent.com/d/1Li3fXIX6zRV-Qhv_J89dMoeu9MDnopS9"
                          alt="Resume Varian Rhesa"
                          class="w-full max-h-[600px] object-contain bg-white"
                          loading="lazy" />
@@ -688,8 +702,144 @@
         </div>
     </section>
 
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="skills_sub">Teknologi, alat, dan keterampilan yang saya kuasai</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Programming -->
+                <div class="card-blog fade-in-up delay-1">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="code-2" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Programming</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag tag-primary">Dart</span>
+                            <span class="tag">Visual Basic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Web & Mobile -->
+                <div class="card-blog fade-in-up delay-2">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                <i data-lucide="smartphone" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Web &amp; Mobile</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag tag-cyan">REST API</span>
+                            <span class="tag tag-primary">PWA</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Cloudflare Pages</span>
+                            <span class="tag tag-cyan">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. IoT & Hardware -->
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="cpu" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">IoT &amp; Hardware</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Arduino IDE</span>
+                            <span class="tag tag-cyan">ESP32</span>
+                            <span class="tag">Microcontroller C++</span>
+                            <span class="tag tag-primary">Robotika</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Tools & DevOps -->
+                <div class="card-blog fade-in-up delay-4">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                <i data-lucide="terminal" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Tools &amp; DevOps</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">Git/GitHub</span>
+                            <span class="tag">Linux CLI</span>
+                            <span class="tag tag-primary">VS Code</span>
+                            <span class="tag tag-cyan">Android Studio</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Cloudflare Workers</span>
+                            <span class="tag">Sublime Text</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Office & Productivity (BARU) -->
+                <div class="card-blog fade-in-up delay-5">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center">
+                                <i data-lucide="file-text" class="text-amber-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Office &amp; Productivity</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-office">📄 MS Word</span>
+                            <span class="tag tag-office">📊 MS Excel</span>
+                            <span class="tag tag-office">📽️ MS PowerPoint</span>
+                            <span class="tag tag-google">📝 Google Docs</span>
+                            <span class="tag tag-google">📊 Google Sheets</span>
+                            <span class="tag tag-google">📽️ Google Slides</span>
+                            <span class="tag tag-google">🧪 Google Colab</span>
+                            <span class="tag tag-google">☁️ Google Drive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Database & Cloud -->
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center">
+                                <i data-lucide="database" class="text-purple-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Database &amp; Cloud</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Firebase</span>
+                            <span class="tag tag-cyan">Cloudflare Workers</span>
+                            <span class="tag tag-cyan">Cloudflare Pages</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ========== ABOUT + SIDEBAR ========== -->
-    <section id="about" class="py-16 bg-white border-t border-dark-100">
+    <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-8">
 
@@ -720,6 +870,8 @@
                             <span class="tag tag-primary">Java</span>
                             <span class="tag">Flutter</span>
                             <span class="tag tag-cyan">IoT</span>
+                            <span class="tag tag-office">MS Office</span>
+                            <span class="tag tag-google">Google Workspace</span>
                         </div>
                     </div>
 
@@ -804,6 +956,22 @@
                             <span class="tag tag-cyan">Flutter</span>
                             <span class="tag">Git</span>
                             <span class="tag tag-primary">Linux</span>
+                            <span class="tag tag-office">MS Office</span>
+                            <span class="tag tag-google">Google Workspace</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h4>📊 Office Tools</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-office">Word</span>
+                            <span class="tag tag-office">Excel</span>
+                            <span class="tag tag-office">PowerPoint</span>
+                            <span class="tag tag-google">Docs</span>
+                            <span class="tag tag-google">Sheets</span>
+                            <span class="tag tag-google">Slides</span>
+                            <span class="tag tag-google">Colab</span>
+                            <span class="tag tag-google">Drive</span>
                         </div>
                     </div>
 
@@ -813,7 +981,7 @@
     </section>
 
     <!-- ========== EXPERIENCE ========== -->
-    <section id="experience" class="py-16 bg-dark-50/30 border-t border-dark-100">
+    <section id="experience" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 fade-in-up">
                 <h2 class="text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
@@ -941,6 +1109,7 @@
             <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
             <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
             <a href="#resume" class="hover:text-primary-400 transition-colors" data-i18n="nav_resume">Resume</a>
+            <a href="#skills" class="hover:text-primary-400 transition-colors" data-i18n="nav_skills">Keahlian</a>
             <a href="#contact" class="hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
         </div>
     </div>
@@ -1007,7 +1176,7 @@
     });
 
     // ============================================================
-    // 5. SCROLL ANIMATIONS (Intersection Observer)
+    // 5. SCROLL ANIMATIONS
     // ============================================================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1029,14 +1198,13 @@
     // ============================================================
     const translations = {
         'id': {
-            // Navigation
             'nav_home': 'Beranda',
             'nav_about': 'Tentang',
             'nav_portfolio': 'Portofolio',
             'nav_resume': 'Resume',
+            'nav_skills': 'Keahlian',
             'nav_experience': 'Perjalanan',
             'nav_contact': 'Kontak',
-            // Hero
             'hero_title': 'Junior Software Engineer',
             'tag_web': 'Web',
             'tag_iot': 'IoT',
@@ -1045,7 +1213,6 @@
             'hero_desc': 'Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.',
             'btn_contact': 'Hubungi',
             'btn_works': 'Lihat Karya',
-            // Portfolio
             'portfolio_title': 'Karya &amp; Sertifikat',
             'portfolio_sub': 'Proyek dan pengakuan yang telah saya raih',
             'certificate': 'Sertifikat',
@@ -1065,13 +1232,13 @@
             'krc_desc': 'Algoritma navigasi, logika cerdas',
             'champion': 'Juara 3',
             'placeholder': 'placeholder',
-            // Resume
             'resume_title': '📄 Resume / CV',
             'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
             'fullscreen': 'Layar Penuh',
             'download': 'Unduh Resume',
             'click_to_enlarge': 'Klik untuk memperbesar',
-            // About
+            'skills_title': 'Keahlian Teknis',
+            'skills_sub': 'Teknologi, alat, dan keterampilan yang saya kuasai',
             'about_title': 'Tentang Saya',
             'about_p1': 'Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
             'about_p2': 'Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.',
@@ -1079,20 +1246,18 @@
             'achievement_title': 'Juara 3 Kontes Robot Cerdas',
             'achievement_loc': 'Provinsi Kalimantan Timur',
             'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
-            // Sidebar
             'profile': 'Profil',
             'languages': 'Bahasa',
             'certifications': 'Sertifikasi',
             'skills': 'Keahlian',
             'location': 'Samarinda, Kaltim',
-            'education_short': 'D4 TRK · Politeknik negeri Samarinda',
-            'experience_short': 'Intern @ Balai Monitor Spektrum Frekuensi RADIO kelas 1 Samarinda',
+            'education_short': 'D4 TRK · Politeknik Negeri Samarinda',
+            'experience_short': 'Intern @ Balai Monitor Spektrum Frekuensi Radio Kelas 1 Samarinda',
             'lang_id': 'Indonesia',
             'lang_en': 'English B2',
             'lang_zh': 'Mandarin HSK1',
             'cert_dicoding': 'Dicoding Android',
             'cert_ccna': 'CCNAv7 Cisco',
-            // Experience
             'journey_title': 'Perjalanan &amp; Pengalaman',
             'education': 'Pendidikan',
             'edu_polita_date': '2022 — Sekarang',
@@ -1112,24 +1277,21 @@
             'exp_itb_date': '2020',
             'exp_itb_name': 'PPTIK ITB · Online Internship',
             'exp_itb_role': 'Magang Industri &amp; Pengembangan Software',
-            // Contact
             'contact_title': 'Mari Terhubung',
             'contact_desc': 'Tertarik untuk berkolaborasi atau berdiskusi? Hubungi saya.',
             'email': 'Email',
             'phone': 'Telepon',
-            // Footer
             'footer_built': 'Dibangun dengan',
             'footer_code': 'dan kode',
         },
         'en': {
-            // Navigation
             'nav_home': 'Home',
             'nav_about': 'About',
             'nav_portfolio': 'Portfolio',
             'nav_resume': 'Resume',
+            'nav_skills': 'Skills',
             'nav_experience': 'Journey',
             'nav_contact': 'Contact',
-            // Hero
             'hero_title': 'Junior Software Engineer',
             'tag_web': 'Web',
             'tag_iot': 'IoT',
@@ -1138,7 +1300,6 @@
             'hero_desc': 'Building impactful tech solutions — from web apps to smart robots. I believe the best code understands the human behind the screen.',
             'btn_contact': 'Contact',
             'btn_works': 'View Works',
-            // Portfolio
             'portfolio_title': 'Works &amp; Certificates',
             'portfolio_sub': 'Projects and recognitions I have achieved',
             'certificate': 'Certificate',
@@ -1158,13 +1319,13 @@
             'krc_desc': 'Navigation algorithms, intelligent logic',
             'champion': '3rd Place',
             'placeholder': 'placeholder',
-            // Resume
             'resume_title': '📄 Resume / CV',
             'resume_desc': 'Summary of my professional journey — click to enlarge',
             'fullscreen': 'Fullscreen',
             'download': 'Download Resume',
             'click_to_enlarge': 'Click to enlarge',
-            // About
+            'skills_title': 'Technical Skills',
+            'skills_sub': 'Technologies, tools, and skills I master',
             'about_title': 'About Me',
             'about_p1': 'I am a <span class="text-primary-600 font-medium">Computer Engineering Technology</span> student at Samarinda State Polytechnic with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
             'about_p2': 'I am interested in <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, and <span class="text-primary-600 font-medium">IoT</span> development. I believe the best technology provides real solutions to everyday problems.',
@@ -1172,7 +1333,6 @@
             'achievement_title': '3rd Place Smart Robot Competition',
             'achievement_loc': 'East Kalimantan Province',
             'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
-            // Sidebar
             'profile': 'Profile',
             'languages': 'Languages',
             'certifications': 'Certifications',
@@ -1185,7 +1345,6 @@
             'lang_zh': 'Mandarin HSK1',
             'cert_dicoding': 'Dicoding Android',
             'cert_ccna': 'CCNAv7 Cisco',
-            // Experience
             'journey_title': 'Journey &amp; Experience',
             'education': 'Education',
             'edu_polita_date': '2022 — Present',
@@ -1205,24 +1364,21 @@
             'exp_itb_date': '2020',
             'exp_itb_name': 'PPTIK ITB · Online Internship',
             'exp_itb_role': 'Industrial Internship &amp; Software Development',
-            // Contact
             'contact_title': 'Let\'s Connect',
             'contact_desc': 'Interested in collaborating or discussing? Contact me.',
             'email': 'Email',
             'phone': 'Phone',
-            // Footer
             'footer_built': 'Built with',
             'footer_code': 'and code',
         },
         'zh': {
-            // Navigation
             'nav_home': '主页',
             'nav_about': '关于',
             'nav_portfolio': '作品集',
             'nav_resume': '简历',
+            'nav_skills': '技能',
             'nav_experience': '历程',
             'nav_contact': '联系',
-            // Hero
             'hero_title': '初级软件工程师',
             'tag_web': 'Web',
             'tag_iot': '物联网',
@@ -1231,7 +1387,6 @@
             'hero_desc': '构建有影响力的技术解决方案 — 从 Web 应用到智能机器人。我相信最好的代码能理解屏幕背后的人。',
             'btn_contact': '联系',
             'btn_works': '查看作品',
-            // Portfolio
             'portfolio_title': '作品与证书',
             'portfolio_sub': '我完成的项目和获得的认可',
             'certificate': '证书',
@@ -1251,13 +1406,13 @@
             'krc_desc': '导航算法，智能逻辑',
             'champion': '第三名',
             'placeholder': '占位符',
-            // Resume
             'resume_title': '📄 简历 / CV',
             'resume_desc': '我的职业历程概述 — 点击放大',
             'fullscreen': '全屏',
             'download': '下载简历',
             'click_to_enlarge': '点击放大',
-            // About
+            'skills_title': '技术技能',
+            'skills_sub': '我掌握的技术、工具和技能',
             'about_title': '关于我',
             'about_p1': '我是三马林达国立理工学院的 <span class="text-primary-600 font-medium">计算机工程技术</span> 专业学生，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
             'about_p2': '我对 <span class="text-primary-600 font-medium">Web</span>、<span class="text-cyan-600 font-medium">移动</span> 和 <span class="text-primary-600 font-medium">物联网</span> 开发感兴趣。我相信最好的技术能为日常问题提供真正的解决方案。',
@@ -1265,7 +1420,6 @@
             'achievement_title': '智能机器人竞赛第三名',
             'achievement_loc': '东加里曼丹省',
             'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
-            // Sidebar
             'profile': '个人资料',
             'languages': '语言',
             'certifications': '认证',
@@ -1278,7 +1432,6 @@
             'lang_zh': '普通话 HSK1',
             'cert_dicoding': 'Dicoding Android',
             'cert_ccna': 'CCNAv7 Cisco',
-            // Experience
             'journey_title': '历程与经验',
             'education': '教育',
             'edu_polita_date': '2022 — 至今',
@@ -1298,19 +1451,16 @@
             'exp_itb_date': '2020',
             'exp_itb_name': 'PPTIK ITB · 在线实习',
             'exp_itb_role': '工业实习与软件开发',
-            // Contact
             'contact_title': '联系我',
             'contact_desc': '有兴趣合作或讨论？联系我。',
             'email': '邮箱',
             'phone': '电话',
-            // Footer
             'footer_built': '用',
             'footer_code': '和代码构建',
         }
     };
 
     function setLanguage(lang) {
-        // Update all elements with data-i18n
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -1320,7 +1470,6 @@
             }
         });
 
-        // Update active button state
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.dataset.lang === lang) {
@@ -1328,14 +1477,10 @@
             }
         });
 
-        // Save preference
         localStorage.setItem('preferred_lang', lang);
-
-        // Reinitialize Lucide icons to update any new ones
         lucide.createIcons();
     }
 
-    // Load saved language preference
     const savedLang = localStorage.getItem('preferred_lang') || 'id';
     setLanguage(savedLang);
 </script>
