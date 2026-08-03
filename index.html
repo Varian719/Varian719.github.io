@@ -379,6 +379,22 @@
             color: #dce3dd;
             font-weight: 300;
         }
+
+        /* ===== MAP SECTION ===== */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e2e8e4;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 
@@ -402,6 +418,7 @@
                     <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_about">Tentang</a>
                     <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_portfolio">Portofolio</a>
                     <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_resume">Resume</a>
+                    <a href="#map" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_map">Lokasi</a>
                     <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_skills">Keahlian</a>
                     <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_experience">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_contact">Kontak</a>
@@ -439,6 +456,7 @@
                 <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_about">Tentang</a>
                 <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_portfolio">Portofolio</a>
                 <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_resume">Resume</a>
+                <a href="#map" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_map">Lokasi</a>
                 <a href="#skills" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_skills">Keahlian</a>
                 <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_experience">Perjalanan</a>
                 <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_contact">Kontak</a>
@@ -702,8 +720,85 @@
         </div>
     </section>
 
+    <!-- ========== MAP / LOKASI SECTION ========== -->
+    <section id="map" class="py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl font-bold text-dark-900" data-i18n="map_title">📍 Lokasi Saya</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="map_desc">Temukan saya di Samarinda — klik peta untuk petunjuk arah</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+
+                <!-- Info Alamat -->
+                <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
+                    <div class="bg-dark-50/50 rounded-xl p-6 border border-dark-100">
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark-900" data-i18n="address_title">Alamat</h4>
+                                <p class="text-dark-600 text-sm" data-i18n="address">
+                                    Perum Bumi Sambutan Asri<br />
+                                    Blok K1 No 21<br />
+                                    Samarinda, Kalimantan Timur
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="compass" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark-900" data-i18n="coordinates_title">Koordinat</h4>
+                                <p class="text-dark-600 text-sm font-mono">
+                                    -0.500647, 117.185105
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-dark-100">
+                            <a href="https://www.google.com/maps?q=-0.500647,117.185105"
+                               target="_blank"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span data-i18n="open_maps">Buka di Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-50/30 rounded-xl p-4 border border-dark-100">
+                        <p class="text-xs text-dark-400 text-center">
+                            <span data-i18n="map_note">📍 Gunakan peta di samping untuk melihat lokasi persis saya</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Peta Google Maps -->
+                <div class="lg:col-span-2 fade-in-up delay-2">
+                    <div class="map-container shadow-md">
+                        <iframe
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=-0.500647,117.185105&zoom=17&maptype=roadmap"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Lokasi Varian Rhesa - Perum Bumi Sambutan Asri Blok K1 No 21 Samarinda">
+                        </iframe>
+                    </div>
+                    <p class="text-xs text-dark-400 text-center mt-3 font-mono">
+                        📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ========== SKILLS SECTION ========== -->
-    <section id="skills" class="py-16 bg-white border-t border-dark-100">
+    <section id="skills" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 fade-in-up">
                 <h2 class="text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
@@ -794,7 +889,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Office & Productivity (BARU) -->
+                <!-- 5. Office & Productivity -->
                 <div class="card-blog fade-in-up delay-5">
                     <div class="p-5">
                         <div class="flex items-center gap-3 mb-3">
@@ -839,7 +934,7 @@
     </section>
 
     <!-- ========== ABOUT + SIDEBAR ========== -->
-    <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
+    <section id="about" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-8">
 
@@ -981,7 +1076,7 @@
     </section>
 
     <!-- ========== EXPERIENCE ========== -->
-    <section id="experience" class="py-16 bg-white border-t border-dark-100">
+    <section id="experience" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 fade-in-up">
                 <h2 class="text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
@@ -1109,6 +1204,7 @@
             <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
             <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
             <a href="#resume" class="hover:text-primary-400 transition-colors" data-i18n="nav_resume">Resume</a>
+            <a href="#map" class="hover:text-primary-400 transition-colors" data-i18n="nav_map">Lokasi</a>
             <a href="#skills" class="hover:text-primary-400 transition-colors" data-i18n="nav_skills">Keahlian</a>
             <a href="#contact" class="hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
         </div>
@@ -1202,6 +1298,7 @@
             'nav_about': 'Tentang',
             'nav_portfolio': 'Portofolio',
             'nav_resume': 'Resume',
+            'nav_map': 'Lokasi',
             'nav_skills': 'Keahlian',
             'nav_experience': 'Perjalanan',
             'nav_contact': 'Kontak',
@@ -1237,6 +1334,13 @@
             'fullscreen': 'Layar Penuh',
             'download': 'Unduh Resume',
             'click_to_enlarge': 'Klik untuk memperbesar',
+            'map_title': '📍 Lokasi Saya',
+            'map_desc': 'Temukan saya di Samarinda — klik peta untuk petunjuk arah',
+            'address_title': 'Alamat',
+            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, Kalimantan Timur',
+            'coordinates_title': 'Koordinat',
+            'open_maps': 'Buka di Google Maps',
+            'map_note': '📍 Gunakan peta di samping untuk melihat lokasi persis saya',
             'skills_title': 'Keahlian Teknis',
             'skills_sub': 'Teknologi, alat, dan keterampilan yang saya kuasai',
             'about_title': 'Tentang Saya',
@@ -1289,6 +1393,7 @@
             'nav_about': 'About',
             'nav_portfolio': 'Portfolio',
             'nav_resume': 'Resume',
+            'nav_map': 'Location',
             'nav_skills': 'Skills',
             'nav_experience': 'Journey',
             'nav_contact': 'Contact',
@@ -1324,6 +1429,13 @@
             'fullscreen': 'Fullscreen',
             'download': 'Download Resume',
             'click_to_enlarge': 'Click to enlarge',
+            'map_title': '📍 My Location',
+            'map_desc': 'Find me in Samarinda — click the map for directions',
+            'address_title': 'Address',
+            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, East Kalimantan',
+            'coordinates_title': 'Coordinates',
+            'open_maps': 'Open in Google Maps',
+            'map_note': '📍 Use the map to see my exact location',
             'skills_title': 'Technical Skills',
             'skills_sub': 'Technologies, tools, and skills I master',
             'about_title': 'About Me',
@@ -1376,6 +1488,7 @@
             'nav_about': '关于',
             'nav_portfolio': '作品集',
             'nav_resume': '简历',
+            'nav_map': '位置',
             'nav_skills': '技能',
             'nav_experience': '历程',
             'nav_contact': '联系',
@@ -1411,6 +1524,13 @@
             'fullscreen': '全屏',
             'download': '下载简历',
             'click_to_enlarge': '点击放大',
+            'map_title': '📍 我的位置',
+            'map_desc': '在三马林达找到我 — 点击地图获取路线',
+            'address_title': '地址',
+            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />三马林达, 东加里曼丹',
+            'coordinates_title': '坐标',
+            'open_maps': '在谷歌地图中打开',
+            'map_note': '📍 使用地图查看我的确切位置',
             'skills_title': '技术技能',
             'skills_sub': '我掌握的技术、工具和技能',
             'about_title': '关于我',
