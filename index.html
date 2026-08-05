@@ -75,6 +75,10 @@
                             800: '#1a221a',
                             900: '#0d110d',
                             950: '#060806',
+                        },
+                        whatsapp: {
+                            500: '#25D366',
+                            600: '#128C7E',
                         }
                     },
                     fontFamily: {
@@ -453,6 +457,23 @@
 
         .progress-item.is-visible .progress-bar-fill {
             width: var(--progress-width);
+        }
+
+        /* ===== WHATSAPP ICON COLOR ===== */
+        .text-whatsapp {
+            color: #25D366;
+        }
+        .bg-whatsapp {
+            background: #25D366;
+        }
+        .bg-whatsapp\/10 {
+            background: rgba(37, 211, 102, 0.1);
+        }
+        .border-whatsapp {
+            border-color: #25D366;
+        }
+        .hover\:bg-whatsapp\/20:hover {
+            background: rgba(37, 211, 102, 0.2);
         }
     </style>
 </head>
@@ -995,7 +1016,7 @@
         </div>
     </section>
 
-    <!-- ========== PROFICIENCY / PROGRESS BARS SECTION (BARU) ========== -->
+    <!-- ========== PROFICIENCY / PROGRESS BARS SECTION ========== -->
     <section id="proficiency" class="py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 fade-in-up">
@@ -1319,7 +1340,7 @@
         </div>
     </section>
 
-    <!-- ========== CONTACT + FORM KONTAK ========== -->
+    <!-- ========== CONTACT + FORM KONTAK (dengan Formsubmit) ========== -->
     <section id="contact" class="py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 fade-in-up">
@@ -1330,14 +1351,21 @@
 
             <div class="grid lg:grid-cols-5 gap-8 items-start">
 
-                <!-- Form Kontak (3/5) -->
+                <!-- Form Kontak (3/5) - Menggunakan Formsubmit -->
                 <div class="lg:col-span-3 fade-in-up delay-1">
                     <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-6 md:p-8">
                         <h3 class="text-xl font-semibold text-dark-900 mb-4 flex items-center gap-2">
                             <i data-lucide="edit-3" class="text-primary-500 w-5 h-5"></i>
                             <span data-i18n="form_title">Kirim Pesan</span>
                         </h3>
-                        <form action="mailto:rhesa719@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+
+                        <!-- Formsubmit - Secure HTTPS -->
+                        <form action="https://formsubmit.co/rhesa719@gmail.com" method="POST" class="space-y-4">
+                            <!-- Anti-spam & redirect -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://varianrhesa.my.id">
+                            <input type="hidden" name="_subject" value="Pesan dari Portofolio Varian Rhesa">
+
                             <div>
                                 <label for="name" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_name">Nama Lengkap</label>
                                 <input type="text" id="name" name="name" required
@@ -1364,7 +1392,7 @@
                                 <span data-i18n="form_send">Kirim Pesan</span>
                             </button>
                             <p class="text-xs text-dark-400 text-center mt-2" data-i18n="form_note">
-                                📧 Pesan akan dikirim melalui email client Anda.
+                                🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.
                             </p>
                         </form>
                     </div>
@@ -1399,15 +1427,23 @@
                     <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-6">
                         <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="social_media">Media Sosial</h4>
                         <div class="flex flex-wrap gap-3">
+                            <!-- LinkedIn -->
                             <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank"
-                                class="flex-1 min-w-[100px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
+                                class="flex-1 min-w-[80px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
                                 <i data-lucide="linkedin" class="text-cyan-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
                                 <p class="text-xs text-dark-500 mt-1">LinkedIn</p>
                             </a>
+                            <!-- GitHub -->
                             <a href="https://github.com/Varian719" target="_blank"
-                                class="flex-1 min-w-[100px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
+                                class="flex-1 min-w-[80px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
                                 <i data-lucide="github" class="text-dark-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
                                 <p class="text-xs text-dark-500 mt-1">GitHub</p>
+                            </a>
+                            <!-- WhatsApp (BARU) -->
+                            <a href="https://wa.me/6289519628044" target="_blank"
+                                class="flex-1 min-w-[80px] bg-whatsapp/10 border border-whatsapp rounded-xl p-3 text-center hover:bg-whatsapp/20 transition-colors group">
+                                <i data-lucide="message-circle" class="text-whatsapp w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
+                                <p class="text-xs text-dark-500 mt-1">WhatsApp</p>
                             </a>
                         </div>
                     </div>
@@ -1417,7 +1453,7 @@
                         <a href="mailto:rhesa719@gmail.com?subject=Kolaborasi%20Proyek" class="btn-primary text-sm px-4 py-2 rounded-full flex items-center gap-1.5">
                             <i data-lucide="send" class="w-3.5 h-3.5"></i> Email
                         </a>
-                        <a href="https://wa.me/6289519628044" target="_blank" class="btn-outline text-sm px-4 py-2 rounded-full flex items-center gap-1.5">
+                        <a href="https://wa.me/6289519628044" target="_blank" class="btn-outline text-sm px-4 py-2 rounded-full flex items-center gap-1.5 border-whatsapp text-whatsapp hover:bg-whatsapp/10 hover:border-whatsapp">
                             <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
                         </a>
                     </div>
@@ -1448,9 +1484,21 @@
     <!-- ========== JAVASCRIPT ========== -->
     <script>
         // ============================================================
-        // 1. LUCIDE ICONS
+        // 1. LUCIDE ICONS - dengan inisialisasi ulang yang robust
         // ============================================================
-        lucide.createIcons();
+        function initIcons() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
+
+        // Inisialisasi awal
+        initIcons();
+
+        // Inisialisasi ulang setelah DOM sepenuhnya dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initIcons, 100);
+        });
 
         // ============================================================
         // 2. MOBILE MENU
@@ -1637,7 +1685,7 @@
                 'form_subject': 'Subjek',
                 'form_message': 'Pesan',
                 'form_send': 'Kirim Pesan',
-                'form_note': '📧 Pesan akan dikirim melalui email client Anda.',
+                'form_note': '🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.',
                 'contact_direct': 'Hubungi Langsung',
                 'social_media': 'Media Sosial',
                 'email': 'Email',
@@ -1744,7 +1792,7 @@
                 'form_subject': 'Subject',
                 'form_message': 'Message',
                 'form_send': 'Send Message',
-                'form_note': '📧 The message will be sent via your email client.',
+                'form_note': '🔒 Message sent securely via HTTPS. I\'ll reply within 1-2 business days.',
                 'contact_direct': 'Direct Contact',
                 'social_media': 'Social Media',
                 'email': 'Email',
@@ -1851,7 +1899,7 @@
                 'form_subject': '主题',
                 'form_message': '消息',
                 'form_send': '发送消息',
-                'form_note': '📧 消息将通过您的电子邮件客户端发送。',
+                'form_note': '🔒 消息通过 HTTPS 安全发送。我将在 1-2 个工作日内回复。',
                 'contact_direct': '直接联系',
                 'social_media': '社交媒体',
                 'email': '邮箱',
@@ -1879,11 +1927,26 @@
             });
 
             localStorage.setItem('preferred_lang', lang);
-            lucide.createIcons();
+
+            // Re-inisialisasi ikon setelah perubahan bahasa
+            setTimeout(initIcons, 50);
         }
 
         const savedLang = localStorage.getItem('preferred_lang') || 'id';
         setLanguage(savedLang);
+
+        // ============================================================
+        // 7. OBSERVER UNTUK IKON BARU (MutationObserver)
+        // ============================================================
+        const iconObserver = new MutationObserver(function() {
+            initIcons();
+        });
+
+        iconObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: false
+        });
     </script>
 
 </body>
