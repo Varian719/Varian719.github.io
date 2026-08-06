@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varian Rhesa · Junior Software Engineer</title>
 
-    <!-- ===== PRELOAD & PRECONNECT untuk mempercepat loading ===== -->
+    <!-- ===== PRELOAD & PRECONNECT ===== -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,7 @@
     <meta name="twitter:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer." />
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
-    <!-- ===== CRITICAL CSS INLINE (dimuat lebih dulu) ===== -->
+    <!-- ===== CRITICAL CSS INLINE ===== -->
     <style>
         /* Critical CSS - dimuat sebelum Tailwind */
         *,
@@ -60,12 +60,6 @@
             opacity: 1;
         }
         /* Skeleton loading */
-        .skeleton {
-            background: linear-gradient(90deg, #e8ece8 25%, #f0f2f0 50%, #e8ece8 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }
         @keyframes shimmer {
             0% {
                 background-position: -200% 0;
@@ -73,6 +67,12 @@
             100% {
                 background-position: 200% 0;
             }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e8ece8 25%, #f0f2f0 50%, #e8ece8 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
         }
         .skeleton-card {
             height: 300px;
@@ -169,10 +169,8 @@
 
     <!-- ===== TAILWIND CDN (dengan fallback) ===== -->
     <script>
-        // Cek apakah Tailwind berhasil dimuat, jika tidak gunakan fallback
         window.tailwindCheck = false;
         document.addEventListener('DOMContentLoaded', function() {
-            // Jika Tailwind belum siap dalam 3 detik, gunakan fallback
             setTimeout(function() {
                 if (!window.tailwindCheck) {
                     document.body.classList.add('tailwind-fallback');
@@ -183,7 +181,7 @@
     </script>
     <script src="https://cdn.tailwindcss.com" onload="window.tailwindCheck=true; document.body.classList.add('loaded');">
     </script>
-    <script src="https://unpkg.com/lucide@latest" onload="if(typeof lucide!=='undefined')lucide.createIcons();">
+    <script src="https://unpkg.com/lucide@latest">
     </script>
 
     <!-- ===== FONT (dengan display swap) ===== -->
@@ -193,7 +191,7 @@
     </noscript>
 
     <style>
-        /* ===== LOADING SKELETON (sebelum konten dimuat) ===== */
+        /* ===== LOADING SKELETON ===== */
         #skeleton-loader {
             position: fixed;
             inset: 0;
@@ -229,7 +227,7 @@
             font-size: 0.875rem;
         }
 
-        /* ===== FALLBACK STYLE jika Tailwind gagal ===== */
+        /* ===== FALLBACK STYLE ===== */
         body.tailwind-fallback .tw-hidden {
             display: none !important;
         }
@@ -308,6 +306,130 @@
                 height: 200px !important;
             }
         }
+
+        /* ===== TAILWIND CLASSES (fallback jika CDN lambat) ===== */
+        .container-custom {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        @media (min-width: 640px) {
+            .container-custom {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container-custom {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        .text-primary-600 {
+            color: #0aaf69;
+        }
+        .text-cyan-500 {
+            color: #06b6d4;
+        }
+        .text-dark-900 {
+            color: #0d110d;
+        }
+        .text-dark-500 {
+            color: #415541;
+        }
+        .text-dark-400 {
+            color: #677767;
+        }
+        .text-dark-600 {
+            color: #344434;
+        }
+        .text-dark-700 {
+            color: #273327;
+        }
+        .text-dark-800 {
+            color: #1a221a;
+        }
+        .bg-dark-50\/30 {
+            background: rgba(240, 242, 240, 0.3);
+        }
+        .bg-dark-50\/50 {
+            background: rgba(240, 242, 240, 0.5);
+        }
+        .bg-white {
+            background: white;
+        }
+        .bg-primary-50 {
+            background: #e6f7f0;
+        }
+        .bg-cyan-50 {
+            background: #ecfeff;
+        }
+        .bg-amber-50 {
+            background: #fef3e2;
+        }
+        .bg-purple-50 {
+            background: #f5f0ff;
+        }
+        .border-dark-100 {
+            border-color: #d9ddd9;
+        }
+        .border-primary-200 {
+            border-color: #99dfc3;
+        }
+        .border-cyan-200 {
+            border-color: #a5f3fc;
+        }
+        .border-amber-200 {
+            border-color: #f5d9b8;
+        }
+        .border-purple-200 {
+            border-color: #d5c5f0;
+        }
+        .rounded-2xl {
+            border-radius: 16px;
+        }
+        .rounded-xl {
+            border-radius: 12px;
+        }
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        .shadow-lg {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .shadow-sm {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .shadow-md {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .gap-1\.5 {
+            gap: 0.375rem;
+        }
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        .gap-3 {
+            gap: 0.75rem;
+        }
+        .gap-4 {
+            gap: 1rem;
+        }
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        .gap-8 {
+            gap: 2rem;
+        }
+        .gap-10 {
+            gap: 2.5rem;
+        }
+        .gap-12 {
+            gap: 3rem;
+        }
     </style>
 </head>
 
@@ -344,7 +466,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== KONTEN UTAMA (Tailwind) ===== -->
+    <!-- ===== KONTEN UTAMA ===== -->
     <!-- ============================================================ -->
     <div class="tw-content">
 
@@ -452,7 +574,6 @@
 
                     <div class="relative flex justify-center fade-in-up delay-2">
                         <div class="profile-photo-wrapper w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
-                            <!-- Gunakan gambar dengan loading="lazy" dan ukuran kecil untuk jaringan lambat -->
                             <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1"
                             alt="Varian Rhesa"
                             class="profile-photo"
@@ -478,7 +599,6 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
-                    <!-- Kartu 1-6 dengan lazy loading gambar -->
                     <!-- 1. Dicoding -->
                     <div class="card-blog fade-in-up delay-1">
                         <div class="card-image bg-primary-50">
@@ -755,7 +875,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    <!-- Skills cards (sama seperti sebelumnya) -->
+                    <!-- Skills cards -->
                     <div class="card-blog fade-in-up delay-1">
                         <div class="p-4 sm:p-5">
                             <div class="flex items-center gap-3 mb-3">
@@ -884,7 +1004,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 lg:gap-x-10 gap-y-4 sm:gap-y-5 max-w-4xl mx-auto">
-                    <!-- Progress bars (sama seperti sebelumnya) -->
+                    <!-- Progress bars -->
                     <div class="fade-in-up delay-1 progress-item">
                         <div class="flex justify-between text-sm font-medium text-dark-700">
                             <span>🐍 Python</span>
@@ -1376,35 +1496,37 @@
         </div>
     </div>
 
-    <!-- ========== JAVASCRIPT ========== -->
+    <!-- ========== JAVASCRIPT (Memory Leak Fixed) ========== -->
     <script>
         // ============================================================
         // 1. HIDE SKELETON LOADER
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Sembunyikan skeleton loader setelah konten siap
             const loader = document.getElementById('skeleton-loader');
             if (loader) {
                 setTimeout(function() {
                     loader.classList.add('hidden');
-                }, 800);
+                }, 600);
             }
         });
 
         // ============================================================
-        // 2. LUCIDE ICONS
+        // 2. LUCIDE ICONS - ONE TIME INIT
         // ============================================================
+        let iconsInitialized = false;
+
         function initIcons() {
+            if (iconsInitialized) return;
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 try {
                     lucide.createIcons();
+                    iconsInitialized = true;
                 } catch (e) {
-                    // Ikon gagal dimuat, tidak masalah karena fallback sudah siap
+                    // Ikon gagal dimuat
                 }
             }
         }
 
-        // Inisialisasi awal
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(initIcons, 200);
         });
@@ -1428,21 +1550,28 @@
         });
 
         // ============================================================
-        // 4. NAVBAR SCROLL
+        // 4. NAVBAR SCROLL - dengan requestAnimationFrame
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const navbar = document.getElementById('navbar');
             if (navbar) {
+                let scrollRAF = null;
                 window.addEventListener('scroll', function() {
-                    if (window.scrollY > 20) {
-                        navbar.classList.add('nav-blur');
-                        navbar.classList.remove('bg-transparent', 'py-3');
-                        navbar.classList.add('py-2');
-                    } else {
-                        navbar.classList.remove('nav-blur', 'py-2');
-                        navbar.classList.add('bg-transparent', 'py-3');
+                    if (scrollRAF) {
+                        cancelAnimationFrame(scrollRAF);
                     }
-                });
+                    scrollRAF = requestAnimationFrame(function() {
+                        if (window.scrollY > 20) {
+                            navbar.classList.add('nav-blur');
+                            navbar.classList.remove('bg-transparent', 'py-3');
+                            navbar.classList.add('py-2');
+                        } else {
+                            navbar.classList.remove('nav-blur', 'py-2');
+                            navbar.classList.add('bg-transparent', 'py-3');
+                        }
+                        scrollRAF = null;
+                    });
+                }, { passive: true });
             }
         });
 
@@ -1468,7 +1597,7 @@
             }
         }
 
-        document.addEventListener('keydown', function(e) {
+        const escapeHandler = function(e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('imageModal');
                 if (modal) {
@@ -1476,19 +1605,26 @@
                     document.body.style.overflow = '';
                 }
             }
-        });
+        };
+        document.addEventListener('keydown', escapeHandler);
 
         // ============================================================
-        // 6. SCROLL ANIMATIONS + PROGRESS BARS
+        // 6. SCROLL ANIMATIONS + PROGRESS BARS - dengan cleanup
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             if ('IntersectionObserver' in window) {
+                const elements = document.querySelectorAll('.fade-in-up, .progress-item');
+                const observed = new Set();
+
                 const observer = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            if (entry.target.classList.contains('progress-item')) {
-                                const fill = entry.target.querySelector('.progress-bar-fill');
+                            const target = entry.target;
+                            target.classList.add('is-visible');
+
+                            // Trigger progress bars
+                            if (target.classList.contains('progress-item')) {
+                                const fill = target.querySelector('.progress-bar-fill');
                                 if (fill) {
                                     const width = fill.style.getPropertyValue('--progress-width');
                                     setTimeout(function() {
@@ -1496,18 +1632,28 @@
                                     }, 100);
                                 }
                             }
+
+                            // ✅ UNOBSERVE setelah terlihat - mencegah memory leak
+                            observer.unobserve(target);
+                            observed.delete(target);
                         }
                     });
+
+                    // ✅ DISCONNECT jika semua sudah terobservasi
+                    if (observed.size === 0) {
+                        observer.disconnect();
+                    }
                 }, {
                     threshold: 0.2,
                     rootMargin: '0px 0px -50px 0px'
                 });
 
-                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                elements.forEach(function(el) {
                     observer.observe(el);
+                    observed.add(el);
                 });
             } else {
-                // Fallback untuk browser yang tidak support IntersectionObserver
+                // Fallback untuk browser tanpa IntersectionObserver
                 document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
                     el.classList.add('is-visible');
                 });
@@ -1521,7 +1667,7 @@
         });
 
         // ============================================================
-        // 7. LANGUAGE TOGGLE
+        // 7. LANGUAGE TOGGLE - dengan cleanup timeout
         // ============================================================
         const translations = {
             'id': {
@@ -1847,7 +1993,15 @@
             }
         };
 
+        let languageTimeout = null;
+
         function setLanguage(lang) {
+            // ✅ Bersihkan timeout sebelumnya
+            if (languageTimeout) {
+                clearTimeout(languageTimeout);
+                languageTimeout = null;
+            }
+
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(function(el) {
                 const key = el.getAttribute('data-i18n');
@@ -1865,7 +2019,13 @@
             });
 
             localStorage.setItem('preferred_lang', lang);
-            setTimeout(initIcons, 50);
+
+            // ✅ Re-init icons dengan timeout yang bisa dibersihkan
+            iconsInitialized = false;
+            languageTimeout = setTimeout(function() {
+                initIcons();
+                languageTimeout = null;
+            }, 50);
         }
 
         // Load saved language
@@ -1875,19 +2035,54 @@
         });
 
         // ============================================================
-        // 8. MUTATION OBSERVER untuk ikon baru
+        // 8. MUTATION OBSERVER - dengan batas dan auto-disconnect
         // ============================================================
         if ('MutationObserver' in window) {
-            const iconObserver = new MutationObserver(function() {
-                initIcons();
-            });
+            let iconObserver = null;
+            let observerActive = false;
+            let observerCount = 0;
+            const MAX_OBSERVATIONS = 10;
+
             document.addEventListener('DOMContentLoaded', function() {
                 if (document.body) {
+                    iconObserver = new MutationObserver(function() {
+                        observerCount++;
+                        if (observerCount <= MAX_OBSERVATIONS) {
+                            initIcons();
+                        } else {
+                            // ✅ Auto-disconnect setelah batas tercapai
+                            if (iconObserver) {
+                                iconObserver.disconnect();
+                                iconObserver = null;
+                                observerActive = false;
+                            }
+                        }
+                    });
+
                     iconObserver.observe(document.body, {
                         childList: true,
                         subtree: true,
                         attributes: false
                     });
+                    observerActive = true;
+
+                    // ✅ Auto-disconnect setelah 5 detik
+                    setTimeout(function() {
+                        if (iconObserver && observerActive) {
+                            iconObserver.disconnect();
+                            iconObserver = null;
+                            observerActive = false;
+                        }
+                    }, 5000);
+                }
+            });
+
+            // ✅ Cleanup saat page unload
+            window.addEventListener('beforeunload', function() {
+                if (iconObserver) {
+                    iconObserver.disconnect();
+                    iconObserver = null;
+                    observerActive = false;
                 }
             });
         }
