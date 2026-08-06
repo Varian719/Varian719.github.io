@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varian Rhesa · Junior Software Engineer</title>
 
-    <!-- ===== PRELOAD & PRECONNECT ===== -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
-    <link rel="preconnect" href="https://unpkg.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" />
-
     <!-- ===== META TAGS ===== -->
     <meta name="description" content="Portfolio Varian Rhesa - Junior Software Engineer. Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda." />
     <meta name="keywords" content="Varian Rhesa, Junior Software Engineer, Web Development, IoT, AI" />
@@ -34,104 +27,120 @@
     <meta name="twitter:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer." />
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
-    <!-- ===== CRITICAL CSS INLINE ===== -->
+    <!-- ===== TAILWIND CSS ===== -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+
+    <!-- ===== LUCIDE ICONS ===== -->
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+
     <style>
-        /* Critical CSS - dimuat sebelum Tailwind */
-        *,
-        ::before,
-        ::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* ===== FONT ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
         }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         html {
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
         }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #f8faf9;
             color: #0d110d;
-            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .nav-blur {
+            background: rgba(248, 250, 249, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(13, 17, 13, 0.06);
+        }
+
+        /* ===== CARDS ===== */
+        .card-blog {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card-blog:hover {
+            border-color: #0aaf69;
+            box-shadow: 0 8px 30px rgba(10, 175, 105, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .card-blog .card-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-blog .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-blog .card-image .icon-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 3rem;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        body.loaded {
+
+        .card-image:hover .image-overlay {
             opacity: 1;
         }
-        /* Skeleton loading */
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-        .skeleton {
-            background: linear-gradient(90deg, #e8ece8 25%, #f0f2f0 50%, #e8ece8 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }
-        .skeleton-card {
-            height: 300px;
-            border-radius: 16px;
-        }
-        .skeleton-text {
-            height: 14px;
-            margin: 8px 0;
-            border-radius: 4px;
-        }
-        .skeleton-text.short {
-            width: 60%;
-        }
-        .skeleton-text.medium {
-            width: 80%;
-        }
-        /* Fallback jika Tailwind gagal */
-        .fallback-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        .fallback-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        @media (min-width: 640px) {
-            .fallback-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 1024px) {
-            .fallback-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        .fallback-card {
-            background: white;
-            border: 1px solid #e2e8e4;
-            border-radius: 16px;
-            padding: 1.25rem;
-            overflow: hidden;
-        }
-        .fallback-btn {
-            display: inline-block;
-            padding: 0.625rem 1.75rem;
-            border-radius: 9999px;
-            background: #0aaf69;
+
+        .image-overlay button,
+        .image-overlay a {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            transition: background 0.2s;
+            padding: 0.6rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .fallback-btn:hover {
-            background: #06733f;
+
+        .image-overlay button:hover,
+        .image-overlay a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
-        .fallback-tag {
+
+        /* ===== TAGS ===== */
+        .tag {
             display: inline-block;
             padding: 0.2rem 0.8rem;
             border-radius: 9999px;
@@ -140,1403 +149,1309 @@
             background: #f1f5f2;
             color: #2d3d2d;
             border: 1px solid #dce3dd;
-            margin: 0.2rem;
         }
-        .fallback-tag-green {
+
+        .tag-primary {
             background: #e6f7f0;
             color: #06733f;
             border-color: #99dfc3;
         }
-        .fallback-tag-cyan {
+
+        .tag-cyan {
             background: #ecfeff;
             color: #0e7490;
             border-color: #a5f3fc;
         }
-        .fallback-title {
-            font-size: 1.5rem;
+
+        .tag-office {
+            background: #fef3e2;
+            color: #8b5e3c;
+            border-color: #f5d9b8;
+        }
+
+        .tag-google {
+            background: #e8f0fe;
+            color: #1a5a8a;
+            border-color: #c5d8f0;
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider-custom {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0aaf69, #06b6d4, #0aaf69, transparent);
+            opacity: 0.3;
+            width: 100%;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            background: #0aaf69;
+            color: white;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            background: #06733f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 175, 105, 0.25);
+        }
+
+        .btn-outline {
+            border: 1.5px solid #dce3dd;
+            color: #2d3d2d;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: #0aaf69;
+            color: #0aaf69;
+            background: rgba(10, 175, 105, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            border-radius: 9999px;
+        }
+
+        /* ===== SECTION ===== */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #99dfc3;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #66cfa5;
+        }
+
+        .gradient-hero {
+            background: linear-gradient(180deg, #f8faf9 0%, #ffffff 100%);
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h4 {
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #0d110d;
-        }
-        .fallback-subtitle {
-            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             color: #415541;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #e6f7f0;
+            padding-bottom: 0.5rem;
         }
-        .fallback-text {
-            color: #677767;
-            line-height: 1.6;
-        }
-    </style>
 
-    <!-- ===== TAILWIND CDN (dengan fallback) ===== -->
-    <script>
-        window.tailwindCheck = false;
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                if (!window.tailwindCheck) {
-                    document.body.classList.add('tailwind-fallback');
-                    document.body.classList.add('loaded');
-                }
-            }, 3000);
-        });
-    </script>
-    <script src="https://cdn.tailwindcss.com" onload="window.tailwindCheck=true; document.body.classList.add('loaded');">
-    </script>
-    <script src="https://unpkg.com/lucide@latest">
-    </script>
-
-    <!-- ===== FONT (dengan display swap) ===== -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-    </noscript>
-
-    <style>
-        /* ===== LOADING SKELETON ===== */
-        #skeleton-loader {
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
             position: fixed;
             inset: 0;
-            z-index: 99999;
-            background: #f8faf9;
-            display: flex;
-            flex-direction: column;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            transition: opacity 0.5s ease;
-        }
-        #skeleton-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #skeleton-loader .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e2e8e4;
-            border-top-color: #0aaf69;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        #skeleton-loader p {
-            margin-top: 1rem;
-            color: #677767;
-            font-size: 0.875rem;
         }
 
-        /* ===== FALLBACK STYLE ===== */
-        body.tailwind-fallback .tw-hidden {
-            display: none !important;
-        }
-        body.tailwind-fallback .fallback-visible {
-            display: block !important;
-        }
-        .fallback-visible {
-            display: none;
-        }
-
-        /* ===== NAVBAR FALLBACK ===== */
-        .navbar-fallback {
+        .modal-overlay.active {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            background: rgba(248, 250, 249, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(13, 17, 13, 0.06);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-        }
-        .navbar-fallback .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0d110d;
-        }
-        .navbar-fallback .logo span.green {
-            color: #0aaf69;
-        }
-        .navbar-fallback .logo span.cyan {
-            color: #06b6d4;
-        }
-        .navbar-fallback .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.875rem;
-        }
-        .navbar-fallback .nav-links a {
-            color: #415541;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .navbar-fallback .nav-links a:hover {
-            color: #0aaf69;
-        }
-        @media (max-width: 768px) {
-            .navbar-fallback .nav-links {
-                display: none;
-            }
         }
 
-        /* ===== RESPONSIVE FALLBACK ===== */
-        @media (max-width: 640px) {
-            .fallback-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .fallback-title {
-                font-size: 1.25rem !important;
-            }
-            .hero-fallback {
-                flex-direction: column !important;
-                text-align: center !important;
-            }
-            .hero-fallback .hero-text {
-                text-align: center !important;
-            }
-            .hero-fallback .hero-image {
-                margin-top: 1.5rem !important;
-            }
-            .hero-fallback .hero-image img {
-                width: 200px !important;
-                height: 200px !important;
-            }
-        }
-
-        /* ===== TAILWIND CLASSES (fallback jika CDN lambat) ===== */
-        .container-custom {
-            width: 100%;
-            max-width: 1280px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        @media (min-width: 640px) {
-            .container-custom {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .container-custom {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-        }
-        .text-primary-600 {
-            color: #0aaf69;
-        }
-        .text-cyan-500 {
-            color: #06b6d4;
-        }
-        .text-dark-900 {
-            color: #0d110d;
-        }
-        .text-dark-500 {
-            color: #415541;
-        }
-        .text-dark-400 {
-            color: #677767;
-        }
-        .text-dark-600 {
-            color: #344434;
-        }
-        .text-dark-700 {
-            color: #273327;
-        }
-        .text-dark-800 {
-            color: #1a221a;
-        }
-        .bg-dark-50\/30 {
-            background: rgba(240, 242, 240, 0.3);
-        }
-        .bg-dark-50\/50 {
-            background: rgba(240, 242, 240, 0.5);
-        }
-        .bg-white {
-            background: white;
-        }
-        .bg-primary-50 {
-            background: #e6f7f0;
-        }
-        .bg-cyan-50 {
-            background: #ecfeff;
-        }
-        .bg-amber-50 {
-            background: #fef3e2;
-        }
-        .bg-purple-50 {
-            background: #f5f0ff;
-        }
-        .border-dark-100 {
-            border-color: #d9ddd9;
-        }
-        .border-primary-200 {
-            border-color: #99dfc3;
-        }
-        .border-cyan-200 {
-            border-color: #a5f3fc;
-        }
-        .border-amber-200 {
-            border-color: #f5d9b8;
-        }
-        .border-purple-200 {
-            border-color: #d5c5f0;
-        }
-        .rounded-2xl {
-            border-radius: 16px;
-        }
-        .rounded-xl {
+        .modal-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
             border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
-        .rounded-full {
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+        .fade-in-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+        .fade-in-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+        .fade-in-up.delay-4 {
+            transition-delay: 0.4s;
+        }
+        .fade-in-up.delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        .lang-btn {
+            padding: 0.2rem 0.6rem;
             border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #677767;
         }
-        .shadow-lg {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+        .lang-btn:hover {
+            color: #0aaf69;
         }
-        .shadow-sm {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+        .lang-btn.active {
+            background: #0aaf69;
+            color: white;
+            border-color: #0aaf69;
         }
-        .shadow-md {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+        .lang-btn:not(.active):hover {
+            border-color: #dce3dd;
         }
-        .gap-1\.5 {
-            gap: 0.375rem;
+
+        .lang-divider {
+            color: #dce3dd;
+            font-weight: 300;
         }
-        .gap-2 {
-            gap: 0.5rem;
+
+        /* ===== MAP ===== */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e2e8e4;
         }
-        .gap-3 {
-            gap: 0.75rem;
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
-        .gap-4 {
-            gap: 1rem;
+
+        /* ===== PROFILE PHOTO ===== */
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .gap-6 {
-            gap: 1.5rem;
+
+        .profile-photo-wrapper {
+            transition: all 0.4s ease;
         }
-        .gap-8 {
-            gap: 2rem;
+
+        .profile-photo-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(10, 175, 105, 0.15);
         }
-        .gap-10 {
-            gap: 2.5rem;
+
+        /* ===== PROGRESS BARS ===== */
+        .progress-bar-bg {
+            background: #e8ece8;
+            border-radius: 9999px;
+            height: 8px;
+            overflow: hidden;
         }
-        .gap-12 {
-            gap: 3rem;
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #0aaf69, #06b6d4);
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 0;
+        }
+
+        .progress-item.is-visible .progress-bar-fill {
+            width: var(--progress-width);
+        }
+
+        /* ===== WHATSAPP ===== */
+        .text-whatsapp {
+            color: #25D366;
+        }
+        .bg-whatsapp\/10 {
+            background: rgba(37, 211, 102, 0.1);
+        }
+        .border-whatsapp {
+            border-color: #25D366;
+        }
+        .hover\:bg-whatsapp\/20:hover {
+            background: rgba(37, 211, 102, 0.2);
         }
     </style>
+
+    <script>
+        // ============================================================
+        // TAILWIND CONFIG
+        // ============================================================
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f7f0',
+                            100: '#ccefe1',
+                            200: '#99dfc3',
+                            300: '#66cfa5',
+                            400: '#33bf87',
+                            500: '#0aaf69',
+                            600: '#089154',
+                            700: '#06733f',
+                            800: '#04552a',
+                            900: '#023715',
+                            950: '#011e0b',
+                        },
+                        cyan: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                            950: '#083344',
+                        },
+                        dark: {
+                            50: '#f0f2f0',
+                            100: '#d9ddd9',
+                            200: '#b3bbb3',
+                            300: '#8d998d',
+                            400: '#677767',
+                            500: '#415541',
+                            600: '#344434',
+                            700: '#273327',
+                            800: '#1a221a',
+                            900: '#0d110d',
+                            950: '#060806',
+                        },
+                        whatsapp: {
+                            500: '#25D366',
+                            600: '#128C7E',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
 
-    <!-- ===== SKELETON LOADER ===== -->
-    <div id="skeleton-loader">
-        <div class="spinner"></div>
-        <p>Memuat portofolio...</p>
-    </div>
-
     <!-- ============================================================ -->
-    <!-- ===== FALLBACK NAVBAR (jika Tailwind gagal) ===== -->
+    <!-- ===== NAVBAR ===== -->
     <!-- ============================================================ -->
-    <div class="fallback-visible">
-        <nav class="navbar-fallback">
-            <a href="#home" class="logo">
-                <span class="green">V</span>R<span class="cyan">.</span>
-                <span style="font-size:0.65rem;color:#677767;font-family:monospace;background:#f0f2f0;padding:0.1rem 0.5rem;border-radius:9999px;margin-left:0.25rem;">/engineer</span>
-            </a>
-            <div class="nav-links">
-                <a href="#home">Beranda</a>
-                <a href="#about">Tentang</a>
-                <a href="#portfolio">Portofolio</a>
-                <a href="#resume">Resume</a>
-                <a href="#map">Lokasi</a>
-                <a href="#skills">Keahlian</a>
-                <a href="#proficiency">Penguasaan</a>
-                <a href="#experience">Perjalanan</a>
-                <a href="#contact">Kontak</a>
-            </div>
-        </nav>
-        <div style="height:70px;"></div>
-    </div>
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
 
-    <!-- ============================================================ -->
-    <!-- ===== KONTEN UTAMA ===== -->
-    <!-- ============================================================ -->
-    <div class="tw-content">
+                <a href="#home" class="flex items-center gap-2 shrink-0">
+                    <span class="text-2xl font-bold tracking-tight text-dark-900">
+                        <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
+                    </span>
+                    <span class="hidden sm:inline text-xs text-dark-400 font-mono bg-dark-50 px-2 py-0.5 rounded-full">/engineer</span>
+                </a>
 
-        <!-- ========== NAVBAR ========== -->
-        <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
+                    <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_home">Beranda</a>
+                    <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_about">Tentang</a>
+                    <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_portfolio">Portofolio</a>
+                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_resume">Resume</a>
+                    <a href="#map" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_map">Lokasi</a>
+                    <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_skills">Keahlian</a>
+                    <a href="#proficiency" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_proficiency">Penguasaan</a>
+                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_experience">Perjalanan</a>
+                    <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_contact">Kontak</a>
 
-                    <a href="#home" class="flex items-center gap-2 group shrink-0">
-                        <span class="text-2xl font-bold tracking-tight text-dark-900">
-                            <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
-                        </span>
-                        <span class="hidden sm:inline text-xs text-dark-400 font-mono bg-dark-50 px-2 py-0.5 rounded-full">/engineer</span>
-                    </a>
+                    <!-- Language Toggle -->
+                    <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
+                        <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+                    </span>
+                </div>
 
-                    <!-- Desktop Menu -->
-                    <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
-                        <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_home">Beranda</a>
-                        <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_about">Tentang</a>
-                        <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_portfolio">Portofolio</a>
-                        <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_resume">Resume</a>
-                        <a href="#map" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_map">Lokasi</a>
-                        <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_skills">Keahlian</a>
-                        <a href="#proficiency" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_proficiency">Penguasaan</a>
-                        <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_experience">Perjalanan</a>
-                        <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_contact">Kontak</a>
-
-                        <!-- Language Toggle Desktop -->
-                        <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
-                            <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
-                            <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
-                            <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
-                        </span>
-                    </div>
-
-                    <!-- Mobile toggle + Language -->
-                    <div class="md:hidden flex items-center gap-2">
-                        <span class="flex items-center gap-1 text-xs">
-                            <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
-                            <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
-                            <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
-                        </span>
-                        <button id="mobile-menu-btn" class="text-dark-600 hover:text-dark-900 focus:outline-none">
-                            <i data-lucide="menu" class="w-6 h-6"></i>
-                        </button>
-                    </div>
+                <!-- Mobile -->
+                <div class="md:hidden flex items-center gap-2">
+                    <span class="flex items-center gap-1 text-xs">
+                        <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+                    </span>
+                    <button id="mobile-menu-btn" class="text-dark-600 hover:text-dark-900 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
                 </div>
             </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-sm border-b border-dark-100 w-full shadow-sm">
-                <div class="px-4 py-3 space-y-1">
-                    <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_home">Beranda</a>
-                    <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_about">Tentang</a>
-                    <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_portfolio">Portofolio</a>
-                    <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_resume">Resume</a>
-                    <a href="#map" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_map">Lokasi</a>
-                    <a href="#skills" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_skills">Keahlian</a>
-                    <a href="#proficiency" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_proficiency">Penguasaan</a>
-                    <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_experience">Perjalanan</a>
-                    <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_contact">Kontak</a>
-                </div>
-            </div>
-        </nav>
-
-        <!-- ========== IMAGE MODAL ========== -->
-        <div id="imageModal" class="modal-overlay" onclick="closeImageModal(event)">
-            <button class="modal-close" onclick="closeImageModal(event)">✕</button>
-            <img id="modalImage" src="" alt="Preview" onclick="event.stopPropagation()" />
         </div>
 
-        <!-- ========== HERO ========== -->
-        <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-sm border-b border-dark-100 w-full shadow-sm">
+            <div class="px-4 py-3 space-y-1">
+                <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_home">Beranda</a>
+                <a href="#about" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_about">Tentang</a>
+                <a href="#portfolio" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_portfolio">Portofolio</a>
+                <a href="#resume" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_resume">Resume</a>
+                <a href="#map" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_map">Lokasi</a>
+                <a href="#skills" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_skills">Keahlian</a>
+                <a href="#proficiency" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_proficiency">Penguasaan</a>
+                <a href="#experience" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_experience">Perjalanan</a>
+                <a href="#contact" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_contact">Kontak</a>
+            </div>
+        </div>
+    </nav>
 
-                    <div class="fade-in-up text-center lg:text-left">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-900 mb-3 tracking-tight leading-[1.1]">
-                            Varian <span class="text-primary-600">Rhesa</span>
-                        </h1>
-                        <p class="text-lg sm:text-xl text-dark-500 font-medium mb-2" data-i18n="hero_title">Junior Software Engineer</p>
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-2 text-sm text-dark-400 mb-4">
-                            <span class="tag tag-primary" data-i18n="tag_web">Web</span>
-                            <span class="tag tag-cyan" data-i18n="tag_iot">IoT</span>
-                            <span class="tag tag-primary" data-i18n="tag_ai">AI</span>
-                            <span class="tag tag-cyan" data-i18n="tag_robotics">Robotika</span>
+    <!-- ============================================================ -->
+    <!-- ===== IMAGE MODAL ===== -->
+    <!-- ============================================================ -->
+    <div id="imageModal" class="modal-overlay" onclick="closeImageModal(event)">
+        <button class="modal-close" onclick="closeImageModal(event)">✕</button>
+        <img id="modalImage" src="" alt="Preview" onclick="event.stopPropagation()" />
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== HERO ===== -->
+    <!-- ============================================================ -->
+    <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+                <div class="fade-in-up text-center lg:text-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-900 mb-3 tracking-tight leading-[1.1]">
+                        Varian <span class="text-primary-600">Rhesa</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-dark-500 font-medium mb-2" data-i18n="hero_title">Junior Software Engineer</p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 text-sm text-dark-400 mb-4">
+                        <span class="tag tag-primary" data-i18n="tag_web">Web</span>
+                        <span class="tag tag-cyan" data-i18n="tag_iot">IoT</span>
+                        <span class="tag tag-primary" data-i18n="tag_ai">AI</span>
+                        <span class="tag tag-cyan" data-i18n="tag_robotics">Robotika</span>
+                    </div>
+                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm mx-auto lg:mx-0" data-i18n="hero_desc">
+                        Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
+                        Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <a href="#contact" class="px-6 sm:px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
+                            <i data-lucide="mail" class="w-4 h-4"></i> <span data-i18n="btn_contact">Hubungi</span>
+                        </a>
+                        <a href="#portfolio" class="px-6 sm:px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
+                            <i data-lucide="folder-git" class="w-4 h-4"></i> <span data-i18n="btn_works">Lihat Karya</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center fade-in-up delay-2">
+                    <div class="profile-photo-wrapper w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
+                        <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1"
+                        alt="Varian Rhesa"
+                        class="profile-photo"
+                        loading="lazy" />
+                    </div>
+                    <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-primary-500 text-white text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
+                        #Engineer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== PORTFOLIO ===== -->
+    <!-- ============================================================ -->
+    <section id="portfolio" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="portfolio_title">Karya &amp; Sertifikat</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="portfolio_sub">Proyek dan pengakuan yang telah saya raih</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+                <!-- 1. Dicoding -->
+                <div class="card-blog fade-in-up delay-1">
+                    <div class="card-image bg-primary-50">
+                        <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
+                        alt="Sertifikat Dicoding Android Pemula"
+                        loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
                         </div>
-                        <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm mx-auto lg:mx-0" data-i18n="hero_desc">
-                            Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
-                            Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">Dicoding Android Pemula</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="dicoding_desc">Belajar Membuat Aplikasi Android untuk Pemula</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                    </div>
+                </div>
+
+                <!-- 2. CCNA -->
+                <div class="card-blog fade-in-up delay-2">
+                    <div class="card-image bg-cyan-50">
+                        <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
+                        alt="Sertifikat CCNAv7 Cisco"
+                        loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan" data-i18n="certificate">Sertifikat</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">CCNAv7 · Cisco</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="ccna_desc">Switching, Routing, and Wireless Essentials</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                    </div>
+                </div>
+
+                <!-- 3. PWA -->
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="card-image bg-primary-50">
+                        <div class="icon-placeholder">
+                            <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary" data-i18n="project">Proyek</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">PWA Spektrum Monitoring</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="pwa_desc">Firebase · QR Code · AI Chatbot</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 <span data-i18n="placeholder">placeholder</span></p>
+                    </div>
+                </div>
+
+                <!-- 4. IoT Fire -->
+                <div class="card-blog fade-in-up delay-4">
+                    <div class="card-image bg-cyan-50">
+                        <div class="icon-placeholder">
+                            <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan" data-i18n="thesis">Skripsi</span>
+                            <span class="tag tag-primary">📄 <span data-i18n="journal">Jurnal</span></span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">IoT Smart Fire Suppression</h3>
+                        <p class="text-dark-500 text-sm mt-1 leading-relaxed" data-i18n="thesis_desc">
+                            Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5
                         </p>
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                            <a href="#contact" class="px-6 sm:px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
-                                <i data-lucide="mail" class="w-4 h-4"></i> <span data-i18n="btn_contact">Hubungi</span>
+                        <div class="mt-3">
+                            <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771"
+                               target="_blank"
+                               class="inline-flex items-center gap-1.5 btn-primary btn-sm font-medium">
+                                <i data-lucide="external-link" class="w-3 h-3"></i>
+                                <span data-i18n="read_journal">Baca Jurnal</span>
                             </a>
-                            <a href="#portfolio" class="px-6 sm:px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
-                                <i data-lucide="folder-git" class="w-4 h-4"></i> <span data-i18n="btn_works">Lihat Karya</span>
+                        </div>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="journal_published">Jurnal terbit 2026</span></p>
+                    </div>
+                </div>
+
+                <!-- 5. Magang Balmon -->
+                <div class="card-blog fade-in-up delay-5">
+                    <div class="card-image bg-primary-50">
+                        <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
+                        alt="Sertifikat Magang Balai Monitor Spektrum"
+                        loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
                             </a>
                         </div>
                     </div>
-
-                    <div class="relative flex justify-center fade-in-up delay-2">
-                        <div class="profile-photo-wrapper w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
-                            <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1"
-                            alt="Varian Rhesa"
-                            class="profile-photo"
-                            loading="lazy"
-                            decoding="async" />
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
+                            <span class="tag tag-cyan" data-i18n="internship">Magang</span>
                         </div>
-                        <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-primary-500 text-white text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
-                            #Engineer
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="balmon_title">Magang Balmon Samarinda</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="balmon_desc">Full Stack Developer · PWA · Firebase</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                    </div>
+                </div>
+
+                <!-- 6. Robot KRC -->
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="card-image bg-cyan-50">
+                        <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
+                        alt="Sertifikat Juara 3 Kontes Robot Cerdas"
+                        loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-cyan" data-i18n="project">Proyek</span>
+                            <span class="tag tag-primary">🏆 <span data-i18n="champion">Juara 3</span></span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="krc_title">Robot Cerdas · KRC 2023</h3>
+                        <p class="text-dark-500 text-sm mt-1" data-i18n="krc_desc">Algoritma navigasi, logika cerdas</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== RESUME ===== -->
+    <!-- ============================================================ -->
+    <section id="resume" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
+                <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
+                    <img src="https://lh3.googleusercontent.com/d/1Li3fXIX6zRV-Qhv_J89dMoeu9MDnopS9"
+                         alt="Resume Varian Rhesa"
+                         class="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain bg-white"
+                         loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-4 sm:pb-6 opacity-0 hover:opacity-100 transition-opacity">
+                        <span class="bg-dark-900/70 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
+                            <i data-lucide="maximize" class="w-3 h-3 sm:w-4 sm:h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="p-4 sm:p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
+                    <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')"
+                            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-primary font-medium text-xs sm:text-sm">
+                        <i data-lucide="maximize" class="w-4 h-4"></i>
+                        <span data-i18n="fullscreen">Layar Penuh</span>
+                    </button>
+                    <a href="https://drive.google.com/uc?export=download&id=1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
+                       download="Resume_Varian_Rhesa.jpg"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-outline font-medium text-xs sm:text-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        ⬇️ <span data-i18n="download">Unduh Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== MAP ===== -->
+    <!-- ============================================================ -->
+    <section id="map" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="map_title">📍 Lokasi Saya</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="map_desc">Temukan saya di Samarinda — klik peta untuk petunjuk arah</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
+                    <div class="bg-dark-50/50 rounded-xl p-5 sm:p-6 border border-dark-100">
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="map-pin" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark-900" data-i18n="address_title">Alamat</h4>
+                                <p class="text-dark-600 text-sm" data-i18n="address">
+                                    Perum Bumi Sambutan Asri<br />
+                                    Blok K1 No 21<br />
+                                    Samarinda, Kalimantan Timur
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                <i data-lucide="compass" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark-900" data-i18n="coordinates_title">Koordinat</h4>
+                                <p class="text-dark-600 text-sm font-mono">-0.500647, 117.185105</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-dark-100">
+                            <a href="https://www.google.com/maps?q=-0.500647,117.185105"
+                               target="_blank"
+                               class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span data-i18n="open_maps">Buka di Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-dark-50/30 rounded-xl p-4 border border-dark-100">
+                        <p class="text-xs text-dark-400 text-center">
+                            <span data-i18n="map_note">📍 Gunakan peta di samping untuk melihat lokasi persis saya</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 fade-in-up delay-2">
+                    <div class="map-container shadow-md">
+                        <iframe
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=-0.500647,117.185105&zoom=17&maptype=roadmap"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Lokasi Varian Rhesa">
+                        </iframe>
+                    </div>
+                    <p class="text-xs text-dark-400 text-center mt-3 font-mono break-all">
+                        📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== SKILLS ===== -->
+    <!-- ============================================================ -->
+    <section id="skills" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="skills_sub">Teknologi, alat, dan keterampilan yang saya kuasai</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+                <div class="card-blog fade-in-up delay-1">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="code-2" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Programming</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag tag-primary">Dart</span>
+                            <span class="tag">Visual Basic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-blog fade-in-up delay-2">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                <i data-lucide="smartphone" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Web &amp; Mobile</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag tag-cyan">REST API</span>
+                            <span class="tag tag-primary">PWA</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Cloudflare Pages</span>
+                            <span class="tag tag-cyan">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="cpu" class="text-primary-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">IoT &amp; Hardware</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Arduino IDE</span>
+                            <span class="tag tag-cyan">ESP32</span>
+                            <span class="tag">Microcontroller C++</span>
+                            <span class="tag tag-primary">Robotika</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-blog fade-in-up delay-4">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                <i data-lucide="terminal" class="text-cyan-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Tools &amp; DevOps</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">Git/GitHub</span>
+                            <span class="tag">Linux CLI</span>
+                            <span class="tag tag-primary">VS Code</span>
+                            <span class="tag tag-cyan">Android Studio</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Cloudflare Workers</span>
+                            <span class="tag">Sublime Text</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-blog fade-in-up delay-5">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center">
+                                <i data-lucide="file-text" class="text-amber-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Office &amp; Productivity</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-office">📄 MS Word</span>
+                            <span class="tag tag-office">📊 MS Excel</span>
+                            <span class="tag tag-office">📽️ MS PowerPoint</span>
+                            <span class="tag tag-google">📝 Google Docs</span>
+                            <span class="tag tag-google">📊 Google Sheets</span>
+                            <span class="tag tag-google">📽️ Google Slides</span>
+                            <span class="tag tag-google">🧪 Google Colab</span>
+                            <span class="tag tag-google">☁️ Google Drive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center">
+                                <i data-lucide="database" class="text-purple-600 w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-semibold text-dark-800">Database &amp; Cloud</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Firebase</span>
+                            <span class="tag tag-cyan">Cloudflare Workers</span>
+                            <span class="tag tag-cyan">Cloudflare Pages</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== PROFICIENCY ===== -->
+    <!-- ============================================================ -->
+    <section id="proficiency" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="proficiency_title">📊 Penguasaan Teknologi</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="proficiency_sub">Tingkat kemampuan saya dalam berbagai teknologi</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 lg:gap-x-10 gap-y-4 sm:gap-y-5 max-w-4xl mx-auto">
+
+                <div class="fade-in-up delay-1 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>🐍 Python</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-2 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>💻 JavaScript</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-3 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>⚙️ Arduino</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-4 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>🔧 Git</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-2 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>➕ C++</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-3 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>🐘 PHP</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-4 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>☕ Java</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-5 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>🎯 Dart</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-3 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>🐧 Linux</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="fade-in-up delay-4 progress-item">
+                    <div class="flex justify-between text-sm font-medium text-dark-700">
+                        <span>📱 Flutter</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-bar-bg mt-1">
+                        <div class="progress-bar-fill" style="--progress-width: 65%; width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== ABOUT ===== -->
+    <!-- ============================================================ -->
+    <section id="about" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <div class="lg:col-span-2 fade-in-up">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
+                    <div class="divider-custom max-w-xs mb-5"></div>
+                    <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
+                        <p data-i18n="about_p1">Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.</p>
+                        <p data-i18n="about_p2">Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.</p>
+                        <p data-i18n="about_p3">Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).</p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag tag-primary">Java</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag tag-cyan">IoT</span>
+                            <span class="tag tag-office">MS Office</span>
+                            <span class="tag tag-google">Google Workspace</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 sm:mt-8 bg-white rounded-xl border border-dark-100 p-4 sm:p-5 fade-in-up delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                <i data-lucide="award" class="text-primary-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="inline-block px-2 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-medium mb-1">2023</div>
+                                <h4 class="font-semibold text-dark-900" data-i18n="achievement_title">Juara 3 Kontes Robot Cerdas</h4>
+                                <p class="text-dark-500 text-sm" data-i18n="achievement_loc">Provinsi Kalimantan Timur</p>
+                                <p class="text-dark-500 text-sm mt-1" data-i18n="achievement_desc">Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6 fade-in-up delay-3">
+                    <div class="sidebar-card">
+                        <h4 data-i18n="profile">Profil</h4>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-200">
+                                <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" alt="Varian Rhesa" class="w-full h-full object-cover" loading="lazy" />
+                            </div>
+                            <div>
+                                <p class="font-semibold text-dark-900">Varian Rhesa</p>
+                                <p class="text-xs text-dark-500" data-i18n="hero_title">Junior Software Engineer</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-sm text-dark-600">
+                            <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i> <span data-i18n="location">Samarinda, Kaltim</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i> <span data-i18n="education_short">D4 TRK · Politeknik Negeri Samarinda</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i> <span data-i18n="experience_short">Intern @ Balai Monitor Spektrum</span></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4 data-i18n="languages">Bahasa</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag tag-primary">🇮🇩 <span data-i18n="lang_id">Indonesia</span></span>
+                            <span class="tag tag-cyan">🇬🇧 <span data-i18n="lang_en">English B2</span></span>
+                            <span class="tag">🇨🇳 <span data-i18n="lang_zh">Mandarin HSK1</span></span>
+                        </div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4 data-i18n="certifications">Sertifikasi</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag tag-primary">📱 <span data-i18n="cert_dicoding">Dicoding Android</span></span>
+                            <span class="tag tag-cyan">🌐 <span data-i18n="cert_ccna">CCNAv7 Cisco</span></span>
+                        </div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4 data-i18n="skills">Keahlian</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-primary">Python</span>
+                            <span class="tag tag-cyan">C++</span>
+                            <span class="tag tag-primary">Java</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag tag-primary">Dart</span>
+                            <span class="tag tag-cyan">Flutter</span>
+                            <span class="tag">Git</span>
+                            <span class="tag tag-primary">Linux</span>
+                            <span class="tag tag-office">MS Office</span>
+                            <span class="tag tag-google">Google Workspace</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>📊 Office Tools</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag tag-office">Word</span>
+                            <span class="tag tag-office">Excel</span>
+                            <span class="tag tag-office">PowerPoint</span>
+                            <span class="tag tag-google">Docs</span>
+                            <span class="tag tag-google">Sheets</span>
+                            <span class="tag tag-google">Slides</span>
+                            <span class="tag tag-google">Colab</span>
+                            <span class="tag tag-google">Drive</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ========== PORTFOLIO ========== -->
-        <section id="portfolio" class="py-12 sm:py-16 bg-white border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="portfolio_title">Karya &amp; Sertifikat</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                    <p class="text-dark-400 text-sm mt-3" data-i18n="portfolio_sub">Proyek dan pengakuan yang telah saya raih</p>
+    <!-- ============================================================ -->
+    <!-- ===== EXPERIENCE ===== -->
+    <!-- ============================================================ -->
+    <section id="experience" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
+                <div class="divider-custom max-w-xs mx-auto mt-3"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+
+                <div class="fade-in-up delay-1">
+                    <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                        <i data-lucide="book-open" class="text-primary-600 w-5 h-5"></i>
+                        <span data-i18n="education">Pendidikan</span>
+                    </h3>
+                    <div class="space-y-0 border-l-2 border-primary-200 ml-3">
+                        <div class="relative pl-6 sm:pl-8 pb-8">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — Sekarang</div>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
+                            <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer</div>
+                            <p class="text-xs text-dark-400 mt-1"><span data-i18n="thesis">Skripsi</span>: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771" target="_blank" class="text-primary-600 hover:underline break-words"><span data-i18n="thesis_title">Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5</span></a></p>
+                        </div>
+                        <div class="relative pl-6 sm:pl-8 pb-4">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_smk_date">2019 — 2022</div>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_smk_name">SMK Negeri 7 Samarinda</h4>
+                            <div class="text-sm text-dark-500" data-i18n="edu_smk_major">Rekayasa Perangkat Lunak</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-
-                    <!-- 1. Dicoding -->
-                    <div class="card-blog fade-in-up delay-1">
-                        <div class="card-image bg-primary-50">
-                            <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
-                            alt="Sertifikat Dicoding Android Pemula"
-                            loading="lazy"
-                            decoding="async" />
-                            <div class="image-overlay">
-                                <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv')" title="Fullscreen">
-                                    <i data-lucide="maximize" class="w-5 h-5"></i>
-                                </button>
-                                <a href="https://drive.google.com/uc?export=download&id=1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv" download title="Download">
-                                    <i data-lucide="download" class="w-5 h-5"></i>
-                                </a>
-                            </div>
+                <div class="fade-in-up delay-2">
+                    <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                        <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
+                        <span data-i18n="experience">Pengalaman</span>
+                    </h3>
+                    <div class="space-y-0 border-l-2 border-cyan-200 ml-3">
+                        <div class="relative pl-6 sm:pl-8 pb-8">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_balmon_date">Feb 2026 — Mei 2026</div>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_balmon_name">Balai Monitor Spektrum Frekuensi Radio</h4>
+                            <div class="text-sm text-dark-500" data-i18n="exp_balmon_role">Intern · Full Stack Developer</div>
+                            <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside">
+                                <li data-i18n="exp_balmon_li1">PWA + Firebase Realtime Database</li>
+                                <li data-i18n="exp_balmon_li2">Admin Dashboard · QR Code System</li>
+                                <li data-i18n="exp_balmon_li3">AI Chatbot (Llama API) · Cloudflare Pages</li>
+                            </ul>
                         </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg">Dicoding Android Pemula</h3>
-                            <p class="text-dark-500 text-sm mt-1" data-i18n="dicoding_desc">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                        <div class="relative pl-6 sm:pl-8 pb-4">
+                            <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_itb_date">2020</div>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_itb_name">PPTIK ITB · Online Internship</h4>
+                            <div class="text-sm text-dark-500" data-i18n="exp_itb_role">Magang Industri &amp; Pengembangan Software</div>
                         </div>
                     </div>
-
-                    <!-- 2. CCNA -->
-                    <div class="card-blog fade-in-up delay-2">
-                        <div class="card-image bg-cyan-50">
-                            <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
-                            alt="Sertifikat CCNAv7 Cisco"
-                            loading="lazy"
-                            decoding="async" />
-                            <div class="image-overlay">
-                                <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J')" title="Fullscreen">
-                                    <i data-lucide="maximize" class="w-5 h-5"></i>
-                                </button>
-                                <a href="https://drive.google.com/uc?export=download&id=1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J" download title="Download">
-                                    <i data-lucide="download" class="w-5 h-5"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-cyan" data-i18n="certificate">Sertifikat</span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg">CCNAv7 · Cisco</h3>
-                            <p class="text-dark-500 text-sm mt-1" data-i18n="ccna_desc">Switching, Routing, and Wireless Essentials</p>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
-                        </div>
-                    </div>
-
-                    <!-- 3. PWA (ikon) -->
-                    <div class="card-blog fade-in-up delay-3">
-                        <div class="card-image bg-primary-50">
-                            <div class="icon-placeholder">
-                                <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
-                            </div>
-                        </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-primary" data-i18n="project">Proyek</span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg">PWA Spektrum Monitoring</h3>
-                            <p class="text-dark-500 text-sm mt-1" data-i18n="pwa_desc">Firebase · QR Code · AI Chatbot</p>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">🔧 <span data-i18n="placeholder">placeholder</span></p>
-                        </div>
-                    </div>
-
-                    <!-- 4. IoT Fire + Jurnal -->
-                    <div class="card-blog fade-in-up delay-4">
-                        <div class="card-image bg-cyan-50">
-                            <div class="icon-placeholder">
-                                <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
-                            </div>
-                        </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-cyan" data-i18n="thesis">Skripsi</span>
-                                <span class="tag tag-primary">📄 <span data-i18n="journal">Jurnal</span></span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg">IoT Smart Fire Suppression</h3>
-                            <p class="text-dark-500 text-sm mt-1 leading-relaxed" data-i18n="thesis_desc">
-                                Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5
-                            </p>
-                            <div class="mt-3">
-                                <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771"
-                                   target="_blank"
-                                   class="inline-flex items-center gap-1.5 btn-primary btn-sm font-medium">
-                                    <i data-lucide="external-link" class="w-3 h-3"></i>
-                                    <span data-i18n="read_journal">Baca Jurnal</span>
-                                </a>
-                            </div>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="journal_published">Jurnal terbit 2026</span></p>
-                        </div>
-                    </div>
-
-                    <!-- 5. Magang Balmon -->
-                    <div class="card-blog fade-in-up delay-5">
-                        <div class="card-image bg-primary-50">
-                            <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
-                            alt="Sertifikat Magang Balai Monitor Spektrum"
-                            loading="lazy"
-                            decoding="async" />
-                            <div class="image-overlay">
-                                <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6')" title="Fullscreen">
-                                    <i data-lucide="maximize" class="w-5 h-5"></i>
-                                </button>
-                                <a href="https://drive.google.com/uc?export=download&id=1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6" download title="Download">
-                                    <i data-lucide="download" class="w-5 h-5"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
-                                <span class="tag tag-cyan" data-i18n="internship">Magang</span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="balmon_title">Magang Balmon Samarinda</h3>
-                            <p class="text-dark-500 text-sm mt-1" data-i18n="balmon_desc">Full Stack Developer · PWA · Firebase</p>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
-                        </div>
-                    </div>
-
-                    <!-- 6. Robot KRC -->
-                    <div class="card-blog fade-in-up delay-3">
-                        <div class="card-image bg-cyan-50">
-                            <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
-                            alt="Sertifikat Juara 3 Kontes Robot Cerdas"
-                            loading="lazy"
-                            decoding="async" />
-                            <div class="image-overlay">
-                                <button onclick="openImageModal('https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR')" title="Fullscreen">
-                                    <i data-lucide="maximize" class="w-5 h-5"></i>
-                                </button>
-                                <a href="https://drive.google.com/uc?export=download&id=14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR" download title="Download">
-                                    <i data-lucide="download" class="w-5 h-5"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="tag tag-cyan" data-i18n="project">Proyek</span>
-                                <span class="tag tag-primary">🏆 <span data-i18n="champion">Juara 3</span></span>
-                            </div>
-                            <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="krc_title">Robot Cerdas · KRC 2023</h3>
-                            <p class="text-dark-500 text-sm mt-1" data-i18n="krc_desc">Algoritma navigasi, logika cerdas</p>
-                            <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ========== RESUME / CV ========== -->
-        <section id="resume" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                    <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
+    <!-- ============================================================ -->
+    <!-- ===== CONTACT ===== -->
+    <!-- ============================================================ -->
+    <section id="contact" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-3" data-i18n="contact_title">Mari Terhubung</h2>
+                <div class="divider-custom max-w-xs mx-auto mb-6"></div>
+                <p class="text-dark-400 text-sm mb-8" data-i18n="contact_desc">Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
+
+                <div class="lg:col-span-3 fade-in-up delay-1">
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6 md:p-8">
+                        <h3 class="text-lg sm:text-xl font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="edit-3" class="text-primary-500 w-5 h-5"></i>
+                            <span data-i18n="form_title">Kirim Pesan</span>
+                        </h3>
+                        <form action="https://formsubmit.co/rhesa719@gmail.com" method="POST" class="space-y-4">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://varian719.github.io/">
+                            <input type="hidden" name="_subject" value="Pesan dari Portofolio Varian Rhesa">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_name">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_email">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_subject">Subjek</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_message">Pesan</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30"></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary font-medium text-sm py-3 rounded-xl flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span data-i18n="form_send">Kirim Pesan</span>
+                            </button>
+                            <p class="text-xs text-dark-400 text-center mt-2" data-i18n="form_note">🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.</p>
+                        </form>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
-                    <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
-                        <img src="https://lh3.googleusercontent.com/d/1Li3fXIX6zRV-Qhv_J89dMoeu9MDnopS9"
-                             alt="Resume Varian Rhesa"
-                             class="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain bg-white"
-                             loading="lazy"
-                             decoding="async" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-4 sm:pb-6 opacity-0 hover:opacity-100 transition-opacity">
-                            <span class="bg-dark-900/70 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
-                                <i data-lucide="maximize" class="w-3 h-3 sm:w-4 sm:h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
-                            </span>
+                <div class="lg:col-span-2 space-y-5 fade-in-up delay-2">
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
+                        <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="contact_direct">Hubungi Langsung</h4>
+                        <div class="space-y-3">
+                            <a href="mailto:rhesa719@gmail.com" class="flex items-center gap-3 text-dark-600 hover:text-primary-600 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                                    <i data-lucide="mail" class="text-primary-500 w-4 h-4"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs text-dark-400">Email</p>
+                                    <p class="text-sm font-medium break-all">rhesa719@gmail.com</p>
+                                </div>
+                            </a>
+                            <a href="tel:+6289519628044" class="flex items-center gap-3 text-dark-600 hover:text-cyan-600 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
+                                    <i data-lucide="phone" class="text-cyan-500 w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-dark-400" data-i18n="phone">Telepon</p>
+                                    <p class="text-sm font-medium">0895-1962-8044</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="p-4 sm:p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
-                        <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')"
-                                class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-primary font-medium text-xs sm:text-sm">
-                            <i data-lucide="maximize" class="w-4 h-4"></i>
-                            <span data-i18n="fullscreen">Layar Penuh</span>
-                        </button>
-                        <a href="https://drive.google.com/uc?export=download&id=1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
-                           download="Resume_Varian_Rhesa.jpg"
-                           target="_blank"
-                           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-outline font-medium text-xs sm:text-sm">
-                            <i data-lucide="download" class="w-4 h-4"></i>
-                            ⬇️ <span data-i18n="download">Unduh Resume</span>
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
+                        <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="social_media">Media Sosial</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank" class="flex-1 min-w-[70px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
+                                <i data-lucide="linkedin" class="text-cyan-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
+                                <p class="text-xs text-dark-500 mt-1">LinkedIn</p>
+                            </a>
+                            <a href="https://github.com/Varian719" target="_blank" class="flex-1 min-w-[70px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
+                                <i data-lucide="github" class="text-dark-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
+                                <p class="text-xs text-dark-500 mt-1">GitHub</p>
+                            </a>
+                            <a href="https://wa.me/6289519628044" target="_blank" class="flex-1 min-w-[70px] bg-whatsapp/10 border border-whatsapp rounded-xl p-3 text-center hover:bg-whatsapp/20 transition-colors group">
+                                <i data-lucide="message-circle" class="text-whatsapp w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
+                                <p class="text-xs text-dark-500 mt-1">WhatsApp</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <a href="mailto:rhesa719@gmail.com?subject=Kolaborasi%20Proyek" class="btn-primary text-sm px-4 py-2 rounded-full flex items-center gap-1.5">
+                            <i data-lucide="send" class="w-3.5 h-3.5"></i> Email
+                        </a>
+                        <a href="https://wa.me/6289519628044" target="_blank" class="btn-outline text-sm px-4 py-2 rounded-full flex items-center gap-1.5 border-whatsapp text-whatsapp hover:bg-whatsapp/10 hover:border-whatsapp">
+                            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- ========== MAP ========== -->
-        <section id="map" class="py-12 sm:py-16 bg-white border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="map_title">📍 Lokasi Saya</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                    <p class="text-dark-400 text-sm mt-3" data-i18n="map_desc">Temukan saya di Samarinda — klik peta untuk petunjuk arah</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-
-                    <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
-                        <div class="bg-dark-50/50 rounded-xl p-5 sm:p-6 border border-dark-100">
-                            <div class="flex items-start gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
-                                    <i data-lucide="map-pin" class="text-primary-600 w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-dark-900" data-i18n="address_title">Alamat</h4>
-                                    <p class="text-dark-600 text-sm" data-i18n="address">
-                                        Perum Bumi Sambutan Asri<br />
-                                        Blok K1 No 21<br />
-                                        Samarinda, Kalimantan Timur
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center flex-shrink-0">
-                                    <i data-lucide="compass" class="text-cyan-600 w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-dark-900" data-i18n="coordinates_title">Koordinat</h4>
-                                    <p class="text-dark-600 text-sm font-mono">-0.500647, 117.185105</p>
-                                </div>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-dark-100">
-                                <a href="https://www.google.com/maps?q=-0.500647,117.185105"
-                                   target="_blank"
-                                   class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
-                                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    <span data-i18n="open_maps">Buka di Google Maps</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="bg-dark-50/30 rounded-xl p-4 border border-dark-100">
-                            <p class="text-xs text-dark-400 text-center">
-                                <span data-i18n="map_note">📍 Gunakan peta di samping untuk melihat lokasi persis saya</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-2 fade-in-up delay-2">
-                        <div class="map-container shadow-md">
-                            <iframe
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=-0.500647,117.185105&zoom=17&maptype=roadmap"
-                                allowfullscreen
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Lokasi Varian Rhesa">
-                            </iframe>
-                        </div>
-                        <p class="text-xs text-dark-400 text-center mt-3 font-mono break-all">
-                            📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== SKILLS ========== -->
-        <section id="skills" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                    <p class="text-dark-400 text-sm mt-3" data-i18n="skills_sub">Teknologi, alat, dan keterampilan yang saya kuasai</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    <!-- Skills cards -->
-                    <div class="card-blog fade-in-up delay-1">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
-                                    <i data-lucide="code-2" class="text-primary-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">Programming</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-primary">Python</span>
-                                <span class="tag">Java</span>
-                                <span class="tag tag-cyan">C++</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">PHP</span>
-                                <span class="tag tag-primary">Dart</span>
-                                <span class="tag">Visual Basic</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-blog fade-in-up delay-2">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                                    <i data-lucide="smartphone" class="text-cyan-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">Web &amp; Mobile</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag">HTML/CSS</span>
-                                <span class="tag">Bootstrap</span>
-                                <span class="tag tag-cyan">REST API</span>
-                                <span class="tag tag-primary">PWA</span>
-                                <span class="tag">Flutter</span>
-                                <span class="tag">Cloudflare Pages</span>
-                                <span class="tag tag-cyan">Firebase</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-blog fade-in-up delay-3">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
-                                    <i data-lucide="cpu" class="text-primary-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">IoT &amp; Hardware</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-primary">Arduino IDE</span>
-                                <span class="tag tag-cyan">ESP32</span>
-                                <span class="tag">Microcontroller C++</span>
-                                <span class="tag tag-primary">Robotika</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-blog fade-in-up delay-4">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-                                    <i data-lucide="terminal" class="text-cyan-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">Tools &amp; DevOps</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag">Git/GitHub</span>
-                                <span class="tag">Linux CLI</span>
-                                <span class="tag tag-primary">VS Code</span>
-                                <span class="tag tag-cyan">Android Studio</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">Cloudflare Workers</span>
-                                <span class="tag">Sublime Text</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-blog fade-in-up delay-5">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center">
-                                    <i data-lucide="file-text" class="text-amber-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">Office &amp; Productivity</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-office">📄 MS Word</span>
-                                <span class="tag tag-office">📊 MS Excel</span>
-                                <span class="tag tag-office">📽️ MS PowerPoint</span>
-                                <span class="tag tag-google">📝 Google Docs</span>
-                                <span class="tag tag-google">📊 Google Sheets</span>
-                                <span class="tag tag-google">📽️ Google Slides</span>
-                                <span class="tag tag-google">🧪 Google Colab</span>
-                                <span class="tag tag-google">☁️ Google Drive</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-blog fade-in-up delay-3">
-                        <div class="p-4 sm:p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center">
-                                    <i data-lucide="database" class="text-purple-600 w-5 h-5"></i>
-                                </div>
-                                <h3 class="font-semibold text-dark-800">Database &amp; Cloud</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-primary">Firebase</span>
-                                <span class="tag tag-cyan">Cloudflare Workers</span>
-                                <span class="tag tag-cyan">Cloudflare Pages</span>
-                                <span class="tag">REST API</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== PROFICIENCY ========== -->
-        <section id="proficiency" class="py-12 sm:py-16 bg-white border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="proficiency_title">📊 Penguasaan Teknologi</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                    <p class="text-dark-400 text-sm mt-3" data-i18n="proficiency_sub">Tingkat kemampuan saya dalam berbagai teknologi</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 lg:gap-x-10 gap-y-4 sm:gap-y-5 max-w-4xl mx-auto">
-                    <!-- Progress bars -->
-                    <div class="fade-in-up delay-1 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>🐍 Python</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-2 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>💻 JavaScript</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-3 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>⚙️ Arduino</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-4 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>🔧 Git</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-2 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>➕ C++</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-3 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>🐘 PHP</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-4 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>☕ Java</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-5 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>🎯 Dart</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-3 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>🐧 Linux</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="fade-in-up delay-4 progress-item">
-                        <div class="flex justify-between text-sm font-medium text-dark-700">
-                            <span>📱 Flutter</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="progress-bar-bg mt-1">
-                            <div class="progress-bar-fill" style="--progress-width: 65%; width: 0%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== ABOUT ========== -->
-        <section id="about" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 fade-in-up">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
-                        <div class="divider-custom max-w-xs mb-5"></div>
-                        <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
-                            <p data-i18n="about_p1">Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.</p>
-                            <p data-i18n="about_p2">Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.</p>
-                            <p data-i18n="about_p3">Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="tag tag-primary">Python</span>
-                                <span class="tag tag-cyan">C++</span>
-                                <span class="tag tag-primary">Java</span>
-                                <span class="tag">Flutter</span>
-                                <span class="tag tag-cyan">IoT</span>
-                                <span class="tag tag-office">MS Office</span>
-                                <span class="tag tag-google">Google Workspace</span>
-                            </div>
-                        </div>
-                        <div class="mt-6 sm:mt-8 bg-white rounded-xl border border-dark-100 p-4 sm:p-5 fade-in-up delay-2">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
-                                    <i data-lucide="award" class="text-primary-600 w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <div class="inline-block px-2 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-medium mb-1">2023</div>
-                                    <h4 class="font-semibold text-dark-900" data-i18n="achievement_title">Juara 3 Kontes Robot Cerdas</h4>
-                                    <p class="text-dark-500 text-sm" data-i18n="achievement_loc">Provinsi Kalimantan Timur</p>
-                                    <p class="text-dark-500 text-sm mt-1" data-i18n="achievement_desc">Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar -->
-                    <div class="space-y-6 fade-in-up delay-3">
-                        <div class="sidebar-card">
-                            <h4 data-i18n="profile">Profil</h4>
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-200 flex-shrink-0">
-                                    <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" alt="Varian Rhesa" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-dark-900">Varian Rhesa</p>
-                                    <p class="text-xs text-dark-500" data-i18n="hero_title">Junior Software Engineer</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-dark-600">
-                                <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i> <span data-i18n="location">Samarinda, Kaltim</span></li>
-                                <li class="flex items-center gap-2"><i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i> <span data-i18n="education_short">D4 TRK · Politeknik Negeri Samarinda</span></li>
-                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i> <span data-i18n="experience_short">Intern @ Balai Monitor Spektrum</span></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-card">
-                            <h4 data-i18n="languages">Bahasa</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag tag-primary">🇮🇩 <span data-i18n="lang_id">Indonesia</span></span>
-                                <span class="tag tag-cyan">🇬🇧 <span data-i18n="lang_en">English B2</span></span>
-                                <span class="tag">🇨🇳 <span data-i18n="lang_zh">Mandarin HSK1</span></span>
-                            </div>
-                        </div>
-                        <div class="sidebar-card">
-                            <h4 data-i18n="certifications">Sertifikasi</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag tag-primary">📱 <span data-i18n="cert_dicoding">Dicoding Android</span></span>
-                                <span class="tag tag-cyan">🌐 <span data-i18n="cert_ccna">CCNAv7 Cisco</span></span>
-                            </div>
-                        </div>
-                        <div class="sidebar-card">
-                            <h4 data-i18n="skills">Keahlian</h4>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-primary">Python</span>
-                                <span class="tag tag-cyan">C++</span>
-                                <span class="tag tag-primary">Java</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">PHP</span>
-                                <span class="tag tag-primary">Dart</span>
-                                <span class="tag tag-cyan">Flutter</span>
-                                <span class="tag">Git</span>
-                                <span class="tag tag-primary">Linux</span>
-                                <span class="tag tag-office">MS Office</span>
-                                <span class="tag tag-google">Google Workspace</span>
-                            </div>
-                        </div>
-                        <div class="sidebar-card">
-                            <h4>📊 Office Tools</h4>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="tag tag-office">Word</span>
-                                <span class="tag tag-office">Excel</span>
-                                <span class="tag tag-office">PowerPoint</span>
-                                <span class="tag tag-google">Docs</span>
-                                <span class="tag tag-google">Sheets</span>
-                                <span class="tag tag-google">Slides</span>
-                                <span class="tag tag-google">Colab</span>
-                                <span class="tag tag-google">Drive</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== EXPERIENCE ========== -->
-        <section id="experience" class="py-12 sm:py-16 bg-white border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
-                    <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                    <!-- Pendidikan -->
-                    <div class="fade-in-up delay-1">
-                        <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
-                            <i data-lucide="book-open" class="text-primary-600 w-5 h-5"></i>
-                            <span data-i18n="education">Pendidikan</span>
-                        </h3>
-                        <div class="space-y-0 border-l-2 border-primary-200 ml-3">
-                            <div class="relative pl-6 sm:pl-8 pb-8">
-                                <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
-                                <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — Sekarang</div>
-                                <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
-                                <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer</div>
-                                <p class="text-xs text-dark-400 mt-1"><span data-i18n="thesis">Skripsi</span>: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771" target="_blank" class="text-primary-600 hover:underline break-words"><span data-i18n="thesis_title">Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5</span></a></p>
-                            </div>
-                            <div class="relative pl-6 sm:pl-8 pb-4">
-                                <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
-                                <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_smk_date">2019 — 2022</div>
-                                <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_smk_name">SMK Negeri 7 Samarinda</h4>
-                                <div class="text-sm text-dark-500" data-i18n="edu_smk_major">Rekayasa Perangkat Lunak</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pengalaman -->
-                    <div class="fade-in-up delay-2">
-                        <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
-                            <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
-                            <span data-i18n="experience">Pengalaman</span>
-                        </h3>
-                        <div class="space-y-0 border-l-2 border-cyan-200 ml-3">
-                            <div class="relative pl-6 sm:pl-8 pb-8">
-                                <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                                <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_balmon_date">Feb 2026 — Mei 2026</div>
-                                <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_balmon_name">Balai Monitor Spektrum Frekuensi Radio</h4>
-                                <div class="text-sm text-dark-500" data-i18n="exp_balmon_role">Intern · Full Stack Developer</div>
-                                <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside">
-                                    <li data-i18n="exp_balmon_li1">PWA + Firebase Realtime Database</li>
-                                    <li data-i18n="exp_balmon_li2">Admin Dashboard · QR Code System</li>
-                                    <li data-i18n="exp_balmon_li3">AI Chatbot (Llama API) · Cloudflare Pages</li>
-                                </ul>
-                            </div>
-                            <div class="relative pl-6 sm:pl-8 pb-4">
-                                <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
-                                <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_itb_date">2020</div>
-                                <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_itb_name">PPTIK ITB · Online Internship</h4>
-                                <div class="text-sm text-dark-500" data-i18n="exp_itb_role">Magang Industri &amp; Pengembangan Software</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== CONTACT ========== -->
-        <section id="contact" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-10 fade-in-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-3" data-i18n="contact_title">Mari Terhubung</h2>
-                    <div class="divider-custom max-w-xs mx-auto mb-6"></div>
-                    <p class="text-dark-400 text-sm mb-8" data-i18n="contact_desc">Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
-                    <!-- Form -->
-                    <div class="lg:col-span-3 fade-in-up delay-1">
-                        <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6 md:p-8">
-                            <h3 class="text-lg sm:text-xl font-semibold text-dark-900 mb-4 flex items-center gap-2">
-                                <i data-lucide="edit-3" class="text-primary-500 w-5 h-5"></i>
-                                <span data-i18n="form_title">Kirim Pesan</span>
-                            </h3>
-                            <form action="https://formsubmit.co/rhesa719@gmail.com" method="POST" class="space-y-4">
-                                <input type="hidden" name="_captcha" value="false">
-                                <input type="hidden" name="_next" value="https://varian719.github.io/">
-                                <input type="hidden" name="_subject" value="Pesan dari Portofolio Varian Rhesa">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_name">Nama Lengkap</label>
-                                    <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_email">Email</label>
-                                    <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
-                                </div>
-                                <div>
-                                    <label for="subject" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_subject">Subjek</label>
-                                    <input type="text" id="subject" name="subject" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30" />
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-sm font-medium text-dark-700 mb-1" data-i18n="form_message">Pesan</label>
-                                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2.5 border border-dark-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-dark-50/30"></textarea>
-                                </div>
-                                <button type="submit" class="w-full btn-primary font-medium text-sm py-3 rounded-xl flex items-center justify-center gap-2">
-                                    <i data-lucide="send" class="w-4 h-4"></i>
-                                    <span data-i18n="form_send">Kirim Pesan</span>
-                                </button>
-                                <p class="text-xs text-dark-400 text-center mt-2" data-i18n="form_note">🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.</p>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Info Kontak -->
-                    <div class="lg:col-span-2 space-y-5 fade-in-up delay-2">
-                        <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
-                            <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="contact_direct">Hubungi Langsung</h4>
-                            <div class="space-y-3">
-                                <a href="mailto:rhesa719@gmail.com" class="flex items-center gap-3 text-dark-600 hover:text-primary-600 transition-colors">
-                                    <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="mail" class="text-primary-500 w-4 h-4"></i>
-                                    </div>
-                                    <div class="min-w-0">
-                                        <p class="text-xs text-dark-400">Email</p>
-                                        <p class="text-sm font-medium break-all">rhesa719@gmail.com</p>
-                                    </div>
-                                </a>
-                                <a href="tel:+6289519628044" class="flex items-center gap-3 text-dark-600 hover:text-cyan-600 transition-colors">
-                                    <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="phone" class="text-cyan-500 w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-dark-400" data-i18n="phone">Telepon</p>
-                                        <p class="text-sm font-medium">0895-1962-8044</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
-                            <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="social_media">Media Sosial</h4>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank" class="flex-1 min-w-[70px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
-                                    <i data-lucide="linkedin" class="text-cyan-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
-                                    <p class="text-xs text-dark-500 mt-1">LinkedIn</p>
-                                </a>
-                                <a href="https://github.com/Varian719" target="_blank" class="flex-1 min-w-[70px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
-                                    <i data-lucide="github" class="text-dark-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
-                                    <p class="text-xs text-dark-500 mt-1">GitHub</p>
-                                </a>
-                                <a href="https://wa.me/6289519628044" target="_blank" class="flex-1 min-w-[70px] bg-whatsapp/10 border border-whatsapp rounded-xl p-3 text-center hover:bg-whatsapp/20 transition-colors group">
-                                    <i data-lucide="message-circle" class="text-whatsapp w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
-                                    <p class="text-xs text-dark-500 mt-1">WhatsApp</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2">
-                            <a href="mailto:rhesa719@gmail.com?subject=Kolaborasi%20Proyek" class="btn-primary text-sm px-4 py-2 rounded-full flex items-center gap-1.5">
-                                <i data-lucide="send" class="w-3.5 h-3.5"></i> Email
-                            </a>
-                            <a href="https://wa.me/6289519628044" target="_blank" class="btn-outline text-sm px-4 py-2 rounded-full flex items-center gap-1.5 border-whatsapp text-whatsapp hover:bg-whatsapp/10 hover:border-whatsapp">
-                                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== FOOTER ========== -->
-        <footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
-            <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p class="text-xs">&copy; 2026 Varian Rhesa · <span data-i18n="footer_built">Dibangun dengan</span> <span class="text-primary-400">♥</span> <span data-i18n="footer_code">dan kode</span></p>
-                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-2 text-xs">
-                    <a href="#home" class="hover:text-primary-400 transition-colors" data-i18n="nav_home">Beranda</a>
-                    <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
-                    <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
-                    <a href="#resume" class="hover:text-primary-400 transition-colors" data-i18n="nav_resume">Resume</a>
-                    <a href="#map" class="hover:text-primary-400 transition-colors" data-i18n="nav_map">Lokasi</a>
-                    <a href="#skills" class="hover:text-primary-400 transition-colors" data-i18n="nav_skills">Keahlian</a>
-                    <a href="#proficiency" class="hover:text-primary-400 transition-colors" data-i18n="nav_proficiency">Penguasaan</a>
-                    <a href="#contact" class="hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- ===== END TW-CONTENT ===== -->
+        </div>
+    </section>
 
     <!-- ============================================================ -->
-    <!-- ===== FALLBACK CONTENT (jika Tailwind gagal) ===== -->
+    <!-- ===== FOOTER ===== -->
     <!-- ============================================================ -->
-    <div class="fallback-visible" style="padding:1rem;">
-        <div style="max-width:1280px;margin:0 auto;padding:0 1rem;">
-
-            <!-- Hero Fallback -->
-            <div class="hero-fallback" style="display:flex;align-items:center;justify-content:center;min-height:80vh;gap:3rem;flex-wrap:wrap;padding-top:5rem;">
-                <div class="hero-text" style="flex:1;min-width:280px;">
-                    <h1 style="font-size:2.5rem;font-weight:700;color:#0d110d;">Varian <span style="color:#0aaf69;">Rhesa</span></h1>
-                    <p style="font-size:1.25rem;color:#415541;">Junior Software Engineer</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0;">
-                        <span class="fallback-tag fallback-tag-green">Web</span>
-                        <span class="fallback-tag fallback-tag-cyan">IoT</span>
-                        <span class="fallback-tag fallback-tag-green">AI</span>
-                        <span class="fallback-tag fallback-tag-cyan">Robotika</span>
-                    </div>
-                    <p style="color:#677767;max-width:500px;line-height:1.6;">Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1.5rem;">
-                        <a href="#contact" class="fallback-btn">Hubungi</a>
-                        <a href="#portfolio" style="display:inline-block;padding:0.625rem 1.75rem;border-radius:9999px;border:1.5px solid #dce3dd;color:#2d3d2d;text-decoration:none;font-weight:500;font-size:0.875rem;transition:border-color 0.2s;">Lihat Karya</a>
-                    </div>
-                </div>
-                <div style="flex-shrink:0;">
-                    <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" alt="Varian Rhesa" style="width:250px;height:250px;border-radius:16px;object-fit:cover;border:4px solid #99dfc3;box-shadow:0 20px 40px rgba(0,0,0,0.1);" loading="lazy" />
-                </div>
-            </div>
-
-            <!-- Portfolio Fallback -->
-            <div style="margin:3rem 0;">
-                <h2 style="font-size:1.5rem;font-weight:700;text-align:center;color:#0d110d;">Karya &amp; Sertifikat</h2>
-                <div style="height:2px;background:linear-gradient(90deg,transparent,#0aaf69,#06b6d4,#0aaf69,transparent);opacity:0.3;max-width:200px;margin:0.75rem auto;"></div>
-                <p style="text-align:center;color:#677767;font-size:0.875rem;">Proyek dan pengakuan yang telah saya raih</p>
-                <div class="fallback-grid" style="margin-top:1.5rem;">
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#e6f7f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">📱</div>
-                        <h3 style="font-weight:600;">Dicoding Android Pemula</h3>
-                        <p style="color:#677767;font-size:0.875rem;">Belajar Membuat Aplikasi Android untuk Pemula</p>
-                        <span class="fallback-tag fallback-tag-green">Sertifikat</span>
-                    </div>
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#ecfeff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">🌐</div>
-                        <h3 style="font-weight:600;">CCNAv7 · Cisco</h3>
-                        <p style="color:#677767;font-size:0.875rem;">Switching, Routing, and Wireless Essentials</p>
-                        <span class="fallback-tag fallback-tag-cyan">Sertifikat</span>
-                    </div>
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#e6f7f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">🖥️</div>
-                        <h3 style="font-weight:600;">PWA Spektrum Monitoring</h3>
-                        <p style="color:#677767;font-size:0.875rem;">Firebase · QR Code · AI Chatbot</p>
-                        <span class="fallback-tag fallback-tag-green">Proyek</span>
-                    </div>
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#ecfeff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">🔥</div>
-                        <h3 style="font-weight:600;">IoT Smart Fire Suppression</h3>
-                        <p style="color:#677767;font-size:0.875rem;">ESP32 · C4.5 Algorithm · Sensor</p>
-                        <span class="fallback-tag fallback-tag-cyan">Skripsi</span>
-                    </div>
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#e6f7f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">📄</div>
-                        <h3 style="font-weight:600;">Magang Balmon Samarinda</h3>
-                        <p style="color:#677767;font-size:0.875rem;">Full Stack Developer · PWA · Firebase</p>
-                        <span class="fallback-tag fallback-tag-green">Sertifikat</span>
-                    </div>
-                    <div class="fallback-card">
-                        <div style="height:150px;background:#ecfeff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.75rem;">🤖</div>
-                        <h3 style="font-weight:600;">Robot Cerdas · KRC 2023</h3>
-                        <p style="color:#677767;font-size:0.875rem;">Algoritma navigasi, logika cerdas</p>
-                        <span class="fallback-tag fallback-tag-cyan">🏆 Juara 3</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Fallback -->
-            <div style="margin:3rem 0;padding:2rem;background:#f5f7f5;border-radius:16px;">
-                <h2 style="font-size:1.5rem;font-weight:700;color:#0d110d;">Tentang Saya</h2>
-                <p style="color:#677767;line-height:1.6;max-width:800px;">Saya mahasiswa <strong>Teknologi Rekayasa Komputer</strong> di Politeknik Negeri Samarinda dengan latar belakang <strong>Rekayasa Perangkat Lunak</strong> (RPL) dari SMK. Saya memiliki ketertarikan dalam pengembangan Web, Mobile, dan IoT. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
-                    <span class="fallback-tag fallback-tag-green">Python</span>
-                    <span class="fallback-tag fallback-tag-cyan">C++</span>
-                    <span class="fallback-tag fallback-tag-green">Java</span>
-                    <span class="fallback-tag">Flutter</span>
-                    <span class="fallback-tag fallback-tag-cyan">IoT</span>
-                    <span class="fallback-tag" style="background:#fef3e2;border-color:#f5d9b8;color:#8b5e3c;">MS Office</span>
-                    <span class="fallback-tag" style="background:#e8f0fe;border-color:#c5d8f0;color:#1a5a8a;">Google Workspace</span>
-                </div>
-            </div>
-
-            <!-- Contact Fallback -->
-            <div style="margin:3rem 0;text-align:center;">
-                <h2 style="font-size:1.5rem;font-weight:700;color:#0d110d;">Mari Terhubung</h2>
-                <p style="color:#677767;font-size:0.875rem;max-width:400px;margin:0 auto 1.5rem;">Tertarik untuk berkolaborasi? Hubungi saya.</p>
-                <a href="mailto:rhesa719@gmail.com" class="fallback-btn" style="margin:0 0.5rem;">Email</a>
-                <a href="https://wa.me/6289519628044" target="_blank" style="display:inline-block;padding:0.625rem 1.75rem;border-radius:9999px;border:1.5px solid #25D366;color:#25D366;text-decoration:none;font-weight:500;font-size:0.875rem;margin:0 0.5rem;transition:background 0.2s;">WhatsApp</a>
-            </div>
-
-            <!-- Footer Fallback -->
-            <div style="text-align:center;padding:1.5rem 0;border-top:1px solid #e2e8e4;margin-top:2rem;">
-                <p style="color:#677767;font-size:0.75rem;">&copy; 2026 Varian Rhesa · Dibangun dengan ❤️ dan kode</p>
-                <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;font-size:0.75rem;margin-top:0.5rem;">
-                    <a href="#home" style="color:#415541;text-decoration:none;">Beranda</a>
-                    <a href="#about" style="color:#415541;text-decoration:none;">Tentang</a>
-                    <a href="#portfolio" style="color:#415541;text-decoration:none;">Portofolio</a>
-                    <a href="#resume" style="color:#415541;text-decoration:none;">Resume</a>
-                    <a href="#contact" style="color:#415541;text-decoration:none;">Kontak</a>
-                </div>
+    <footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs">&copy; 2026 Varian Rhesa · <span data-i18n="footer_built">Dibangun dengan</span> <span class="text-primary-400">♥</span> <span data-i18n="footer_code">dan kode</span></p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-2 text-xs">
+                <a href="#home" class="hover:text-primary-400 transition-colors" data-i18n="nav_home">Beranda</a>
+                <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
+                <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
+                <a href="#resume" class="hover:text-primary-400 transition-colors" data-i18n="nav_resume">Resume</a>
+                <a href="#map" class="hover:text-primary-400 transition-colors" data-i18n="nav_map">Lokasi</a>
+                <a href="#skills" class="hover:text-primary-400 transition-colors" data-i18n="nav_skills">Keahlian</a>
+                <a href="#proficiency" class="hover:text-primary-400 transition-colors" data-i18n="nav_proficiency">Penguasaan</a>
+                <a href="#contact" class="hover:text-primary-400 transition-colors" data-i18n="nav_contact">Kontak</a>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- ========== JAVASCRIPT (Memory Leak Fixed) ========== -->
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ============================================================ -->
     <script>
         // ============================================================
-        // 1. HIDE SKELETON LOADER
+        // 1. LUCIDE ICONS
         // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const loader = document.getElementById('skeleton-loader');
-            if (loader) {
-                setTimeout(function() {
-                    loader.classList.add('hidden');
-                }, 600);
-            }
-        });
-
-        // ============================================================
-        // 2. LUCIDE ICONS - ONE TIME INIT
-        // ============================================================
-        let iconsInitialized = false;
-
         function initIcons() {
-            if (iconsInitialized) return;
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 try {
                     lucide.createIcons();
-                    iconsInitialized = true;
                 } catch (e) {
                     // Ikon gagal dimuat
                 }
             }
         }
 
+        // ============================================================
+        // 2. MOBILE MENU
+        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi ikon
             setTimeout(initIcons, 200);
-        });
 
-        // ============================================================
-        // 3. MOBILE MENU
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
+            // Mobile menu
+            var btn = document.getElementById('mobile-menu-btn');
+            var menu = document.getElementById('mobile-menu');
             if (btn && menu) {
                 btn.addEventListener('click', function() {
                     menu.classList.toggle('hidden');
@@ -1547,40 +1462,73 @@
                     });
                 });
             }
-        });
 
-        // ============================================================
-        // 4. NAVBAR SCROLL - dengan requestAnimationFrame
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
+            // Navbar scroll
+            var navbar = document.getElementById('navbar');
             if (navbar) {
-                let scrollRAF = null;
                 window.addEventListener('scroll', function() {
-                    if (scrollRAF) {
-                        cancelAnimationFrame(scrollRAF);
+                    if (window.scrollY > 20) {
+                        navbar.classList.add('nav-blur');
+                        navbar.classList.remove('bg-transparent', 'py-3');
+                        navbar.classList.add('py-2');
+                    } else {
+                        navbar.classList.remove('nav-blur', 'py-2');
+                        navbar.classList.add('bg-transparent', 'py-3');
                     }
-                    scrollRAF = requestAnimationFrame(function() {
-                        if (window.scrollY > 20) {
-                            navbar.classList.add('nav-blur');
-                            navbar.classList.remove('bg-transparent', 'py-3');
-                            navbar.classList.add('py-2');
-                        } else {
-                            navbar.classList.remove('nav-blur', 'py-2');
-                            navbar.classList.add('bg-transparent', 'py-3');
-                        }
-                        scrollRAF = null;
-                    });
-                }, { passive: true });
+                });
             }
+
+            // Scroll Animations with IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+
+                            // Trigger progress bars
+                            if (entry.target.classList.contains('progress-item')) {
+                                var fill = entry.target.querySelector('.progress-bar-fill');
+                                if (fill) {
+                                    var width = fill.style.getPropertyValue('--progress-width');
+                                    setTimeout(function() {
+                                        fill.style.width = width;
+                                    }, 100);
+                                }
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback
+                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                    el.classList.add('is-visible');
+                });
+                document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
+                    var width = fill.style.getPropertyValue('--progress-width');
+                    if (width) {
+                        fill.style.width = width;
+                    }
+                });
+            }
+
+            // Load saved language
+            var savedLang = localStorage.getItem('preferred_lang') || 'id';
+            setLanguage(savedLang);
         });
 
         // ============================================================
-        // 5. IMAGE MODAL
+        // 3. IMAGE MODAL
         // ============================================================
         function openImageModal(src) {
-            const modal = document.getElementById('imageModal');
-            const img = document.getElementById('modalImage');
+            var modal = document.getElementById('imageModal');
+            var img = document.getElementById('modalImage');
             if (modal && img) {
                 img.src = src;
                 modal.classList.add('active');
@@ -1590,86 +1538,27 @@
 
         function closeImageModal(e) {
             if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
-            const modal = document.getElementById('imageModal');
+            var modal = document.getElementById('imageModal');
             if (modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
             }
         }
 
-        const escapeHandler = function(e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const modal = document.getElementById('imageModal');
+                var modal = document.getElementById('imageModal');
                 if (modal) {
                     modal.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             }
-        };
-        document.addEventListener('keydown', escapeHandler);
-
-        // ============================================================
-        // 6. SCROLL ANIMATIONS + PROGRESS BARS - dengan cleanup
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            if ('IntersectionObserver' in window) {
-                const elements = document.querySelectorAll('.fade-in-up, .progress-item');
-                const observed = new Set();
-
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const target = entry.target;
-                            target.classList.add('is-visible');
-
-                            // Trigger progress bars
-                            if (target.classList.contains('progress-item')) {
-                                const fill = target.querySelector('.progress-bar-fill');
-                                if (fill) {
-                                    const width = fill.style.getPropertyValue('--progress-width');
-                                    setTimeout(function() {
-                                        fill.style.width = width;
-                                    }, 100);
-                                }
-                            }
-
-                            // ✅ UNOBSERVE setelah terlihat - mencegah memory leak
-                            observer.unobserve(target);
-                            observed.delete(target);
-                        }
-                    });
-
-                    // ✅ DISCONNECT jika semua sudah terobservasi
-                    if (observed.size === 0) {
-                        observer.disconnect();
-                    }
-                }, {
-                    threshold: 0.2,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-
-                elements.forEach(function(el) {
-                    observer.observe(el);
-                    observed.add(el);
-                });
-            } else {
-                // Fallback untuk browser tanpa IntersectionObserver
-                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                    el.classList.add('is-visible');
-                });
-                document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
-                    const width = fill.style.getPropertyValue('--progress-width');
-                    if (width) {
-                        fill.style.width = width;
-                    }
-                });
-            }
         });
 
         // ============================================================
-        // 7. LANGUAGE TOGGLE - dengan cleanup timeout
+        // 4. LANGUAGE TOGGLE
         // ============================================================
-        const translations = {
+        var translations = {
             'id': {
                 'nav_home': 'Beranda',
                 'nav_about': 'Tentang',
@@ -1993,19 +1882,11 @@
             }
         };
 
-        let languageTimeout = null;
-
         function setLanguage(lang) {
-            // ✅ Bersihkan timeout sebelumnya
-            if (languageTimeout) {
-                clearTimeout(languageTimeout);
-                languageTimeout = null;
-            }
-
-            const elements = document.querySelectorAll('[data-i18n]');
+            var elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(function(el) {
-                const key = el.getAttribute('data-i18n');
-                const translation = translations[lang]?.[key];
+                var key = el.getAttribute('data-i18n');
+                var translation = translations[lang]?.[key];
                 if (translation) {
                     el.innerHTML = translation;
                 }
@@ -2019,72 +1900,7 @@
             });
 
             localStorage.setItem('preferred_lang', lang);
-
-            // ✅ Re-init icons dengan timeout yang bisa dibersihkan
-            iconsInitialized = false;
-            languageTimeout = setTimeout(function() {
-                initIcons();
-                languageTimeout = null;
-            }, 50);
-        }
-
-        // Load saved language
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('preferred_lang') || 'id';
-            setLanguage(savedLang);
-        });
-
-        // ============================================================
-        // 8. MUTATION OBSERVER - dengan batas dan auto-disconnect
-        // ============================================================
-        if ('MutationObserver' in window) {
-            let iconObserver = null;
-            let observerActive = false;
-            let observerCount = 0;
-            const MAX_OBSERVATIONS = 10;
-
-            document.addEventListener('DOMContentLoaded', function() {
-                if (document.body) {
-                    iconObserver = new MutationObserver(function() {
-                        observerCount++;
-                        if (observerCount <= MAX_OBSERVATIONS) {
-                            initIcons();
-                        } else {
-                            // ✅ Auto-disconnect setelah batas tercapai
-                            if (iconObserver) {
-                                iconObserver.disconnect();
-                                iconObserver = null;
-                                observerActive = false;
-                            }
-                        }
-                    });
-
-                    iconObserver.observe(document.body, {
-                        childList: true,
-                        subtree: true,
-                        attributes: false
-                    });
-                    observerActive = true;
-
-                    // ✅ Auto-disconnect setelah 5 detik
-                    setTimeout(function() {
-                        if (iconObserver && observerActive) {
-                            iconObserver.disconnect();
-                            iconObserver = null;
-                            observerActive = false;
-                        }
-                    }, 5000);
-                }
-            });
-
-            // ✅ Cleanup saat page unload
-            window.addEventListener('beforeunload', function() {
-                if (iconObserver) {
-                    iconObserver.disconnect();
-                    iconObserver = null;
-                    observerActive = false;
-                }
-            });
+            setTimeout(initIcons, 50);
         }
     </script>
 
