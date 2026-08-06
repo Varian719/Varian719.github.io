@@ -426,6 +426,343 @@
         .hover\:bg-whatsapp\/20:hover {
             background: rgba(37, 211, 102, 0.2);
         }
+
+        /* ============================================================ */
+        /* ===== CHATBOT STYLES ===== */
+        /* ============================================================ */
+        #chat-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9998;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(10, 175, 105, 0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chat-toggle:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 40px rgba(10, 175, 105, 0.45);
+        }
+
+        #chat-toggle .icon-chat {
+            width: 28px;
+            height: 28px;
+        }
+
+        #chat-toggle .icon-close {
+            width: 28px;
+            height: 28px;
+            display: none;
+        }
+
+        #chat-toggle.active .icon-chat {
+            display: none;
+        }
+        #chat-toggle.active .icon-close {
+            display: block;
+        }
+
+        /* Notification badge */
+        #chat-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Chat window */
+        #chat-window {
+            position: fixed;
+            bottom: 96px;
+            right: 24px;
+            z-index: 9997;
+            width: 380px;
+            max-width: calc(100vw - 48px);
+            height: 500px;
+            max-height: calc(100vh - 160px);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(226, 232, 228, 0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #chat-window.open {
+            display: flex;
+        }
+
+        /* Chat header */
+        #chat-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        #chat-header .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        #chat-header .chat-title .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        #chat-header .chat-title .groq-badge {
+            font-size: 0.55rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        #chat-header .close-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            font-size: 18px;
+        }
+
+        #chat-header .close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Chat messages */
+        #chat-messages {
+            flex: 1;
+            padding: 16px 20px;
+            overflow-y: auto;
+            background: #f8faf9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: fadeInMsg 0.3s ease;
+        }
+
+        @keyframes fadeInMsg {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            align-self: flex-start;
+            background: white;
+            border: 1px solid #e2e8e4;
+            border-bottom-left-radius: 4px;
+            color: #1a221a;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.typing {
+            background: white;
+            border: 1px solid #e2e8e4;
+            align-self: flex-start;
+            padding: 12px 16px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #99dfc3;
+            animation: typingBounce 1.2s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* Chat input */
+        #chat-input-area {
+            padding: 12px 16px 16px 16px;
+            background: white;
+            border-top: 1px solid #e2e8e4;
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        #chat-input-area input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #dce3dd;
+            border-radius: 12px;
+            outline: none;
+            font-size: 0.875rem;
+            transition: border 0.2s;
+        }
+
+        #chat-input-area input:focus {
+            border-color: #0aaf69;
+            box-shadow: 0 0 0 3px rgba(10, 175, 105, 0.1);
+        }
+
+        #chat-input-area button {
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #chat-input-area button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(10, 175, 105, 0.25);
+        }
+
+        #chat-input-area button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Welcome message */
+        .welcome-msg {
+            font-size: 0.8rem;
+            color: #677767;
+            text-align: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8e4;
+            margin-bottom: 6px;
+        }
+
+        /* API Key warning */
+        .api-warning {
+            font-size: 0.7rem;
+            color: #b91c1c;
+            background: #fee2e2;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 4px 0;
+        }
+
+        /* Responsive chat */
+        @media (max-width: 480px) {
+            #chat-window {
+                bottom: 80px;
+                right: 12px;
+                width: calc(100vw - 24px);
+                max-height: calc(100vh - 140px);
+                border-radius: 16px;
+            }
+            #chat-toggle {
+                bottom: 16px;
+                right: 16px;
+                width: 52px;
+                height: 52px;
+            }
+        }
     </style>
 
     <script>
@@ -1426,11 +1763,60 @@
     </footer>
 
     <!-- ============================================================ -->
+    <!-- ===== CHATBOT ===== -->
+    <!-- ============================================================ -->
+
+    <!-- Floating Button -->
+    <button id="chat-toggle" onclick="toggleChat()" aria-label="Chat dengan Rhesa AI">
+        <svg class="icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 10h.01"/>
+            <path d="M12 10h.01"/>
+            <path d="M16 10h.01"/>
+        </svg>
+        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        <span id="chat-badge">1</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window">
+        <div id="chat-header">
+            <div class="chat-title">
+                <span class="status-dot"></span>
+                <span>🧠 Rhesa AI</span>
+                <span class="groq-badge">⚡ Groq</span>
+            </div>
+            <button class="close-btn" onclick="toggleChat()" aria-label="Tutup chat">✕</button>
+        </div>
+
+        <div id="chat-messages">
+            <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
+            <div class="message bot">
+                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Groq</strong> (Llama 3.1 70B). Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
+            </div>
+        </div>
+
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Tanyakan tentang Varian..." />
+            <button id="chat-send-btn" onclick="sendMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                Kirim
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- ===== JAVASCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // 1. LUCIDE ICONS - INISIALISASI YANG ROBUST
+        // 1. LUCIDE ICONS - INISIALISASI
         // ============================================================
         var iconInitAttempts = 0;
         var maxIconAttempts = 10;
@@ -1439,11 +1825,9 @@
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 try {
                     lucide.createIcons();
-                    iconInitAttempts = 0; // reset jika berhasil
+                    iconInitAttempts = 0;
                     return true;
-                } catch (e) {
-                    // Gagal, coba lagi nanti
-                }
+                } catch (e) {}
             }
             return false;
         }
@@ -1460,7 +1844,6 @@
         // 2. DOM READY
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Inisialisasi ikon (dengan retry)
             tryInitIcons();
 
             // Mobile menu
@@ -1528,6 +1911,13 @@
                     }
                 });
             }
+
+            // Chat input Enter key
+            document.getElementById('chat-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
 
             // Load saved language
             var savedLang = localStorage.getItem('preferred_lang') || 'id';
@@ -1911,13 +2301,11 @@
             });
 
             localStorage.setItem('preferred_lang', lang);
-
-            // ✅ Re-inisialisasi ikon setelah perubahan bahasa
             setTimeout(tryInitIcons, 100);
         }
 
         // ============================================================
-        // 5. MUTATION OBSERVER UNTUK DETEKSI IKON BARU
+        // 5. MUTATION OBSERVER
         // ============================================================
         if (window.MutationObserver) {
             var iconObserver = new MutationObserver(function() {
@@ -1934,7 +2322,6 @@
                 }
             });
 
-            // Auto disconnect setelah 10 detik untuk mencegah memory leak
             setTimeout(function() {
                 if (iconObserver) {
                     iconObserver.disconnect();
@@ -1942,11 +2329,236 @@
             }, 10000);
         }
 
-        // ============================================================
-        // 6. RETRY SETELAH 1 DETIK (cadangan)
-        // ============================================================
         setTimeout(tryInitIcons, 1000);
         setTimeout(tryInitIcons, 3000);
+
+        // ============================================================
+        // 6. CHATBOT - GROQ API
+        // ============================================================
+
+        var chatOpen = false;
+        var chatMessages = document.getElementById('chat-messages');
+        var chatInput = document.getElementById('chat-input');
+        var chatSendBtn = document.getElementById('chat-send-btn');
+        var chatToggle = document.getElementById('chat-toggle');
+        var chatWindow = document.getElementById('chat-window');
+        var chatBadge = document.getElementById('chat-badge');
+
+        var badgeHidden = false;
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            if (chatOpen) {
+                chatWindow.classList.add('open');
+                chatToggle.classList.add('active');
+                if (!badgeHidden) {
+                    chatBadge.style.display = 'none';
+                    badgeHidden = true;
+                }
+                setTimeout(function() {
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 100);
+            } else {
+                chatWindow.classList.remove('open');
+                chatToggle.classList.remove('active');
+            }
+        }
+
+        // ============================================================
+        // 7. GROQ API CHAT
+        // ============================================================
+
+        // ==== INFORMASI TENTANG ANDA (untuk system prompt) ====
+        var aboutVarian =
+            "Nama: Varian Rhesa\n" +
+            "Pekerjaan: Junior Software Engineer\n" +
+            "Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022).\n" +
+            "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase.\n" +
+            "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020).\n" +
+            "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023.\n" +
+            "Lokasi: Samarinda, Kalimantan Timur.\n" +
+            "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1).\n" +
+            "Sertifikasi: Dicoding Android, CCNAv7 Cisco.\n" +
+            "Hobi: Kopi, membaca, bersepeda, musik.\n" +
+            "Filosofi: Kode terbaik adalah yang mengerti manusia di balik layar.";
+
+        // ==== GROQ API ====
+        // 🔑 Ganti dengan API Key Anda dari https://console.groq.com/keys
+        var GROQ_API_KEY =
+        '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'; // <-- Tempelkan API Key Anda di sini
+
+        // Model Groq yang digunakan (gratis & cepat)
+        var GROQ_MODEL = 'llama-3.1-70b-versatile';
+        // Alternatif: 'llama-3.1-8b-instant', 'mixtral-8x7b-32768'
+
+        var isTyping = false;
+
+        function addMessage(text, isUser) {
+            var msgDiv = document.createElement('div');
+            msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            var typingDiv = document.createElement('div');
+            typingDiv.className = 'message typing';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            var typing = document.getElementById('typing-indicator');
+            if (typing) {
+                typing.remove();
+            }
+        }
+
+        function getResponseFromGroq(userMessage) {
+            return new Promise(function(resolve, reject) {
+                // Cek apakah API key tersedia
+                if (!GROQ_API_KEY || GROQ_API_KEY.trim() === '') {
+                    reject(new Error('API Key Groq belum diatur. Silakan tambahkan di kode.'));
+                    return;
+                }
+
+                var systemPrompt =
+                    "Anda adalah Rhesa AI, asisten virtual yang ramah dan informatif. Tugas Anda adalah menjawab pertanyaan tentang Varian Rhesa berdasarkan informasi yang diberikan. Jawab dengan singkat, jelas, dan dalam bahasa Indonesia. Jika pertanyaan tidak terkait dengan Varian Rhesa, katakan 'Maaf, saya hanya bisa menjawab pertanyaan tentang Varian Rhesa.'";
+
+                var userPrompt = "Pertanyaan: " + userMessage;
+
+                var url = 'https://api.groq.com/openai/v1/chat/completions';
+
+                var payload = {
+                    model: GROQ_MODEL,
+                    messages: [
+                        { role: 'system', content: systemPrompt + '\n\nInformasi tentang Varian Rhesa:\n' + aboutVarian },
+                        { role: 'user', content: userPrompt }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 300,
+                    top_p: 0.9,
+                    stream: false
+                };
+
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + GROQ_API_KEY.trim()
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(function(response) {
+                        if (!response.ok) {
+                            return response.json().then(function(err) {
+                                throw new Error(err.error?.message || 'HTTP ' + response.status);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        if (data && data.choices && data.choices.length > 0) {
+                            var text = data.choices[0].message.content || '';
+                            // Hapus teks prompt dari response jika ada
+                            text = text.replace(/^Pertanyaan:.*?\n/, '');
+                            text = text.replace(/^Jawab:/, '');
+                            text = text.trim();
+                            if (!text || text.length < 2) {
+                                throw new Error('Respons kosong atau terlalu pendek');
+                            }
+                            resolve(text);
+                        } else {
+                            throw new Error('Respons tidak valid dari Groq API');
+                        }
+                    })
+                    .catch(function(err) {
+                        reject(err);
+                    });
+            });
+        }
+
+        function sendMessage() {
+            var text = chatInput.value.trim();
+            if (!text || isTyping) return;
+
+            // Tambahkan pesan user
+            addMessage(text, true);
+            chatInput.value = '';
+            chatSendBtn.disabled = true;
+
+            isTyping = true;
+            addTypingIndicator();
+
+            getResponseFromGroq(text)
+                .then(function(response) {
+                    removeTypingIndicator();
+                    addMessage(response, false);
+                    isTyping = false;
+                    chatSendBtn.disabled = false;
+                })
+                .catch(function(error) {
+                    removeTypingIndicator();
+                    console.error('Chat error:', error);
+                    // Fallback offline message
+                    var fallbackMsg = "Maaf, saya sedang tidak bisa terhubung ke AI. " +
+                        "Pastikan API Key Groq sudah diatur di kode. " +
+                        "Silakan coba lagi nanti, atau lihat langsung di portofolio saya untuk informasi lebih lanjut. 😊";
+                    if (error.message && error.message.includes('API Key')) {
+                        fallbackMsg = "🔑 API Key Groq belum diatur. Silakan tambahkan API Key di kode (cari GROQ_API_KEY). " +
+                            "Dapatkan key gratis di console.groq.com/keys";
+                    }
+                    addMessage(fallbackMsg, false);
+                    isTyping = false;
+                    chatSendBtn.disabled = false;
+                });
+        }
+
+        // Enter key support
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.getElementById('chat-input');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        });
+
+        // Auto focus input saat chat dibuka
+        var chatObserver = new MutationObserver(function() {
+            if (chatWindow.classList.contains('open')) {
+                setTimeout(function() {
+                    chatInput.focus();
+                }, 200);
+            }
+        });
+        chatObserver.observe(chatWindow, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        // Cek apakah API key sudah diatur
+        setTimeout(function() {
+            if (!GROQ_API_KEY || GROQ_API_KEY.trim() === '') {
+                var warning = document.createElement('div');
+                warning.className = 'api-warning';
+                warning.innerHTML = '⚠️ API Key Groq belum diatur. Tambahkan di kode (GROQ_API_KEY).';
+                chatMessages.appendChild(warning);
+            } else {
+                console.log('✅ Groq API Key terdeteksi! Model:', GROQ_MODEL);
+            }
+        }, 500);
+
+        console.log('🧠 Rhesa AI siap menggunakan Groq API! Model:', GROQ_MODEL);
     </script>
 
 </body>
