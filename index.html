@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -410,7 +410,8 @@
         .map-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 100%;
+            min-height: 300px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid #e2e8e4;
@@ -419,6 +420,7 @@
         .map-container iframe {
             width: 100%;
             height: 100%;
+            min-height: 300px;
             border: 0;
         }
 
@@ -475,17 +477,41 @@
         .hover\:bg-whatsapp\/20:hover {
             background: rgba(37, 211, 102, 0.2);
         }
+
+        /* ===== RESPONSIVE FIXES ===== */
+        .container-custom {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container-custom {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container-custom {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
 
     <!-- ========== NAVBAR ========== -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container-custom">
             <div class="flex justify-between items-center">
 
-                <a href="#home" class="flex items-center gap-2 group">
+                <a href="#home" class="flex items-center gap-2 group shrink-0">
                     <span class="text-2xl font-bold tracking-tight text-dark-900">
                         <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
                     </span>
@@ -493,16 +519,16 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-6 text-sm">
-                    <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_home">Beranda</a>
-                    <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_about">Tentang</a>
-                    <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_portfolio">Portofolio</a>
-                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_resume">Resume</a>
-                    <a href="#map" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_map">Lokasi</a>
-                    <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_skills">Keahlian</a>
-                    <a href="#proficiency" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_proficiency">Penguasaan</a>
-                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_experience">Perjalanan</a>
-                    <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium" data-i18n="nav_contact">Kontak</a>
+                <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
+                    <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_home">Beranda</a>
+                    <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_about">Tentang</a>
+                    <a href="#portfolio" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_portfolio">Portofolio</a>
+                    <a href="#resume" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_resume">Resume</a>
+                    <a href="#map" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_map">Lokasi</a>
+                    <a href="#skills" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_skills">Keahlian</a>
+                    <a href="#proficiency" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_proficiency">Penguasaan</a>
+                    <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_experience">Perjalanan</a>
+                    <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_contact">Kontak</a>
 
                     <!-- Language Toggle Desktop -->
                     <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
@@ -515,7 +541,7 @@
                 </div>
 
                 <!-- Mobile toggle + Language -->
-                <div class="md:hidden flex items-center gap-3">
+                <div class="md:hidden flex items-center gap-2">
                     <span class="flex items-center gap-1 text-xs">
                         <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
                         <span class="lang-divider">|</span>
@@ -554,33 +580,33 @@
 
     <!-- ========== HERO ========== -->
     <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="container-custom">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-                <div class="fade-in-up">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-dark-900 mb-4 tracking-tight leading-[1.1]">
+                <div class="fade-in-up text-center lg:text-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-900 mb-3 tracking-tight leading-[1.1]">
                         Varian <span class="text-primary-600">Rhesa</span>
                     </h1>
 
-                    <p class="text-xl text-dark-500 font-medium mb-2" data-i18n="hero_title">Junior Software Engineer</p>
+                    <p class="text-lg sm:text-xl text-dark-500 font-medium mb-2" data-i18n="hero_title">Junior Software Engineer</p>
 
-                    <div class="flex items-center gap-3 text-sm text-dark-400 mb-4">
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 text-sm text-dark-400 mb-4">
                         <span class="tag tag-primary" data-i18n="tag_web">Web</span>
                         <span class="tag tag-cyan" data-i18n="tag_iot">IoT</span>
                         <span class="tag tag-primary" data-i18n="tag_ai">AI</span>
                         <span class="tag tag-cyan" data-i18n="tag_robotics">Robotika</span>
                     </div>
 
-                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm" data-i18n="hero_desc">
+                    <p class="text-dark-400 max-w-lg leading-relaxed mb-6 text-sm mx-auto lg:mx-0" data-i18n="hero_desc">
                         Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas.
                         Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.
                     </p>
 
-                    <div class="flex flex-wrap gap-3">
-                        <a href="#contact" class="px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <a href="#contact" class="px-6 sm:px-7 py-2.5 rounded-full btn-primary font-medium text-sm flex items-center gap-2 shadow-sm">
                             <i data-lucide="mail" class="w-4 h-4"></i> <span data-i18n="btn_contact">Hubungi</span>
                         </a>
-                        <a href="#portfolio" class="px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
+                        <a href="#portfolio" class="px-6 sm:px-7 py-2.5 rounded-full btn-outline font-medium text-sm flex items-center gap-2">
                             <i data-lucide="folder-git" class="w-4 h-4"></i> <span data-i18n="btn_works">Lihat Karya</span>
                         </a>
                     </div>
@@ -588,12 +614,12 @@
 
                 <!-- Profile Photo - SQUARE -->
                 <div class="relative flex justify-center fade-in-up delay-2">
-                    <div class="profile-photo-wrapper w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
+                    <div class="profile-photo-wrapper w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
                         <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1"
                         alt="Varian Rhesa"
                         class="profile-photo" />
                     </div>
-                    <div class="absolute -bottom-4 -right-4 bg-primary-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+                    <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-primary-500 text-white text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
                         #Engineer
                     </div>
                 </div>
@@ -602,15 +628,15 @@
     </section>
 
     <!-- ========== PORTFOLIO GRID ========== -->
-    <section id="portfolio" class="py-16 bg-white border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="portfolio_title">Karya &amp; Sertifikat</h2>
+    <section id="portfolio" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="portfolio_title">Karya &amp; Sertifikat</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
                 <p class="text-dark-400 text-sm mt-3" data-i18n="portfolio_sub">Proyek dan pengakuan yang telah saya raih</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
                 <!-- 1. Dicoding Android -->
                 <div class="card-blog fade-in-up delay-1">
@@ -627,11 +653,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">Dicoding Android Pemula</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">Dicoding Android Pemula</h3>
                         <p class="text-dark-500 text-sm mt-1" data-i18n="dicoding_desc">Belajar Membuat Aplikasi Android untuk Pemula</p>
                         <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
@@ -652,11 +678,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-cyan" data-i18n="certificate">Sertifikat</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">CCNAv7 · Cisco</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">CCNAv7 · Cisco</h3>
                         <p class="text-dark-500 text-sm mt-1" data-i18n="ccna_desc">Switching, Routing, and Wireless Essentials</p>
                         <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
@@ -669,11 +695,11 @@
                             <i data-lucide="monitor" class="text-primary-500 w-12 h-12"></i>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-primary" data-i18n="project">Proyek</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">PWA Spektrum Monitoring</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">PWA Spektrum Monitoring</h3>
                         <p class="text-dark-500 text-sm mt-1" data-i18n="pwa_desc">Firebase · QR Code · AI Chatbot</p>
                         <p class="text-dark-400 text-xs mt-2 font-mono">🔧 <span data-i18n="placeholder">placeholder</span></p>
                     </div>
@@ -686,12 +712,12 @@
                             <i data-lucide="flame" class="text-cyan-500 w-12 h-12"></i>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-cyan" data-i18n="thesis">Skripsi</span>
                             <span class="tag tag-primary">📄 <span data-i18n="journal">Jurnal</span></span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg">IoT Smart Fire Suppression</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">IoT Smart Fire Suppression</h3>
                         <p class="text-dark-500 text-sm mt-1 leading-relaxed" data-i18n="thesis_desc">
                             Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5
                         </p>
@@ -722,12 +748,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
                             <span class="tag tag-cyan" data-i18n="internship">Magang</span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg" data-i18n="balmon_title">Magang Balmon Samarinda</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="balmon_title">Magang Balmon Samarinda</h3>
                         <p class="text-dark-500 text-sm mt-1" data-i18n="balmon_desc">Full Stack Developer · PWA · Firebase</p>
                         <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
@@ -748,12 +774,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="tag tag-cyan" data-i18n="project">Proyek</span>
                             <span class="tag tag-primary">🏆 <span data-i18n="champion">Juara 3</span></span>
                         </div>
-                        <h3 class="font-semibold text-dark-900 text-lg" data-i18n="krc_title">Robot Cerdas · KRC 2023</h3>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="krc_title">Robot Cerdas · KRC 2023</h3>
                         <p class="text-dark-500 text-sm mt-1" data-i18n="krc_desc">Algoritma navigasi, logika cerdas</p>
                         <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
                     </div>
@@ -764,10 +790,10 @@
     </section>
 
     <!-- ========== RESUME / CV SECTION ========== -->
-    <section id="resume" class="py-16 bg-dark-50/30 border-t border-dark-100">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
+    <section id="resume" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
                 <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
             </div>
@@ -776,25 +802,25 @@
                 <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
                     <img src="https://lh3.googleusercontent.com/d/1Li3fXIX6zRV-Qhv_J89dMoeu9MDnopS9"
                          alt="Resume Varian Rhesa"
-                         class="w-full max-h-[600px] object-contain bg-white"
+                         class="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain bg-white"
                          loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-6 opacity-0 hover:opacity-100 transition-opacity">
-                        <span class="bg-dark-900/70 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm">
-                            <i data-lucide="maximize" class="w-4 h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-4 sm:pb-6 opacity-0 hover:opacity-100 transition-opacity">
+                        <span class="bg-dark-900/70 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
+                            <i data-lucide="maximize" class="w-3 h-3 sm:w-4 sm:h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
                         </span>
                     </div>
                 </div>
 
-                <div class="p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
+                <div class="p-4 sm:p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
                     <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')"
-                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary font-medium text-sm">
+                            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-primary font-medium text-xs sm:text-sm">
                         <i data-lucide="maximize" class="w-4 h-4"></i>
                         <span data-i18n="fullscreen">Layar Penuh</span>
                     </button>
                     <a href="https://drive.google.com/uc?export=download&id=1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
                        download="Resume_Varian_Rhesa.jpg"
                        target="_blank"
-                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-outline font-medium text-sm">
+                       class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-outline font-medium text-xs sm:text-sm">
                         <i data-lucide="download" class="w-4 h-4"></i>
                         ⬇️ <span data-i18n="download">Unduh Resume</span>
                     </a>
@@ -804,19 +830,19 @@
     </section>
 
     <!-- ========== MAP / LOKASI SECTION ========== -->
-    <section id="map" class="py-16 bg-white border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="map_title">📍 Lokasi Saya</h2>
+    <section id="map" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="map_title">📍 Lokasi Saya</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
                 <p class="text-dark-400 text-sm mt-3" data-i18n="map_desc">Temukan saya di Samarinda — klik peta untuk petunjuk arah</p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 
                 <!-- Info Alamat -->
                 <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
-                    <div class="bg-dark-50/50 rounded-xl p-6 border border-dark-100">
+                    <div class="bg-dark-50/50 rounded-xl p-5 sm:p-6 border border-dark-100">
                         <div class="flex items-start gap-3 mb-4">
                             <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="map-pin" class="text-primary-600 w-5 h-5"></i>
@@ -846,7 +872,7 @@
                         <div class="mt-4 pt-4 border-t border-dark-100">
                             <a href="https://www.google.com/maps?q=-0.500647,117.185105"
                                target="_blank"
-                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
+                               class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
                                 <i data-lucide="external-link" class="w-4 h-4"></i>
                                 <span data-i18n="open_maps">Buka di Google Maps</span>
                             </a>
@@ -871,7 +897,7 @@
                             title="Lokasi Varian Rhesa - Perum Bumi Sambutan Asri Blok K1 No 21 Samarinda">
                         </iframe>
                     </div>
-                    <p class="text-xs text-dark-400 text-center mt-3 font-mono">
+                    <p class="text-xs text-dark-400 text-center mt-3 font-mono break-all">
                         📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
                     </p>
                 </div>
@@ -881,19 +907,19 @@
     </section>
 
     <!-- ========== SKILLS SECTION ========== -->
-    <section id="skills" class="py-16 bg-dark-50/30 border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
+    <section id="skills" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="skills_title">Keahlian Teknis</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
                 <p class="text-dark-400 text-sm mt-3" data-i18n="skills_sub">Teknologi, alat, dan keterampilan yang saya kuasai</p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
                 <!-- 1. Programming -->
                 <div class="card-blog fade-in-up delay-1">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
                                 <i data-lucide="code-2" class="text-primary-600 w-5 h-5"></i>
@@ -914,7 +940,7 @@
 
                 <!-- 2. Web & Mobile -->
                 <div class="card-blog fade-in-up delay-2">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
                                 <i data-lucide="smartphone" class="text-cyan-600 w-5 h-5"></i>
@@ -935,7 +961,7 @@
 
                 <!-- 3. IoT & Hardware -->
                 <div class="card-blog fade-in-up delay-3">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
                                 <i data-lucide="cpu" class="text-primary-600 w-5 h-5"></i>
@@ -953,7 +979,7 @@
 
                 <!-- 4. Tools & DevOps -->
                 <div class="card-blog fade-in-up delay-4">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center">
                                 <i data-lucide="terminal" class="text-cyan-600 w-5 h-5"></i>
@@ -974,7 +1000,7 @@
 
                 <!-- 5. Office & Productivity -->
                 <div class="card-blog fade-in-up delay-5">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center">
                                 <i data-lucide="file-text" class="text-amber-600 w-5 h-5"></i>
@@ -996,7 +1022,7 @@
 
                 <!-- 6. Database & Cloud -->
                 <div class="card-blog fade-in-up delay-3">
-                    <div class="p-5">
+                    <div class="p-4 sm:p-5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center">
                                 <i data-lucide="database" class="text-purple-600 w-5 h-5"></i>
@@ -1017,15 +1043,15 @@
     </section>
 
     <!-- ========== PROFICIENCY / PROGRESS BARS SECTION ========== -->
-    <section id="proficiency" class="py-16 bg-white border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="proficiency_title">📊 Penguasaan Teknologi</h2>
+    <section id="proficiency" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="proficiency_title">📊 Penguasaan Teknologi</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
                 <p class="text-dark-400 text-sm mt-3" data-i18n="proficiency_sub">Tingkat kemampuan saya dalam berbagai teknologi</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-x-10 gap-y-5 max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 lg:gap-x-10 gap-y-4 sm:gap-y-5 max-w-4xl mx-auto">
 
                 <div class="fade-in-up delay-1 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
@@ -1132,12 +1158,12 @@
     </section>
 
     <!-- ========== ABOUT + SIDEBAR ========== -->
-    <section id="about" class="py-16 bg-dark-50/30 border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-8">
+    <section id="about" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="container-custom">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                 <div class="lg:col-span-2 fade-in-up">
-                    <h2 class="text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
                     <div class="divider-custom max-w-xs mb-5"></div>
 
                     <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
@@ -1168,7 +1194,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 bg-white rounded-xl border border-dark-100 p-5 fade-in-up delay-2">
+                    <div class="mt-6 sm:mt-8 bg-white rounded-xl border border-dark-100 p-4 sm:p-5 fade-in-up delay-2">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="award" class="text-primary-600 w-6 h-6"></i>
@@ -1274,53 +1300,53 @@
     </section>
 
     <!-- ========== EXPERIENCE ========== -->
-    <section id="experience" class="py-16 bg-white border-t border-dark-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
+    <section id="experience" class="py-12 sm:py-16 bg-white border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="journey_title">Perjalanan &amp; Pengalaman</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
                 <div class="fade-in-up delay-1">
-                    <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                    <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
                         <i data-lucide="book-open" class="text-primary-600 w-5 h-5"></i>
                         <span data-i18n="education">Pendidikan</span>
                     </h3>
                     <div class="space-y-0 border-l-2 border-primary-200 ml-3">
-                        <div class="relative pl-8 pb-8">
+                        <div class="relative pl-6 sm:pl-8 pb-8">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — Sekarang</div>
-                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
                             <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer</div>
                             <p class="text-xs text-dark-400 mt-1">
                                 <span data-i18n="thesis">Skripsi</span>: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771"
                                            target="_blank"
-                                           class="text-primary-600 hover:underline">
+                                           class="text-primary-600 hover:underline break-words">
                                     <span data-i18n="thesis_title">Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5</span>
                                 </a>
                             </p>
                         </div>
-                        <div class="relative pl-8 pb-4">
+                        <div class="relative pl-6 sm:pl-8 pb-4">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_smk_date">2019 — 2022</div>
-                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="edu_smk_name">SMK Negeri 7 Samarinda</h4>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_smk_name">SMK Negeri 7 Samarinda</h4>
                             <div class="text-sm text-dark-500" data-i18n="edu_smk_major">Rekayasa Perangkat Lunak</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="fade-in-up delay-2">
-                    <h3 class="text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
+                    <h3 class="text-lg sm:text-xl font-bold text-dark-800 flex items-center gap-2 mb-5">
                         <i data-lucide="briefcase" class="text-cyan-600 w-5 h-5"></i>
                         <span data-i18n="experience">Pengalaman</span>
                     </h3>
                     <div class="space-y-0 border-l-2 border-cyan-200 ml-3">
-                        <div class="relative pl-8 pb-8">
+                        <div class="relative pl-6 sm:pl-8 pb-8">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_balmon_date">Feb 2026 — Mei 2026</div>
-                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="exp_balmon_name">Balai Monitor Spektrum Frekuensi Radio</h4>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_balmon_name">Balai Monitor Spektrum Frekuensi Radio</h4>
                             <div class="text-sm text-dark-500" data-i18n="exp_balmon_role">Intern · Full Stack Developer</div>
                             <ul class="text-xs text-dark-500 space-y-0.5 mt-1 list-disc list-inside">
                                 <li data-i18n="exp_balmon_li1">PWA + Firebase Realtime Database</li>
@@ -1328,10 +1354,10 @@
                                 <li data-i18n="exp_balmon_li3">AI Chatbot (Llama API) · Cloudflare Pages</li>
                             </ul>
                         </div>
-                        <div class="relative pl-8 pb-4">
+                        <div class="relative pl-6 sm:pl-8 pb-4">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-cyan-500 border-2 border-white shadow-sm"></div>
                             <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="exp_itb_date">2020</div>
-                            <h4 class="text-lg font-semibold text-dark-900" data-i18n="exp_itb_name">PPTIK ITB · Online Internship</h4>
+                            <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="exp_itb_name">PPTIK ITB · Online Internship</h4>
                             <div class="text-sm text-dark-500" data-i18n="exp_itb_role">Magang Industri &amp; Pengembangan Software</div>
                         </div>
                     </div>
@@ -1341,20 +1367,20 @@
     </section>
 
     <!-- ========== CONTACT + FORM KONTAK (dengan Formsubmit) ========== -->
-    <section id="contact" class="py-16 bg-dark-50/30 border-t border-dark-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 fade-in-up">
-                <h2 class="text-3xl font-bold text-dark-900 mb-3" data-i18n="contact_title">Mari Terhubung</h2>
+    <section id="contact" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
+        <div class="container-custom">
+            <div class="text-center mb-8 sm:mb-10 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-3" data-i18n="contact_title">Mari Terhubung</h2>
                 <div class="divider-custom max-w-xs mx-auto mb-6"></div>
                 <p class="text-dark-400 text-sm mb-8" data-i18n="contact_desc">Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.</p>
             </div>
 
-            <div class="grid lg:grid-cols-5 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
 
                 <!-- Form Kontak (3/5) - Menggunakan Formsubmit -->
                 <div class="lg:col-span-3 fade-in-up delay-1">
-                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-6 md:p-8">
-                        <h3 class="text-xl font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6 md:p-8">
+                        <h3 class="text-lg sm:text-xl font-semibold text-dark-900 mb-4 flex items-center gap-2">
                             <i data-lucide="edit-3" class="text-primary-500 w-5 h-5"></i>
                             <span data-i18n="form_title">Kirim Pesan</span>
                         </h3>
@@ -1363,7 +1389,7 @@
                         <form action="https://formsubmit.co/rhesa719@gmail.com" method="POST" class="space-y-4">
                             <!-- Anti-spam & redirect -->
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://varianrhesa.my.id">
+                            <input type="hidden" name="_next" value="https://varian719.github.io/">
                             <input type="hidden" name="_subject" value="Pesan dari Portofolio Varian Rhesa">
 
                             <div>
@@ -1400,16 +1426,16 @@
 
                 <!-- Info Kontak & Sosial Media (2/5) -->
                 <div class="lg:col-span-2 space-y-5 fade-in-up delay-2">
-                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-6">
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
                         <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="contact_direct">Hubungi Langsung</h4>
                         <div class="space-y-3">
                             <a href="mailto:rhesa719@gmail.com" class="flex items-center gap-3 text-dark-600 hover:text-primary-600 transition-colors">
                                 <div class="w-10 h-10 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="mail" class="text-primary-500 w-4 h-4"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="text-xs text-dark-400">Email</p>
-                                    <p class="text-sm font-medium">rhesa719@gmail.com</p>
+                                    <p class="text-sm font-medium break-all">rhesa719@gmail.com</p>
                                 </div>
                             </a>
                             <a href="tel:+6289519628044" class="flex items-center gap-3 text-dark-600 hover:text-cyan-600 transition-colors">
@@ -1424,24 +1450,24 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-6">
+                    <div class="bg-white rounded-2xl border border-dark-100 shadow-sm p-5 sm:p-6">
                         <h4 class="text-sm font-bold text-dark-800 uppercase tracking-wider mb-4" data-i18n="social_media">Media Sosial</h4>
                         <div class="flex flex-wrap gap-3">
                             <!-- LinkedIn -->
                             <a href="https://www.linkedin.com/in/varian-rhesa-012a36299/" target="_blank"
-                                class="flex-1 min-w-[80px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
+                                class="flex-1 min-w-[70px] bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-center hover:bg-cyan-100 transition-colors group">
                                 <i data-lucide="linkedin" class="text-cyan-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
                                 <p class="text-xs text-dark-500 mt-1">LinkedIn</p>
                             </a>
                             <!-- GitHub -->
                             <a href="https://github.com/Varian719" target="_blank"
-                                class="flex-1 min-w-[80px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
+                                class="flex-1 min-w-[70px] bg-dark-50 border border-dark-200 rounded-xl p-3 text-center hover:bg-dark-100 transition-colors group">
                                 <i data-lucide="github" class="text-dark-600 w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
                                 <p class="text-xs text-dark-500 mt-1">GitHub</p>
                             </a>
-                            <!-- WhatsApp (BARU) -->
+                            <!-- WhatsApp -->
                             <a href="https://wa.me/6289519628044" target="_blank"
-                                class="flex-1 min-w-[80px] bg-whatsapp/10 border border-whatsapp rounded-xl p-3 text-center hover:bg-whatsapp/20 transition-colors group">
+                                class="flex-1 min-w-[70px] bg-whatsapp/10 border border-whatsapp rounded-xl p-3 text-center hover:bg-whatsapp/20 transition-colors group">
                                 <i data-lucide="message-circle" class="text-whatsapp w-5 h-5 mx-auto group-hover:scale-110 transition-transform"></i>
                                 <p class="text-xs text-dark-500 mt-1">WhatsApp</p>
                             </a>
@@ -1464,11 +1490,11 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="container-custom text-center">
             <p class="text-xs">
                 &copy; 2026 Varian Rhesa · <span data-i18n="footer_built">Dibangun dengan</span> <span class="text-primary-400">♥</span> <span data-i18n="footer_code">dan kode</span>
             </p>
-            <div class="flex justify-center gap-4 mt-2 text-xs">
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-2 text-xs">
                 <a href="#home" class="hover:text-primary-400 transition-colors" data-i18n="nav_home">Beranda</a>
                 <a href="#about" class="hover:text-primary-400 transition-colors" data-i18n="nav_about">Tentang</a>
                 <a href="#portfolio" class="hover:text-primary-400 transition-colors" data-i18n="nav_portfolio">Portofolio</a>
