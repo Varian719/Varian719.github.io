@@ -1804,7 +1804,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (Groq API + Local Fallback) ===== -->
+    <!-- ===== JAVASCRIPT (Groq API + Local Fallback - Enhanced Context) ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
@@ -2264,7 +2264,7 @@
         }
 
         // ============================================================
-        // 5. CHATBOT - GROQ API + LOCAL FALLBACK
+        // 5. CHATBOT - GROQ API + LOCAL FALLBACK (ENHANCED)
         // ============================================================
         var chatOpen = false;
         var chatMessages = document.getElementById('chat-messages');
@@ -2296,12 +2296,21 @@
             } catch (e) { /* ignore */ }
         }
 
-        // ==== INFORMASI TENTANG ANDA ====
+        // ==== INFORMASI TENTANG ANDA (LENGKAP) ====
         var aboutVarian =
-            "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
+            "Nama: Varian Rhesa. " +
+            "Lahir: Palembang, 7 November 2003. " +
+            "Pendidikan: SD Nasional Tiga Bahasa Dharma Bakti, SMP Negeri 2 Samarinda, SMK Negeri 7 Samarinda (Rekayasa Perangkat Lunak, 2019-2022), Politeknik Negeri Samarinda (D4 Teknologi Rekayasa Komputer, 2022-sekarang). " +
+            "Pekerjaan: Junior Software Engineer. " +
+            "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. " +
+            "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). " +
+            "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. " +
+            "Lokasi: Samarinda, Kalimantan Timur. " +
+            "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). " +
+            "Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
 
         // ==== GROQ API ====
-        var GROQ_API_KEY ='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';  // <-- GANTI dengan API key Groq Anda
+        var GROQ_API_KEY = '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';  // <-- GANTI dengan API key Groq Anda
         var GROQ_MODEL = 'llama-3.1-8b-instant';      // bisa juga 'mixtral-8x7b-32768' atau 'gemma-7b-it'
 
         var isTyping = false;
@@ -2337,11 +2346,15 @@
             } catch (e) { /* ignore */ }
         }
 
-        // Fallback lokal berdasarkan kata kunci
+        // Fallback lokal berdasarkan kata kunci (ditambah lahir, sd, smp)
         function localFallback(message) {
             var msg = message.toLowerCase();
+            if (msg.includes('lahir') || msg.includes('palembang')) return 'Varian Rhesa lahir di Palembang pada 7 November 2003.';
+            if (msg.includes('sd')) return 'Sekolah Dasar: SD Nasional Tiga Bahasa Dharma Bakti.';
+            if (msg.includes('smp')) return 'Sekolah Menengah Pertama: SMP Negeri 2 Samarinda.';
+            if (msg.includes('smk')) return 'Sekolah Menengah Kejuruan: SMK Negeri 7 Samarinda, jurusan Rekayasa Perangkat Lunak (RPL).';
             if (msg.includes('nama') || msg.includes('siapa')) return 'Saya Varian Rhesa, Junior Software Engineer.';
-            if (msg.includes('pendidikan') || msg.includes('kuliah')) return 'Saya kuliah di Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-sekarang).';
+            if (msg.includes('pendidikan') || msg.includes('kuliah')) return 'Saat ini kuliah di Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-sekarang).';
             if (msg.includes('keahlian') || msg.includes('skill')) return 'Keahlian saya: Python, Java, C++, JavaScript, PHP, Dart, Flutter, IoT, Git, Linux, Firebase, Cloudflare Workers, dan lainnya.';
             if (msg.includes('pengalaman') || msg.includes('kerja')) return 'Saya magang di Balai Monitor Spektrum Samarinda sebagai Full Stack Developer (PWA, Firebase, QR Code, AI Chatbot). Juga intern di PPTIK ITB.';
             if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, dan robot KRC juara 3.';
@@ -2417,7 +2430,7 @@
                     .catch(function(error) {
                         removeTypingIndicator();
                         console.log('Groq error:', error.message);
-                        // Jika API gagal (termasuk key kosong), gunakan fallback lokal
+                        // Fallback lokal
                         var localAnswer = localFallback(text);
                         if (localAnswer) {
                             addMessage(localAnswer, false);
@@ -2434,7 +2447,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lokal) siap!');
+        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lokal lengkap) siap!');
     </script>
 </body>
 </html>
