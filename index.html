@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varian Rhesa · Junior Software Engineer</title>
 
-    <!-- ===== FAVICON ===== -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
-
     <!-- ===== META TAGS ===== -->
     <meta name="description" content="Portfolio Varian Rhesa - Junior Software Engineer. Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda." />
     <meta name="keywords" content="Varian Rhesa, Junior Software Engineer, Web Development, IoT, AI" />
@@ -30,13 +27,74 @@
     <meta name="twitter:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer." />
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
-    <!-- ===== TAILWIND CSS (pre-compiled static file, no runtime compilation) ===== -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- ===== TAILWIND CSS ===== -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
 
-    <!-- ===== LUCIDE ICONS (deferred to not block page rendering) ===== -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- ===== LUCIDE ICONS ===== -->
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
 
-    <!-- NOTE: Old Tailwind CDN script and tailwind.config block have been removed to eliminate page freeze -->
+    <!-- ===== TAILWIND CONFIG ===== -->
+    <script>
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: {
+                                50: '#e6f7f0',
+                                100: '#ccefe1',
+                                200: '#99dfc3',
+                                300: '#66cfa5',
+                                400: '#33bf87',
+                                500: '#0aaf69',
+                                600: '#089154',
+                                700: '#06733f',
+                                800: '#04552a',
+                                900: '#023715',
+                                950: '#011e0b',
+                            },
+                            cyan: {
+                                50: '#ecfeff',
+                                100: '#cffafe',
+                                200: '#a5f3fc',
+                                300: '#67e8f9',
+                                400: '#22d3ee',
+                                500: '#06b6d4',
+                                600: '#0891b2',
+                                700: '#0e7490',
+                                800: '#155e75',
+                                900: '#164e63',
+                                950: '#083344',
+                            },
+                            dark: {
+                                50: '#f0f2f0',
+                                100: '#d9ddd9',
+                                200: '#b3bbb3',
+                                300: '#8d998d',
+                                400: '#677767',
+                                500: '#415541',
+                                600: '#344434',
+                                700: '#273327',
+                                800: '#1a221a',
+                                900: '#0d110d',
+                                950: '#060806',
+                            },
+                            whatsapp: {
+                                500: '#25D366',
+                                600: '#128C7E',
+                            }
+                        },
+                        fontFamily: {
+                            sans: ['Inter', 'system-ui', 'sans-serif'],
+                            mono: ['JetBrains Mono', 'monospace'],
+                        }
+                    }
+                }
+            };
+        }
+    </script>
 
     <style>
         /* ===== FONT ===== */
@@ -315,11 +373,21 @@
             transform: translateY(0);
         }
 
-        .fade-in-up.delay-1 { transition-delay: 0.1s; }
-        .fade-in-up.delay-2 { transition-delay: 0.2s; }
-        .fade-in-up.delay-3 { transition-delay: 0.3s; }
-        .fade-in-up.delay-4 { transition-delay: 0.4s; }
-        .fade-in-up.delay-5 { transition-delay: 0.5s; }
+        .fade-in-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+        .fade-in-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+        .fade-in-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+        .fade-in-up.delay-4 {
+            transition-delay: 0.4s;
+        }
+        .fade-in-up.delay-5 {
+            transition-delay: 0.5s;
+        }
 
         /* ===== LANGUAGE TOGGLE ===== */
         .lang-btn {
@@ -406,48 +474,28 @@
             width: var(--progress-width);
         }
 
+        /* ===== WHATSAPP ===== */
+        .text-whatsapp {
+            color: #25D366;
+        }
+        .bg-whatsapp\/10 {
+            background: rgba(37, 211, 102, 0.1);
+        }
+        .border-whatsapp {
+            border-color: #25D366;
+        }
+        .hover\:bg-whatsapp\/20:hover {
+            background: rgba(37, 211, 102, 0.2);
+        }
+
         /* ============================================================ */
         /* ===== CHATBOT STYLES ===== */
         /* ============================================================ */
-
-        .floating-buttons {
+        #chat-toggle {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 9998;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-        }
-
-        #wa-toggle {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: #25D366;
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        #wa-toggle:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
-        }
-
-        #wa-toggle .wa-icon {
-            width: 28px;
-            height: 28px;
-        }
-
-        #chat-toggle {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -467,11 +515,25 @@
             box-shadow: 0 12px 40px rgba(10, 175, 105, 0.45);
         }
 
-        #chat-toggle .icon-chat { width: 28px; height: 28px; }
-        #chat-toggle .icon-close { width: 28px; height: 28px; display: none; }
-        #chat-toggle.active .icon-chat { display: none; }
-        #chat-toggle.active .icon-close { display: block; }
+        #chat-toggle .icon-chat {
+            width: 28px;
+            height: 28px;
+        }
 
+        #chat-toggle .icon-close {
+            width: 28px;
+            height: 28px;
+            display: none;
+        }
+
+        #chat-toggle.active .icon-chat {
+            display: none;
+        }
+        #chat-toggle.active .icon-close {
+            display: block;
+        }
+
+        /* Notification badge */
         #chat-badge {
             position: absolute;
             top: -4px;
@@ -490,10 +552,16 @@
         }
 
         @keyframes pulse-badge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
         }
 
+        /* Chat window */
         #chat-window {
             position: fixed;
             bottom: 96px;
@@ -513,8 +581,11 @@
             transition: all 0.3s ease;
         }
 
-        #chat-window.open { display: flex; }
+        #chat-window.open {
+            display: flex;
+        }
 
+        /* Chat header */
         #chat-header {
             padding: 16px 20px;
             background: linear-gradient(135deg, #0aaf69, #06b6d4);
@@ -542,8 +613,13 @@
         }
 
         @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
         }
 
         #chat-header .chat-title .hf-badge {
@@ -574,6 +650,7 @@
             background: rgba(255, 255, 255, 0.25);
         }
 
+        /* Chat messages */
         #chat-messages {
             flex: 1;
             padding: 16px 20px;
@@ -595,8 +672,14 @@
         }
 
         @keyframes fadeInMsg {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.bot {
@@ -635,14 +718,26 @@
             background: #99dfc3;
             animation: typingBounce 1.2s infinite;
         }
-        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
-        @keyframes typingBounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-6px); }
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
         }
 
+        @keyframes typingBounce {
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* Chat input */
         #chat-input-area {
             padding: 12px 16px 16px 16px;
             background: white;
@@ -692,6 +787,7 @@
             transform: none;
         }
 
+        /* Welcome message */
         .welcome-msg {
             font-size: 0.8rem;
             color: #677767;
@@ -701,6 +797,7 @@
             margin-bottom: 6px;
         }
 
+        /* API Key warning */
         .api-warning {
             font-size: 0.7rem;
             color: #b91c1c;
@@ -711,6 +808,7 @@
             margin: 4px 0;
         }
 
+        /* Responsive chat */
         @media (max-width: 480px) {
             #chat-window {
                 bottom: 80px;
@@ -719,22 +817,25 @@
                 max-height: calc(100vh - 140px);
                 border-radius: 16px;
             }
-            .floating-buttons { bottom: 16px; right: 16px; gap: 10px; }
-            #chat-toggle { width: 52px; height: 52px; }
-            #wa-toggle { width: 48px; height: 48px; }
-            #chat-toggle .icon-chat, #chat-toggle .icon-close { width: 24px; height: 24px; }
-            #wa-toggle .wa-icon { width: 24px; height: 24px; }
+            #chat-toggle {
+                bottom: 16px;
+                right: 16px;
+                width: 52px;
+                height: 52px;
+            }
         }
     </style>
 </head>
 
 <body>
+
     <!-- ============================================================ -->
     <!-- ===== NAVBAR ===== -->
     <!-- ============================================================ -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
+
                 <a href="#home" class="flex items-center gap-2 shrink-0">
                     <span class="text-2xl font-bold tracking-tight text-dark-900">
                         <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
@@ -1069,6 +1170,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+
                 <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
                     <div class="bg-dark-50/50 rounded-xl p-5 sm:p-6 border border-dark-100">
                         <div class="flex items-start gap-3 mb-4">
@@ -1123,6 +1225,7 @@
                         📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
                     </p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1660,19 +1763,10 @@
     </footer>
 
     <!-- ============================================================ -->
-    <!-- ===== FLOATING BUTTONS (AI Chat + WhatsApp) ===== -->
+    <!-- ===== CHATBOT ===== -->
     <!-- ============================================================ -->
 
-    <div class="floating-buttons">
-        <!-- WhatsApp Button -->
-        <a id="wa-toggle" href="https://wa.me/6289519628044" target="_blank"
-        aria-label="Chat via WhatsApp" title="Chat WhatsApp">
-        <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-    </a>
-
-    <!-- AI Chat Button -->
+    <!-- Floating Button -->
     <button id="chat-toggle" onclick="toggleChat()" aria-label="Chat dengan Rhesa AI">
         <svg class="icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -1686,733 +1780,698 @@
         </svg>
         <span id="chat-badge">1</span>
     </button>
-</div>
 
-<!-- Chat Window -->
-<div id="chat-window">
-    <div id="chat-header">
-        <div class="chat-title">
-            <span class="status-dot"></span>
-            <span>🧠 Rhesa AI</span>
-            <span class="hf-badge">🤗 HF</span>
+    <!-- Chat Window -->
+    <div id="chat-window">
+        <div id="chat-header">
+            <div class="chat-title">
+                <span class="status-dot"></span>
+                <span>🧠 Rhesa AI</span>
+                <span class="hf-badge">🤗 HF</span>
+            </div>
+            <button class="close-btn" onclick="toggleChat()" aria-label="Tutup chat">✕</button>
         </div>
-        <button class="close-btn" onclick="toggleChat()" aria-label="Tutup chat">✕</button>
-    </div>
 
-    <div id="chat-messages">
-        <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
-        <div class="message bot">
-            Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Hugging Face</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
+        <div id="chat-messages">
+            <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
+            <div class="message bot">
+                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Hugging Face</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
+            </div>
+        </div>
+
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Tanyakan tentang Varian..." />
+            <button id="chat-send-btn" onclick="sendMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                Kirim
+            </button>
         </div>
     </div>
 
-    <div id="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Tanyakan tentang Varian..." />
-        <button id="chat-send-btn" onclick="sendMessage()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-            Kirim
-        </button>
-    </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- ===== JAVASCRIPT (STABIL & AMAN) ===== -->
-<!-- ============================================================ -->
-<script>
-    // ============================================================
-    // 1. LUCIDE ICONS - SEDERHANA DENGAN RETRY
-    // ============================================================
-    var iconInitAttempts = 0;
-    var maxIconAttempts = 15;
-
-    function initIcons() {
-        try {
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-                console.log('✅ Ikon Lucide berhasil dimuat');
-                iconInitAttempts = 0;
-                return true;
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT (STABIL & AMAN) ===== -->
+    <!-- ============================================================ -->
+    <script>
+        // ============================================================
+        // 1. LUCIDE ICONS - SEDERHANA
+        // ============================================================
+        function initIcons() {
+            try {
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                }
+            } catch (e) {
+                // Abaikan error ikon
             }
-        } catch (e) {
-            console.warn('⚠️ Ikon Lucide gagal dimuat:', e);
         }
-        return false;
-    }
 
-    function tryInitIcons() {
-        if (initIcons()) return;
-        iconInitAttempts++;
-        if (iconInitAttempts < maxIconAttempts) {
-            setTimeout(tryInitIcons, 300);
-        }
-    }
+        // ============================================================
+        // 2. DOM READY - SEMUA DALAM SATU BLOK
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
 
-    // ============================================================
-    // 2. DOM READY - SEMUA DALAM SATU BLOK
-    // ============================================================
-    document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Inisialisasi ikon
+                setTimeout(initIcons, 200);
 
-        try {
-            // Inisialisasi ikon
-            setTimeout(tryInitIcons, 200);
-
-            // ===== MOBILE MENU =====
-            var btn = document.getElementById('mobile-menu-btn');
-            var menu = document.getElementById('mobile-menu');
-            if (btn && menu) {
-                btn.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-                document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        menu.classList.add('hidden');
+                // ===== MOBILE MENU =====
+                var btn = document.getElementById('mobile-menu-btn');
+                var menu = document.getElementById('mobile-menu');
+                if (btn && menu) {
+                    btn.addEventListener('click', function() {
+                        menu.classList.toggle('hidden');
                     });
-                });
-            }
-
-            // ===== NAVBAR SCROLL =====
-            var navbar = document.getElementById('navbar');
-            if (navbar) {
-                window.addEventListener('scroll', function() {
-                    try {
-                        if (window.scrollY > 20) {
-                            navbar.classList.add('nav-blur');
-                            navbar.classList.remove('bg-transparent', 'py-3');
-                            navbar.classList.add('py-2');
-                        } else {
-                            navbar.classList.remove('nav-blur', 'py-2');
-                            navbar.classList.add('bg-transparent', 'py-3');
-                        }
-                    } catch (e) { /* ignore */ }
-                });
-            }
-
-            // ===== SCROLL ANIMATIONS =====
-            if ('IntersectionObserver' in window) {
-                try {
-                    var observer = new IntersectionObserver(function(entries) {
-                        entries.forEach(function(entry) {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('is-visible');
-                                if (entry.target.classList.contains('progress-item')) {
-                                    var fill = entry.target.querySelector('.progress-bar-fill');
-                                    if (fill) {
-                                        var width = fill.style.getPropertyValue('--progress-width');
-                                        setTimeout(function() {
-                                            fill.style.width = width;
-                                        }, 100);
-                                    }
-                                }
-                                observer.unobserve(entry.target);
-                            }
+                    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            menu.classList.add('hidden');
                         });
-                    }, {
-                        threshold: 0.2,
-                        rootMargin: '0px 0px -50px 0px'
                     });
+                }
 
+                // ===== NAVBAR SCROLL =====
+                var navbar = document.getElementById('navbar');
+                if (navbar) {
+                    window.addEventListener('scroll', function() {
+                        try {
+                            if (window.scrollY > 20) {
+                                navbar.classList.add('nav-blur');
+                                navbar.classList.remove('bg-transparent', 'py-3');
+                                navbar.classList.add('py-2');
+                            } else {
+                                navbar.classList.remove('nav-blur', 'py-2');
+                                navbar.classList.add('bg-transparent', 'py-3');
+                            }
+                        } catch (e) { /* ignore */ }
+                    });
+                }
+
+                // ===== SCROLL ANIMATIONS =====
+                if ('IntersectionObserver' in window) {
+                    try {
+                        var observer = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('is-visible');
+                                    if (entry.target.classList.contains('progress-item')) {
+                                        var fill = entry.target.querySelector('.progress-bar-fill');
+                                        if (fill) {
+                                            var width = fill.style.getPropertyValue('--progress-width');
+                                            setTimeout(function() {
+                                                fill.style.width = width;
+                                            }, 100);
+                                        }
+                                    }
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, {
+                            threshold: 0.2,
+                            rootMargin: '0px 0px -50px 0px'
+                        });
+
+                        document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                            observer.observe(el);
+                        });
+                    } catch (e) { /* ignore */ }
+                } else {
                     document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                        observer.observe(el);
+                        el.classList.add('is-visible');
                     });
-                } catch (e) { /* ignore */ }
-            } else {
-                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                    el.classList.add('is-visible');
-                });
-                document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
-                    var width = fill.style.getPropertyValue('--progress-width');
-                    if (width) fill.style.width = width;
-                });
+                    document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
+                        var width = fill.style.getPropertyValue('--progress-width');
+                        if (width) fill.style.width = width;
+                    });
+                }
+
+                // ===== CHAT INPUT ENTER =====
+                var chatInput = document.getElementById('chat-input');
+                if (chatInput) {
+                    chatInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            sendMessage();
+                        }
+                    });
+                }
+
+                // ===== LOAD LANGUAGE =====
+                var savedLang = localStorage.getItem('preferred_lang') || 'id';
+                setLanguage(savedLang);
+
+            } catch (e) {
+                console.log('Page loaded with minimal features:', e);
             }
+        });
 
-            // ===== CHAT INPUT ENTER =====
-            var chatInput = document.getElementById('chat-input');
-            if (chatInput) {
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendMessage();
-                    }
-                });
-            }
-
-            // ===== LOAD LANGUAGE =====
-            var savedLang = localStorage.getItem('preferred_lang') || 'id';
-            setLanguage(savedLang);
-
-            // ===== RE-INIT ICONS SETELAH MUTASI =====
-            var iconObserver = new MutationObserver(function() {
-                tryInitIcons();
-            });
-            if (document.body) {
-                iconObserver.observe(document.body, {
-                    childList: true,
-                    subtree: true,
-                    attributes: false
-                });
-                // Auto disconnect setelah 5 detik untuk mencegah memory leak
-                setTimeout(function() {
-                    iconObserver.disconnect();
-                }, 5000);
-            }
-
-        } catch (e) {
-            console.log('Page loaded with minimal features:', e);
+        // ============================================================
+        // 3. IMAGE MODAL
+        // ============================================================
+        function openImageModal(src) {
+            try {
+                var modal = document.getElementById('imageModal');
+                var img = document.getElementById('modalImage');
+                if (modal && img) {
+                    img.src = src;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            } catch (e) { /* ignore */ }
         }
-    });
 
-    // ============================================================
-    // 3. IMAGE MODAL
-    // ============================================================
-    function openImageModal(src) {
-        try {
-            var modal = document.getElementById('imageModal');
-            var img = document.getElementById('modalImage');
-            if (modal && img) {
-                img.src = src;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        } catch (e) { /* ignore */ }
-    }
+        function closeImageModal(e) {
+            try {
+                if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
+                var modal = document.getElementById('imageModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            } catch (e) { /* ignore */ }
+        }
 
-    function closeImageModal(e) {
-        try {
-            if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
-            var modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.classList.remove('active');
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                var modal = document.getElementById('imageModal');
+                if (modal) modal.classList.remove('active');
                 document.body.style.overflow = '';
             }
-        } catch (e) { /* ignore */ }
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            var modal = document.getElementById('imageModal');
-            if (modal) modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // ============================================================
-    // 4. LANGUAGE TOGGLE (SINGKAT)
-    // ============================================================
-    var translations = {
-        'id': {
-            'nav_home': 'Beranda',
-            'nav_about': 'Tentang',
-            'nav_portfolio': 'Portofolio',
-            'nav_resume': 'Resume',
-            'nav_map': 'Lokasi',
-            'nav_skills': 'Keahlian',
-            'nav_proficiency': 'Penguasaan',
-            'nav_experience': 'Perjalanan',
-            'nav_contact': 'Kontak',
-            'hero_title': 'Junior Software Engineer',
-            'tag_web': 'Web',
-            'tag_iot': 'IoT',
-            'tag_ai': 'AI',
-            'tag_robotics': 'Robotika',
-            'hero_desc': 'Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.',
-            'btn_contact': 'Hubungi',
-            'btn_works': 'Lihat Karya',
-            'portfolio_title': 'Karya &amp; Sertifikat',
-            'portfolio_sub': 'Proyek dan pengakuan yang telah saya raih',
-            'certificate': 'Sertifikat',
-            'project': 'Proyek',
-            'thesis': 'Skripsi',
-            'internship': 'Magang',
-            'journal': 'Jurnal',
-            'read_journal': 'Baca Jurnal',
-            'journal_published': 'Jurnal terbit 2026',
-            'dicoding_desc': 'Belajar Membuat Aplikasi Android untuk Pemula',
-            'ccna_desc': 'Switching, Routing, and Wireless Essentials',
-            'pwa_desc': 'Firebase · QR Code · AI Chatbot',
-            'thesis_desc': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
-            'balmon_title': 'Magang Balmon Samarinda',
-            'balmon_desc': 'Full Stack Developer · PWA · Firebase',
-            'krc_title': 'Robot Cerdas · KRC 2023',
-            'krc_desc': 'Algoritma navigasi, logika cerdas',
-            'champion': 'Juara 3',
-            'placeholder': 'placeholder',
-            'resume_title': '📄 Resume / CV',
-            'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
-            'fullscreen': 'Layar Penuh',
-            'download': 'Unduh Resume',
-            'click_to_enlarge': 'Klik untuk memperbesar',
-            'map_title': '📍 Lokasi Saya',
-            'map_desc': 'Temukan saya di Samarinda — klik peta untuk petunjuk arah',
-            'address_title': 'Alamat',
-            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, Kalimantan Timur',
-            'coordinates_title': 'Koordinat',
-            'open_maps': 'Buka di Google Maps',
-            'map_note': '📍 Gunakan peta di samping untuk melihat lokasi persis saya',
-            'skills_title': 'Keahlian Teknis',
-            'skills_sub': 'Teknologi, alat, dan keterampilan yang saya kuasai',
-            'proficiency_title': '📊 Penguasaan Teknologi',
-            'proficiency_sub': 'Tingkat kemampuan saya dalam berbagai teknologi',
-            'about_title': 'Tentang Saya',
-            'about_p1': 'Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
-            'about_p2': 'Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.',
-            'about_p3': 'Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).',
-            'achievement_title': 'Juara 3 Kontes Robot Cerdas',
-            'achievement_loc': 'Provinsi Kalimantan Timur',
-            'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
-            'profile': 'Profil',
-            'languages': 'Bahasa',
-            'certifications': 'Sertifikasi',
-            'skills': 'Keahlian',
-            'location': 'Samarinda, Kaltim',
-            'education_short': 'D4 TRK · Politeknik Negeri Samarinda',
-            'experience_short': 'Intern @ Balai Monitor Spektrum',
-            'lang_id': 'Indonesia',
-            'lang_en': 'English B2',
-            'lang_zh': 'Mandarin HSK1',
-            'cert_dicoding': 'Dicoding Android',
-            'cert_ccna': 'CCNAv7 Cisco',
-            'journey_title': 'Perjalanan &amp; Pengalaman',
-            'education': 'Pendidikan',
-            'edu_polita_date': '2022 — Sekarang',
-            'edu_polita_name': 'Politeknik Negeri Samarinda',
-            'edu_polita_major': 'D4 · Teknologi Rekayasa Komputer',
-            'thesis_title': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
-            'edu_smk_date': '2019 — 2022',
-            'edu_smk_name': 'SMK Negeri 7 Samarinda',
-            'edu_smk_major': 'Rekayasa Perangkat Lunak',
-            'experience': 'Pengalaman',
-            'exp_balmon_date': 'Feb 2026 — Mei 2026',
-            'exp_balmon_name': 'Balai Monitor Spektrum Frekuensi Radio',
-            'exp_balmon_role': 'Intern · Full Stack Developer',
-            'exp_balmon_li1': 'PWA + Firebase Realtime Database',
-            'exp_balmon_li2': 'Admin Dashboard · QR Code System',
-            'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
-            'exp_itb_date': '2020',
-            'exp_itb_name': 'PPTIK ITB · Online Internship',
-            'exp_itb_role': 'Magang Industri &amp; Pengembangan Software',
-            'contact_title': 'Mari Terhubung',
-            'contact_desc': 'Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.',
-            'form_title': 'Kirim Pesan',
-            'form_name': 'Nama Lengkap',
-            'form_email': 'Email',
-            'form_subject': 'Subjek',
-            'form_message': 'Pesan',
-            'form_send': 'Kirim Pesan',
-            'form_note': '🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.',
-            'contact_direct': 'Hubungi Langsung',
-            'social_media': 'Media Sosial',
-            'email': 'Email',
-            'phone': 'Telepon',
-            'footer_built': 'Dibangun dengan',
-            'footer_code': 'dan kode',
-        },
-        'en': {
-            'nav_home': 'Home',
-            'nav_about': 'About',
-            'nav_portfolio': 'Portfolio',
-            'nav_resume': 'Resume',
-            'nav_map': 'Location',
-            'nav_skills': 'Skills',
-            'nav_proficiency': 'Proficiency',
-            'nav_experience': 'Journey',
-            'nav_contact': 'Contact',
-            'hero_title': 'Junior Software Engineer',
-            'tag_web': 'Web',
-            'tag_iot': 'IoT',
-            'tag_ai': 'AI',
-            'tag_robotics': 'Robotics',
-            'hero_desc': 'Building impactful tech solutions — from web apps to smart robots. I believe the best code understands the human behind the screen.',
-            'btn_contact': 'Contact',
-            'btn_works': 'View Works',
-            'portfolio_title': 'Works &amp; Certificates',
-            'portfolio_sub': 'Projects and recognitions I have achieved',
-            'certificate': 'Certificate',
-            'project': 'Project',
-            'thesis': 'Thesis',
-            'internship': 'Internship',
-            'journal': 'Journal',
-            'read_journal': 'Read Journal',
-            'journal_published': 'Journal published 2026',
-            'dicoding_desc': 'Learn to Make Android Apps for Beginners',
-            'ccna_desc': 'Switching, Routing, and Wireless Essentials',
-            'pwa_desc': 'Firebase · QR Code · AI Chatbot',
-            'thesis_desc': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
-            'balmon_title': 'Balmon Samarinda Internship',
-            'balmon_desc': 'Full Stack Developer · PWA · Firebase',
-            'krc_title': 'Smart Robot · KRC 2023',
-            'krc_desc': 'Navigation algorithms, intelligent logic',
-            'champion': '3rd Place',
-            'placeholder': 'placeholder',
-            'resume_title': '📄 Resume / CV',
-            'resume_desc': 'Summary of my professional journey — click to enlarge',
-            'fullscreen': 'Fullscreen',
-            'download': 'Download Resume',
-            'click_to_enlarge': 'Click to enlarge',
-            'map_title': '📍 My Location',
-            'map_desc': 'Find me in Samarinda — click the map for directions',
-            'address_title': 'Address',
-            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, East Kalimantan',
-            'coordinates_title': 'Coordinates',
-            'open_maps': 'Open in Google Maps',
-            'map_note': '📍 Use the map to see my exact location',
-            'skills_title': 'Technical Skills',
-            'skills_sub': 'Technologies, tools, and skills I master',
-            'proficiency_title': '📊 Technology Proficiency',
-            'proficiency_sub': 'My skill level across various technologies',
-            'about_title': 'About Me',
-            'about_p1': 'I am a <span class="text-primary-600 font-medium">Computer Engineering Technology</span> student at Samarinda State Polytechnic with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
-            'about_p2': 'I am interested in <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, and <span class="text-primary-600 font-medium">IoT</span> development. I believe the best technology provides real solutions to everyday problems.',
-            'about_p3': 'I am currently completing my thesis on <span class="text-primary-600 font-medium">"Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm"</span> which has been published in the Journal of Integrated Industrial Engineering (JUTIN).',
-            'achievement_title': '3rd Place Smart Robot Competition',
-            'achievement_loc': 'East Kalimantan Province',
-            'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
-            'profile': 'Profile',
-            'languages': 'Languages',
-            'certifications': 'Certifications',
-            'skills': 'Skills',
-            'location': 'Samarinda, East Kalimantan',
-            'education_short': 'D4 TRK · Samarinda State Polytechnic',
-            'experience_short': 'Intern @ Spectrum Monitoring Center',
-            'lang_id': 'Indonesian',
-            'lang_en': 'English B2',
-            'lang_zh': 'Mandarin HSK1',
-            'cert_dicoding': 'Dicoding Android',
-            'cert_ccna': 'CCNAv7 Cisco',
-            'journey_title': 'Journey &amp; Experience',
-            'education': 'Education',
-            'edu_polita_date': '2022 — Present',
-            'edu_polita_name': 'Samarinda State Polytechnic',
-            'edu_polita_major': 'D4 · Computer Engineering Technology',
-            'thesis_title': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
-            'edu_smk_date': '2019 — 2022',
-            'edu_smk_name': 'SMK Negeri 7 Samarinda',
-            'edu_smk_major': 'Software Engineering',
-            'experience': 'Experience',
-            'exp_balmon_date': 'Feb 2026 — May 2026',
-            'exp_balmon_name': 'Spectrum Monitoring Center',
-            'exp_balmon_role': 'Intern · Full Stack Developer',
-            'exp_balmon_li1': 'PWA + Firebase Realtime Database',
-            'exp_balmon_li2': 'Admin Dashboard · QR Code System',
-            'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
-            'exp_itb_date': '2020',
-            'exp_itb_name': 'PPTIK ITB · Online Internship',
-            'exp_itb_role': 'Industrial Internship &amp; Software Development',
-            'contact_title': 'Let\'s Connect',
-            'contact_desc': 'Interested in collaborating or discussing? Send a message directly or reach me via social media.',
-            'form_title': 'Send Message',
-            'form_name': 'Full Name',
-            'form_email': 'Email',
-            'form_subject': 'Subject',
-            'form_message': 'Message',
-            'form_send': 'Send Message',
-            'form_note': '🔒 Message sent securely via HTTPS. I\'ll reply within 1-2 business days.',
-            'contact_direct': 'Direct Contact',
-            'social_media': 'Social Media',
-            'email': 'Email',
-            'phone': 'Phone',
-            'footer_built': 'Built with',
-            'footer_code': 'and code',
-        },
-        'zh': {
-            'nav_home': '主页',
-            'nav_about': '关于',
-            'nav_portfolio': '作品集',
-            'nav_resume': '简历',
-            'nav_map': '位置',
-            'nav_skills': '技能',
-            'nav_proficiency': '熟练度',
-            'nav_experience': '历程',
-            'nav_contact': '联系',
-            'hero_title': '初级软件工程师',
-            'tag_web': 'Web',
-            'tag_iot': '物联网',
-            'tag_ai': '人工智能',
-            'tag_robotics': '机器人学',
-            'hero_desc': '构建有影响力的技术解决方案 — 从 Web 应用到智能机器人。我相信最好的代码能理解屏幕背后的人。',
-            'btn_contact': '联系',
-            'btn_works': '查看作品',
-            'portfolio_title': '作品与证书',
-            'portfolio_sub': '我完成的项目和获得的认可',
-            'certificate': '证书',
-            'project': '项目',
-            'thesis': '论文',
-            'internship': '实习',
-            'journal': '期刊',
-            'read_journal': '阅读期刊',
-            'journal_published': '期刊发表于 2026 年',
-            'dicoding_desc': '学习为初学者制作 Android 应用',
-            'ccna_desc': '交换、路由和无线基础',
-            'pwa_desc': 'Firebase · 二维码 · AI 聊天机器人',
-            'thesis_desc': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
-            'balmon_title': 'Balmon 三马林达实习',
-            'balmon_desc': '全栈开发 · PWA · Firebase',
-            'krc_title': '智能机器人 · KRC 2023',
-            'krc_desc': '导航算法，智能逻辑',
-            'champion': '第三名',
-            'placeholder': '占位符',
-            'resume_title': '📄 简历 / CV',
-            'resume_desc': '我的职业历程概述 — 点击放大',
-            'fullscreen': '全屏',
-            'download': '下载简历',
-            'click_to_enlarge': '点击放大',
-            'map_title': '📍 我的位置',
-            'map_desc': '在三马林达找到我 — 点击地图获取路线',
-            'address_title': '地址',
-            'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />三马林达, 东加里曼丹',
-            'coordinates_title': '坐标',
-            'open_maps': '在谷歌地图中打开',
-            'map_note': '📍 使用地图查看我的确切位置',
-            'skills_title': '技术技能',
-            'skills_sub': '我掌握的技术、工具和技能',
-            'proficiency_title': '📊 技术熟练度',
-            'proficiency_sub': '我在各种技术方面的技能水平',
-            'about_title': '关于我',
-            'about_p1': '我是三马林达国立理工学院的 <span class="text-primary-600 font-medium">计算机工程技术</span> 专业学生，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
-            'about_p2': '我对 <span class="text-primary-600 font-medium">Web</span>、<span class="text-cyan-600 font-medium">移动</span> 和 <span class="text-primary-600 font-medium">物联网</span> 开发感兴趣。我相信最好的技术能为日常问题提供真正的解决方案。',
-            'about_p3': '我目前正在完成我的论文 <span class="text-primary-600 font-medium">"基于物联网和 C4.5 算法的室内灭火系统设计与开发"</span>，该论文已发表在《工业工程综合期刊》(JUTIN) 上。',
-            'achievement_title': '智能机器人竞赛第三名',
-            'achievement_loc': '东加里曼丹省',
-            'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
-            'profile': '个人资料',
-            'languages': '语言',
-            'certifications': '认证',
-            'skills': '技能',
-            'location': '三马林达, 东加里曼丹',
-            'education_short': 'D4 TRK · 三马林达国立理工学院',
-            'experience_short': '实习 @ 频谱监测中心',
-            'lang_id': '印尼语',
-            'lang_en': '英语 B2',
-            'lang_zh': '普通话 HSK1',
-            'cert_dicoding': 'Dicoding Android',
-            'cert_ccna': 'CCNAv7 Cisco',
-            'journey_title': '历程与经验',
-            'education': '教育',
-            'edu_polita_date': '2022 — 至今',
-            'edu_polita_name': '三马林达国立理工学院',
-            'edu_polita_major': 'D4 · 计算机工程技术',
-            'thesis_title': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
-            'edu_smk_date': '2019 — 2022',
-            'edu_smk_name': 'SMK Negeri 7 三马林达',
-            'edu_smk_major': '软件工程',
-            'experience': '经验',
-            'exp_balmon_date': '2026年2月 — 2026年5月',
-            'exp_balmon_name': '频谱监测中心',
-            'exp_balmon_role': '实习 · 全栈开发',
-            'exp_balmon_li1': 'PWA + Firebase 实时数据库',
-            'exp_balmon_li2': '管理后台 · 二维码系统',
-            'exp_balmon_li3': 'AI 聊天机器人 (Llama API) · Cloudflare Pages',
-            'exp_itb_date': '2020',
-            'exp_itb_name': 'PPTIK ITB · 在线实习',
-            'exp_itb_role': '工业实习与软件开发',
-            'contact_title': '联系我',
-            'contact_desc': '有兴趣合作或讨论？直接发送消息或通过社交媒体联系我。',
-            'form_title': '发送消息',
-            'form_name': '全名',
-            'form_email': '邮箱',
-            'form_subject': '主题',
-            'form_message': '消息',
-            'form_send': '发送消息',
-            'form_note': '🔒 消息通过 HTTPS 安全发送。我将在 1-2 个工作日内回复。',
-            'contact_direct': '直接联系',
-            'social_media': '社交媒体',
-            'email': '邮箱',
-            'phone': '电话',
-            'footer_built': '用',
-            'footer_code': '和代码构建',
-        }
-    };
-
-    function setLanguage(lang) {
-        try {
-            var elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(function(el) {
-                var key = el.getAttribute('data-i18n');
-                var translation = translations[lang]?.[key];
-                if (translation) {
-                    el.innerHTML = translation;
-                }
-            });
-            document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-                if (btn.dataset.lang === lang) btn.classList.add('active');
-            });
-            localStorage.setItem('preferred_lang', lang);
-            setTimeout(tryInitIcons, 100);
-        } catch (e) { /* ignore */ }
-    }
-
-    // ============================================================
-    // 5. CHATBOT - HUGGING FACE (STABIL)
-    // ============================================================
-
-    var chatOpen = false;
-    var chatMessages = document.getElementById('chat-messages');
-    var chatInput = document.getElementById('chat-input');
-    var chatSendBtn = document.getElementById('chat-send-btn');
-    var chatToggle = document.getElementById('chat-toggle');
-    var chatWindow = document.getElementById('chat-window');
-    var chatBadge = document.getElementById('chat-badge');
-    var badgeHidden = false;
-
-    function toggleChat() {
-        try {
-            chatOpen = !chatOpen;
-            if (chatOpen) {
-                chatWindow.classList.add('open');
-                chatToggle.classList.add('active');
-                if (!badgeHidden) {
-                    chatBadge.style.display = 'none';
-                    badgeHidden = true;
-                }
-                setTimeout(function() {
-                    if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
-                    if (chatInput) chatInput.focus();
-                }, 200);
-            } else {
-                chatWindow.classList.remove('open');
-                chatToggle.classList.remove('active');
-            }
-        } catch (e) { /* ignore */ }
-    }
-
-    // ==== INFORMASI TENTANG ANDA ====
-    var aboutVarian =
-        "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
-
-    // ==== HUGGING FACE API ====
-    var HF_MODEL = 'google/flan-t5-large';
-    var HF_API_KEY = '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';
-
-    var isTyping = false;
-
-    function addMessage(text, isUser) {
-        try {
-            if (!chatMessages) return;
-            var msgDiv = document.createElement('div');
-            msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
-            msgDiv.textContent = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        } catch (e) { /* ignore */ }
-    }
-
-    function addTypingIndicator() {
-        try {
-            if (!chatMessages) return;
-            var typingDiv = document.createElement('div');
-            typingDiv.className = 'message typing';
-            typingDiv.id = 'typing-indicator';
-            typingDiv.innerHTML =
-                `<div class="typing-dots"><span></span><span></span><span></span></div>`;
-            chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        } catch (e) { /* ignore */ }
-    }
-
-    function removeTypingIndicator() {
-        try {
-            var typing = document.getElementById('typing-indicator');
-            if (typing) typing.remove();
-        } catch (e) { /* ignore */ }
-    }
-
-    function getResponseFromHF(userMessage) {
-        return new Promise(function(resolve, reject) {
-            var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
-                "\n\nPertanyaan: " + userMessage +
-                "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
-
-            var headers = { 'Content-Type': 'application/json' };
-            if (HF_API_KEY && HF_API_KEY.trim() !== '') {
-                headers['Authorization'] = 'Bearer ' + HF_API_KEY.trim();
-            }
-
-            var url = 'https://api-inference.huggingface.co/models/' + HF_MODEL;
-
-            fetch(url, {
-                    method: 'POST',
-                    headers: headers,
-                    body: JSON.stringify({
-                        inputs: prompt,
-                        parameters: { max_length: 180, temperature: 0.6, do_sample: true, top_p: 0.9,
-                            return_full_text: false }
-                    })
-                })
-                .then(function(response) {
-                    if (!response.ok) {
-                        return response.json().then(function(err) {
-                            throw new Error(err.error || 'HTTP ' + response.status);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(function(data) {
-                    var text = '';
-                    if (Array.isArray(data) && data.length > 0 && data[0].generated_text) {
-                        text = data[0].generated_text;
-                    } else if (data.generated_text) {
-                        text = data.generated_text;
-                    } else if (typeof data === 'string') {
-                        text = data;
-                    } else {
-                        text = JSON.stringify(data);
-                    }
-                    text = text.replace(prompt, '').trim();
-                    text = text.replace(/^Pertanyaan:.*?\n/, '').replace(/^Jawab:/, '').trim();
-                    if (!text || text.length < 2) throw new Error('Respons kosong');
-                    resolve(text);
-                })
-                .catch(function(err) { reject(err); });
         });
-    }
 
-    function sendMessage() {
-        try {
-            var text = chatInput.value.trim();
-            if (!text || isTyping) return;
+        // ============================================================
+        // 4. LANGUAGE TOGGLE (SINGKAT)
+        // ============================================================
+        var translations = {
+            'id': {
+                'nav_home': 'Beranda',
+                'nav_about': 'Tentang',
+                'nav_portfolio': 'Portofolio',
+                'nav_resume': 'Resume',
+                'nav_map': 'Lokasi',
+                'nav_skills': 'Keahlian',
+                'nav_proficiency': 'Penguasaan',
+                'nav_experience': 'Perjalanan',
+                'nav_contact': 'Kontak',
+                'hero_title': 'Junior Software Engineer',
+                'tag_web': 'Web',
+                'tag_iot': 'IoT',
+                'tag_ai': 'AI',
+                'tag_robotics': 'Robotika',
+                'hero_desc': 'Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.',
+                'btn_contact': 'Hubungi',
+                'btn_works': 'Lihat Karya',
+                'portfolio_title': 'Karya &amp; Sertifikat',
+                'portfolio_sub': 'Proyek dan pengakuan yang telah saya raih',
+                'certificate': 'Sertifikat',
+                'project': 'Proyek',
+                'thesis': 'Skripsi',
+                'internship': 'Magang',
+                'journal': 'Jurnal',
+                'read_journal': 'Baca Jurnal',
+                'journal_published': 'Jurnal terbit 2026',
+                'dicoding_desc': 'Belajar Membuat Aplikasi Android untuk Pemula',
+                'ccna_desc': 'Switching, Routing, and Wireless Essentials',
+                'pwa_desc': 'Firebase · QR Code · AI Chatbot',
+                'thesis_desc': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
+                'balmon_title': 'Magang Balmon Samarinda',
+                'balmon_desc': 'Full Stack Developer · PWA · Firebase',
+                'krc_title': 'Robot Cerdas · KRC 2023',
+                'krc_desc': 'Algoritma navigasi, logika cerdas',
+                'champion': 'Juara 3',
+                'placeholder': 'placeholder',
+                'resume_title': '📄 Resume / CV',
+                'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
+                'fullscreen': 'Layar Penuh',
+                'download': 'Unduh Resume',
+                'click_to_enlarge': 'Klik untuk memperbesar',
+                'map_title': '📍 Lokasi Saya',
+                'map_desc': 'Temukan saya di Samarinda — klik peta untuk petunjuk arah',
+                'address_title': 'Alamat',
+                'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, Kalimantan Timur',
+                'coordinates_title': 'Koordinat',
+                'open_maps': 'Buka di Google Maps',
+                'map_note': '📍 Gunakan peta di samping untuk melihat lokasi persis saya',
+                'skills_title': 'Keahlian Teknis',
+                'skills_sub': 'Teknologi, alat, dan keterampilan yang saya kuasai',
+                'proficiency_title': '📊 Penguasaan Teknologi',
+                'proficiency_sub': 'Tingkat kemampuan saya dalam berbagai teknologi',
+                'about_title': 'Tentang Saya',
+                'about_p1': 'Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
+                'about_p2': 'Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.',
+                'about_p3': 'Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).',
+                'achievement_title': 'Juara 3 Kontes Robot Cerdas',
+                'achievement_loc': 'Provinsi Kalimantan Timur',
+                'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
+                'profile': 'Profil',
+                'languages': 'Bahasa',
+                'certifications': 'Sertifikasi',
+                'skills': 'Keahlian',
+                'location': 'Samarinda, Kaltim',
+                'education_short': 'D4 TRK · Politeknik Negeri Samarinda',
+                'experience_short': 'Intern @ Balai Monitor Spektrum',
+                'lang_id': 'Indonesia',
+                'lang_en': 'English B2',
+                'lang_zh': 'Mandarin HSK1',
+                'cert_dicoding': 'Dicoding Android',
+                'cert_ccna': 'CCNAv7 Cisco',
+                'journey_title': 'Perjalanan &amp; Pengalaman',
+                'education': 'Pendidikan',
+                'edu_polita_date': '2022 — Sekarang',
+                'edu_polita_name': 'Politeknik Negeri Samarinda',
+                'edu_polita_major': 'D4 · Teknologi Rekayasa Komputer',
+                'thesis_title': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
+                'edu_smk_date': '2019 — 2022',
+                'edu_smk_name': 'SMK Negeri 7 Samarinda',
+                'edu_smk_major': 'Rekayasa Perangkat Lunak',
+                'experience': 'Pengalaman',
+                'exp_balmon_date': 'Feb 2026 — Mei 2026',
+                'exp_balmon_name': 'Balai Monitor Spektrum Frekuensi Radio',
+                'exp_balmon_role': 'Intern · Full Stack Developer',
+                'exp_balmon_li1': 'PWA + Firebase Realtime Database',
+                'exp_balmon_li2': 'Admin Dashboard · QR Code System',
+                'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
+                'exp_itb_date': '2020',
+                'exp_itb_name': 'PPTIK ITB · Online Internship',
+                'exp_itb_role': 'Magang Industri &amp; Pengembangan Software',
+                'contact_title': 'Mari Terhubung',
+                'contact_desc': 'Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.',
+                'form_title': 'Kirim Pesan',
+                'form_name': 'Nama Lengkap',
+                'form_email': 'Email',
+                'form_subject': 'Subjek',
+                'form_message': 'Pesan',
+                'form_send': 'Kirim Pesan',
+                'form_note': '🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.',
+                'contact_direct': 'Hubungi Langsung',
+                'social_media': 'Media Sosial',
+                'email': 'Email',
+                'phone': 'Telepon',
+                'footer_built': 'Dibangun dengan',
+                'footer_code': 'dan kode',
+            },
+            'en': {
+                'nav_home': 'Home',
+                'nav_about': 'About',
+                'nav_portfolio': 'Portfolio',
+                'nav_resume': 'Resume',
+                'nav_map': 'Location',
+                'nav_skills': 'Skills',
+                'nav_proficiency': 'Proficiency',
+                'nav_experience': 'Journey',
+                'nav_contact': 'Contact',
+                'hero_title': 'Junior Software Engineer',
+                'tag_web': 'Web',
+                'tag_iot': 'IoT',
+                'tag_ai': 'AI',
+                'tag_robotics': 'Robotics',
+                'hero_desc': 'Building impactful tech solutions — from web apps to smart robots. I believe the best code understands the human behind the screen.',
+                'btn_contact': 'Contact',
+                'btn_works': 'View Works',
+                'portfolio_title': 'Works &amp; Certificates',
+                'portfolio_sub': 'Projects and recognitions I have achieved',
+                'certificate': 'Certificate',
+                'project': 'Project',
+                'thesis': 'Thesis',
+                'internship': 'Internship',
+                'journal': 'Journal',
+                'read_journal': 'Read Journal',
+                'journal_published': 'Journal published 2026',
+                'dicoding_desc': 'Learn to Make Android Apps for Beginners',
+                'ccna_desc': 'Switching, Routing, and Wireless Essentials',
+                'pwa_desc': 'Firebase · QR Code · AI Chatbot',
+                'thesis_desc': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
+                'balmon_title': 'Balmon Samarinda Internship',
+                'balmon_desc': 'Full Stack Developer · PWA · Firebase',
+                'krc_title': 'Smart Robot · KRC 2023',
+                'krc_desc': 'Navigation algorithms, intelligent logic',
+                'champion': '3rd Place',
+                'placeholder': 'placeholder',
+                'resume_title': '📄 Resume / CV',
+                'resume_desc': 'Summary of my professional journey — click to enlarge',
+                'fullscreen': 'Fullscreen',
+                'download': 'Download Resume',
+                'click_to_enlarge': 'Click to enlarge',
+                'map_title': '📍 My Location',
+                'map_desc': 'Find me in Samarinda — click the map for directions',
+                'address_title': 'Address',
+                'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, East Kalimantan',
+                'coordinates_title': 'Coordinates',
+                'open_maps': 'Open in Google Maps',
+                'map_note': '📍 Use the map to see my exact location',
+                'skills_title': 'Technical Skills',
+                'skills_sub': 'Technologies, tools, and skills I master',
+                'proficiency_title': '📊 Technology Proficiency',
+                'proficiency_sub': 'My skill level across various technologies',
+                'about_title': 'About Me',
+                'about_p1': 'I am a <span class="text-primary-600 font-medium">Computer Engineering Technology</span> student at Samarinda State Polytechnic with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
+                'about_p2': 'I am interested in <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, and <span class="text-primary-600 font-medium">IoT</span> development. I believe the best technology provides real solutions to everyday problems.',
+                'about_p3': 'I am currently completing my thesis on <span class="text-primary-600 font-medium">"Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm"</span> which has been published in the Journal of Integrated Industrial Engineering (JUTIN).',
+                'achievement_title': '3rd Place Smart Robot Competition',
+                'achievement_loc': 'East Kalimantan Province',
+                'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
+                'profile': 'Profile',
+                'languages': 'Languages',
+                'certifications': 'Certifications',
+                'skills': 'Skills',
+                'location': 'Samarinda, East Kalimantan',
+                'education_short': 'D4 TRK · Samarinda State Polytechnic',
+                'experience_short': 'Intern @ Spectrum Monitoring Center',
+                'lang_id': 'Indonesian',
+                'lang_en': 'English B2',
+                'lang_zh': 'Mandarin HSK1',
+                'cert_dicoding': 'Dicoding Android',
+                'cert_ccna': 'CCNAv7 Cisco',
+                'journey_title': 'Journey &amp; Experience',
+                'education': 'Education',
+                'edu_polita_date': '2022 — Present',
+                'edu_polita_name': 'Samarinda State Polytechnic',
+                'edu_polita_major': 'D4 · Computer Engineering Technology',
+                'thesis_title': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
+                'edu_smk_date': '2019 — 2022',
+                'edu_smk_name': 'SMK Negeri 7 Samarinda',
+                'edu_smk_major': 'Software Engineering',
+                'experience': 'Experience',
+                'exp_balmon_date': 'Feb 2026 — May 2026',
+                'exp_balmon_name': 'Spectrum Monitoring Center',
+                'exp_balmon_role': 'Intern · Full Stack Developer',
+                'exp_balmon_li1': 'PWA + Firebase Realtime Database',
+                'exp_balmon_li2': 'Admin Dashboard · QR Code System',
+                'exp_balmon_li3': 'AI Chatbot (Llama API) · Cloudflare Pages',
+                'exp_itb_date': '2020',
+                'exp_itb_name': 'PPTIK ITB · Online Internship',
+                'exp_itb_role': 'Industrial Internship &amp; Software Development',
+                'contact_title': 'Let\'s Connect',
+                'contact_desc': 'Interested in collaborating or discussing? Send a message directly or reach me via social media.',
+                'form_title': 'Send Message',
+                'form_name': 'Full Name',
+                'form_email': 'Email',
+                'form_subject': 'Subject',
+                'form_message': 'Message',
+                'form_send': 'Send Message',
+                'form_note': '🔒 Message sent securely via HTTPS. I\'ll reply within 1-2 business days.',
+                'contact_direct': 'Direct Contact',
+                'social_media': 'Social Media',
+                'email': 'Email',
+                'phone': 'Phone',
+                'footer_built': 'Built with',
+                'footer_code': 'and code',
+            },
+            'zh': {
+                'nav_home': '主页',
+                'nav_about': '关于',
+                'nav_portfolio': '作品集',
+                'nav_resume': '简历',
+                'nav_map': '位置',
+                'nav_skills': '技能',
+                'nav_proficiency': '熟练度',
+                'nav_experience': '历程',
+                'nav_contact': '联系',
+                'hero_title': '初级软件工程师',
+                'tag_web': 'Web',
+                'tag_iot': '物联网',
+                'tag_ai': '人工智能',
+                'tag_robotics': '机器人学',
+                'hero_desc': '构建有影响力的技术解决方案 — 从 Web 应用到智能机器人。我相信最好的代码能理解屏幕背后的人。',
+                'btn_contact': '联系',
+                'btn_works': '查看作品',
+                'portfolio_title': '作品与证书',
+                'portfolio_sub': '我完成的项目和获得的认可',
+                'certificate': '证书',
+                'project': '项目',
+                'thesis': '论文',
+                'internship': '实习',
+                'journal': '期刊',
+                'read_journal': '阅读期刊',
+                'journal_published': '期刊发表于 2026 年',
+                'dicoding_desc': '学习为初学者制作 Android 应用',
+                'ccna_desc': '交换、路由和无线基础',
+                'pwa_desc': 'Firebase · 二维码 · AI 聊天机器人',
+                'thesis_desc': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
+                'balmon_title': 'Balmon 三马林达实习',
+                'balmon_desc': '全栈开发 · PWA · Firebase',
+                'krc_title': '智能机器人 · KRC 2023',
+                'krc_desc': '导航算法，智能逻辑',
+                'champion': '第三名',
+                'placeholder': '占位符',
+                'resume_title': '📄 简历 / CV',
+                'resume_desc': '我的职业历程概述 — 点击放大',
+                'fullscreen': '全屏',
+                'download': '下载简历',
+                'click_to_enlarge': '点击放大',
+                'map_title': '📍 我的位置',
+                'map_desc': '在三马林达找到我 — 点击地图获取路线',
+                'address_title': '地址',
+                'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />三马林达, 东加里曼丹',
+                'coordinates_title': '坐标',
+                'open_maps': '在谷歌地图中打开',
+                'map_note': '📍 使用地图查看我的确切位置',
+                'skills_title': '技术技能',
+                'skills_sub': '我掌握的技术、工具和技能',
+                'proficiency_title': '📊 技术熟练度',
+                'proficiency_sub': '我在各种技术方面的技能水平',
+                'about_title': '关于我',
+                'about_p1': '我是三马林达国立理工学院的 <span class="text-primary-600 font-medium">计算机工程技术</span> 专业学生，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
+                'about_p2': '我对 <span class="text-primary-600 font-medium">Web</span>、<span class="text-cyan-600 font-medium">移动</span> 和 <span class="text-primary-600 font-medium">物联网</span> 开发感兴趣。我相信最好的技术能为日常问题提供真正的解决方案。',
+                'about_p3': '我目前正在完成我的论文 <span class="text-primary-600 font-medium">"基于物联网和 C4.5 算法的室内灭火系统设计与开发"</span>，该论文已发表在《工业工程综合期刊》(JUTIN) 上。',
+                'achievement_title': '智能机器人竞赛第三名',
+                'achievement_loc': '东加里曼丹省',
+                'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
+                'profile': '个人资料',
+                'languages': '语言',
+                'certifications': '认证',
+                'skills': '技能',
+                'location': '三马林达, 东加里曼丹',
+                'education_short': 'D4 TRK · 三马林达国立理工学院',
+                'experience_short': '实习 @ 频谱监测中心',
+                'lang_id': '印尼语',
+                'lang_en': '英语 B2',
+                'lang_zh': '普通话 HSK1',
+                'cert_dicoding': 'Dicoding Android',
+                'cert_ccna': 'CCNAv7 Cisco',
+                'journey_title': '历程与经验',
+                'education': '教育',
+                'edu_polita_date': '2022 — 至今',
+                'edu_polita_name': '三马林达国立理工学院',
+                'edu_polita_major': 'D4 · 计算机工程技术',
+                'thesis_title': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
+                'edu_smk_date': '2019 — 2022',
+                'edu_smk_name': 'SMK Negeri 7 三马林达',
+                'edu_smk_major': '软件工程',
+                'experience': '经验',
+                'exp_balmon_date': '2026年2月 — 2026年5月',
+                'exp_balmon_name': '频谱监测中心',
+                'exp_balmon_role': '实习 · 全栈开发',
+                'exp_balmon_li1': 'PWA + Firebase 实时数据库',
+                'exp_balmon_li2': '管理后台 · 二维码系统',
+                'exp_balmon_li3': 'AI 聊天机器人 (Llama API) · Cloudflare Pages',
+                'exp_itb_date': '2020',
+                'exp_itb_name': 'PPTIK ITB · 在线实习',
+                'exp_itb_role': '工业实习与软件开发',
+                'contact_title': '联系我',
+                'contact_desc': '有兴趣合作或讨论？直接发送消息或通过社交媒体联系我。',
+                'form_title': '发送消息',
+                'form_name': '全名',
+                'form_email': '邮箱',
+                'form_subject': '主题',
+                'form_message': '消息',
+                'form_send': '发送消息',
+                'form_note': '🔒 消息通过 HTTPS 安全发送。我将在 1-2 个工作日内回复。',
+                'contact_direct': '直接联系',
+                'social_media': '社交媒体',
+                'email': '邮箱',
+                'phone': '电话',
+                'footer_built': '用',
+                'footer_code': '和代码构建',
+            }
+        };
 
-            addMessage(text, true);
-            chatInput.value = '';
-            chatSendBtn.disabled = true;
-
-            isTyping = true;
-            addTypingIndicator();
-
-            getResponseFromHF(text)
-                .then(function(response) {
-                    removeTypingIndicator();
-                    addMessage(response, false);
-                    isTyping = false;
-                    chatSendBtn.disabled = false;
-                })
-                .catch(function(error) {
-                    removeTypingIndicator();
-                    var fallbackMsg =
-                        "Maaf, AI sedang tidak bisa dihubungi. Silakan coba lagi nanti, atau lihat langsung di portofolio saya. 😊";
-                    if (error.message && error.message.includes('rate limit')) {
-                        fallbackMsg =
-                            "⏳ Terlalu banyak permintaan, tunggu beberapa saat dan coba lagi. (Rate limit)";
+        function setLanguage(lang) {
+            try {
+                var elements = document.querySelectorAll('[data-i18n]');
+                elements.forEach(function(el) {
+                    var key = el.getAttribute('data-i18n');
+                    var translation = translations[lang]?.[key];
+                    if (translation) {
+                        el.innerHTML = translation;
                     }
-                    if (error.message && error.message.includes('Tunnel')) {
-                        fallbackMsg =
-                            "🌐 Koneksi ke AI terhalang (proxy/firewall). Silakan coba jaringan lain atau gunakan VPN.";
-                    }
-                    addMessage(fallbackMsg, false);
-                    isTyping = false;
-                    chatSendBtn.disabled = false;
                 });
-        } catch (e) {
-            removeTypingIndicator();
-            isTyping = false;
-            if (chatSendBtn) chatSendBtn.disabled = false;
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (btn.dataset.lang === lang) btn.classList.add('active');
+                });
+                localStorage.setItem('preferred_lang', lang);
+                setTimeout(initIcons, 100);
+            } catch (e) { /* ignore */ }
         }
-    }
 
-    console.log('🧠 Rhesa AI siap! Model:', HF_MODEL);
-    console.log('💬 WhatsApp floating button tersedia!');
-</script>
+        // ============================================================
+        // 5. CHATBOT - HUGGING FACE (STABIL)
+        // ============================================================
+
+        var chatOpen = false;
+        var chatMessages = document.getElementById('chat-messages');
+        var chatInput = document.getElementById('chat-input');
+        var chatSendBtn = document.getElementById('chat-send-btn');
+        var chatToggle = document.getElementById('chat-toggle');
+        var chatWindow = document.getElementById('chat-window');
+        var chatBadge = document.getElementById('chat-badge');
+        var badgeHidden = false;
+
+        function toggleChat() {
+            try {
+                chatOpen = !chatOpen;
+                if (chatOpen) {
+                    chatWindow.classList.add('open');
+                    chatToggle.classList.add('active');
+                    if (!badgeHidden) {
+                        chatBadge.style.display = 'none';
+                        badgeHidden = true;
+                    }
+                    setTimeout(function() {
+                        if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+                        if (chatInput) chatInput.focus();
+                    }, 200);
+                } else {
+                    chatWindow.classList.remove('open');
+                    chatToggle.classList.remove('active');
+                }
+            } catch (e) { /* ignore */ }
+        }
+
+        // ==== INFORMASI TENTANG ANDA ====
+        var aboutVarian =
+            "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
+
+        // ==== HUGGING FACE API ====
+        // Gunakan model gratis yang stabil
+        var HF_MODEL = 'google/flan-t5-large';
+        // API Key (kosongkan untuk rate limit gratis)
+        var HF_API_KEY = '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'; // Bisa diisi dengan key dari huggingface.co/settings/tokens
+
+        var isTyping = false;
+
+        function addMessage(text, isUser) {
+            try {
+                if (!chatMessages) return;
+                var msgDiv = document.createElement('div');
+                msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+                msgDiv.textContent = text;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (e) { /* ignore */ }
+        }
+
+        function addTypingIndicator() {
+            try {
+                if (!chatMessages) return;
+                var typingDiv = document.createElement('div');
+                typingDiv.className = 'message typing';
+                typingDiv.id = 'typing-indicator';
+                typingDiv.innerHTML =
+                    `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (e) { /* ignore */ }
+        }
+
+        function removeTypingIndicator() {
+            try {
+                var typing = document.getElementById('typing-indicator');
+                if (typing) typing.remove();
+            } catch (e) { /* ignore */ }
+        }
+
+        function getResponseFromHF(userMessage) {
+            return new Promise(function(resolve, reject) {
+                var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
+                    "\n\nPertanyaan: " + userMessage +
+                    "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
+
+                var headers = { 'Content-Type': 'application/json' };
+                if (HF_API_KEY && HF_API_KEY.trim() !== '') {
+                    headers['Authorization'] = 'Bearer ' + HF_API_KEY.trim();
+                }
+
+                var url = 'https://api-inference.huggingface.co/models/' + HF_MODEL;
+
+                fetch(url, {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({
+                            inputs: prompt,
+                            parameters: { max_length: 180, temperature: 0.6, do_sample: true, top_p: 0.9,
+                                return_full_text: false }
+                        })
+                    })
+                    .then(function(response) {
+                        if (!response.ok) {
+                            return response.json().then(function(err) {
+                                throw new Error(err.error || 'HTTP ' + response.status);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        var text = '';
+                        if (Array.isArray(data) && data.length > 0 && data[0].generated_text) {
+                            text = data[0].generated_text;
+                        } else if (data.generated_text) {
+                            text = data.generated_text;
+                        } else if (typeof data === 'string') {
+                            text = data;
+                        } else {
+                            text = JSON.stringify(data);
+                        }
+                        text = text.replace(prompt, '').trim();
+                        text = text.replace(/^Pertanyaan:.*?\n/, '').replace(/^Jawab:/, '').trim();
+                        if (!text || text.length < 2) throw new Error('Respons kosong');
+                        resolve(text);
+                    })
+                    .catch(function(err) { reject(err); });
+            });
+        }
+
+        function sendMessage() {
+            try {
+                var text = chatInput.value.trim();
+                if (!text || isTyping) return;
+
+                addMessage(text, true);
+                chatInput.value = '';
+                chatSendBtn.disabled = true;
+
+                isTyping = true;
+                addTypingIndicator();
+
+                getResponseFromHF(text)
+                    .then(function(response) {
+                        removeTypingIndicator();
+                        addMessage(response, false);
+                        isTyping = false;
+                        chatSendBtn.disabled = false;
+                    })
+                    .catch(function(error) {
+                        removeTypingIndicator();
+                        var fallbackMsg =
+                            "Maaf, AI sedang tidak bisa dihubungi. Silakan coba lagi nanti, atau lihat langsung di portofolio saya. 😊";
+                        if (error.message && error.message.includes('rate limit')) {
+                            fallbackMsg =
+                                "⏳ Terlalu banyak permintaan, tunggu beberapa saat dan coba lagi. (Rate limit)";
+                        }
+                        addMessage(fallbackMsg, false);
+                        isTyping = false;
+                        chatSendBtn.disabled = false;
+                    });
+            } catch (e) {
+                removeTypingIndicator();
+                isTyping = false;
+                if (chatSendBtn) chatSendBtn.disabled = false;
+            }
+        }
+
+        console.log('🧠 Rhesa AI siap! Model:', HF_MODEL);
+    </script>
 
 </body>
 </html>
