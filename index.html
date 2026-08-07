@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varian Rhesa · Junior Software Engineer</title>
 
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+
     <!-- ===== META TAGS ===== -->
     <meta name="description" content="Portfolio Varian Rhesa - Junior Software Engineer. Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda." />
     <meta name="keywords" content="Varian Rhesa, Junior Software Engineer, Web Development, IoT, AI" />
@@ -1812,46 +1815,34 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (STABIL & AMAN) ===== -->
+    <!-- ===== JAVASCRIPT (Fixed: Local Fallback + Empty API Key) ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // 1. LUCIDE ICONS - SEDERHANA
+        // 1. LUCIDE ICONS
         // ============================================================
         function initIcons() {
-            try {
-                if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                }
-            } catch (e) {
-                // Abaikan error ikon
-            }
+            try { if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons(); } catch (e) {}
         }
 
         // ============================================================
-        // 2. DOM READY - SEMUA DALAM SATU BLOK
+        // 2. DOM READY
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-
             try {
-                // Inisialisasi ikon
                 setTimeout(initIcons, 200);
 
-                // ===== MOBILE MENU =====
+                // Mobile Menu
                 var btn = document.getElementById('mobile-menu-btn');
                 var menu = document.getElementById('mobile-menu');
                 if (btn && menu) {
-                    btn.addEventListener('click', function() {
-                        menu.classList.toggle('hidden');
-                    });
+                    btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
                     document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-                        link.addEventListener('click', function() {
-                            menu.classList.add('hidden');
-                        });
+                        link.addEventListener('click', function() { menu.classList.add('hidden'); });
                     });
                 }
 
-                // ===== NAVBAR SCROLL =====
+                // Navbar Scroll
                 var navbar = document.getElementById('navbar');
                 if (navbar) {
                     window.addEventListener('scroll', function() {
@@ -1864,11 +1855,11 @@
                                 navbar.classList.remove('nav-blur', 'py-2');
                                 navbar.classList.add('bg-transparent', 'py-3');
                             }
-                        } catch (e) { /* ignore */ }
+                        } catch (e) {}
                     });
                 }
 
-                // ===== SCROLL ANIMATIONS =====
+                // Scroll Animations
                 if ('IntersectionObserver' in window) {
                     try {
                         var observer = new IntersectionObserver(function(entries) {
@@ -1879,50 +1870,36 @@
                                         var fill = entry.target.querySelector('.progress-bar-fill');
                                         if (fill) {
                                             var width = fill.style.getPropertyValue('--progress-width');
-                                            setTimeout(function() {
-                                                fill.style.width = width;
-                                            }, 100);
+                                            setTimeout(function() { fill.style.width = width; }, 100);
                                         }
                                     }
                                     observer.unobserve(entry.target);
                                 }
                             });
-                        }, {
-                            threshold: 0.2,
-                            rootMargin: '0px 0px -50px 0px'
-                        });
+                        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
-                        document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                            observer.observe(el);
-                        });
-                    } catch (e) { /* ignore */ }
+                        document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) { observer.observe(el); });
+                    } catch (e) {}
                 } else {
-                    document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                        el.classList.add('is-visible');
-                    });
+                    document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) { el.classList.add('is-visible'); });
                     document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
                         var width = fill.style.getPropertyValue('--progress-width');
                         if (width) fill.style.width = width;
                     });
                 }
 
-                // ===== CHAT INPUT ENTER =====
+                // Chat Enter
                 var chatInput = document.getElementById('chat-input');
                 if (chatInput) {
                     chatInput.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') {
-                            sendMessage();
-                        }
+                        if (e.key === 'Enter') sendMessage();
                     });
                 }
 
-                // ===== LOAD LANGUAGE =====
+                // Language
                 var savedLang = localStorage.getItem('preferred_lang') || 'id';
                 setLanguage(savedLang);
-
-            } catch (e) {
-                console.log('Page loaded with minimal features:', e);
-            }
+            } catch (e) { console.log('Page loaded with minimal features:', e); }
         });
 
         // ============================================================
@@ -1932,35 +1909,27 @@
             try {
                 var modal = document.getElementById('imageModal');
                 var img = document.getElementById('modalImage');
-                if (modal && img) {
-                    img.src = src;
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            } catch (e) { /* ignore */ }
+                if (modal && img) { img.src = src; modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            } catch (e) {}
         }
 
         function closeImageModal(e) {
             try {
                 if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
                 var modal = document.getElementById('imageModal');
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            } catch (e) { /* ignore */ }
+                if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
+            } catch (e) {}
         }
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 var modal = document.getElementById('imageModal');
-                if (modal) modal.classList.remove('active');
-                document.body.style.overflow = '';
+                if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
             }
         });
 
         // ============================================================
-        // 4. LANGUAGE TOGGLE (SINGKAT)
+        // 4. LANGUAGE (ID, EN, ZH)
         // ============================================================
         var translations = {
             'id': {
@@ -2306,9 +2275,8 @@
         }
 
         // ============================================================
-        // 5. CHATBOT - HUGGING FACE (STABIL)
+        // 5. CHATBOT - HF Inference API + LOCAL FALLBACK
         // ============================================================
-
         var chatOpen = false;
         var chatMessages = document.getElementById('chat-messages');
         var chatInput = document.getElementById('chat-input');
@@ -2344,10 +2312,9 @@
             "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
 
         // ==== HUGGING FACE API ====
-        // Gunakan model gratis yang stabil
         var HF_MODEL = 'google/flan-t5-large';
-        // API Key (kosongkan untuk rate limit gratis)
-        var HF_API_KEY = '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'; // Bisa diisi dengan key dari huggingface.co/settings/tokens
+        // API Key dikosongkan untuk akses anonim (rate limit rendah)
+        var HF_API_KEY = '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'; // Isi dengan token dari https://huggingface.co/settings/tokens jika ingin lebih stabil
 
         var isTyping = false;
 
@@ -2369,7 +2336,7 @@
                 typingDiv.className = 'message typing';
                 typingDiv.id = 'typing-indicator';
                 typingDiv.innerHTML =
-                    `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+                    '<div class="typing-dots"><span></span><span></span><span></span></div>';
                 chatMessages.appendChild(typingDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             } catch (e) { /* ignore */ }
@@ -2382,6 +2349,20 @@
             } catch (e) { /* ignore */ }
         }
 
+        // Fallback lokal berdasarkan kata kunci
+        function localFallback(message) {
+            var msg = message.toLowerCase();
+            if (msg.includes('nama') || msg.includes('siapa')) return 'Saya Varian Rhesa, Junior Software Engineer.';
+            if (msg.includes('pendidikan') || msg.includes('kuliah')) return 'Saya kuliah di Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-sekarang).';
+            if (msg.includes('keahlian') || msg.includes('skill')) return 'Keahlian saya: Python, Java, C++, JavaScript, PHP, Dart, Flutter, IoT, Git, Linux, Firebase, Cloudflare Workers, dan lainnya.';
+            if (msg.includes('pengalaman') || msg.includes('kerja')) return 'Saya magang di Balai Monitor Spektrum Samarinda sebagai Full Stack Developer (PWA, Firebase, QR Code, AI Chatbot). Juga intern di PPTIK ITB.';
+            if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, dan robot KRC juara 3.';
+            if (msg.includes('kontak') || msg.includes('hubungi')) return 'Hubungi saya via email rhesa719@gmail.com atau WhatsApp 0895-1962-8044.';
+            if (msg.includes('sertifikat') || msg.includes('ccna') || msg.includes('dicoding')) return 'Sertifikasi: Dicoding Android Pemula, CCNAv7 Cisco, dan magang resmi dari Balmon.';
+            if (msg.includes('bahasa') || msg.includes('language')) return 'Saya fasih berbahasa Indonesia, Inggris (B2), dan Mandarin dasar (HSK1).';
+            return null;
+        }
+
         function getResponseFromHF(userMessage) {
             return new Promise(function(resolve, reject) {
                 var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
@@ -2389,7 +2370,7 @@
                     "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
 
                 var headers = { 'Content-Type': 'application/json' };
-                if (HF_API_KEY && HF_API_KEY.trim() !== '') {
+                if (HF_API_KEY.trim() !== '') {
                     headers['Authorization'] = 'Bearer ' + HF_API_KEY.trim();
                 }
 
@@ -2453,13 +2434,14 @@
                     })
                     .catch(function(error) {
                         removeTypingIndicator();
-                        var fallbackMsg =
-                            "Maaf, AI sedang tidak bisa dihubungi. Silakan coba lagi nanti, atau lihat langsung di portofolio saya. 😊";
-                        if (error.message && error.message.includes('rate limit')) {
-                            fallbackMsg =
-                                "⏳ Terlalu banyak permintaan, tunggu beberapa saat dan coba lagi. (Rate limit)";
+                        // Jika AI gagal, gunakan fallback lokal
+                        var localAnswer = localFallback(text);
+                        if (localAnswer) {
+                            addMessage(localAnswer, false);
+                        } else {
+                            // Jika tidak ada jawaban lokal, beri pesan error ramah
+                            addMessage("Maaf, saya tidak bisa menghubungi AI saat ini, dan saya belum memiliki jawaban untuk pertanyaan itu. Coba tanyakan tentang keahlian, pengalaman, atau kontak Varian. 😊", false);
                         }
-                        addMessage(fallbackMsg, false);
                         isTyping = false;
                         chatSendBtn.disabled = false;
                     });
@@ -2470,8 +2452,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI siap! Model:', HF_MODEL);
+        console.log('🧠 Rhesa AI (flan-t5 + fallback lokal) siap!');
     </script>
-
 </body>
 </html>
