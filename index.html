@@ -30,74 +30,13 @@
     <meta name="twitter:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer." />
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
-    <!-- ===== TAILWIND CSS ===== -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <!-- ===== TAILWIND CSS (pre-compiled static file, no runtime compilation) ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-    <!-- ===== LUCIDE ICONS ===== -->
-    <script src="https://unpkg.com/lucide@latest">
-    </script>
+    <!-- ===== LUCIDE ICONS (deferred to not block page rendering) ===== -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
-    <!-- ===== TAILWIND CONFIG ===== -->
-    <script>
-        if (typeof tailwind !== 'undefined') {
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: {
-                                50: '#e6f7f0',
-                                100: '#ccefe1',
-                                200: '#99dfc3',
-                                300: '#66cfa5',
-                                400: '#33bf87',
-                                500: '#0aaf69',
-                                600: '#089154',
-                                700: '#06733f',
-                                800: '#04552a',
-                                900: '#023715',
-                                950: '#011e0b',
-                            },
-                            cyan: {
-                                50: '#ecfeff',
-                                100: '#cffafe',
-                                200: '#a5f3fc',
-                                300: '#67e8f9',
-                                400: '#22d3ee',
-                                500: '#06b6d4',
-                                600: '#0891b2',
-                                700: '#0e7490',
-                                800: '#155e75',
-                                900: '#164e63',
-                                950: '#083344',
-                            },
-                            dark: {
-                                50: '#f0f2f0',
-                                100: '#d9ddd9',
-                                200: '#b3bbb3',
-                                300: '#8d998d',
-                                400: '#677767',
-                                500: '#415541',
-                                600: '#344434',
-                                700: '#273327',
-                                800: '#1a221a',
-                                900: '#0d110d',
-                                950: '#060806',
-                            },
-                            whatsapp: {
-                                500: '#25D366',
-                                600: '#128C7E',
-                            }
-                        },
-                        fontFamily: {
-                            sans: ['Inter', 'system-ui', 'sans-serif'],
-                            mono: ['JetBrains Mono', 'monospace'],
-                        }
-                    }
-                }
-            };
-        }
-    </script>
+    <!-- NOTE: Old Tailwind CDN script and tailwind.config block have been removed to eliminate page freeze -->
 
     <style>
         /* ===== FONT ===== */
@@ -376,21 +315,11 @@
             transform: translateY(0);
         }
 
-        .fade-in-up.delay-1 {
-            transition-delay: 0.1s;
-        }
-        .fade-in-up.delay-2 {
-            transition-delay: 0.2s;
-        }
-        .fade-in-up.delay-3 {
-            transition-delay: 0.3s;
-        }
-        .fade-in-up.delay-4 {
-            transition-delay: 0.4s;
-        }
-        .fade-in-up.delay-5 {
-            transition-delay: 0.5s;
-        }
+        .fade-in-up.delay-1 { transition-delay: 0.1s; }
+        .fade-in-up.delay-2 { transition-delay: 0.2s; }
+        .fade-in-up.delay-3 { transition-delay: 0.3s; }
+        .fade-in-up.delay-4 { transition-delay: 0.4s; }
+        .fade-in-up.delay-5 { transition-delay: 0.5s; }
 
         /* ===== LANGUAGE TOGGLE ===== */
         .lang-btn {
@@ -481,7 +410,6 @@
         /* ===== CHATBOT STYLES ===== */
         /* ============================================================ */
 
-        /* Container for both floating buttons */
         .floating-buttons {
             position: fixed;
             bottom: 24px;
@@ -493,7 +421,6 @@
             align-items: center;
         }
 
-        /* WhatsApp floating button */
         #wa-toggle {
             width: 56px;
             height: 56px;
@@ -520,7 +447,6 @@
             height: 28px;
         }
 
-        /* AI Chat floating button */
         #chat-toggle {
             width: 60px;
             height: 60px;
@@ -541,25 +467,11 @@
             box-shadow: 0 12px 40px rgba(10, 175, 105, 0.45);
         }
 
-        #chat-toggle .icon-chat {
-            width: 28px;
-            height: 28px;
-        }
+        #chat-toggle .icon-chat { width: 28px; height: 28px; }
+        #chat-toggle .icon-close { width: 28px; height: 28px; display: none; }
+        #chat-toggle.active .icon-chat { display: none; }
+        #chat-toggle.active .icon-close { display: block; }
 
-        #chat-toggle .icon-close {
-            width: 28px;
-            height: 28px;
-            display: none;
-        }
-
-        #chat-toggle.active .icon-chat {
-            display: none;
-        }
-        #chat-toggle.active .icon-close {
-            display: block;
-        }
-
-        /* Notification badge */
         #chat-badge {
             position: absolute;
             top: -4px;
@@ -578,16 +490,10 @@
         }
 
         @keyframes pulse-badge {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
-        /* Chat window */
         #chat-window {
             position: fixed;
             bottom: 96px;
@@ -607,11 +513,8 @@
             transition: all 0.3s ease;
         }
 
-        #chat-window.open {
-            display: flex;
-        }
+        #chat-window.open { display: flex; }
 
-        /* Chat header */
         #chat-header {
             padding: 16px 20px;
             background: linear-gradient(135deg, #0aaf69, #06b6d4);
@@ -639,13 +542,8 @@
         }
 
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         #chat-header .chat-title .hf-badge {
@@ -676,7 +574,6 @@
             background: rgba(255, 255, 255, 0.25);
         }
 
-        /* Chat messages */
         #chat-messages {
             flex: 1;
             padding: 16px 20px;
@@ -698,14 +595,8 @@
         }
 
         @keyframes fadeInMsg {
-            0% {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .message.bot {
@@ -744,26 +635,14 @@
             background: #99dfc3;
             animation: typingBounce 1.2s infinite;
         }
-
-        .typing-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .typing-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes typingBounce {
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-6px);
-            }
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
         }
 
-        /* Chat input */
         #chat-input-area {
             padding: 12px 16px 16px 16px;
             background: white;
@@ -813,7 +692,6 @@
             transform: none;
         }
 
-        /* Welcome message */
         .welcome-msg {
             font-size: 0.8rem;
             color: #677767;
@@ -823,7 +701,6 @@
             margin-bottom: 6px;
         }
 
-        /* API Key warning */
         .api-warning {
             font-size: 0.7rem;
             color: #b91c1c;
@@ -834,7 +711,6 @@
             margin: 4px 0;
         }
 
-        /* Responsive chat */
         @media (max-width: 480px) {
             #chat-window {
                 bottom: 80px;
@@ -843,41 +719,22 @@
                 max-height: calc(100vh - 140px);
                 border-radius: 16px;
             }
-            .floating-buttons {
-                bottom: 16px;
-                right: 16px;
-                gap: 10px;
-            }
-            #chat-toggle {
-                width: 52px;
-                height: 52px;
-            }
-            #wa-toggle {
-                width: 48px;
-                height: 48px;
-            }
-            #chat-toggle .icon-chat,
-            #chat-toggle .icon-close {
-                width: 24px;
-                height: 24px;
-            }
-            #wa-toggle .wa-icon {
-                width: 24px;
-                height: 24px;
-            }
+            .floating-buttons { bottom: 16px; right: 16px; gap: 10px; }
+            #chat-toggle { width: 52px; height: 52px; }
+            #wa-toggle { width: 48px; height: 48px; }
+            #chat-toggle .icon-chat, #chat-toggle .icon-close { width: 24px; height: 24px; }
+            #wa-toggle .wa-icon { width: 24px; height: 24px; }
         }
     </style>
 </head>
 
 <body>
-
     <!-- ============================================================ -->
     <!-- ===== NAVBAR ===== -->
     <!-- ============================================================ -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-
                 <a href="#home" class="flex items-center gap-2 shrink-0">
                     <span class="text-2xl font-bold tracking-tight text-dark-900">
                         <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
@@ -1212,7 +1069,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-
                 <div class="lg:col-span-1 space-y-4 fade-in-up delay-1">
                     <div class="bg-dark-50/50 rounded-xl p-5 sm:p-6 border border-dark-100">
                         <div class="flex items-start gap-3 mb-4">
@@ -1267,7 +1123,6 @@
                         📍 -0.500647, 117.185105 · Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
