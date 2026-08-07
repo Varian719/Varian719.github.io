@@ -825,12 +825,6 @@
             }
         }
     </style>
-
-    <script>
-        // ============================================================
-        // TAILWIND CONFIG (SUDAH DI ATAS)
-        // ============================================================
-    </script>
 </head>
 
 <body>
@@ -1793,7 +1787,7 @@
             <div class="chat-title">
                 <span class="status-dot"></span>
                 <span>🧠 Rhesa AI</span>
-                <span class="hf-badge">🦙 Llama 3.1</span>
+                <span class="hf-badge">🤗 HF</span>
             </div>
             <button class="close-btn" onclick="toggleChat()" aria-label="Tutup chat">✕</button>
         </div>
@@ -1801,7 +1795,7 @@
         <div id="chat-messages">
             <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
             <div class="message bot">
-                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Llama 3.1 8B</strong> dari Meta (via Hugging Face). Saya siap menjawab pertanyaan tentang Varian Rhesa dengan lebih natural dan informatif. Tanyakan saja! 😊
+                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Hugging Face</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
             </div>
         </div>
 
@@ -1818,152 +1812,155 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ===== JAVASCRIPT (STABIL & AMAN) ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // 1. LUCIDE ICONS - INISIALISASI
+        // 1. LUCIDE ICONS - SEDERHANA
         // ============================================================
-        var iconInitAttempts = 0;
-        var maxIconAttempts = 10;
-
         function initIcons() {
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                try {
+            try {
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
                     lucide.createIcons();
-                    iconInitAttempts = 0;
-                    return true;
-                } catch (e) {}
-            }
-            return false;
-        }
-
-        function tryInitIcons() {
-            if (initIcons()) return;
-            iconInitAttempts++;
-            if (iconInitAttempts < maxIconAttempts) {
-                setTimeout(tryInitIcons, 300);
+                }
+            } catch (e) {
+                // Abaikan error ikon
             }
         }
 
         // ============================================================
-        // 2. DOM READY
+        // 2. DOM READY - SEMUA DALAM SATU BLOK
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            tryInitIcons();
 
-            // Mobile menu
-            var btn = document.getElementById('mobile-menu-btn');
-            var menu = document.getElementById('mobile-menu');
-            if (btn && menu) {
-                btn.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-                document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        menu.classList.add('hidden');
+            try {
+                // Inisialisasi ikon
+                setTimeout(initIcons, 200);
+
+                // ===== MOBILE MENU =====
+                var btn = document.getElementById('mobile-menu-btn');
+                var menu = document.getElementById('mobile-menu');
+                if (btn && menu) {
+                    btn.addEventListener('click', function() {
+                        menu.classList.toggle('hidden');
                     });
-                });
-            }
+                    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            menu.classList.add('hidden');
+                        });
+                    });
+                }
 
-            // Navbar scroll
-            var navbar = document.getElementById('navbar');
-            if (navbar) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 20) {
-                        navbar.classList.add('nav-blur');
-                        navbar.classList.remove('bg-transparent', 'py-3');
-                        navbar.classList.add('py-2');
-                    } else {
-                        navbar.classList.remove('nav-blur', 'py-2');
-                        navbar.classList.add('bg-transparent', 'py-3');
-                    }
-                });
-            }
-
-            // Scroll Animations
-            if ('IntersectionObserver' in window) {
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            if (entry.target.classList.contains('progress-item')) {
-                                var fill = entry.target.querySelector('.progress-bar-fill');
-                                if (fill) {
-                                    var width = fill.style.getPropertyValue('--progress-width');
-                                    setTimeout(function() {
-                                        fill.style.width = width;
-                                    }, 100);
-                                }
+                // ===== NAVBAR SCROLL =====
+                var navbar = document.getElementById('navbar');
+                if (navbar) {
+                    window.addEventListener('scroll', function() {
+                        try {
+                            if (window.scrollY > 20) {
+                                navbar.classList.add('nav-blur');
+                                navbar.classList.remove('bg-transparent', 'py-3');
+                                navbar.classList.add('py-2');
+                            } else {
+                                navbar.classList.remove('nav-blur', 'py-2');
+                                navbar.classList.add('bg-transparent', 'py-3');
                             }
+                        } catch (e) { /* ignore */ }
+                    });
+                }
+
+                // ===== SCROLL ANIMATIONS =====
+                if ('IntersectionObserver' in window) {
+                    try {
+                        var observer = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('is-visible');
+                                    if (entry.target.classList.contains('progress-item')) {
+                                        var fill = entry.target.querySelector('.progress-bar-fill');
+                                        if (fill) {
+                                            var width = fill.style.getPropertyValue('--progress-width');
+                                            setTimeout(function() {
+                                                fill.style.width = width;
+                                            }, 100);
+                                        }
+                                    }
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, {
+                            threshold: 0.2,
+                            rootMargin: '0px 0px -50px 0px'
+                        });
+
+                        document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                            observer.observe(el);
+                        });
+                    } catch (e) { /* ignore */ }
+                } else {
+                    document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
+                        el.classList.add('is-visible');
+                    });
+                    document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
+                        var width = fill.style.getPropertyValue('--progress-width');
+                        if (width) fill.style.width = width;
+                    });
+                }
+
+                // ===== CHAT INPUT ENTER =====
+                var chatInput = document.getElementById('chat-input');
+                if (chatInput) {
+                    chatInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            sendMessage();
                         }
                     });
-                }, {
-                    threshold: 0.2,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-
-                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                    observer.observe(el);
-                });
-            } else {
-                document.querySelectorAll('.fade-in-up, .progress-item').forEach(function(el) {
-                    el.classList.add('is-visible');
-                });
-                document.querySelectorAll('.progress-bar-fill').forEach(function(fill) {
-                    var width = fill.style.getPropertyValue('--progress-width');
-                    if (width) {
-                        fill.style.width = width;
-                    }
-                });
-            }
-
-            // Chat input Enter key
-            document.getElementById('chat-input').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
                 }
-            });
 
-            // Load saved language
-            var savedLang = localStorage.getItem('preferred_lang') || 'id';
-            setLanguage(savedLang);
+                // ===== LOAD LANGUAGE =====
+                var savedLang = localStorage.getItem('preferred_lang') || 'id';
+                setLanguage(savedLang);
+
+            } catch (e) {
+                console.log('Page loaded with minimal features:', e);
+            }
         });
 
         // ============================================================
         // 3. IMAGE MODAL
         // ============================================================
         function openImageModal(src) {
-            var modal = document.getElementById('imageModal');
-            var img = document.getElementById('modalImage');
-            if (modal && img) {
-                img.src = src;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+            try {
+                var modal = document.getElementById('imageModal');
+                var img = document.getElementById('modalImage');
+                if (modal && img) {
+                    img.src = src;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            } catch (e) { /* ignore */ }
         }
 
         function closeImageModal(e) {
-            if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
-            var modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
+            try {
+                if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return;
                 var modal = document.getElementById('imageModal');
                 if (modal) {
                     modal.classList.remove('active');
                     document.body.style.overflow = '';
                 }
+            } catch (e) { /* ignore */ }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                var modal = document.getElementById('imageModal');
+                if (modal) modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
         // ============================================================
-        // 4. LANGUAGE TOGGLE
+        // 4. LANGUAGE TOGGLE (SINGKAT)
         // ============================================================
         var translations = {
             'id': {
@@ -2290,56 +2287,26 @@
         };
 
         function setLanguage(lang) {
-            var elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(function(el) {
-                var key = el.getAttribute('data-i18n');
-                var translation = translations[lang]?.[key];
-                if (translation) {
-                    el.innerHTML = translation;
-                }
-            });
-
-            document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('active');
-                }
-            });
-
-            localStorage.setItem('preferred_lang', lang);
-            setTimeout(tryInitIcons, 100);
+            try {
+                var elements = document.querySelectorAll('[data-i18n]');
+                elements.forEach(function(el) {
+                    var key = el.getAttribute('data-i18n');
+                    var translation = translations[lang]?.[key];
+                    if (translation) {
+                        el.innerHTML = translation;
+                    }
+                });
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (btn.dataset.lang === lang) btn.classList.add('active');
+                });
+                localStorage.setItem('preferred_lang', lang);
+                setTimeout(initIcons, 100);
+            } catch (e) { /* ignore */ }
         }
 
         // ============================================================
-        // 5. MUTATION OBSERVER
-        // ============================================================
-        if (window.MutationObserver) {
-            var iconObserver = new MutationObserver(function() {
-                tryInitIcons();
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                if (document.body) {
-                    iconObserver.observe(document.body, {
-                        childList: true,
-                        subtree: true,
-                        attributes: false
-                    });
-                }
-            });
-
-            setTimeout(function() {
-                if (iconObserver) {
-                    iconObserver.disconnect();
-                }
-            }, 10000);
-        }
-
-        setTimeout(tryInitIcons, 1000);
-        setTimeout(tryInitIcons, 3000);
-
-        // ============================================================
-        // 6. CHATBOT - HUGGING FACE INFERENCE API dengan LLAMA 3.1
+        // 5. CHATBOT - HUGGING FACE (STABIL)
         // ============================================================
 
         var chatOpen = false;
@@ -2349,120 +2316,93 @@
         var chatToggle = document.getElementById('chat-toggle');
         var chatWindow = document.getElementById('chat-window');
         var chatBadge = document.getElementById('chat-badge');
-
         var badgeHidden = false;
 
         function toggleChat() {
-            chatOpen = !chatOpen;
-            if (chatOpen) {
-                chatWindow.classList.add('open');
-                chatToggle.classList.add('active');
-                if (!badgeHidden) {
-                    chatBadge.style.display = 'none';
-                    badgeHidden = true;
+            try {
+                chatOpen = !chatOpen;
+                if (chatOpen) {
+                    chatWindow.classList.add('open');
+                    chatToggle.classList.add('active');
+                    if (!badgeHidden) {
+                        chatBadge.style.display = 'none';
+                        badgeHidden = true;
+                    }
+                    setTimeout(function() {
+                        if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+                        if (chatInput) chatInput.focus();
+                    }, 200);
+                } else {
+                    chatWindow.classList.remove('open');
+                    chatToggle.classList.remove('active');
                 }
-                setTimeout(function() {
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 100);
-            } else {
-                chatWindow.classList.remove('open');
-                chatToggle.classList.remove('active');
-            }
+            } catch (e) { /* ignore */ }
         }
-
-        // ============================================================
-        // 7. HUGGING FACE + LLAMA 3.1 8B
-        // ============================================================
 
         // ==== INFORMASI TENTANG ANDA ====
         var aboutVarian =
-            "Nama: Varian Rhesa\n" +
-            "Pekerjaan: Junior Software Engineer\n" +
-            "Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022).\n" +
-            "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase.\n" +
-            "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020).\n" +
-            "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023.\n" +
-            "Lokasi: Samarinda, Kalimantan Timur.\n" +
-            "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1).\n" +
-            "Sertifikasi: Dicoding Android, CCNAv7 Cisco.\n" +
-            "Hobi: Kopi, membaca, bersepeda, musik.\n" +
-            "Filosofi: Kode terbaik adalah yang mengerti manusia di balik layar.";
+            "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
 
         // ==== HUGGING FACE API ====
-        // 🔑 API Key (sudah diisi)
-        var HF_API_KEY = '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';
-
-        // 🔥 MODEL LLAMA 3.1 8B INSTRUCT
-        var HF_MODEL = 'meta-llama/Llama-3.1-8B-Instruct';
+        // Gunakan model gratis yang stabil
+        var HF_MODEL = 'google/flan-t5-large';
+        // API Key (kosongkan untuk rate limit gratis)
+        var HF_API_KEY = ''; // Bisa diisi dengan key dari huggingface.co/settings/tokens
 
         var isTyping = false;
 
         function addMessage(text, isUser) {
-            var msgDiv = document.createElement('div');
-            msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
-            msgDiv.textContent = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            try {
+                if (!chatMessages) return;
+                var msgDiv = document.createElement('div');
+                msgDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+                msgDiv.textContent = text;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (e) { /* ignore */ }
         }
 
         function addTypingIndicator() {
-            var typingDiv = document.createElement('div');
-            typingDiv.className = 'message typing';
-            typingDiv.id = 'typing-indicator';
-            typingDiv.innerHTML = `
-                <div class="typing-dots">
-                    <span></span><span></span><span></span>
-                </div>
-            `;
-            chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            try {
+                if (!chatMessages) return;
+                var typingDiv = document.createElement('div');
+                typingDiv.className = 'message typing';
+                typingDiv.id = 'typing-indicator';
+                typingDiv.innerHTML =
+                    `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (e) { /* ignore */ }
         }
 
         function removeTypingIndicator() {
-            var typing = document.getElementById('typing-indicator');
-            if (typing) {
-                typing.remove();
-            }
+            try {
+                var typing = document.getElementById('typing-indicator');
+                if (typing) typing.remove();
+            } catch (e) { /* ignore */ }
         }
 
-        function getResponseFromLlama(userMessage) {
+        function getResponseFromHF(userMessage) {
             return new Promise(function(resolve, reject) {
-                // Prompt format untuk Llama 3.1 Instruct
-                var systemPrompt = "Anda adalah Rhesa AI, asisten virtual yang ramah dan informatif. Tugas Anda adalah menjawab pertanyaan tentang Varian Rhesa berdasarkan informasi yang diberikan. Jawab dengan singkat, jelas, dan dalam bahasa Indonesia. Jika pertanyaan tidak terkait dengan Varian Rhesa, katakan 'Maaf, saya hanya bisa menjawab pertanyaan tentang Varian Rhesa.'";
+                var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
+                    "\n\nPertanyaan: " + userMessage +
+                    "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
 
-                var userPrompt = "Pertanyaan: " + userMessage;
-
-                // Format pesan untuk Llama 3.1
-                var messages = [
-                    { role: "system", content: systemPrompt + "\n\nInformasi tentang Varian Rhesa:\n" + aboutVarian },
-                    { role: "user", content: userPrompt }
-                ];
-
-                var url = 'https://api-inference.huggingface.co/models/' + HF_MODEL;
-
-                var headers = {
-                    'Content-Type': 'application/json'
-                };
-
+                var headers = { 'Content-Type': 'application/json' };
                 if (HF_API_KEY && HF_API_KEY.trim() !== '') {
                     headers['Authorization'] = 'Bearer ' + HF_API_KEY.trim();
                 }
 
-                var payload = {
-                    inputs: messages,
-                    parameters: {
-                        max_new_tokens: 300,
-                        temperature: 0.7,
-                        top_p: 0.9,
-                        do_sample: true,
-                        return_full_text: false
-                    }
-                };
+                var url = 'https://api-inference.huggingface.co/models/' + HF_MODEL;
 
                 fetch(url, {
                         method: 'POST',
                         headers: headers,
-                        body: JSON.stringify(payload)
+                        body: JSON.stringify({
+                            inputs: prompt,
+                            parameters: { max_length: 180, temperature: 0.6, do_sample: true, top_p: 0.9,
+                                return_full_text: false }
+                        })
                     })
                     .then(function(response) {
                         if (!response.ok) {
@@ -2480,114 +2420,57 @@
                             text = data.generated_text;
                         } else if (typeof data === 'string') {
                             text = data;
-                        } else if (data[0] && data[0].message && data[0].message.content) {
-                            text = data[0].message.content;
                         } else {
                             text = JSON.stringify(data);
                         }
-
-                        // Bersihkan response
-                        text = text.replace(/^Pertanyaan:.*?\n/, '');
-                        text = text.replace(/^Jawab:/, '');
-                        text = text.trim();
-
-                        // Hapus teks system jika muncul
-                        if (text.includes(systemPrompt)) {
-                            text = text.replace(systemPrompt, '').trim();
-                        }
-
-                        if (!text || text.length < 2) {
-                            throw new Error('Respons kosong atau terlalu pendek');
-                        }
+                        text = text.replace(prompt, '').trim();
+                        text = text.replace(/^Pertanyaan:.*?\n/, '').replace(/^Jawab:/, '').trim();
+                        if (!text || text.length < 2) throw new Error('Respons kosong');
                         resolve(text);
                     })
-                    .catch(function(err) {
-                        reject(err);
-                    });
+                    .catch(function(err) { reject(err); });
             });
         }
 
         function sendMessage() {
-            var text = chatInput.value.trim();
-            if (!text || isTyping) return;
+            try {
+                var text = chatInput.value.trim();
+                if (!text || isTyping) return;
 
-            addMessage(text, true);
-            chatInput.value = '';
-            chatSendBtn.disabled = true;
+                addMessage(text, true);
+                chatInput.value = '';
+                chatSendBtn.disabled = true;
 
-            isTyping = true;
-            addTypingIndicator();
+                isTyping = true;
+                addTypingIndicator();
 
-            getResponseFromLlama(text)
-                .then(function(response) {
-                    removeTypingIndicator();
-                    addMessage(response, false);
-                    isTyping = false;
-                    chatSendBtn.disabled = false;
-                })
-                .catch(function(error) {
-                    removeTypingIndicator();
-                    console.error('Chat error:', error);
-                    var fallbackMsg =
-                        "Maaf, saya sedang tidak bisa terhubung ke AI. Silakan coba lagi nanti. 😊";
-                    if (error.message && error.message.includes('API Key')) {
-                        fallbackMsg =
-                            "🔑 API Key Hugging Face tidak valid. Dapatkan key gratis di huggingface.co/settings/tokens";
-                    }
-                    if (error.message && error.message.includes('rate limit')) {
-                        fallbackMsg =
-                            "⏳ Terlalu banyak permintaan, silakan tunggu beberapa saat dan coba lagi.";
-                    }
-                    if (error.message && error.message.includes('model')) {
-                        fallbackMsg =
-                            "🦙 Model Llama 3.1 8B memerlukan akses khusus. Pastikan akun Hugging Face Anda memiliki akses ke model ini, atau gunakan model gratis seperti 'google/flan-t5-large'.";
-                    }
-                    addMessage(fallbackMsg, false);
-                    isTyping = false;
-                    chatSendBtn.disabled = false;
-                });
+                getResponseFromHF(text)
+                    .then(function(response) {
+                        removeTypingIndicator();
+                        addMessage(response, false);
+                        isTyping = false;
+                        chatSendBtn.disabled = false;
+                    })
+                    .catch(function(error) {
+                        removeTypingIndicator();
+                        var fallbackMsg =
+                            "Maaf, AI sedang tidak bisa dihubungi. Silakan coba lagi nanti, atau lihat langsung di portofolio saya. 😊";
+                        if (error.message && error.message.includes('rate limit')) {
+                            fallbackMsg =
+                                "⏳ Terlalu banyak permintaan, tunggu beberapa saat dan coba lagi. (Rate limit)";
+                        }
+                        addMessage(fallbackMsg, false);
+                        isTyping = false;
+                        chatSendBtn.disabled = false;
+                    });
+            } catch (e) {
+                removeTypingIndicator();
+                isTyping = false;
+                if (chatSendBtn) chatSendBtn.disabled = false;
+            }
         }
 
-        // Enter key support
-        document.addEventListener('DOMContentLoaded', function() {
-            var input = document.getElementById('chat-input');
-            if (input) {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendMessage();
-                    }
-                });
-            }
-        });
-
-        // Auto focus input saat chat dibuka
-        var chatObserver = new MutationObserver(function() {
-            if (chatWindow.classList.contains('open')) {
-                setTimeout(function() {
-                    chatInput.focus();
-                }, 200);
-            }
-        });
-        chatObserver.observe(chatWindow, {
-            attributes: true,
-            attributeFilter: ['class']
-        });
-
-        // Cek API key
-        setTimeout(function() {
-            if (!HF_API_KEY || HF_API_KEY.trim() === '') {
-                var warning = document.createElement('div');
-                warning.className = 'api-warning';
-                warning.innerHTML =
-                    '⚠️ API Key belum diatur. Tambahkan HF_API_KEY di kode.';
-                chatMessages.appendChild(warning);
-            } else {
-                console.log('✅ Hugging Face API Key terdeteksi! Model:', HF_MODEL);
-            }
-        }, 500);
-
-        console.log('🦙 Rhesa AI siap menggunakan Llama 3.1 8B! Model:', HF_MODEL);
-        console.log('ℹ️ Pastikan akun Hugging Face memiliki akses ke model meta-llama/Llama-3.1-8B-Instruct');
+        console.log('🧠 Rhesa AI siap! Model:', HF_MODEL);
     </script>
 
 </body>
