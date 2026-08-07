@@ -1847,7 +1847,7 @@
     <div id="chat-messages">
         <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
         <div class="message bot">
-            Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Llama 3.1</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
+            Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Hugging Face</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
         </div>
     </div>
 
@@ -1864,7 +1864,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- ===== JAVASCRIPT (LLAMA 3.1-8B UPDATED) ===== -->
+<!-- ===== JAVASCRIPT (STABIL & AMAN) ===== -->
 <!-- ============================================================ -->
 <script>
     // ============================================================
@@ -2389,7 +2389,7 @@
     }
 
     // ============================================================
-    // 5. CHATBOT - HUGGING FACE (LLAMA 3.1-8B-INSTRUCT)
+    // 5. CHATBOT - HUGGING FACE (STABIL)
     // ============================================================
 
     var chatOpen = false;
@@ -2426,9 +2426,9 @@
     var aboutVarian =
         "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
 
-    // ==== HUGGING FACE API (Model Llama 3.1-8B-Instruct) ====
-    var HF_MODEL = 'meta-llama/Llama-3.1-8B-Instruct';
-    var HF_API_KEY = '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'; // Ganti dengan token Anda sendiri
+    // ==== HUGGING FACE API ====
+    var HF_MODEL = 'google/flan-t5-large';
+    var HF_API_KEY = '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';
 
     var isTyping = false;
 
@@ -2465,12 +2465,9 @@
 
     function getResponseFromHF(userMessage) {
         return new Promise(function(resolve, reject) {
-            // Prompt in the instruction format that Llama 3.1 Instruct expects
-            var systemPrompt = "Anda adalah asisten yang hanya menjawab berdasarkan informasi berikut. Jawablah dengan singkat, jelas, dan hanya menggunakan bahasa Indonesia.";
-            var prompt = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n" +
-                         systemPrompt + "\n\nInformasi tentang Varian Rhesa:\n" + aboutVarian +
-                         "<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n" +
-                         userMessage + "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n";
+            var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
+                "\n\nPertanyaan: " + userMessage +
+                "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
 
             var headers = { 'Content-Type': 'application/json' };
             if (HF_API_KEY && HF_API_KEY.trim() !== '') {
@@ -2484,14 +2481,8 @@
                     headers: headers,
                     body: JSON.stringify({
                         inputs: prompt,
-                        parameters: {
-                            max_new_tokens: 150,
-                            temperature: 0.6,
-                            top_p: 0.9,
-                            do_sample: true,
-                            return_full_text: false,
-                            stop: ["<|eot_id|>", "<|start_header_id|>", "\n\n\n"]   // hentikan generasi saat menemui token akhir
-                        }
+                        parameters: { max_length: 180, temperature: 0.6, do_sample: true, top_p: 0.9,
+                            return_full_text: false }
                     })
                 })
                 .then(function(response) {
@@ -2513,8 +2504,8 @@
                     } else {
                         text = JSON.stringify(data);
                     }
-                    // Bersihkan teks yang mungkin masih mengandung tag instruksi
-                    text = text.replace(/<\|.*?\|>/g, '').trim();
+                    text = text.replace(prompt, '').trim();
+                    text = text.replace(/^Pertanyaan:.*?\n/, '').replace(/^Jawab:/, '').trim();
                     if (!text || text.length < 2) throw new Error('Respons kosong');
                     resolve(text);
                 })
@@ -2564,7 +2555,7 @@
         }
     }
 
-    console.log('🧠 Rhesa AI (Llama 3.1-8B) siap!');
+    console.log('🧠 Rhesa AI siap! Model:', HF_MODEL);
     console.log('💬 WhatsApp floating button tersedia!');
 </script>
 
