@@ -800,17 +800,6 @@
             margin-bottom: 6px;
         }
 
-        /* API Key warning */
-        .api-warning {
-            font-size: 0.7rem;
-            color: #b91c1c;
-            background: #fee2e2;
-            padding: 6px 12px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 4px 0;
-        }
-
         /* Responsive chat */
         @media (max-width: 480px) {
             #chat-window {
@@ -1790,7 +1779,7 @@
             <div class="chat-title">
                 <span class="status-dot"></span>
                 <span>🧠 Rhesa AI</span>
-                <span class="hf-badge">🤗 HF</span>
+                <span class="hf-badge">⚡ Groq</span>
             </div>
             <button class="close-btn" onclick="toggleChat()" aria-label="Tutup chat">✕</button>
         </div>
@@ -1798,7 +1787,7 @@
         <div id="chat-messages">
             <div class="welcome-msg">👋 Halo! Tanyakan apa saja tentang Varian Rhesa.</div>
             <div class="message bot">
-                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual berbasis <strong>Hugging Face</strong>. Saya siap menjawab pertanyaan tentang Varian Rhesa, mulai dari pengalaman, keahlian, hingga proyek-proyek yang telah dikerjakan. Tanyakan saja! 😊
+                Halo! Saya <strong>Rhesa AI</strong> — asisten virtual yang didukung oleh <strong>Groq</strong>. Tanyakan apa saja tentang Varian Rhesa! 😊
             </div>
         </div>
 
@@ -1815,7 +1804,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (Fixed: Local Fallback + Empty API Key) ===== -->
+    <!-- ===== JAVASCRIPT (Groq API + Local Fallback) ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
@@ -2275,7 +2264,7 @@
         }
 
         // ============================================================
-        // 5. CHATBOT - HF Inference API + LOCAL FALLBACK
+        // 5. CHATBOT - GROQ API + LOCAL FALLBACK
         // ============================================================
         var chatOpen = false;
         var chatMessages = document.getElementById('chat-messages');
@@ -2311,10 +2300,9 @@
         var aboutVarian =
             "Nama: Varian Rhesa. Pekerjaan: Junior Software Engineer. Pendidikan: Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda (2022-sekarang). Sebelumnya SMK Negeri 7 Samarinda jurusan Rekayasa Perangkat Lunak (2019-2022). Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. Lokasi: Samarinda, Kalimantan Timur. Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). Sertifikasi: Dicoding Android, CCNAv7 Cisco.";
 
-        // ==== HUGGING FACE API ====
-        var HF_MODEL = 'google/flan-t5-large';
-        // API Key dikosongkan untuk akses anonim (rate limit rendah)
-        var HF_API_KEY = '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'; // Isi dengan token dari https://huggingface.co/settings/tokens jika ingin lebih stabil
+        // ==== GROQ API ====
+        var GROQ_API_KEY ='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';  // <-- GANTI dengan API key Groq Anda
+        var GROQ_MODEL = 'llama3-8b-8192';      // bisa juga 'mixtral-8x7b-32768' atau 'gemma-7b-it'
 
         var isTyping = false;
 
@@ -2363,53 +2351,47 @@
             return null;
         }
 
-        function getResponseFromHF(userMessage) {
+        function getResponseFromGroq(userMessage) {
             return new Promise(function(resolve, reject) {
-                var prompt = "Informasi tentang Varian Rhesa:\n" + aboutVarian +
-                    "\n\nPertanyaan: " + userMessage +
-                    "\n\nJawab dengan singkat dan jelas dalam bahasa Indonesia berdasarkan informasi di atas.";
-
-                var headers = { 'Content-Type': 'application/json' };
-                if (HF_API_KEY.trim() !== '') {
-                    headers['Authorization'] = 'Bearer ' + HF_API_KEY.trim();
+                if (!GROQ_API_KEY || GROQ_API_KEY === 'YOUR_GROQ_API_KEY') {
+                    reject(new Error('API key belum diisi'));
+                    return;
                 }
 
-                var url = 'https://api-inference.huggingface.co/models/' + HF_MODEL;
+                var systemPrompt = "Anda adalah asisten pribadi untuk Varian Rhesa. Jawablah pertanyaan hanya berdasarkan informasi berikut. Gunakan bahasa Indonesia yang ramah dan singkat. Jangan mengarang jawaban. Jika tidak tahu, katakan bahwa Anda tidak memiliki informasi tersebut.";
+                var fullPrompt = systemPrompt + "\n\nInformasi tentang Varian Rhesa:\n" + aboutVarian;
 
-                fetch(url, {
-                        method: 'POST',
-                        headers: headers,
-                        body: JSON.stringify({
-                            inputs: prompt,
-                            parameters: { max_length: 180, temperature: 0.6, do_sample: true, top_p: 0.9,
-                                return_full_text: false }
-                        })
+                fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + GROQ_API_KEY
+                    },
+                    body: JSON.stringify({
+                        model: GROQ_MODEL,
+                        messages: [
+                            { role: "system", content: fullPrompt },
+                            { role: "user", content: userMessage }
+                        ],
+                        temperature: 0.6,
+                        max_tokens: 180,
+                        top_p: 0.9
                     })
-                    .then(function(response) {
-                        if (!response.ok) {
-                            return response.json().then(function(err) {
-                                throw new Error(err.error || 'HTTP ' + response.status);
-                            });
-                        }
-                        return response.json();
-                    })
-                    .then(function(data) {
-                        var text = '';
-                        if (Array.isArray(data) && data.length > 0 && data[0].generated_text) {
-                            text = data[0].generated_text;
-                        } else if (data.generated_text) {
-                            text = data.generated_text;
-                        } else if (typeof data === 'string') {
-                            text = data;
-                        } else {
-                            text = JSON.stringify(data);
-                        }
-                        text = text.replace(prompt, '').trim();
-                        text = text.replace(/^Pertanyaan:.*?\n/, '').replace(/^Jawab:/, '').trim();
-                        if (!text || text.length < 2) throw new Error('Respons kosong');
-                        resolve(text);
-                    })
-                    .catch(function(err) { reject(err); });
+                })
+                .then(function(response) {
+                    if (!response.ok) {
+                        return response.json().then(function(err) {
+                            throw new Error(err.error?.message || 'HTTP ' + response.status);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    var text = data.choices[0].message.content.trim();
+                    if (!text) throw new Error('Respons kosong');
+                    resolve(text);
+                })
+                .catch(function(err) { reject(err); });
             });
         }
 
@@ -2425,7 +2407,7 @@
                 isTyping = true;
                 addTypingIndicator();
 
-                getResponseFromHF(text)
+                getResponseFromGroq(text)
                     .then(function(response) {
                         removeTypingIndicator();
                         addMessage(response, false);
@@ -2434,13 +2416,13 @@
                     })
                     .catch(function(error) {
                         removeTypingIndicator();
-                        // Jika AI gagal, gunakan fallback lokal
+                        console.log('Groq error:', error.message);
+                        // Jika API gagal (termasuk key kosong), gunakan fallback lokal
                         var localAnswer = localFallback(text);
                         if (localAnswer) {
                             addMessage(localAnswer, false);
                         } else {
-                            // Jika tidak ada jawaban lokal, beri pesan error ramah
-                            addMessage("Maaf, saya tidak bisa menghubungi AI saat ini, dan saya belum memiliki jawaban untuk pertanyaan itu. Coba tanyakan tentang keahlian, pengalaman, atau kontak Varian. 😊", false);
+                            addMessage("Maaf, AI sedang tidak bisa dihubungi dan saya belum memiliki jawaban untuk itu. Coba tanyakan tentang keahlian, pengalaman, atau kontak Varian. 😊", false);
                         }
                         isTyping = false;
                         chatSendBtn.disabled = false;
@@ -2452,7 +2434,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI (flan-t5 + fallback lokal) siap!');
+        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lokal) siap!');
     </script>
 </body>
 </html>
