@@ -1839,7 +1839,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (Groq API + Local Fallback - Enhanced Context) ===== -->
+    <!-- ===== JAVASCRIPT (Groq API + Local Fallback - Enhanced Context & Open Domain) ===== -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
@@ -2299,7 +2299,7 @@
         }
 
         // ============================================================
-        // 5. CHATBOT - GROQ API + LOCAL FALLBACK (ENHANCED)
+        // 5. CHATBOT - GROQ API + LOCAL FALLBACK (ENHANCED & OPEN DOMAIN)
         // ============================================================
         var chatOpen = false;
         var chatMessages = document.getElementById('chat-messages');
@@ -2335,20 +2335,23 @@
         var aboutVarian =
             "Nama: Varian Rhesa. " +
             "Lahir: Palembang, 7 November 2003. " +
-            "Pendidikan: SD Nasional Tiga Bahasa Dharma Bakti, SMP Negeri 2 Samarinda, SMK Negeri 7 Samarinda (Rekayasa Perangkat Lunak, 2019-2022), Politeknik Negeri Samarinda (D4 Teknologi Rekayasa Komputer, 2022-sekarang). " +
             "Pekerjaan: Junior Software Engineer. " +
-            "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase. " +
+            "Lokasi: Samarinda, Kalimantan Timur. Alamat: Perum Bumi Sambutan Asri Blok K1 No 21, koordinat -0.500647, 117.185105. " +
+            "Kontak: Email: rhesa719@gmail.com, Telepon: 0895-1962-8044. " +
+            "LinkedIn: https://www.linkedin.com/in/varian-rhesa-012a36299/, GitHub: https://github.com/Varian719, WhatsApp: https://wa.me/6289519628044. " +
+            "Pendidikan: SD Nasional Tiga Bahasa Dharma Bakti, SMP Negeri 2 Samarinda, SMK Negeri 7 Samarinda (Rekayasa Perangkat Lunak, 2019-2022), Politeknik Negeri Samarinda (D4 Teknologi Rekayasa Komputer, 2022-sekarang). " +
+            "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase, MS Office, Google Workspace. " +
             "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). " +
             "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. " +
-            "Lokasi: Samarinda, Kalimantan Timur. " +
             "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). " +
             "Sertifikasi: Dicoding Android, CCNAv7 Cisco. " +
             "Proyek Website Magang: Portal layanan publik di pelayanan.balmonsamarinda.com; " +
-            "serta 4 aplikasi internal (Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, Verifikasi Koordinat SFR) yang bersifat privat.";
+            "serta 4 aplikasi internal (Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, Verifikasi Koordinat SFR) yang bersifat privat. " +
+            "Proyek lainnya: Skripsi IoT Smart Fire Suppression dengan algoritma C4.5 (jurnal JUTIN 2026), PWA Spektrum Monitoring, Robot KRC juara 3. ";
 
         // ==== GROQ API ====
-        var GROQ_API_KEY = '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';  // <-- GANTI dengan API key Groq Anda
-        var GROQ_MODEL = 'llama-3.1-8b-instant';      // bisa juga 'mixtral-8x7b-32768' atau 'gemma-7b-it'
+        var GROQ_API_KEY = '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';  // API key Groq
+        var GROQ_MODEL = 'llama-3.1-8b-instant';      // model yang digunakan
 
         var isTyping = false;
 
@@ -2383,7 +2386,7 @@
             } catch (e) { /* ignore */ }
         }
 
-        // Fallback lokal berdasarkan kata kunci (ditambah lahir, sd, smp, website)
+        // Fallback lokal DIPERLUAS
         function localFallback(message) {
             var msg = message.toLowerCase();
             if (msg.includes('lahir') || msg.includes('palembang')) return 'Varian Rhesa lahir di Palembang pada 7 November 2003.';
@@ -2392,14 +2395,16 @@
             if (msg.includes('smk')) return 'Sekolah Menengah Kejuruan: SMK Negeri 7 Samarinda, jurusan Rekayasa Perangkat Lunak (RPL).';
             if (msg.includes('nama') || msg.includes('siapa')) return 'Saya Varian Rhesa, Junior Software Engineer.';
             if (msg.includes('pendidikan') || msg.includes('kuliah')) return 'Saat ini kuliah di Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-sekarang).';
-            if (msg.includes('keahlian') || msg.includes('skill')) return 'Keahlian saya: Python, Java, C++, JavaScript, PHP, Dart, Flutter, IoT, Git, Linux, Firebase, Cloudflare Workers, dan lainnya.';
+            if (msg.includes('keahlian') || msg.includes('skill')) return 'Keahlian saya: Python, Java, C++, JavaScript, PHP, Dart, Flutter, IoT, Git, Linux, Firebase, Cloudflare Workers, MS Office, Google Workspace, dan lainnya.';
             if (msg.includes('pengalaman') || msg.includes('kerja')) return 'Saya magang di Balai Monitor Spektrum Samarinda sebagai Full Stack Developer (PWA, Firebase, QR Code, AI Chatbot). Juga intern di PPTIK ITB.';
             if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, robot KRC juara 3, dan portal layanan publik pelayanan.balmonsamarinda.com.';
-            if (msg.includes('kontak') || msg.includes('hubungi')) return 'Hubungi saya via email rhesa719@gmail.com atau WhatsApp 0895-1962-8044.';
+            if (msg.includes('kontak') || msg.includes('hubungi') || msg.includes('email') || msg.includes('telepon')) return 'Hubungi saya via email rhesa719@gmail.com, telepon 0895-1962-8044. LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719.';
             if (msg.includes('sertifikat') || msg.includes('ccna') || msg.includes('dicoding')) return 'Sertifikasi: Dicoding Android Pemula, CCNAv7 Cisco, dan magang resmi dari Balmon.';
             if (msg.includes('bahasa') || msg.includes('language')) return 'Saya fasih berbahasa Indonesia, Inggris (B2), dan Mandarin dasar (HSK1).';
             if (msg.includes('website') || msg.includes('pelayanan') || msg.includes('magang website')) 
                 return 'Portal layanan publik: pelayanan.balmonsamarinda.com. Ada juga 4 aplikasi internal untuk admin, diagnostik frekuensi, monitoring hardware, dan verifikasi koordinat SFR.';
+            if (msg.includes('alamat') || msg.includes('lokasi') || msg.includes('samarinda')) return 'Alamat: Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda, Kalimantan Timur. Koordinat: -0.500647, 117.185105.';
+            if (msg.includes('medsos') || msg.includes('sosmed') || msg.includes('linkedin') || msg.includes('github')) return 'LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719, WhatsApp: wa.me/6289519628044.';
             return null;
         }
 
@@ -2410,8 +2415,8 @@
                     return;
                 }
 
-                var systemPrompt = "Anda adalah asisten pribadi untuk Varian Rhesa. Jawablah pertanyaan hanya berdasarkan informasi berikut. Gunakan bahasa Indonesia yang ramah dan singkat. Jangan mengarang jawaban. Jika tidak tahu, katakan bahwa Anda tidak memiliki informasi tersebut.";
-                var fullPrompt = systemPrompt + "\n\nInformasi tentang Varian Rhesa:\n" + aboutVarian;
+                // System prompt diubah menjadi lebih terbuka (open domain)
+                var systemPrompt = "Anda adalah asisten AI yang ramah, membantu, dan informatif. Anda memiliki informasi berikut tentang Varian Rhesa: " + aboutVarian + " Gunakan informasi itu jika relevan dengan pertanyaan. Untuk pertanyaan di luar data tersebut, jawablah dengan pengetahuan umum Anda secara bebas dan akurat. Jika Anda tidak tahu, katakan dengan jujur. Gunakan bahasa Indonesia yang natural dan hangat.";
 
                 fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST',
@@ -2422,11 +2427,11 @@
                     body: JSON.stringify({
                         model: GROQ_MODEL,
                         messages: [
-                            { role: "system", content: fullPrompt },
+                            { role: "system", content: systemPrompt },
                             { role: "user", content: userMessage }
                         ],
-                        temperature: 0.6,
-                        max_tokens: 180,
+                        temperature: 0.7,
+                        max_tokens: 256,
                         top_p: 0.9
                     })
                 })
@@ -2474,7 +2479,7 @@
                         if (localAnswer) {
                             addMessage(localAnswer, false);
                         } else {
-                            addMessage("Maaf, AI sedang tidak bisa dihubungi dan saya belum memiliki jawaban untuk itu. Coba tanyakan tentang keahlian, pengalaman, atau kontak Varian. 😊", false);
+                            addMessage("Maaf, AI sedang tidak bisa dihubungi. Silakan coba lagi nanti. 😊", false);
                         }
                         isTyping = false;
                         chatSendBtn.disabled = false;
@@ -2486,7 +2491,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lokal lengkap) siap!');
+        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lengkap + open domain) siap!');
     </script>
 </body>
 </html>
