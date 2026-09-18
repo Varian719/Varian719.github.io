@@ -31,12 +31,10 @@
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
     <!-- ===== TAILWIND CSS ===== -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- ===== LUCIDE ICONS ===== -->
-    <script src="https://unpkg.com/lucide@latest">
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- ===== TAILWIND CONFIG ===== -->
     <script>
@@ -46,48 +44,21 @@
                     extend: {
                         colors: {
                             primary: {
-                                50: '#e6f7f0',
-                                100: '#ccefe1',
-                                200: '#99dfc3',
-                                300: '#66cfa5',
-                                400: '#33bf87',
-                                500: '#0aaf69',
-                                600: '#089154',
-                                700: '#06733f',
-                                800: '#04552a',
-                                900: '#023715',
-                                950: '#011e0b',
+                                50: '#e6f7f0', 100: '#ccefe1', 200: '#99dfc3', 300: '#66cfa5',
+                                400: '#33bf87', 500: '#0aaf69', 600: '#089154', 700: '#06733f',
+                                800: '#04552a', 900: '#023715', 950: '#011e0b',
                             },
                             cyan: {
-                                50: '#ecfeff',
-                                100: '#cffafe',
-                                200: '#a5f3fc',
-                                300: '#67e8f9',
-                                400: '#22d3ee',
-                                500: '#06b6d4',
-                                600: '#0891b2',
-                                700: '#0e7490',
-                                800: '#155e75',
-                                900: '#164e63',
-                                950: '#083344',
+                                50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
+                                400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490',
+                                800: '#155e75', 900: '#164e63', 950: '#083344',
                             },
                             dark: {
-                                50: '#f0f2f0',
-                                100: '#d9ddd9',
-                                200: '#b3bbb3',
-                                300: '#8d998d',
-                                400: '#677767',
-                                500: '#415541',
-                                600: '#344434',
-                                700: '#273327',
-                                800: '#1a221a',
-                                900: '#0d110d',
-                                950: '#060806',
+                                50: '#f0f2f0', 100: '#d9ddd9', 200: '#b3bbb3', 300: '#8d998d',
+                                400: '#677767', 500: '#415541', 600: '#344434', 700: '#273327',
+                                800: '#1a221a', 900: '#0d110d', 950: '#060806',
                             },
-                            whatsapp: {
-                                500: '#25D366',
-                                600: '#128C7E',
-                            }
+                            whatsapp: { 500: '#25D366', 600: '#128C7E' }
                         },
                         fontFamily: {
                             sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -100,34 +71,19 @@
     </script>
 
     <style>
-        /* ===== FONT ===== */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-        * {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8faf9; color: #0d110d; }
 
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #f8faf9;
-            color: #0d110d;
-        }
-
-        /* ===== NAVBAR ===== */
         .nav-blur {
             background: rgba(248, 250, 249, 0.92);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(13, 17, 13, 0.06);
         }
 
-        /* ===== CARDS ===== */
         .card-blog {
             background: #ffffff;
             border: 1px solid #e2e8e4;
@@ -135,7 +91,6 @@
             transition: all 0.3s ease;
             overflow: hidden;
         }
-
         .card-blog:hover {
             border-color: #0aaf69;
             box-shadow: 0 8px 30px rgba(10, 175, 105, 0.08);
@@ -144,66 +99,36 @@
 
         .card-blog .card-image {
             height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
         }
-
-        .card-blog .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        .card-blog .card-image img { width: 100%; height: 100%; object-fit: cover; }
         .card-blog .card-image .icon-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            font-size: 3rem;
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; height: 100%; font-size: 3rem;
         }
 
         .image-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            gap: 1rem; opacity: 0; transition: opacity 0.3s ease;
         }
+        .card-image:hover .image-overlay { opacity: 1; }
 
-        .card-image:hover .image-overlay {
-            opacity: 1;
-        }
-
-        .image-overlay button,
-        .image-overlay a {
+        .image-overlay button, .image-overlay a {
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            color: white;
-            padding: 0.6rem;
-            border-radius: 9999px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: white; padding: 0.6rem; border-radius: 9999px;
+            transition: all 0.2s ease; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        .image-overlay button:hover,
-        .image-overlay a:hover {
+        .image-overlay button:hover, .image-overlay a:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.1);
         }
 
-        /* ===== TAGS ===== */
         .tag {
             display: inline-block;
             padding: 0.2rem 0.8rem;
@@ -214,103 +139,49 @@
             color: #2d3d2d;
             border: 1px solid #dce3dd;
         }
+        .tag-primary { background: #e6f7f0; color: #06733f; border-color: #99dfc3; }
+        .tag-cyan { background: #ecfeff; color: #0e7490; border-color: #a5f3fc; }
+        .tag-office { background: #fef3e2; color: #8b5e3c; border-color: #f5d9b8; }
+        .tag-google { background: #e8f0fe; color: #1a5a8a; border-color: #c5d8f0; }
 
-        .tag-primary {
-            background: #e6f7f0;
-            color: #06733f;
-            border-color: #99dfc3;
-        }
-
-        .tag-cyan {
-            background: #ecfeff;
-            color: #0e7490;
-            border-color: #a5f3fc;
-        }
-
-        .tag-office {
-            background: #fef3e2;
-            color: #8b5e3c;
-            border-color: #f5d9b8;
-        }
-
-        .tag-google {
-            background: #e8f0fe;
-            color: #1a5a8a;
-            border-color: #c5d8f0;
-        }
-
-        /* ===== DIVIDER ===== */
         .divider-custom {
             height: 2px;
             background: linear-gradient(90deg, transparent, #0aaf69, #06b6d4, #0aaf69, transparent);
-            opacity: 0.3;
-            width: 100%;
+            opacity: 0.3; width: 100%;
         }
 
-        /* ===== BUTTONS ===== */
         .btn-primary {
-            background: #0aaf69;
-            color: white;
-            transition: all 0.25s ease;
+            background: #0aaf69; color: white; transition: all 0.25s ease;
         }
-
         .btn-primary:hover {
-            background: #06733f;
-            transform: translateY(-2px);
+            background: #06733f; transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(10, 175, 105, 0.25);
         }
-
         .btn-outline {
-            border: 1.5px solid #dce3dd;
-            color: #2d3d2d;
-            transition: all 0.25s ease;
+            border: 1.5px solid #dce3dd; color: #2d3d2d; transition: all 0.25s ease;
         }
-
         .btn-outline:hover {
-            border-color: #0aaf69;
-            color: #0aaf69;
+            border-color: #0aaf69; color: #0aaf69;
             background: rgba(10, 175, 105, 0.04);
             transform: translateY(-2px);
         }
+        .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.7rem; border-radius: 9999px; }
 
-        .btn-sm {
-            padding: 0.3rem 0.8rem;
-            font-size: 0.7rem;
-            border-radius: 9999px;
-        }
+        section { scroll-margin-top: 80px; }
 
-        /* ===== SECTION ===== */
-        section {
-            scroll-margin-top: 80px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f2; }
+        ::-webkit-scrollbar-thumb { background: #99dfc3; border-radius: 20px; }
+        ::-webkit-scrollbar-thumb:hover { background: #66cfa5; }
 
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f2;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #99dfc3;
-            border-radius: 20px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #66cfa5;
-        }
+        .gradient-hero { background: linear-gradient(180deg, #f8faf9 0%, #ffffff 100%); }
 
-        .gradient-hero {
-            background: linear-gradient(180deg, #f8faf9 0%, #ffffff 100%);
-        }
-
-        /* ===== SIDEBAR ===== */
         .sidebar-card {
             background: #ffffff;
             border: 1px solid #e2e8e4;
             border-radius: 12px;
             padding: 1.25rem;
         }
-
         .sidebar-card h4 {
             font-size: 0.85rem;
             font-weight: 700;
@@ -322,512 +193,339 @@
             padding-bottom: 0.5rem;
         }
 
-        /* ===== MODAL ===== */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
+            display: none; position: fixed; inset: 0; z-index: 9999;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
+            align-items: center; justify-content: center;
             padding: 2rem;
         }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
+        .modal-overlay.active { display: flex; }
         .modal-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
+            max-width: 90%; max-height: 90%; object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
-
         .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: transform 0.2s;
+            position: absolute; top: 1.5rem; right: 2rem;
+            color: white; font-size: 2rem; cursor: pointer;
+            background: none; border: none; transition: transform 0.2s;
         }
+        .modal-close:hover { transform: scale(1.1); }
 
-        .modal-close:hover {
-            transform: scale(1.1);
-        }
-
-        /* ===== SCROLL ANIMATIONS ===== */
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 0; transform: translateY(40px);
             transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+        .fade-in-up.delay-1 { transition-delay: 0.1s; }
+        .fade-in-up.delay-2 { transition-delay: 0.2s; }
+        .fade-in-up.delay-3 { transition-delay: 0.3s; }
+        .fade-in-up.delay-4 { transition-delay: 0.4s; }
+        .fade-in-up.delay-5 { transition-delay: 0.5s; }
 
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-up.delay-1 {
-            transition-delay: 0.1s;
-        }
-        .fade-in-up.delay-2 {
-            transition-delay: 0.2s;
-        }
-        .fade-in-up.delay-3 {
-            transition-delay: 0.3s;
-        }
-        .fade-in-up.delay-4 {
-            transition-delay: 0.4s;
-        }
-        .fade-in-up.delay-5 {
-            transition-delay: 0.5s;
-        }
-
-        /* ===== LANGUAGE TOGGLE ===== */
         .lang-btn {
-            padding: 0.2rem 0.6rem;
-            border-radius: 9999px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            cursor: pointer;
+            padding: 0.2rem 0.6rem; border-radius: 9999px;
+            font-size: 0.65rem; font-weight: 600;
+            transition: all 0.2s ease; cursor: pointer;
             border: 1px solid transparent;
-            background: transparent;
-            color: #677767;
+            background: transparent; color: #677767;
         }
+        .lang-btn:hover { color: #0aaf69; }
+        .lang-btn.active { background: #0aaf69; color: white; border-color: #0aaf69; }
+        .lang-btn:not(.active):hover { border-color: #dce3dd; }
+        .lang-divider { color: #dce3dd; font-weight: 300; }
 
-        .lang-btn:hover {
-            color: #0aaf69;
-        }
-
-        .lang-btn.active {
-            background: #0aaf69;
-            color: white;
-            border-color: #0aaf69;
-        }
-
-        .lang-btn:not(.active):hover {
-            border-color: #dce3dd;
-        }
-
-        .lang-divider {
-            color: #dce3dd;
-            font-weight: 300;
-        }
-
-        /* ===== MAP ===== */
         .map-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            border-radius: 16px;
-            overflow: hidden;
+            position: relative; width: 100%; height: 400px;
+            border-radius: 16px; overflow: hidden;
             border: 1px solid #e2e8e4;
         }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* ===== PROFILE PHOTO ===== */
-        .profile-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .profile-photo-wrapper {
-            transition: all 0.4s ease;
-        }
-
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .profile-photo-wrapper { transition: all 0.4s ease; }
         .profile-photo-wrapper:hover {
             transform: scale(1.02);
             box-shadow: 0 20px 40px rgba(10, 175, 105, 0.15);
         }
 
-        /* ===== PROGRESS BARS ===== */
         .progress-bar-bg {
-            background: #e8ece8;
-            border-radius: 9999px;
-            height: 8px;
-            overflow: hidden;
+            background: #e8ece8; border-radius: 9999px; height: 8px; overflow: hidden;
         }
-
         .progress-bar-fill {
-            height: 100%;
-            border-radius: 9999px;
+            height: 100%; border-radius: 9999px;
             background: linear-gradient(90deg, #0aaf69, #06b6d4);
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
             width: 0;
         }
+        .progress-item.is-visible .progress-bar-fill { width: var(--progress-width); }
 
-        .progress-item.is-visible .progress-bar-fill {
-            width: var(--progress-width);
-        }
-
-        /* ===== WHATSAPP ===== */
-        .text-whatsapp {
-            color: #25D366;
-        }
-        .bg-whatsapp\/10 {
-            background: rgba(37, 211, 102, 0.1);
-        }
-        .border-whatsapp {
-            border-color: #25D366;
-        }
-        .hover\:bg-whatsapp\/20:hover {
-            background: rgba(37, 211, 102, 0.2);
-        }
+        .text-whatsapp { color: #25D366; }
+        .bg-whatsapp\/10 { background: rgba(37, 211, 102, 0.1); }
+        .border-whatsapp { border-color: #25D366; }
+        .hover\:bg-whatsapp\/20:hover { background: rgba(37, 211, 102, 0.2); }
 
         /* ============================================================ */
-        /* ===== CHATBOT STYLES ===== */
+        /* ===== WEB PROJECT SHOWCASE (NEW STYLE, NOT CARD) ===== */
         /* ============================================================ */
-        #chat-toggle {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9998;
-            width: 60px;
-            height: 60px;
+        .web-showcase {
+            background: linear-gradient(135deg, #ecfeff 0%, #e6f7f0 60%, #ffffff 100%);
+            border: 1px solid #a5f3fc;
+            border-radius: 20px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .web-showcase::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(10,175,105,0.15), transparent 70%);
             border-radius: 50%;
-            background: linear-gradient(135deg, #0aaf69, #06b6d4);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(10, 175, 105, 0.35);
-            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .web-showcase::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(6,182,212,0.12), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .web-showcase > * { position: relative; z-index: 1; }
+
+        .web-item {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid #dce3dd;
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.9rem;
         }
+        .web-item:hover {
+            border-color: #0aaf69;
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(10, 175, 105, 0.08);
+            transform: translateX(4px);
+        }
+        .web-item .web-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .web-item .web-icon.public {
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+        }
+        .web-item .web-icon.private {
+            background: #f1f5f2;
+            color: #415541;
+            border: 1px solid #dce3dd;
+        }
+        .web-item .web-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #677767;
+        }
+        .web-item .web-title {
+            font-weight: 600;
+            color: #0d110d;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+        .web-item .web-desc {
+            font-size: 0.75rem;
+            color: #677767;
+            margin-top: 1px;
+        }
+        .web-item a.web-link {
+            color: #06733f;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s;
+        }
+        .web-item a.web-link:hover { color: #06b6d4; text-decoration: underline; }
 
+        /* ===== CHATBOT STYLES ===== */
+        #chat-toggle {
+            position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white; border: none; cursor: pointer;
+            box-shadow: 0 8px 30px rgba(10, 175, 105, 0.35);
+            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
         #chat-toggle:hover {
             transform: scale(1.08);
             box-shadow: 0 12px 40px rgba(10, 175, 105, 0.45);
         }
+        #chat-toggle .icon-chat { width: 28px; height: 28px; }
+        #chat-toggle .icon-close { width: 28px; height: 28px; display: none; }
+        #chat-toggle.active .icon-chat { display: none; }
+        #chat-toggle.active .icon-close { display: block; }
 
-        #chat-toggle .icon-chat {
-            width: 28px;
-            height: 28px;
-        }
-
-        #chat-toggle .icon-close {
-            width: 28px;
-            height: 28px;
-            display: none;
-        }
-
-        #chat-toggle.active .icon-chat {
-            display: none;
-        }
-        #chat-toggle.active .icon-close {
-            display: block;
-        }
-
-        /* Notification badge */
         #chat-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: #ef4444;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -4px; right: -4px;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #ef4444; color: white;
+            font-size: 10px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
             animation: pulse-badge 2s infinite;
         }
-
         @keyframes pulse-badge {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
-        /* Chat window */
         #chat-window {
-            position: fixed;
-            bottom: 96px;
-            right: 24px;
-            z-index: 9997;
-            width: 380px;
-            max-width: calc(100vw - 48px);
-            height: 500px;
-            max-height: calc(100vh - 160px);
-            background: white;
-            border-radius: 20px;
+            position: fixed; bottom: 96px; right: 24px; z-index: 9997;
+            width: 380px; max-width: calc(100vw - 48px);
+            height: 500px; max-height: calc(100vh - 160px);
+            background: white; border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(226, 232, 228, 0.5);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            display: none; flex-direction: column;
+            overflow: hidden; transition: all 0.3s ease;
         }
+        #chat-window.open { display: flex; }
 
-        #chat-window.open {
-            display: flex;
-        }
-
-        /* Chat header */
         #chat-header {
             padding: 16px 20px;
             background: linear-gradient(135deg, #0aaf69, #06b6d4);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
             flex-shrink: 0;
         }
-
         #chat-header .chat-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 600; font-size: 0.95rem;
         }
-
         #chat-header .chat-title .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4ade80;
-            animation: pulse-dot 1.5s infinite;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #4ade80; animation: pulse-dot 1.5s infinite;
         }
-
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
-
         #chat-header .chat-title .hf-badge {
-            font-size: 0.55rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 400;
-            opacity: 0.8;
+            font-size: 0.55rem; background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px; border-radius: 12px; font-weight: 400; opacity: 0.8;
         }
-
         #chat-header .close-btn {
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            font-size: 18px;
+            background: rgba(255, 255, 255, 0.15); border: none;
+            color: white; width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s; font-size: 18px;
         }
+        #chat-header .close-btn:hover { background: rgba(255, 255, 255, 0.25); }
 
-        #chat-header .close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        /* Chat messages */
         #chat-messages {
-            flex: 1;
-            padding: 16px 20px;
-            overflow-y: auto;
+            flex: 1; padding: 16px 20px; overflow-y: auto;
             background: #f8faf9;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: flex; flex-direction: column; gap: 10px;
         }
-
         .message {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 14px;
-            font-size: 0.875rem;
-            line-height: 1.5;
+            max-width: 85%; padding: 10px 14px; border-radius: 14px;
+            font-size: 0.875rem; line-height: 1.5;
             word-wrap: break-word;
             animation: fadeInMsg 0.3s ease;
         }
-
         @keyframes fadeInMsg {
-            0% {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-
         .message.bot {
-            align-self: flex-start;
-            background: white;
+            align-self: flex-start; background: white;
             border: 1px solid #e2e8e4;
-            border-bottom-left-radius: 4px;
-            color: #1a221a;
+            border-bottom-left-radius: 4px; color: #1a221a;
         }
-
         .message.user {
             align-self: flex-end;
             background: linear-gradient(135deg, #0aaf69, #06b6d4);
-            color: white;
-            border-bottom-right-radius: 4px;
+            color: white; border-bottom-right-radius: 4px;
         }
-
         .message.typing {
-            background: white;
-            border: 1px solid #e2e8e4;
-            align-self: flex-start;
-            padding: 12px 16px;
+            background: white; border: 1px solid #e2e8e4;
+            align-self: flex-start; padding: 12px 16px;
             border-bottom-left-radius: 4px;
         }
-
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-
+        .typing-dots { display: flex; gap: 4px; align-items: center; }
         .typing-dots span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #99dfc3;
-            animation: typingBounce 1.2s infinite;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #99dfc3; animation: typingBounce 1.2s infinite;
         }
-
-        .typing-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .typing-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typingBounce {
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-6px);
-            }
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
         }
 
-        /* Chat input */
         #chat-input-area {
-            padding: 12px 16px 16px 16px;
-            background: white;
+            padding: 12px 16px 16px 16px; background: white;
             border-top: 1px solid #e2e8e4;
-            display: flex;
-            gap: 10px;
-            flex-shrink: 0;
+            display: flex; gap: 10px; flex-shrink: 0;
         }
-
         #chat-input-area input {
-            flex: 1;
-            padding: 10px 14px;
-            border: 1px solid #dce3dd;
-            border-radius: 12px;
-            outline: none;
-            font-size: 0.875rem;
-            transition: border 0.2s;
+            flex: 1; padding: 10px 14px;
+            border: 1px solid #dce3dd; border-radius: 12px;
+            outline: none; font-size: 0.875rem; transition: border 0.2s;
         }
-
         #chat-input-area input:focus {
             border-color: #0aaf69;
             box-shadow: 0 0 0 3px rgba(10, 175, 105, 0.1);
         }
-
         #chat-input-area button {
-            padding: 10px 16px;
-            border-radius: 12px;
+            padding: 10px 16px; border-radius: 12px;
             background: linear-gradient(135deg, #0aaf69, #06b6d4);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            color: white; border: none; cursor: pointer;
+            font-weight: 500; transition: all 0.2s;
+            display: flex; align-items: center; gap: 6px;
         }
-
         #chat-input-area button:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 16px rgba(10, 175, 105, 0.25);
         }
+        #chat-input-area button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-        #chat-input-area button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Welcome message */
         .welcome-msg {
-            font-size: 0.8rem;
-            color: #677767;
-            text-align: center;
-            padding: 8px 0;
-            border-bottom: 1px dashed #e2e8e4;
-            margin-bottom: 6px;
+            font-size: 0.8rem; color: #677767; text-align: center;
+            padding: 8px 0; border-bottom: 1px dashed #e2e8e4; margin-bottom: 6px;
         }
 
-        /* Responsive chat */
         @media (max-width: 480px) {
             #chat-window {
-                bottom: 80px;
-                right: 12px;
+                bottom: 80px; right: 12px;
                 width: calc(100vw - 24px);
                 max-height: calc(100vh - 140px);
                 border-radius: 16px;
             }
-            #chat-toggle {
-                bottom: 16px;
-                right: 16px;
-                width: 52px;
-                height: 52px;
-            }
+            #chat-toggle { bottom: 16px; right: 16px; width: 52px; height: 52px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ============================================================ -->
     <!-- ===== NAVBAR ===== -->
-    <!-- ============================================================ -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-
                 <a href="#home" class="flex items-center gap-2 shrink-0">
                     <span class="text-2xl font-bold tracking-tight text-dark-900">
                         <span class="text-primary-600">V</span>R<span class="text-cyan-500">.</span>
@@ -835,7 +533,6 @@
                     <span class="hidden sm:inline text-xs text-dark-400 font-mono bg-dark-50 px-2 py-0.5 rounded-full">/engineer</span>
                 </a>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
                     <a href="#home" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_home">Beranda</a>
                     <a href="#about" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_about">Tentang</a>
@@ -847,7 +544,6 @@
                     <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_experience">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_contact">Kontak</a>
 
-                    <!-- Language Toggle -->
                     <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
                         <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
                         <span class="lang-divider">|</span>
@@ -857,7 +553,6 @@
                     </span>
                 </div>
 
-                <!-- Mobile -->
                 <div class="md:hidden flex items-center gap-2">
                     <span class="flex items-center gap-1 text-xs">
                         <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
@@ -873,7 +568,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-sm border-b border-dark-100 w-full shadow-sm">
             <div class="px-4 py-3 space-y-1">
                 <a href="#home" class="block px-3 py-2.5 text-sm text-dark-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg" data-i18n="nav_home">Beranda</a>
@@ -889,17 +583,13 @@
         </div>
     </nav>
 
-    <!-- ============================================================ -->
     <!-- ===== IMAGE MODAL ===== -->
-    <!-- ============================================================ -->
     <div id="imageModal" class="modal-overlay" onclick="closeImageModal(event)">
         <button class="modal-close" onclick="closeImageModal(event)">✕</button>
         <img id="modalImage" src="" alt="Preview" onclick="event.stopPropagation()" />
     </div>
 
-    <!-- ============================================================ -->
     <!-- ===== HERO ===== -->
-    <!-- ============================================================ -->
     <section id="home" class="min-h-[90vh] flex items-center justify-center pt-20 pb-12 gradient-hero">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -932,9 +622,7 @@
                 <div class="relative flex justify-center fade-in-up delay-2">
                     <div class="profile-photo-wrapper w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-primary-200 shadow-xl">
                         <img src="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1"
-                        alt="Varian Rhesa"
-                        class="profile-photo"
-                        loading="lazy" />
+                        alt="Varian Rhesa" class="profile-photo" loading="lazy" />
                     </div>
                     <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-primary-500 text-white text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
                         #Engineer
@@ -944,9 +632,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== PORTFOLIO ===== -->
-    <!-- ============================================================ -->
     <section id="portfolio" class="py-12 sm:py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -961,8 +647,7 @@
                 <div class="card-blog fade-in-up delay-1">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv"
-                        alt="Sertifikat Dicoding Android Pemula"
-                        loading="lazy" />
+                        alt="Sertifikat Dicoding Android Pemula" loading="lazy" />
                         <div class="image-overlay">
                             <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1tRbrY0imVojrzYB3nGuLP0WKOyLKWANv')" title="Fullscreen">
                                 <i data-lucide="maximize" class="w-5 h-5"></i>
@@ -986,8 +671,7 @@
                 <div class="card-blog fade-in-up delay-2">
                     <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J"
-                        alt="Sertifikat CCNAv7 Cisco"
-                        loading="lazy" />
+                        alt="Sertifikat CCNAv7 Cisco" loading="lazy" />
                         <div class="image-overlay">
                             <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1eQu48CiRzhBYSJY6gVX9LDBmsQZ2HM3J')" title="Fullscreen">
                                 <i data-lucide="maximize" class="w-5 h-5"></i>
@@ -1007,31 +691,31 @@
                     </div>
                 </div>
 
-                <!-- 3. TOEFL ITP (with image) -->
-<div class="card-blog fade-in-up delay-3">
-    <div class="card-image bg-amber-50">
-        <img src="https://lh3.googleusercontent.com/d/1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn"
-             alt="Sertifikat TOEFL ITP Varian Rhesa"
-             loading="lazy" />
-        <div class="image-overlay">
-            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn')" title="Fullscreen">
-                <i data-lucide="maximize" class="w-5 h-5"></i>
-            </button>
-            <a href="https://drive.google.com/uc?export=download&id=1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn" download title="Download">
-                <i data-lucide="download" class="w-5 h-5"></i>
-            </a>
-        </div>
-    </div>
-    <div class="p-4 sm:p-5">
-        <div class="flex items-center gap-2 mb-1">
-            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
-            <span class="tag" style="background: #fef3e2; color: #8b5e3c; border-color: #f5d9b8;">TOEFL</span>
-        </div>
-        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">TOEFL ITP</h3>
-        <p class="text-dark-500 text-sm mt-1">Score <strong>517</strong> · Politeknik Negeri Samarinda</p>
-        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
-    </div>
-</div>
+                <!-- 3. TOEFL Prediction Test -->
+                <div class="card-blog fade-in-up delay-3">
+                    <div class="card-image bg-amber-50">
+                        <img src="https://lh3.googleusercontent.com/d/1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn"
+                             alt="Sertifikat TOEFL Prediction Test Varian Rhesa"
+                             loading="lazy" />
+                        <div class="image-overlay">
+                            <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn')" title="Fullscreen">
+                                <i data-lucide="maximize" class="w-5 h-5"></i>
+                            </button>
+                            <a href="https://drive.google.com/uc?export=download&id=1F6EUgaJXGRT5d3tacgbnrEsRLaUnNkHn" download title="Download">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="tag tag-primary" data-i18n="certificate">Sertifikat</span>
+                            <span class="tag" style="background: #fef3e2; color: #8b5e3c; border-color: #f5d9b8;">TOEFL</span>
+                        </div>
+                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg">TOEFL Prediction Test</h3>
+                        <p class="text-dark-500 text-sm mt-1">Score <strong>517</strong> · Politeknik Negeri Samarinda</p>
+                        <p class="text-dark-400 text-xs mt-2 font-mono">📄 <span data-i18n="certificate">Sertifikat</span></p>
+                    </div>
+                </div>
 
                 <!-- 4. PWA -->
                 <div class="card-blog fade-in-up delay-4">
@@ -1078,12 +762,11 @@
                     </div>
                 </div>
 
-                <!-- 6. Magang Balmon -->
+                <!-- 6. Magang Balmon (Certificate) -->
                 <div class="card-blog fade-in-up delay-1">
                     <div class="card-image bg-primary-50">
                         <img src="https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6"
-                        alt="Sertifikat Magang Balai Monitor Spektrum"
-                        loading="lazy" />
+                        alt="Sertifikat Magang Balai Monitor Spektrum" loading="lazy" />
                         <div class="image-overlay">
                             <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1JzdzPBuw3pLsrVaLKoMyb_Ufks-mL8T6')" title="Fullscreen">
                                 <i data-lucide="maximize" class="w-5 h-5"></i>
@@ -1104,45 +787,11 @@
                     </div>
                 </div>
 
-                <!-- 7. Proyek Website Magang (Disensor) -->
+                <!-- 7. Robot KRC -->
                 <div class="card-blog fade-in-up delay-2">
                     <div class="card-image bg-cyan-50">
-                        <div class="icon-placeholder">
-                            <i data-lucide="globe" class="text-cyan-500 w-12 h-12"></i>
-                        </div>
-                    </div>
-                    <div class="p-4 sm:p-5">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="tag tag-cyan" data-i18n="project">Proyek</span>
-                            <span class="tag tag-primary" data-i18n="internship">Magang</span>
-                        </div>
-                        <h3 class="font-semibold text-dark-900 text-base sm:text-lg" data-i18n="magang_web_title">
-                            🌐 Website Magang Balmon
-                        </h3>
-                        <div class="mt-2 space-y-1.5">
-                            <div class="flex items-start gap-2 text-sm">
-                                <span class="text-primary-500">🔗</span>
-                                <a href="https://pelayanan.balmonsamarinda.com" target="_blank"
-                                   class="text-primary-600 hover:underline font-medium">
-                                    pelayanan.balmonsamarinda.com
-                                </a>
-                                <span class="text-dark-400">— Portal Layanan Publik</span>
-                            </div>
-                            <div class="flex items-start gap-2 text-sm text-dark-400">
-                                <span>🔒</span>
-                                <span>4 Aplikasi Internal (Admin Dashboard, Freq Diagnostic, Hardware Monitor, Verifikasi Koordinat SFR)</span>
-                            </div>
-                        </div>
-                        <p class="text-dark-400 text-xs mt-2 font-mono">🔧 1 website publik + 4 tools internal (private)</p>
-                    </div>
-                </div>
-
-                <!-- 8. Robot KRC -->
-                <div class="card-blog fade-in-up delay-3">
-                    <div class="card-image bg-cyan-50">
                         <img src="https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR"
-                        alt="Sertifikat Juara 3 Kontes Robot Cerdas"
-                        loading="lazy" />
+                        alt="Sertifikat Juara 3 Kontes Robot Cerdas" loading="lazy" />
                         <div class="image-overlay">
                             <button onclick="openImageModal('https://lh3.googleusercontent.com/d/14qyPd2TTIB5XIZiXKJEEI-kKLn2iuBfR')" title="Fullscreen">
                                 <i data-lucide="maximize" class="w-5 h-5"></i>
@@ -1164,12 +813,98 @@
                 </div>
 
             </div>
+
+            <!-- ============================================================ -->
+            <!-- ===== WEB PROJECT SHOWCASE (NEW - NON-CARD STYLE) ===== -->
+            <!-- ============================================================ -->
+            <div class="mt-8 sm:mt-10 fade-in-up delay-3">
+                <div class="web-showcase">
+
+                    <!-- Header -->
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-white border border-primary-200 flex items-center justify-center shadow-sm">
+                            <i data-lucide="globe" class="text-primary-600 w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-dark-900" data-i18n="magang_web_title">
+                                🌐 Proyek Web Magang Balmon
+                            </h3>
+                            <p class="text-xs text-dark-500 font-mono">
+                                <span data-i18n="internship">Magang</span> · Full Stack Developer · 2026
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Public Website Item -->
+                    <div class="web-item mb-3">
+                        <div class="web-icon public">
+                            <i data-lucide="link" class="w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="web-label">Public Portal</div>
+                            <a href="https://pelayanan.balmonsamarinda.com" target="_blank"
+                               class="web-link">
+                                pelayanan.balmonsamarinda.com
+                                <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </a>
+                            <div class="web-desc">Portal Layanan Publik · Balmon Samarinda</div>
+                        </div>
+                    </div>
+
+                    <!-- Internal Apps -->
+                    <div class="mb-3 mt-4 flex items-center gap-2">
+                        <i data-lucide="lock" class="w-3.5 h-3.5 text-dark-400"></i>
+                        <span class="text-xs font-semibold text-dark-500 uppercase tracking-wider">
+                            Internal Apps (Private) · 4 Aplikasi
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div class="web-item">
+                            <div class="web-icon private">
+                                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="web-title">Admin Dashboard</div>
+                                <div class="web-desc">Manajemen data & user</div>
+                            </div>
+                        </div>
+                        <div class="web-item">
+                            <div class="web-icon private">
+                                <i data-lucide="activity" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="web-title">Frequency Diagnostic</div>
+                                <div class="web-desc">Analisis spektrum frekuensi</div>
+                            </div>
+                        </div>
+                        <div class="web-item">
+                            <div class="web-icon private">
+                                <i data-lucide="cpu" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="web-title">Hardware Monitor</div>
+                                <div class="web-desc">Monitoring perangkat</div>
+                            </div>
+                        </div>
+                        <div class="web-item">
+                            <div class="web-icon private">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="web-title">Verifikasi Koordinat SFR</div>
+                                <div class="web-desc">Validasi titik koordinat</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== RESUME ===== -->
-    <!-- ============================================================ -->
     <section id="resume" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1180,7 +915,7 @@
 
             <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
                 <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c')">
-                    <img src="https://lh3.googleusercontent.com/d/1Li3fXIX6zRV-Qhv_J89dMoeu9MDnopS9"
+                    <img src="https://lh3.googleusercontent.com/d/15PAvgI3dcDbl9i7evx4qV3MxuJgwrs92"
                          alt="Resume Varian Rhesa"
                          class="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain bg-white"
                          loading="lazy" />
@@ -1198,8 +933,7 @@
                         <span data-i18n="fullscreen">Layar Penuh</span>
                     </button>
                     <a href="https://drive.google.com/uc?export=download&id=1ozCjmNOPxDubRu35iUmqFL5Oqmw-PF4c"
-                       download="Resume_Varian_Rhesa.jpg"
-                       target="_blank"
+                       download="Resume_Varian_Rhesa.jpg" target="_blank"
                        class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-outline font-medium text-xs sm:text-sm">
                         <i data-lucide="download" class="w-4 h-4"></i>
                         ⬇️ <span data-i18n="download">Unduh Resume</span>
@@ -1209,9 +943,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== MAP ===== -->
-    <!-- ============================================================ -->
     <section id="map" class="py-12 sm:py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1247,8 +979,7 @@
                             </div>
                         </div>
                         <div class="mt-4 pt-4 border-t border-dark-100">
-                            <a href="https://www.google.com/maps?q=-0.500647,117.185105"
-                               target="_blank"
+                            <a href="https://www.google.com/maps?q=-0.500647,117.185105" target="_blank"
                                class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full btn-primary font-medium text-sm w-full justify-center">
                                 <i data-lucide="external-link" class="w-4 h-4"></i>
                                 <span data-i18n="open_maps">Buka di Google Maps</span>
@@ -1266,8 +997,7 @@
                     <div class="map-container shadow-md">
                         <iframe
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=-0.500647,117.185105&zoom=17&maptype=roadmap"
-                            allowfullscreen
-                            loading="lazy"
+                            allowfullscreen loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             title="Lokasi Varian Rhesa">
                         </iframe>
@@ -1281,9 +1011,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== SKILLS ===== -->
-    <!-- ============================================================ -->
     <section id="skills" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1413,9 +1141,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== PROFICIENCY ===== -->
-    <!-- ============================================================ -->
     <section id="proficiency" class="py-12 sm:py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1428,8 +1154,7 @@
 
                 <div class="fade-in-up delay-1 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>🐍 Python</span>
-                        <span>85%</span>
+                        <span>🐍 Python</span><span>85%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
@@ -1437,8 +1162,7 @@
                 </div>
                 <div class="fade-in-up delay-2 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>💻 JavaScript</span>
-                        <span>80%</span>
+                        <span>💻 JavaScript</span><span>80%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
@@ -1446,8 +1170,7 @@
                 </div>
                 <div class="fade-in-up delay-3 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>⚙️ Arduino</span>
-                        <span>80%</span>
+                        <span>⚙️ Arduino</span><span>80%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 80%; width: 0%;"></div>
@@ -1455,8 +1178,7 @@
                 </div>
                 <div class="fade-in-up delay-4 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>🔧 Git</span>
-                        <span>85%</span>
+                        <span>🔧 Git</span><span>85%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 85%; width: 0%;"></div>
@@ -1464,8 +1186,7 @@
                 </div>
                 <div class="fade-in-up delay-2 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>➕ C++</span>
-                        <span>75%</span>
+                        <span>➕ C++</span><span>75%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
@@ -1473,8 +1194,7 @@
                 </div>
                 <div class="fade-in-up delay-3 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>🐘 PHP</span>
-                        <span>75%</span>
+                        <span>🐘 PHP</span><span>75%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 75%; width: 0%;"></div>
@@ -1482,8 +1202,7 @@
                 </div>
                 <div class="fade-in-up delay-4 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>☕ Java</span>
-                        <span>70%</span>
+                        <span>☕ Java</span><span>70%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
@@ -1491,8 +1210,7 @@
                 </div>
                 <div class="fade-in-up delay-5 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>🎯 Dart</span>
-                        <span>70%</span>
+                        <span>🎯 Dart</span><span>70%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
@@ -1500,8 +1218,7 @@
                 </div>
                 <div class="fade-in-up delay-3 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>🐧 Linux</span>
-                        <span>70%</span>
+                        <span>🐧 Linux</span><span>70%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 70%; width: 0%;"></div>
@@ -1509,8 +1226,7 @@
                 </div>
                 <div class="fade-in-up delay-4 progress-item">
                     <div class="flex justify-between text-sm font-medium text-dark-700">
-                        <span>📱 Flutter</span>
-                        <span>65%</span>
+                        <span>📱 Flutter</span><span>65%</span>
                     </div>
                     <div class="progress-bar-bg mt-1">
                         <div class="progress-bar-fill" style="--progress-width: 65%; width: 0%;"></div>
@@ -1521,9 +1237,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== ABOUT ===== -->
-    <!-- ============================================================ -->
     <section id="about" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -1560,7 +1274,6 @@
                     </div>
                 </div>
 
-                <!-- Sidebar -->
                 <div class="space-y-6 fade-in-up delay-3">
                     <div class="sidebar-card">
                         <h4 data-i18n="profile">Profil</h4>
@@ -1592,7 +1305,7 @@
                         <div class="flex flex-wrap gap-2">
                             <span class="tag tag-primary">📱 <span data-i18n="cert_dicoding">Dicoding Android</span></span>
                             <span class="tag tag-cyan">🌐 <span data-i18n="cert_ccna">CCNAv7 Cisco</span></span>
-                            <span class="tag" style="background: #fef3e2; color: #8b5e3c; border-color: #f5d9b8;">🎓 TOEFL ITP 517</span>
+                            <span class="tag" style="background: #fef3e2; color: #8b5e3c; border-color: #f5d9b8;">🎓 TOEFL Prediction Test 517</span>
                         </div>
                     </div>
                     <div class="sidebar-card">
@@ -1629,9 +1342,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== EXPERIENCE ===== -->
-    <!-- ============================================================ -->
     <section id="experience" class="py-12 sm:py-16 bg-white border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1691,9 +1402,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== CONTACT ===== -->
-    <!-- ============================================================ -->
     <section id="contact" class="py-12 sm:py-16 bg-dark-50/30 border-t border-dark-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
@@ -1795,9 +1504,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
     <!-- ===== FOOTER ===== -->
-    <!-- ============================================================ -->
     <footer class="py-6 bg-dark-900 text-dark-300 border-t border-dark-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-xs">&copy; 2026 Varian Rhesa · <span data-i18n="footer_built">Dibangun dengan</span> <span class="text-primary-400">♥</span> <span data-i18n="footer_code">dan kode</span></p>
@@ -1814,26 +1521,18 @@
         </div>
     </footer>
 
-    <!-- ============================================================ -->
     <!-- ===== CHATBOT ===== -->
-    <!-- ============================================================ -->
-
-    <!-- Floating Button -->
     <button id="chat-toggle" onclick="toggleChat()" aria-label="Chat dengan Rhesa AI">
         <svg class="icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            <path d="M8 10h.01"/>
-            <path d="M12 10h.01"/>
-            <path d="M16 10h.01"/>
+            <path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/>
         </svg>
         <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
         <span id="chat-badge">1</span>
     </button>
 
-    <!-- Chat Window -->
     <div id="chat-window">
         <div id="chat-header">
             <div class="chat-title">
@@ -1863,25 +1562,16 @@
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT (Groq API + Local Fallback - Enhanced Context & Open Domain) ===== -->
-    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ============================================================
-        // 1. LUCIDE ICONS
-        // ============================================================
         function initIcons() {
             try { if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons(); } catch (e) {}
         }
 
-        // ============================================================
-        // 2. DOM READY
-        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 setTimeout(initIcons, 200);
 
-                // Mobile Menu
                 var btn = document.getElementById('mobile-menu-btn');
                 var menu = document.getElementById('mobile-menu');
                 if (btn && menu) {
@@ -1891,7 +1581,6 @@
                     });
                 }
 
-                // Navbar Scroll
                 var navbar = document.getElementById('navbar');
                 if (navbar) {
                     window.addEventListener('scroll', function() {
@@ -1908,7 +1597,6 @@
                     });
                 }
 
-                // Scroll Animations
                 if ('IntersectionObserver' in window) {
                     try {
                         var observer = new IntersectionObserver(function(entries) {
@@ -1937,7 +1625,6 @@
                     });
                 }
 
-                // Chat Enter
                 var chatInput = document.getElementById('chat-input');
                 if (chatInput) {
                     chatInput.addEventListener('keypress', function(e) {
@@ -1945,15 +1632,12 @@
                     });
                 }
 
-                // Language
                 var savedLang = localStorage.getItem('preferred_lang') || 'id';
                 setLanguage(savedLang);
             } catch (e) { console.log('Page loaded with minimal features:', e); }
         });
 
-        // ============================================================
-        // 3. IMAGE MODAL
-        // ============================================================
+        // ===== IMAGE MODAL =====
         function openImageModal(src) {
             try {
                 var modal = document.getElementById('imageModal');
@@ -1977,36 +1661,20 @@
             }
         });
 
-        // ============================================================
-        // 4. LANGUAGE (ID, EN, ZH)
-        // ============================================================
+        // ===== LANGUAGE =====
         var translations = {
             'id': {
-                'nav_home': 'Beranda',
-                'nav_about': 'Tentang',
-                'nav_portfolio': 'Portofolio',
-                'nav_resume': 'Resume',
-                'nav_map': 'Lokasi',
-                'nav_skills': 'Keahlian',
-                'nav_proficiency': 'Penguasaan',
-                'nav_experience': 'Perjalanan',
-                'nav_contact': 'Kontak',
+                'nav_home': 'Beranda', 'nav_about': 'Tentang', 'nav_portfolio': 'Portofolio',
+                'nav_resume': 'Resume', 'nav_map': 'Lokasi', 'nav_skills': 'Keahlian',
+                'nav_proficiency': 'Penguasaan', 'nav_experience': 'Perjalanan', 'nav_contact': 'Kontak',
                 'hero_title': 'Junior Software Engineer',
-                'tag_web': 'Web',
-                'tag_iot': 'IoT',
-                'tag_ai': 'AI',
-                'tag_robotics': 'Robotika',
+                'tag_web': 'Web', 'tag_iot': 'IoT', 'tag_ai': 'AI', 'tag_robotics': 'Robotika',
                 'hero_desc': 'Membangun solusi teknologi yang berdampak — dari web app hingga robot cerdas. Saya percaya bahwa kode terbaik adalah yang mengerti manusia di balik layar.',
-                'btn_contact': 'Hubungi',
-                'btn_works': 'Lihat Karya',
+                'btn_contact': 'Hubungi', 'btn_works': 'Lihat Karya',
                 'portfolio_title': 'Karya &amp; Sertifikat',
                 'portfolio_sub': 'Proyek dan pengakuan yang telah saya raih',
-                'certificate': 'Sertifikat',
-                'project': 'Proyek',
-                'thesis': 'Skripsi',
-                'internship': 'Magang',
-                'journal': 'Jurnal',
-                'read_journal': 'Baca Jurnal',
+                'certificate': 'Sertifikat', 'project': 'Proyek', 'thesis': 'Skripsi',
+                'internship': 'Magang', 'journal': 'Jurnal', 'read_journal': 'Baca Jurnal',
                 'journal_published': 'Jurnal terbit 2026',
                 'dicoding_desc': 'Belajar Membuat Aplikasi Android untuk Pemula',
                 'ccna_desc': 'Switching, Routing, and Wireless Essentials',
@@ -2016,19 +1684,16 @@
                 'balmon_desc': 'Full Stack Developer · PWA · Firebase',
                 'krc_title': 'Robot Cerdas · KRC 2023',
                 'krc_desc': 'Algoritma navigasi, logika cerdas',
-                'champion': 'Juara 3',
-                'placeholder': 'placeholder',
+                'champion': 'Juara 3', 'placeholder': 'placeholder',
                 'resume_title': '📄 Resume / CV',
                 'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
-                'fullscreen': 'Layar Penuh',
-                'download': 'Unduh Resume',
+                'fullscreen': 'Layar Penuh', 'download': 'Unduh Resume',
                 'click_to_enlarge': 'Klik untuk memperbesar',
                 'map_title': '📍 Lokasi Saya',
                 'map_desc': 'Temukan saya di Samarinda — klik peta untuk petunjuk arah',
                 'address_title': 'Alamat',
                 'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, Kalimantan Timur',
-                'coordinates_title': 'Koordinat',
-                'open_maps': 'Buka di Google Maps',
+                'coordinates_title': 'Koordinat', 'open_maps': 'Buka di Google Maps',
                 'map_note': '📍 Gunakan peta di samping untuk melihat lokasi persis saya',
                 'skills_title': 'Keahlian Teknis',
                 'skills_sub': 'Teknologi, alat, dan keterampilan yang saya kuasai',
@@ -2041,18 +1706,12 @@
                 'achievement_title': 'Juara 3 Kontes Robot Cerdas',
                 'achievement_loc': 'Provinsi Kalimantan Timur',
                 'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
-                'profile': 'Profil',
-                'languages': 'Bahasa',
-                'certifications': 'Sertifikasi',
-                'skills': 'Keahlian',
+                'profile': 'Profil', 'languages': 'Bahasa', 'certifications': 'Sertifikasi', 'skills': 'Keahlian',
                 'location': 'Samarinda, Kaltim',
                 'education_short': 'D4 TRK · Politeknik Negeri Samarinda',
                 'experience_short': 'Intern @ Balai Monitor Spektrum',
-                'lang_id': 'Indonesia',
-                'lang_en': 'English B2',
-                'lang_zh': 'Mandarin HSK1',
-                'cert_dicoding': 'Dicoding Android',
-                'cert_ccna': 'CCNAv7 Cisco',
+                'lang_id': 'Indonesia', 'lang_en': 'English B2', 'lang_zh': 'Mandarin HSK1',
+                'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': 'Perjalanan &amp; Pengalaman',
                 'education': 'Pendidikan',
                 'edu_polita_date': '2022 — Sekarang',
@@ -2074,46 +1733,25 @@
                 'exp_itb_role': 'Magang Industri &amp; Pengembangan Software',
                 'contact_title': 'Mari Terhubung',
                 'contact_desc': 'Tertarik untuk berkolaborasi atau berdiskusi? Kirim pesan langsung atau hubungi saya melalui media sosial.',
-                'form_title': 'Kirim Pesan',
-                'form_name': 'Nama Lengkap',
-                'form_email': 'Email',
-                'form_subject': 'Subjek',
-                'form_message': 'Pesan',
-                'form_send': 'Kirim Pesan',
+                'form_title': 'Kirim Pesan', 'form_name': 'Nama Lengkap', 'form_email': 'Email',
+                'form_subject': 'Subjek', 'form_message': 'Pesan', 'form_send': 'Kirim Pesan',
                 'form_note': '🔒 Pesan dikirim dengan aman via HTTPS. Saya akan membalas dalam 1-2 hari kerja.',
-                'contact_direct': 'Hubungi Langsung',
-                'social_media': 'Media Sosial',
-                'email': 'Email',
-                'phone': 'Telepon',
-                'footer_built': 'Dibangun dengan',
-                'footer_code': 'dan kode',
+                'contact_direct': 'Hubungi Langsung', 'social_media': 'Media Sosial',
+                'email': 'Email', 'phone': 'Telepon',
+                'footer_built': 'Dibangun dengan', 'footer_code': 'dan kode',
             },
             'en': {
-                'nav_home': 'Home',
-                'nav_about': 'About',
-                'nav_portfolio': 'Portfolio',
-                'nav_resume': 'Resume',
-                'nav_map': 'Location',
-                'nav_skills': 'Skills',
-                'nav_proficiency': 'Proficiency',
-                'nav_experience': 'Journey',
-                'nav_contact': 'Contact',
+                'nav_home': 'Home', 'nav_about': 'About', 'nav_portfolio': 'Portfolio',
+                'nav_resume': 'Resume', 'nav_map': 'Location', 'nav_skills': 'Skills',
+                'nav_proficiency': 'Proficiency', 'nav_experience': 'Journey', 'nav_contact': 'Contact',
                 'hero_title': 'Junior Software Engineer',
-                'tag_web': 'Web',
-                'tag_iot': 'IoT',
-                'tag_ai': 'AI',
-                'tag_robotics': 'Robotics',
+                'tag_web': 'Web', 'tag_iot': 'IoT', 'tag_ai': 'AI', 'tag_robotics': 'Robotics',
                 'hero_desc': 'Building impactful tech solutions — from web apps to smart robots. I believe the best code understands the human behind the screen.',
-                'btn_contact': 'Contact',
-                'btn_works': 'View Works',
+                'btn_contact': 'Contact', 'btn_works': 'View Works',
                 'portfolio_title': 'Works &amp; Certificates',
                 'portfolio_sub': 'Projects and recognitions I have achieved',
-                'certificate': 'Certificate',
-                'project': 'Project',
-                'thesis': 'Thesis',
-                'internship': 'Internship',
-                'journal': 'Journal',
-                'read_journal': 'Read Journal',
+                'certificate': 'Certificate', 'project': 'Project', 'thesis': 'Thesis',
+                'internship': 'Internship', 'journal': 'Journal', 'read_journal': 'Read Journal',
                 'journal_published': 'Journal published 2026',
                 'dicoding_desc': 'Learn to Make Android Apps for Beginners',
                 'ccna_desc': 'Switching, Routing, and Wireless Essentials',
@@ -2123,19 +1761,16 @@
                 'balmon_desc': 'Full Stack Developer · PWA · Firebase',
                 'krc_title': 'Smart Robot · KRC 2023',
                 'krc_desc': 'Navigation algorithms, intelligent logic',
-                'champion': '3rd Place',
-                'placeholder': 'placeholder',
+                'champion': '3rd Place', 'placeholder': 'placeholder',
                 'resume_title': '📄 Resume / CV',
                 'resume_desc': 'Summary of my professional journey — click to enlarge',
-                'fullscreen': 'Fullscreen',
-                'download': 'Download Resume',
+                'fullscreen': 'Fullscreen', 'download': 'Download Resume',
                 'click_to_enlarge': 'Click to enlarge',
                 'map_title': '📍 My Location',
                 'map_desc': 'Find me in Samarinda — click the map for directions',
                 'address_title': 'Address',
                 'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />Samarinda, East Kalimantan',
-                'coordinates_title': 'Coordinates',
-                'open_maps': 'Open in Google Maps',
+                'coordinates_title': 'Coordinates', 'open_maps': 'Open in Google Maps',
                 'map_note': '📍 Use the map to see my exact location',
                 'skills_title': 'Technical Skills',
                 'skills_sub': 'Technologies, tools, and skills I master',
@@ -2148,18 +1783,12 @@
                 'achievement_title': '3rd Place Smart Robot Competition',
                 'achievement_loc': 'East Kalimantan Province',
                 'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
-                'profile': 'Profile',
-                'languages': 'Languages',
-                'certifications': 'Certifications',
-                'skills': 'Skills',
+                'profile': 'Profile', 'languages': 'Languages', 'certifications': 'Certifications', 'skills': 'Skills',
                 'location': 'Samarinda, East Kalimantan',
                 'education_short': 'D4 TRK · Samarinda State Polytechnic',
                 'experience_short': 'Intern @ Spectrum Monitoring Center',
-                'lang_id': 'Indonesian',
-                'lang_en': 'English B2',
-                'lang_zh': 'Mandarin HSK1',
-                'cert_dicoding': 'Dicoding Android',
-                'cert_ccna': 'CCNAv7 Cisco',
+                'lang_id': 'Indonesian', 'lang_en': 'English B2', 'lang_zh': 'Mandarin HSK1',
+                'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': 'Journey &amp; Experience',
                 'education': 'Education',
                 'edu_polita_date': '2022 — Present',
@@ -2181,46 +1810,25 @@
                 'exp_itb_role': 'Industrial Internship &amp; Software Development',
                 'contact_title': 'Let\'s Connect',
                 'contact_desc': 'Interested in collaborating or discussing? Send a message directly or reach me via social media.',
-                'form_title': 'Send Message',
-                'form_name': 'Full Name',
-                'form_email': 'Email',
-                'form_subject': 'Subject',
-                'form_message': 'Message',
-                'form_send': 'Send Message',
+                'form_title': 'Send Message', 'form_name': 'Full Name', 'form_email': 'Email',
+                'form_subject': 'Subject', 'form_message': 'Message', 'form_send': 'Send Message',
                 'form_note': '🔒 Message sent securely via HTTPS. I\'ll reply within 1-2 business days.',
-                'contact_direct': 'Direct Contact',
-                'social_media': 'Social Media',
-                'email': 'Email',
-                'phone': 'Phone',
-                'footer_built': 'Built with',
-                'footer_code': 'and code',
+                'contact_direct': 'Direct Contact', 'social_media': 'Social Media',
+                'email': 'Email', 'phone': 'Phone',
+                'footer_built': 'Built with', 'footer_code': 'and code',
             },
             'zh': {
-                'nav_home': '主页',
-                'nav_about': '关于',
-                'nav_portfolio': '作品集',
-                'nav_resume': '简历',
-                'nav_map': '位置',
-                'nav_skills': '技能',
-                'nav_proficiency': '熟练度',
-                'nav_experience': '历程',
-                'nav_contact': '联系',
+                'nav_home': '主页', 'nav_about': '关于', 'nav_portfolio': '作品集',
+                'nav_resume': '简历', 'nav_map': '位置', 'nav_skills': '技能',
+                'nav_proficiency': '熟练度', 'nav_experience': '历程', 'nav_contact': '联系',
                 'hero_title': '初级软件工程师',
-                'tag_web': 'Web',
-                'tag_iot': '物联网',
-                'tag_ai': '人工智能',
-                'tag_robotics': '机器人学',
+                'tag_web': 'Web', 'tag_iot': '物联网', 'tag_ai': '人工智能', 'tag_robotics': '机器人学',
                 'hero_desc': '构建有影响力的技术解决方案 — 从 Web 应用到智能机器人。我相信最好的代码能理解屏幕背后的人。',
-                'btn_contact': '联系',
-                'btn_works': '查看作品',
+                'btn_contact': '联系', 'btn_works': '查看作品',
                 'portfolio_title': '作品与证书',
                 'portfolio_sub': '我完成的项目和获得的认可',
-                'certificate': '证书',
-                'project': '项目',
-                'thesis': '论文',
-                'internship': '实习',
-                'journal': '期刊',
-                'read_journal': '阅读期刊',
+                'certificate': '证书', 'project': '项目', 'thesis': '论文',
+                'internship': '实习', 'journal': '期刊', 'read_journal': '阅读期刊',
                 'journal_published': '期刊发表于 2026 年',
                 'dicoding_desc': '学习为初学者制作 Android 应用',
                 'ccna_desc': '交换、路由和无线基础',
@@ -2230,19 +1838,16 @@
                 'balmon_desc': '全栈开发 · PWA · Firebase',
                 'krc_title': '智能机器人 · KRC 2023',
                 'krc_desc': '导航算法，智能逻辑',
-                'champion': '第三名',
-                'placeholder': '占位符',
+                'champion': '第三名', 'placeholder': '占位符',
                 'resume_title': '📄 简历 / CV',
                 'resume_desc': '我的职业历程概述 — 点击放大',
-                'fullscreen': '全屏',
-                'download': '下载简历',
+                'fullscreen': '全屏', 'download': '下载简历',
                 'click_to_enlarge': '点击放大',
                 'map_title': '📍 我的位置',
                 'map_desc': '在三马林达找到我 — 点击地图获取路线',
                 'address_title': '地址',
                 'address': 'Perum Bumi Sambutan Asri<br />Blok K1 No 21<br />三马林达, 东加里曼丹',
-                'coordinates_title': '坐标',
-                'open_maps': '在谷歌地图中打开',
+                'coordinates_title': '坐标', 'open_maps': '在谷歌地图中打开',
                 'map_note': '📍 使用地图查看我的确切位置',
                 'skills_title': '技术技能',
                 'skills_sub': '我掌握的技术、工具和技能',
@@ -2255,18 +1860,12 @@
                 'achievement_title': '智能机器人竞赛第三名',
                 'achievement_loc': '东加里曼丹省',
                 'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
-                'profile': '个人资料',
-                'languages': '语言',
-                'certifications': '认证',
-                'skills': '技能',
+                'profile': '个人资料', 'languages': '语言', 'certifications': '认证', 'skills': '技能',
                 'location': '三马林达, 东加里曼丹',
                 'education_short': 'D4 TRK · 三马林达国立理工学院',
                 'experience_short': '实习 @ 频谱监测中心',
-                'lang_id': '印尼语',
-                'lang_en': '英语 B2',
-                'lang_zh': '普通话 HSK1',
-                'cert_dicoding': 'Dicoding Android',
-                'cert_ccna': 'CCNAv7 Cisco',
+                'lang_id': '印尼语', 'lang_en': '英语 B2', 'lang_zh': '普通话 HSK1',
+                'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': '历程与经验',
                 'education': '教育',
                 'edu_polita_date': '2022 — 至今',
@@ -2288,19 +1887,12 @@
                 'exp_itb_role': '工业实习与软件开发',
                 'contact_title': '联系我',
                 'contact_desc': '有兴趣合作或讨论？直接发送消息或通过社交媒体联系我。',
-                'form_title': '发送消息',
-                'form_name': '全名',
-                'form_email': '邮箱',
-                'form_subject': '主题',
-                'form_message': '消息',
-                'form_send': '发送消息',
+                'form_title': '发送消息', 'form_name': '全名', 'form_email': '邮箱',
+                'form_subject': '主题', 'form_message': '消息', 'form_send': '发送消息',
                 'form_note': '🔒 消息通过 HTTPS 安全发送。我将在 1-2 个工作日内回复。',
-                'contact_direct': '直接联系',
-                'social_media': '社交媒体',
-                'email': '邮箱',
-                'phone': '电话',
-                'footer_built': '用',
-                'footer_code': '和代码构建',
+                'contact_direct': '直接联系', 'social_media': '社交媒体',
+                'email': '邮箱', 'phone': '电话',
+                'footer_built': '用', 'footer_code': '和代码构建',
             }
         };
 
@@ -2310,9 +1902,7 @@
                 elements.forEach(function(el) {
                     var key = el.getAttribute('data-i18n');
                     var translation = translations[lang]?.[key];
-                    if (translation) {
-                        el.innerHTML = translation;
-                    }
+                    if (translation) el.innerHTML = translation;
                 });
                 document.querySelectorAll('.lang-btn').forEach(function(btn) {
                     btn.classList.remove('active');
@@ -2323,9 +1913,7 @@
             } catch (e) { /* ignore */ }
         }
 
-        // ============================================================
-        // 5. CHATBOT - GROQ API + LOCAL FALLBACK (FIXED CONTEXT)
-        // ============================================================
+        // ===== CHATBOT =====
         var chatOpen = false;
         var chatMessages = document.getElementById('chat-messages');
         var chatInput = document.getElementById('chat-input');
@@ -2356,7 +1944,7 @@
             } catch (e) { /* ignore */ }
         }
 
-        // ==== INFORMASI TENTANG ANDA (LENGKAP, TERMASUK TOEFL) ====
+        // ==== INFORMASI TENTANG VARIAN (TOEFL sudah diubah) ====
         var aboutVarian =
             "Nama: Varian Rhesa. " +
             "Lahir: Palembang, 7 November 2003. " +
@@ -2369,14 +1957,13 @@
             "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). " +
             "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. " +
             "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). " +
-            "Sertifikasi: Dicoding Android, CCNAv7 Cisco, TOEFL ITP score 517 dari Politeknik Negeri Samarinda. " +
+            "Sertifikasi: Dicoding Android, CCNAv7 Cisco, TOEFL Prediction Test score 517 dari Politeknik Negeri Samarinda. " +
             "Proyek Website Magang: Portal layanan publik di pelayanan.balmonsamarinda.com; " +
             "serta 4 aplikasi internal (Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, Verifikasi Koordinat SFR) yang bersifat privat. " +
             "Proyek lainnya: Skripsi IoT Smart Fire Suppression dengan algoritma C4.5 (jurnal JUTIN 2026), PWA Spektrum Monitoring, Robot KRC juara 3. ";
 
-        // ==== GROQ API ====
-        var GROQ_API_KEY = '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';  // API key Groq
-        var GROQ_MODEL = 'llama-3.1-8b-instant';      // model yang digunakan
+        var GROQ_API_KEY = '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';
+        var GROQ_MODEL = 'llama-3.1-8b-instant';
 
         var isTyping = false;
 
@@ -2388,7 +1975,7 @@
                 msgDiv.textContent = text;
                 chatMessages.appendChild(msgDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            } catch (e) { /* ignore */ }
+            } catch (e) {}
         }
 
         function addTypingIndicator() {
@@ -2397,21 +1984,19 @@
                 var typingDiv = document.createElement('div');
                 typingDiv.className = 'message typing';
                 typingDiv.id = 'typing-indicator';
-                typingDiv.innerHTML =
-                    '<div class="typing-dots"><span></span><span></span><span></span></div>';
+                typingDiv.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
                 chatMessages.appendChild(typingDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            } catch (e) { /* ignore */ }
+            } catch (e) {}
         }
 
         function removeTypingIndicator() {
             try {
                 var typing = document.getElementById('typing-indicator');
                 if (typing) typing.remove();
-            } catch (e) { /* ignore */ }
+            } catch (e) {}
         }
 
-        // Fallback lokal DIPERLUAS (termasuk TOEFL)
         function localFallback(message) {
             var msg = message.toLowerCase();
             if (msg.includes('lahir') || msg.includes('palembang')) return 'Varian Rhesa lahir di Palembang pada 7 November 2003.';
@@ -2424,13 +2009,13 @@
             if (msg.includes('pengalaman') || msg.includes('kerja')) return 'Saya magang di Balai Monitor Spektrum Samarinda sebagai Full Stack Developer (PWA, Firebase, QR Code, AI Chatbot). Juga intern di PPTIK ITB.';
             if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, robot KRC juara 3, dan portal layanan publik pelayanan.balmonsamarinda.com.';
             if (msg.includes('kontak') || msg.includes('hubungi') || msg.includes('email') || msg.includes('telepon')) return 'Hubungi saya via email rhesa719@gmail.com, telepon 0895-1962-8044. LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719.';
-            if (msg.includes('sertifikat') || msg.includes('ccna') || msg.includes('dicoding')) return 'Sertifikasi: Dicoding Android Pemula, CCNAv7 Cisco, TOEFL ITP 517 (Politeknik Negeri Samarinda), dan magang resmi dari Balmon.';
+            if (msg.includes('sertifikat') || msg.includes('ccna') || msg.includes('dicoding')) return 'Sertifikasi: Dicoding Android Pemula, CCNAv7 Cisco, TOEFL Prediction Test 517 (Politeknik Negeri Samarinda), dan magang resmi dari Balmon.';
             if (msg.includes('bahasa') || msg.includes('language')) return 'Saya fasih berbahasa Indonesia, Inggris (B2), dan Mandarin dasar (HSK1).';
             if (msg.includes('website') || msg.includes('pelayanan') || msg.includes('magang website')) 
                 return 'Portal layanan publik: pelayanan.balmonsamarinda.com. Ada juga 4 aplikasi internal untuk admin, diagnostik frekuensi, monitoring hardware, dan verifikasi koordinat SFR.';
             if (msg.includes('alamat') || msg.includes('lokasi') || msg.includes('samarinda')) return 'Alamat: Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda, Kalimantan Timur. Koordinat: -0.500647, 117.185105.';
             if (msg.includes('medsos') || msg.includes('sosmed') || msg.includes('linkedin') || msg.includes('github')) return 'LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719, WhatsApp: wa.me/6289519628044.';
-            if (msg.includes('toefl')) return 'Sertifikat TOEFL ITP dengan skor 517, dikeluarkan oleh Politeknik Negeri Samarinda.';
+            if (msg.includes('toefl')) return 'Sertifikat TOEFL Prediction Test dengan skor 517, dikeluarkan oleh Politeknik Negeri Samarinda.';
             return null;
         }
 
@@ -2441,10 +2026,7 @@
                     return;
                 }
 
-                // System prompt yang lebih tegas: JANGAN ULANGI DATA, hanya jawab
                 var systemInstruction = "Anda adalah asisten AI yang ramah dan informatif. Di bawah ini terdapat data tentang Varian Rhesa. Gunakan data tersebut HANYA jika relevan dengan pertanyaan pengguna. JANGAN mengulangi atau menampilkan kembali data mentah ini dalam jawaban. Untuk pertanyaan di luar data yang diberikan, jawablah dengan pengetahuan umum Anda secara bebas dan akurat. Jika tidak tahu, katakan jujur. Selalu jawab dalam bahasa Indonesia yang natural.";
-                
-                // Gabungkan instruksi dan data dengan pemisah yang jelas
                 var fullSystemContent = systemInstruction + "\n\nDATA PRIBADI VARIAN RHESA (JANGAN DIULANGI MENTAH):\n" + aboutVarian;
 
                 fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -2474,7 +2056,6 @@
                 })
                 .then(function(data) {
                     var text = data.choices[0].message.content.trim();
-                    // Bersihkan jika jawaban masih mengandung data mentah
                     if (text.includes('DATA PRIBADI') || text.includes('Nama: Varian Rhesa')) {
                         var lines = text.split('\n');
                         var filtered = lines.filter(function(line) {
@@ -2511,7 +2092,6 @@
                     .catch(function(error) {
                         removeTypingIndicator();
                         console.log('Groq error:', error.message);
-                        // Fallback lokal
                         var localAnswer = localFallback(text);
                         if (localAnswer) {
                             addMessage(localAnswer, false);
@@ -2528,7 +2108,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lengkap + TOEFL + prompt tegas) siap!');
+        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lengkap + TOEFL Prediction Test) siap!');
     </script>
 </body>
 </html>
