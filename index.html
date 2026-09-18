@@ -9,8 +9,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
 
     <!-- ===== META TAGS ===== -->
-    <meta name="description" content="Portfolio Varian Rhesa - Junior Software Engineer. Mahasiswa Teknologi Rekayasa Komputer di Politeknik Negeri Samarinda." />
-    <meta name="keywords" content="Varian Rhesa, Junior Software Engineer, Web Development, IoT, AI" />
+    <meta name="description" content="Portfolio Varian Rhesa - Junior Software Engineer. Lulusan D4 Teknologi Rekayasa Komputer Politeknik Negeri Samarinda, Sarjana Terapan Teknik (S.Tr.T.) dengan IPK 3.97." />
+    <meta name="keywords" content="Varian Rhesa, Junior Software Engineer, Web Development, IoT, AI, Sarjana Terapan Teknik" />
     <meta name="author" content="Varian Rhesa" />
     <meta name="robots" content="index, follow" />
 
@@ -18,7 +18,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://varian719.github.io/" />
     <meta property="og:title" content="Varian Rhesa · Junior Software Engineer" />
-    <meta property="og:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer, spesialisasi Web, IoT, dan AI." />
+    <meta property="og:description" content="Portfolio Varian Rhesa - Sarjana Terapan Teknik (S.Tr.T.) Teknologi Rekayasa Komputer, IPK 3.97. Spesialisasi Web, IoT, dan AI." />
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="800" />
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://varian719.github.io/" />
     <meta name="twitter:title" content="Varian Rhesa · Junior Software Engineer" />
-    <meta name="twitter:description" content="Portfolio Varian Rhesa - Mahasiswa Teknologi Rekayasa Komputer." />
+    <meta name="twitter:description" content="Portfolio Varian Rhesa - Sarjana Terapan Teknik (S.Tr.T.) dengan IPK 3.97." />
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/14m6dAlJnqeEiJByBh5JunYAzPUREfvx1" />
 
     <!-- ===== TAILWIND CSS ===== -->
@@ -268,7 +268,7 @@
         .hover\:bg-whatsapp\/20:hover { background: rgba(37, 211, 102, 0.2); }
 
         /* ============================================================ */
-        /* ===== WEB PROJECT SHOWCASE (NEW STYLE, NOT CARD) ===== */
+        /* ===== WEB PROJECT SHOWCASE ===== */
         /* ============================================================ */
         .web-showcase {
             background: linear-gradient(135deg, #ecfeff 0%, #e6f7f0 60%, #ffffff 100%);
@@ -358,6 +358,31 @@
             transition: color 0.2s;
         }
         .web-item a.web-link:hover { color: #06b6d4; text-decoration: underline; }
+
+        /* Featured internal app (VISTARA KALTIM) */
+        .web-item.web-item-featured {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf7 100%);
+            border: 1.5px solid #33bf87;
+            box-shadow: 0 4px 20px rgba(10, 175, 105, 0.08);
+            padding: 1.1rem 1.2rem;
+        }
+        .web-item.web-item-featured:hover {
+            border-color: #0aaf69;
+            box-shadow: 0 8px 28px rgba(10, 175, 105, 0.15);
+            transform: translateX(4px);
+        }
+        .web-item .web-icon.featured {
+            width: 46px; height: 46px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0aaf69, #06b6d4);
+            color: white;
+            box-shadow: 0 4px 14px rgba(10, 175, 105, 0.3);
+        }
+        .web-item.web-item-featured .web-title {
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            color: #023715;
+        }
 
         /* ===== CHATBOT STYLES ===== */
         #chat-toggle {
@@ -814,9 +839,7 @@
 
             </div>
 
-            <!-- ============================================================ -->
-            <!-- ===== WEB PROJECT SHOWCASE (NEW - NON-CARD STYLE) ===== -->
-            <!-- ============================================================ -->
+            <!-- ===== WEB PROJECT SHOWCASE ===== -->
             <div class="mt-8 sm:mt-10 fade-in-up delay-3">
                 <div class="web-showcase">
 
@@ -1264,9 +1287,9 @@
                     <h2 class="text-2xl sm:text-3xl font-bold text-dark-900 mb-4" data-i18n="about_title">Tentang Saya</h2>
                     <div class="divider-custom max-w-xs mb-5"></div>
                     <div class="space-y-4 text-dark-600 text-sm leading-relaxed">
-                        <p data-i18n="about_p1">Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.</p>
+                        <p data-i18n="about_p1">Saya lulusan <span class="text-primary-600 font-medium">D4 Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan gelar <strong class="text-primary-600">Sarjana Terapan Teknik (S.Tr.T.)</strong> dan <strong class="text-primary-600">IPK 3.97</strong>, berlatar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.</p>
                         <p data-i18n="about_p2">Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.</p>
-                        <p data-i18n="about_p3">Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).</p>
+                        <p data-i18n="about_p3">Saya telah menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).</p>
                         <div class="flex flex-wrap gap-2 pt-2">
                             <span class="tag tag-primary">Python</span>
                             <span class="tag tag-cyan">C++</span>
@@ -1306,7 +1329,7 @@
                         </div>
                         <ul class="space-y-2 text-sm text-dark-600">
                             <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-primary-500 w-4 h-4"></i> <span data-i18n="location">Samarinda, Kaltim</span></li>
-                            <li class="flex items-center gap-2"><i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i> <span data-i18n="education_short">D4 TRK · Politeknik Negeri Samarinda</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="book-open" class="text-cyan-500 w-4 h-4"></i> <span data-i18n="education_short">S.Tr.T. · D4 TRK Polnes · IPK 3.97</span></li>
                             <li class="flex items-center gap-2"><i data-lucide="briefcase" class="text-primary-500 w-4 h-4"></i> <span data-i18n="experience_short">Intern @ Balai Monitor Spektrum</span></li>
                         </ul>
                     </div>
@@ -1377,9 +1400,12 @@
                     <div class="space-y-0 border-l-2 border-primary-200 ml-3">
                         <div class="relative pl-6 sm:pl-8 pb-8">
                             <div class="absolute -left-[9px] top-0 w-3.5 h-3.5 rounded-full bg-primary-500 border-2 border-white shadow-sm"></div>
-                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — Sekarang</div>
+                            <div class="text-xs text-cyan-600 font-mono mb-0.5" data-i18n="edu_polita_date">2022 — 2026 · Lulus</div>
                             <h4 class="text-base sm:text-lg font-semibold text-dark-900" data-i18n="edu_polita_name">Politeknik Negeri Samarinda</h4>
-                            <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer</div>
+                            <div class="text-sm text-dark-500" data-i18n="edu_polita_major">D4 · Teknologi Rekayasa Komputer · IPK 3.97 · S.Tr.T.</div>
+                            <div class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[0.65rem] font-bold tracking-wide">
+                                🎓 Sarjana Terapan Teknik
+                            </div>
                             <p class="text-xs text-dark-400 mt-1"><span data-i18n="thesis">Skripsi</span>: <a href="https://journal.universitaspahlawan.ac.id/index.php/jutin/article/view/59771" target="_blank" class="text-primary-600 hover:underline break-words"><span data-i18n="thesis_title">Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5</span></a></p>
                         </div>
                         <div class="relative pl-6 sm:pl-8 pb-4">
@@ -1703,6 +1729,7 @@
                 'krc_title': 'Robot Cerdas · KRC 2023',
                 'krc_desc': 'Algoritma navigasi, logika cerdas',
                 'champion': 'Juara 3', 'placeholder': 'placeholder',
+                'magang_web_title': '🌐 Proyek Web Magang Balmon',
                 'resume_title': '📄 Resume / CV',
                 'resume_desc': 'Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar',
                 'fullscreen': 'Layar Penuh', 'download': 'Unduh Resume',
@@ -1718,23 +1745,23 @@
                 'proficiency_title': '📊 Penguasaan Teknologi',
                 'proficiency_sub': 'Tingkat kemampuan saya dalam berbagai teknologi',
                 'about_title': 'Tentang Saya',
-                'about_p1': 'Saya mahasiswa <span class="text-primary-600 font-medium">Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan latar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
+                'about_p1': 'Saya lulusan <span class="text-primary-600 font-medium">D4 Teknologi Rekayasa Komputer</span> di Politeknik Negeri Samarinda dengan gelar <strong class="text-primary-600">Sarjana Terapan Teknik (S.Tr.T.)</strong> dan <strong class="text-primary-600">IPK 3.97</strong>, berlatar belakang <span class="text-cyan-600 font-medium">Rekayasa Perangkat Lunak</span> (RPL) dari SMK.',
                 'about_p2': 'Saya memiliki ketertarikan dalam pengembangan <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, dan <span class="text-primary-600 font-medium">IoT</span>. Saya percaya bahwa teknologi terbaik adalah yang memberikan solusi nyata bagi masalah sehari-hari.',
-                'about_p3': 'Saat ini saya sedang menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).',
+                'about_p3': 'Saya telah menyelesaikan skripsi tentang <span class="text-primary-600 font-medium">"Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5"</span> yang telah dipublikasikan di Jurnal Teknik Industri Terintegrasi (JUTIN).',
                 'achievement_title': 'Juara 3 Kontes Robot Cerdas',
                 'achievement_loc': 'Provinsi Kalimantan Timur',
                 'achievement_desc': 'Bertanggung jawab sebagai <span class="text-primary-600 font-medium">Programmer Robot</span>. Menulis logika pemrograman untuk navigasi dan pengambilan keputusan.',
                 'profile': 'Profil', 'languages': 'Bahasa', 'certifications': 'Sertifikasi', 'skills': 'Keahlian',
                 'location': 'Samarinda, Kaltim',
-                'education_short': 'D4 TRK · Politeknik Negeri Samarinda',
+                'education_short': 'S.Tr.T. · D4 TRK Polnes · IPK 3.97',
                 'experience_short': 'Intern @ Balai Monitor Spektrum',
                 'lang_id': 'Indonesia', 'lang_en': 'English B2', 'lang_zh': 'Mandarin HSK1',
                 'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': 'Perjalanan &amp; Pengalaman',
                 'education': 'Pendidikan',
-                'edu_polita_date': '2022 — Sekarang',
+                'edu_polita_date': '2022 — 2026 · Lulus',
                 'edu_polita_name': 'Politeknik Negeri Samarinda',
-                'edu_polita_major': 'D4 · Teknologi Rekayasa Komputer',
+                'edu_polita_major': 'D4 · Teknologi Rekayasa Komputer · IPK 3.97 · S.Tr.T.',
                 'thesis_title': 'Rancang Bangun Sistem Pemadaman Ruangan Berbasis IoT dengan Metode Algoritma C4.5',
                 'edu_smk_date': '2019 — 2022',
                 'edu_smk_name': 'SMK Negeri 7 Samarinda',
@@ -1780,6 +1807,7 @@
                 'krc_title': 'Smart Robot · KRC 2023',
                 'krc_desc': 'Navigation algorithms, intelligent logic',
                 'champion': '3rd Place', 'placeholder': 'placeholder',
+                'magang_web_title': '🌐 Balmon Internship Web Projects',
                 'resume_title': '📄 Resume / CV',
                 'resume_desc': 'Summary of my professional journey — click to enlarge',
                 'fullscreen': 'Fullscreen', 'download': 'Download Resume',
@@ -1795,23 +1823,23 @@
                 'proficiency_title': '📊 Technology Proficiency',
                 'proficiency_sub': 'My skill level across various technologies',
                 'about_title': 'About Me',
-                'about_p1': 'I am a <span class="text-primary-600 font-medium">Computer Engineering Technology</span> student at Samarinda State Polytechnic with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
+                'about_p1': 'I am a graduate of <span class="text-primary-600 font-medium">D4 Computer Engineering Technology</span> at Samarinda State Polytechnic with a <strong class="text-primary-600">Bachelor of Applied Engineering (S.Tr.T.)</strong> degree and a <strong class="text-primary-600">GPA of 3.97</strong>, with a background in <span class="text-cyan-600 font-medium">Software Engineering</span> (RPL) from vocational school.',
                 'about_p2': 'I am interested in <span class="text-primary-600 font-medium">Web</span>, <span class="text-cyan-600 font-medium">Mobile</span>, and <span class="text-primary-600 font-medium">IoT</span> development. I believe the best technology provides real solutions to everyday problems.',
-                'about_p3': 'I am currently completing my thesis on <span class="text-primary-600 font-medium">"Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm"</span> which has been published in the Journal of Integrated Industrial Engineering (JUTIN).',
+                'about_p3': 'I have completed my thesis on <span class="text-primary-600 font-medium">"Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm"</span> which has been published in the Journal of Integrated Industrial Engineering (JUTIN).',
                 'achievement_title': '3rd Place Smart Robot Competition',
                 'achievement_loc': 'East Kalimantan Province',
                 'achievement_desc': 'Responsible as a <span class="text-primary-600 font-medium">Robot Programmer</span>. Writing programming logic for navigation and decision making.',
                 'profile': 'Profile', 'languages': 'Languages', 'certifications': 'Certifications', 'skills': 'Skills',
                 'location': 'Samarinda, East Kalimantan',
-                'education_short': 'D4 TRK · Samarinda State Polytechnic',
+                'education_short': 'B.App.Eng. · D4 TRK Polnes · GPA 3.97',
                 'experience_short': 'Intern @ Spectrum Monitoring Center',
                 'lang_id': 'Indonesian', 'lang_en': 'English B2', 'lang_zh': 'Mandarin HSK1',
                 'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': 'Journey &amp; Experience',
                 'education': 'Education',
-                'edu_polita_date': '2022 — Present',
+                'edu_polita_date': '2022 — 2026 · Graduated',
                 'edu_polita_name': 'Samarinda State Polytechnic',
-                'edu_polita_major': 'D4 · Computer Engineering Technology',
+                'edu_polita_major': 'D4 · Computer Engineering Technology · GPA 3.97 · B.App.Eng.',
                 'thesis_title': 'Design and Development of IoT-Based Room Fire Suppression System Using C4.5 Algorithm',
                 'edu_smk_date': '2019 — 2022',
                 'edu_smk_name': 'SMK Negeri 7 Samarinda',
@@ -1857,6 +1885,7 @@
                 'krc_title': '智能机器人 · KRC 2023',
                 'krc_desc': '导航算法，智能逻辑',
                 'champion': '第三名', 'placeholder': '占位符',
+                'magang_web_title': '🌐 Balmon 实习网站项目',
                 'resume_title': '📄 简历 / CV',
                 'resume_desc': '我的职业历程概述 — 点击放大',
                 'fullscreen': '全屏', 'download': '下载简历',
@@ -1872,23 +1901,23 @@
                 'proficiency_title': '📊 技术熟练度',
                 'proficiency_sub': '我在各种技术方面的技能水平',
                 'about_title': '关于我',
-                'about_p1': '我是三马林达国立理工学院的 <span class="text-primary-600 font-medium">计算机工程技术</span> 专业学生，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
+                'about_p1': '我是三马林达国立理工学院 <span class="text-primary-600 font-medium">D4 计算机工程技术</span> 专业的毕业生，获得 <strong class="text-primary-600">应用工程学士学位 (S.Tr.T.)</strong>，<strong class="text-primary-600">GPA 3.97</strong>，拥有职业学校 <span class="text-cyan-600 font-medium">软件工程</span> (RPL) 背景。',
                 'about_p2': '我对 <span class="text-primary-600 font-medium">Web</span>、<span class="text-cyan-600 font-medium">移动</span> 和 <span class="text-primary-600 font-medium">物联网</span> 开发感兴趣。我相信最好的技术能为日常问题提供真正的解决方案。',
-                'about_p3': '我目前正在完成我的论文 <span class="text-primary-600 font-medium">"基于物联网和 C4.5 算法的室内灭火系统设计与开发"</span>，该论文已发表在《工业工程综合期刊》(JUTIN) 上。',
+                'about_p3': '我已完成我的论文 <span class="text-primary-600 font-medium">"基于物联网和 C4.5 算法的室内灭火系统设计与开发"</span>，该论文已发表在《工业工程综合期刊》(JUTIN) 上。',
                 'achievement_title': '智能机器人竞赛第三名',
                 'achievement_loc': '东加里曼丹省',
                 'achievement_desc': '担任 <span class="text-primary-600 font-medium">机器人程序员</span>。编写导航和决策的编程逻辑。',
                 'profile': '个人资料', 'languages': '语言', 'certifications': '认证', 'skills': '技能',
                 'location': '三马林达, 东加里曼丹',
-                'education_short': 'D4 TRK · 三马林达国立理工学院',
+                'education_short': 'S.Tr.T. · D4 TRK 国立理工学院 · GPA 3.97',
                 'experience_short': '实习 @ 频谱监测中心',
                 'lang_id': '印尼语', 'lang_en': '英语 B2', 'lang_zh': '普通话 HSK1',
                 'cert_dicoding': 'Dicoding Android', 'cert_ccna': 'CCNAv7 Cisco',
                 'journey_title': '历程与经验',
                 'education': '教育',
-                'edu_polita_date': '2022 — 至今',
+                'edu_polita_date': '2022 — 2026 · 已毕业',
                 'edu_polita_name': '三马林达国立理工学院',
-                'edu_polita_major': 'D4 · 计算机工程技术',
+                'edu_polita_major': 'D4 · 计算机工程技术 · GPA 3.97 · S.Tr.T.',
                 'thesis_title': '基于物联网和 C4.5 算法的室内灭火系统设计与开发',
                 'edu_smk_date': '2019 — 2022',
                 'edu_smk_name': 'SMK Negeri 7 三马林达',
@@ -1962,7 +1991,7 @@
             } catch (e) { /* ignore */ }
         }
 
-        // ==== INFORMASI TENTANG VARIAN (TOEFL sudah diubah) ====
+        // ==== DATA LENGKAP VARIAN RHESA ====
         var aboutVarian =
             "Nama: Varian Rhesa. " +
             "Lahir: Palembang, 7 November 2003. " +
@@ -1970,14 +1999,15 @@
             "Lokasi: Samarinda, Kalimantan Timur. Alamat: Perum Bumi Sambutan Asri Blok K1 No 21, koordinat -0.500647, 117.185105. " +
             "Kontak: Email: rhesa719@gmail.com, Telepon: 0895-1962-8044. " +
             "LinkedIn: https://www.linkedin.com/in/varian-rhesa-012a36299/, GitHub: https://github.com/Varian719, WhatsApp: https://wa.me/6289519628044. " +
-            "Pendidikan: SD Nasional Tiga Bahasa Dharma Bakti, SMP Negeri 2 Samarinda, SMK Negeri 7 Samarinda (Rekayasa Perangkat Lunak, 2019-2022), Politeknik Negeri Samarinda (D4 Teknologi Rekayasa Komputer, 2022-sekarang). " +
+            "Pendidikan: SD Nasional Tiga Bahasa Dharma Bakti, SMP Negeri 2 Samarinda, SMK Negeri 7 Samarinda (Rekayasa Perangkat Lunak, 2019-2022), Politeknik Negeri Samarinda (D4 Teknologi Rekayasa Komputer, 2022-2026, LULUS dengan gelar Sarjana Terapan Teknik / S.Tr.T. dan IPK 3.97, belum wisuda). " +
+            "Gelar: Sarjana Terapan Teknik (S.Tr.T.) atau Bachelor of Applied Engineering. " +
             "Keahlian: Python, Java, C++, JavaScript, PHP, Dart, Visual Basic, Flutter, HTML/CSS, Bootstrap, REST API, PWA, Arduino IDE, ESP32, Microcontroller C++, Robotika, Git, Linux, Docker, Cloudflare Workers, Firebase, MS Office, Google Workspace. " +
             "Pengalaman: Magang di Balai Monitor Spektrum Frekuensi Radio Kelas I Samarinda (Feb-Mei 2026) sebagai Full Stack Developer. Membuat PWA monitoring spektrum, Firebase Realtime Database, Admin Dashboard, QR Code system, PDF & CSV export, AI chatbot dengan Llama API, deploy Cloudflare Pages. Juga magang online di PPTIK ITB (2020). " +
             "Prestasi: Juara 3 Kontes Robot Cerdas Kalimantan Timur 2023. " +
             "Bahasa: Indonesia (native), English (B2), Mandarin (HSK1). " +
             "Sertifikasi: Dicoding Android, CCNAv7 Cisco, TOEFL Prediction Test score 517 dari Politeknik Negeri Samarinda. " +
             "Proyek Website Magang: Portal layanan publik di pelayanan.balmonsamarinda.com; " +
-            "serta 4 aplikasi internal (Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, Verifikasi Koordinat SFR) yang bersifat privat. " +
+            "serta 5 aplikasi internal (VISTARA KALTIM - Sistem Informasi Validasi Stasiun Radio & Pemetaan Spektrum, Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, Verifikasi Koordinat SFR) yang bersifat privat. " +
             "Proyek lainnya: Skripsi IoT Smart Fire Suppression dengan algoritma C4.5 (jurnal JUTIN 2026), PWA Spektrum Monitoring, Robot KRC juara 3. ";
 
         var GROQ_API_KEY = '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';
@@ -2021,16 +2051,16 @@
             if (msg.includes('sd')) return 'Sekolah Dasar: SD Nasional Tiga Bahasa Dharma Bakti.';
             if (msg.includes('smp')) return 'Sekolah Menengah Pertama: SMP Negeri 2 Samarinda.';
             if (msg.includes('smk')) return 'Sekolah Menengah Kejuruan: SMK Negeri 7 Samarinda, jurusan Rekayasa Perangkat Lunak (RPL).';
-            if (msg.includes('nama') || msg.includes('siapa')) return 'Saya Varian Rhesa, Junior Software Engineer.';
-            if (msg.includes('pendidikan') || msg.includes('kuliah')) return 'Saat ini kuliah di Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-sekarang).';
+            if (msg.includes('nama') || msg.includes('siapa')) return 'Saya Varian Rhesa, Junior Software Engineer, lulusan D4 Teknologi Rekayasa Komputer dengan gelar Sarjana Terapan Teknik (S.Tr.T.).';
+            if (msg.includes('pendidikan') || msg.includes('kuliah') || msg.includes('lulus') || msg.includes('ipk') || msg.includes('gelar') || msg.includes('sarjana')) return 'Saya lulusan Politeknik Negeri Samarinda, prodi D4 Teknologi Rekayasa Komputer (2022-2026), dengan gelar Sarjana Terapan Teknik (S.Tr.T.) dan IPK 3.97 (sudah lulus, belum wisuda).';
             if (msg.includes('keahlian') || msg.includes('skill')) return 'Keahlian saya: Python, Java, C++, JavaScript, PHP, Dart, Flutter, IoT, Git, Linux, Firebase, Cloudflare Workers, MS Office, Google Workspace, dan lainnya.';
             if (msg.includes('pengalaman') || msg.includes('kerja')) return 'Saya magang di Balai Monitor Spektrum Samarinda sebagai Full Stack Developer (PWA, Firebase, QR Code, AI Chatbot). Juga intern di PPTIK ITB.';
-            if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, robot KRC juara 3, dan portal layanan publik pelayanan.balmonsamarinda.com.';
+            if (msg.includes('proyek') || msg.includes('portofolio')) return 'Proyek terbaru: PWA Spektrum Monitoring, IoT Smart Fire Suppression, robot KRC juara 3, portal layanan publik pelayanan.balmonsamarinda.com, serta VISTARA KALTIM (Sistem Informasi Validasi Stasiun Radio & Pemetaan Spektrum).';
             if (msg.includes('kontak') || msg.includes('hubungi') || msg.includes('email') || msg.includes('telepon')) return 'Hubungi saya via email rhesa719@gmail.com, telepon 0895-1962-8044. LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719.';
             if (msg.includes('sertifikat') || msg.includes('ccna') || msg.includes('dicoding')) return 'Sertifikasi: Dicoding Android Pemula, CCNAv7 Cisco, TOEFL Prediction Test 517 (Politeknik Negeri Samarinda), dan magang resmi dari Balmon.';
             if (msg.includes('bahasa') || msg.includes('language')) return 'Saya fasih berbahasa Indonesia, Inggris (B2), dan Mandarin dasar (HSK1).';
-            if (msg.includes('website') || msg.includes('pelayanan') || msg.includes('magang website')) 
-                return 'Portal layanan publik: pelayanan.balmonsamarinda.com. Ada juga 4 aplikasi internal untuk admin, diagnostik frekuensi, monitoring hardware, dan verifikasi koordinat SFR.';
+            if (msg.includes('website') || msg.includes('pelayanan') || msg.includes('magang website') || msg.includes('vistara'))
+                return 'Portal layanan publik: pelayanan.balmonsamarinda.com. Ada juga 5 aplikasi internal: VISTARA KALTIM (Sistem Informasi Validasi Stasiun Radio & Pemetaan Spektrum), Admin Dashboard, Frequency Diagnostic, Hardware Monitoring, dan Verifikasi Koordinat SFR.';
             if (msg.includes('alamat') || msg.includes('lokasi') || msg.includes('samarinda')) return 'Alamat: Perum Bumi Sambutan Asri Blok K1 No 21, Samarinda, Kalimantan Timur. Koordinat: -0.500647, 117.185105.';
             if (msg.includes('medsos') || msg.includes('sosmed') || msg.includes('linkedin') || msg.includes('github')) return 'LinkedIn: linkedin.com/in/varian-rhesa-012a36299, GitHub: github.com/Varian719, WhatsApp: wa.me/6289519628044.';
             if (msg.includes('toefl')) return 'Sertifikat TOEFL Prediction Test dengan skor 517, dikeluarkan oleh Politeknik Negeri Samarinda.';
@@ -2077,7 +2107,7 @@
                     if (text.includes('DATA PRIBADI') || text.includes('Nama: Varian Rhesa')) {
                         var lines = text.split('\n');
                         var filtered = lines.filter(function(line) {
-                            return !line.includes('DATA PRIBADI') && !line.startsWith('Nama:') && !line.startsWith('Lahir:') && !line.startsWith('Pekerjaan:') && !line.startsWith('Lokasi:') && !line.startsWith('Kontak:') && !line.startsWith('LinkedIn:') && !line.startsWith('Pendidikan:') && !line.startsWith('Keahlian:') && !line.startsWith('Pengalaman:') && !line.startsWith('Prestasi:') && !line.startsWith('Bahasa:') && !line.startsWith('Sertifikasi:') && !line.startsWith('Proyek');
+                            return !line.includes('DATA PRIBADI') && !line.startsWith('Nama:') && !line.startsWith('Lahir:') && !line.startsWith('Pekerjaan:') && !line.startsWith('Lokasi:') && !line.startsWith('Kontak:') && !line.startsWith('LinkedIn:') && !line.startsWith('Pendidikan:') && !line.startsWith('Gelar:') && !line.startsWith('Keahlian:') && !line.startsWith('Pengalaman:') && !line.startsWith('Prestasi:') && !line.startsWith('Bahasa:') && !line.startsWith('Sertifikasi:') && !line.startsWith('Proyek');
                         });
                         text = filtered.join(' ').trim();
                         if (text.length < 5) throw new Error('Respons tidak valid');
@@ -2126,7 +2156,7 @@
             }
         }
 
-        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + fallback lengkap + TOEFL Prediction Test) siap!');
+        console.log('🧠 Rhesa AI (Groq ' + GROQ_MODEL + ' + S.Tr.T. + VISTARA KALTIM + IPK 3.97) siap!');
     </script>
 </body>
 </html>
