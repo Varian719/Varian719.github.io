@@ -382,6 +382,25 @@
             color: #023715;
         }
 
+        /* ===== PDF PREVIEW WRAPPER ===== */
+        .pdf-preview-wrapper {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            max-height: 75vh;
+            background: #f1f5f2;
+            overflow: hidden;
+        }
+        @media (max-width: 640px) {
+            .pdf-preview-wrapper { height: 420px; }
+        }
+        .pdf-preview-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
         /* ===== CHATBOT STYLES ===== */
         #chat-toggle {
             position: fixed; bottom: 24px; right: 24px; z-index: 9998;
@@ -949,33 +968,33 @@
             <div class="text-center mb-8 sm:mb-10 fade-in-up">
                 <h2 class="text-2xl sm:text-3xl font-bold text-dark-900" data-i18n="resume_title">📄 Resume / CV</h2>
                 <div class="divider-custom max-w-xs mx-auto mt-3"></div>
-                <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — klik untuk melihat lebih besar</p>
+                <p class="text-dark-400 text-sm mt-3" data-i18n="resume_desc">Ringkasan perjalanan profesional saya — PDF dapat di-scroll langsung</p>
             </div>
 
             <div class="bg-white rounded-2xl border border-dark-100 shadow-lg overflow-hidden fade-in-up delay-2">
-                <!-- ===== RESUME PREVIEW (diperbarui ke ID baru) ===== -->
-                <div class="relative cursor-pointer" onclick="openImageModal('https://lh3.googleusercontent.com/d/1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg')">
-                    <img src="https://lh3.googleusercontent.com/d/1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg"
-                         alt="Resume Varian Rhesa"
-                         class="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain bg-white"
-                         loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/20 to-transparent flex items-end justify-center pb-4 sm:pb-6 opacity-0 hover:opacity-100 transition-opacity">
-                        <span class="bg-dark-900/70 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm">
-                            <i data-lucide="maximize" class="w-3 h-3 sm:w-4 sm:h-4 inline mr-1"></i> <span data-i18n="click_to_enlarge">Klik untuk memperbesar</span>
-                        </span>
-                    </div>
+                <!-- ===== PDF PREVIEW (iframe karena file PDF tidak bisa dirender <img>) ===== -->
+                <div class="pdf-preview-wrapper">
+                    <iframe
+                        src="https://drive.google.com/file/d/1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg/preview"
+                        title="Resume Varian Rhesa"
+                        allow="autoplay"
+                        loading="lazy">
+                    </iframe>
                 </div>
 
                 <div class="p-4 sm:p-5 bg-white border-t border-dark-100 flex flex-wrap gap-3 justify-center">
-                    <!-- ===== TOMBOL FULLSCREEN (diperbarui) ===== -->
-                    <button onclick="openImageModal('https://lh3.googleusercontent.com/d/1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg')"
-                            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-primary font-medium text-xs sm:text-sm">
+                    <!-- Tombol "Buka PDF" — buka tab baru, user bisa zoom/print/save dari viewer Google -->
+                    <a href="https://drive.google.com/file/d/1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg/view"
+                       target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-primary font-medium text-xs sm:text-sm">
                         <i data-lucide="maximize" class="w-4 h-4"></i>
-                        <span data-i18n="fullscreen">Layar Penuh</span>
-                    </button>
-                    <!-- ===== LINK DOWNLOAD (diperbarui ke ID baru) ===== -->
-                    <a href="https://drive.google.com/uc?export=download&id=1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg"
-                       download="Resume_Varian_Rhesa.jpg" target="_blank"
+                        <span data-i18n="fullscreen">Buka PDF</span>
+                    </a>
+
+                    <!-- Tombol "Unduh" — endpoint modern, skip virus scan, ekstensi benar (PDF) -->
+                    <a href="https://drive.usercontent.google.com/download?id=1Wc5G9xkUCBR3wgvpzwam0G0WyiycclHg&export=download&confirm=t"
+                       target="_blank" rel="noopener"
+                       download="Resume_Varian_Rhesa.pdf"
                        class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full btn-outline font-medium text-xs sm:text-sm">
                         <i data-lucide="download" class="w-4 h-4"></i>
                         ⬇️ <span data-i18n="download">Unduh Resume</span>
@@ -1619,6 +1638,6 @@
     </div>
 
     <!-- ===== JAVASCRIPT ===== -->
-    <script src="app.js"> </script>
+    <script src="app.js"></script>
 </body>
 </html>
