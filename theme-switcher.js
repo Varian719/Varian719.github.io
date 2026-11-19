@@ -1,6 +1,5 @@
 /* ============================================================
    THEME SWITCHER — Varian719 Portfolio
-   Independent of app.js (which is obfuscated)
    ============================================================ */
 (function () {
   'use strict';
@@ -8,10 +7,10 @@
   var STORAGE_KEY = 'v719-theme';
   var THEMES = ['default', 'classical', 'cyberpunk', 'retro'];
   var LABELS = {
-    default:   'Light',
+    default: 'Light',
     classical: 'Classical',
     cyberpunk: 'Cyberpunk',
-    retro:     'Retro'
+    retro: 'Retro'
   };
 
   function getStored() {
@@ -39,10 +38,10 @@
     window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: theme } }));
   }
 
-  /* Apply immediately to prevent FOUC */
+  /* Apply immediately — avoid FOUC */
   setTheme(getStored() || 'default');
 
-  /* Wire up after DOM ready */
+  /* Wire after DOM ready */
   document.addEventListener('DOMContentLoaded', function () {
     var switcher = document.getElementById('themeSwitcher');
     if (!switcher) return;
@@ -76,9 +75,5 @@
         btn.setAttribute('aria-expanded', 'false');
       }
     });
-
-    if (window.lucide && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons();
-    }
   });
 })();

@@ -1,10 +1,10 @@
 /* ============================================================
-   THEME SYSTEM — Varian719 Portfolio
+   THEMES v3 — Varian719 Portfolio
+   Coverage penuh berdasarkan index.html aktual
    ============================================================ */
 
-/* ---------- 1. DEFAULT (Light) ---------- */
-:root,
-[data-theme="default"] {
+/* ---------- VARIABEL ---------- */
+:root, [data-theme="default"] {
   --t-bg:        #f8faf9;
   --t-bg-card:   #ffffff;
   --t-bg-muted:  #f1f5f2;
@@ -20,7 +20,6 @@
   --t-glow:      none;
 }
 
-/* ---------- 2. CLASSICAL ---------- */
 [data-theme="classical"] {
   --t-bg:        #f4ecd8;
   --t-bg-card:   #fbf5e6;
@@ -37,7 +36,6 @@
   --t-glow:      none;
 }
 
-/* ---------- 3. CYBERPUNK 2077 (palette dipertahankan) ---------- */
 [data-theme="cyberpunk"] {
   --t-bg:        #0d110d;
   --t-bg-card:   #161d16;
@@ -55,7 +53,6 @@
                  0 0 32px rgba(6, 182, 212, 0.3);
 }
 
-/* ---------- 4. RETRO (Synthwave 80s) ---------- */
 [data-theme="retro"] {
   --t-bg:        #1a0b2e;
   --t-bg-card:   #2a1245;
@@ -74,7 +71,7 @@
 }
 
 /* ============================================================
-   BASE OVERRIDES
+   BASE
    ============================================================ */
 html { transition: background-color 0.4s ease; }
 
@@ -91,180 +88,316 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--t-text) !important;
 }
 
-/* Tailwind utility overrides */
-.bg-white,
-.bg-\[\#ffffff\]           { background-color: var(--t-bg-card) !important; }
-.bg-\[\#f1f5f2\],
-.bg-primary-50,
-.bg-cyan-50                { background-color: var(--t-bg-muted) !important; }
-.text-dark-950,
-.text-primary-950,
-.text-cyan-950,
-.text-primary-900          { color: var(--t-text) !important; }
-.text-dark-700,
-.text-primary-700,
-.text-cyan-700,
-.text-primary-600,
-.text-cyan-600             { color: var(--t-text-muted) !important; }
-.text-primary-500,
-.text-cyan-500             { color: var(--t-accent) !important; }
+/* ============================================================
+   TEKS
+   ============================================================ */
+.text-dark-950, .text-dark-900, .text-dark-800,
+.text-primary-950, .text-primary-900,
+.text-cyan-950               { color: var(--t-text) !important; }
 
-/* Cards & panels */
-.card-blog,
-.sidebar-card,
-.portfolio-card,
-section > div[class*="rounded"] {
-  background-color: var(--t-bg-card) !important;
-  border-color: var(--t-border) !important;
-  border-radius: var(--t-radius) !important;
-  box-shadow: var(--t-shadow);
-  transition: all 0.3s ease;
+.text-dark-700, .text-dark-600, .text-dark-500,
+.text-dark-400, .text-primary-700, .text-cyan-700,
+.text-primary-800, .text-cyan-800
+                              { color: var(--t-text-muted) !important; }
+
+/* Aksen — JANGAN map ke muted */
+.text-primary-600, .text-primary-500 { color: var(--t-accent) !important; }
+.text-cyan-600, .text-cyan-500       { color: var(--t-accent-2) !important; }
+
+.hover\:text-primary-600:hover       { color: var(--t-accent) !important; }
+.hover\:text-dark-900:hover          { color: var(--t-text) !important; }
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+.bg-white, .bg-\[\#ffffff\],
+.bg-white\/98                        { background-color: var(--t-bg-card) !important; }
+
+.bg-dark-50, .bg-\[\#f1f5f2\],
+.bg-dark-50\/30, .bg-dark-50\/50     { background-color: var(--t-bg-muted) !important; }
+
+.bg-primary-50 {
+  background-color: color-mix(in srgb, var(--t-accent) 12%, var(--t-bg-card)) !important;
+}
+.bg-cyan-50 {
+  background-color: color-mix(in srgb, var(--t-accent-2) 12%, var(--t-bg-card)) !important;
+}
+.bg-amber-50, .bg-purple-50 {
+  background-color: color-mix(in srgb, var(--t-accent-2) 15%, var(--t-bg-card)) !important;
+}
+.bg-primary-500 { background-color: var(--t-accent) !important; }
+.text-white     { color: var(--t-bg) !important; }
+
+.hover\:bg-primary-50:hover {
+  background-color: color-mix(in srgb, var(--t-accent) 10%, transparent) !important;
 }
 
-/* Primary buttons */
-.btn-primary,
-button[class*="bg-primary"],
-a[class*="bg-primary"] {
-  background-color: var(--t-accent) !important;
+/* Section backgrounds */
+section.bg-white     { background-color: var(--t-bg) !important; }
+section.bg-dark-50\/30 {
+  background-color: color-mix(in srgb, var(--t-bg-muted) 45%, var(--t-bg)) !important;
+}
+
+/* ============================================================
+   BORDER
+   ============================================================ */
+.border-dark-100, .border-dark-200, .border-dark-300 {
+  border-color: var(--t-border) !important;
+}
+.border-primary-100, .border-primary-200 {
+  border-color: color-mix(in srgb, var(--t-accent) 45%, var(--t-border)) !important;
+}
+.border-cyan-100, .border-cyan-200 {
+  border-color: color-mix(in srgb, var(--t-accent-2) 45%, var(--t-border)) !important;
+}
+.border-amber-200, .border-purple-200 {
+  border-color: var(--t-border) !important;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.nav-blur {
+  background: color-mix(in srgb, var(--t-bg) 92%, transparent) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--t-border) !important;
+}
+#mobile-menu {
+  background: color-mix(in srgb, var(--t-bg-card) 98%, transparent) !important;
+  border-color: var(--t-border) !important;
+}
+#mobile-menu a { color: var(--t-text-muted) !important; }
+#mobile-menu a:hover {
+  color: var(--t-accent) !important;
+  background: color-mix(in srgb, var(--t-accent) 10%, transparent) !important;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  background: var(--t-accent) !important;
   color: var(--t-bg) !important;
   border-radius: var(--t-radius) !important;
   box-shadow: var(--t-glow);
   transition: all 0.25s ease;
 }
-
-.btn-primary:hover,
-button[class*="bg-primary"]:hover {
-  background-color: var(--t-accent-2) !important;
+.btn-primary:hover {
+  background: var(--t-accent-2) !important;
+  color: var(--t-bg) !important;
   box-shadow: var(--t-glow);
 }
+.btn-outline {
+  border: 1.5px solid var(--t-border) !important;
+  color: var(--t-text) !important;
+  border-radius: var(--t-radius) !important;
+  background: transparent !important;
+  transition: all 0.25s ease;
+}
+.btn-outline:hover {
+  border-color: var(--t-accent) !important;
+  color: var(--t-accent) !important;
+  background: color-mix(in srgb, var(--t-accent) 8%, transparent) !important;
+}
 
-/* Navbar */
-nav.nav-blur,
-nav[class*="backdrop"] {
-  background-color: color-mix(in srgb, var(--t-bg) 88%, transparent) !important;
+/* ============================================================
+   TAGS / BADGES
+   ============================================================ */
+.tag {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text-muted) !important;
+  border-color: var(--t-border) !important;
+}
+.tag-primary {
+  background: color-mix(in srgb, var(--t-accent) 15%, transparent) !important;
+  color: var(--t-accent) !important;
+  border-color: var(--t-accent) !important;
+}
+.tag-cyan {
+  background: color-mix(in srgb, var(--t-accent-2) 15%, transparent) !important;
+  color: var(--t-accent-2) !important;
+  border-color: var(--t-accent-2) !important;
+}
+.tag-office, .tag-google {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text-muted) !important;
   border-color: var(--t-border) !important;
 }
 
-/* Inputs */
-input, textarea, select {
-  background-color: var(--t-bg-card) !important;
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card-blog {
+  background: var(--t-bg-card) !important;
+  border-color: var(--t-border) !important;
+  border-radius: var(--t-radius) !important;
+  box-shadow: var(--t-shadow);
+  transition: all 0.3s ease;
+}
+.card-blog:hover {
+  border-color: var(--t-accent) !important;
+  box-shadow: var(--t-glow) !important;
+}
+.card-image { background: var(--t-bg-muted) !important; }
+.icon-placeholder i { color: var(--t-accent) !important; }
+.icon-placeholder i[data-lucide="flame"] { color: var(--t-accent-2) !important; }
+
+/* ============================================================
+   HERO + DECORATIVE
+   ============================================================ */
+.gradient-hero {
+  background: linear-gradient(180deg, var(--t-bg) 0%, var(--t-bg-card) 100%) !important;
+}
+.divider-custom {
+  background: linear-gradient(90deg,
+    transparent,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent),
+    transparent) !important;
+}
+.profile-photo-wrapper {
+  border-color: color-mix(in srgb, var(--t-accent) 40%, var(--t-border)) !important;
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+.progress-bar-bg { background: var(--t-bg-muted) !important; }
+.progress-bar-fill {
+  background: linear-gradient(90deg, var(--t-accent), var(--t-accent-2)) !important;
+}
+
+/* ============================================================
+   WEB SHOWCASE
+   ============================================================ */
+.web-showcase {
+  background: linear-gradient(135deg,
+    var(--t-bg-muted) 0%,
+    color-mix(in srgb, var(--t-accent) 6%, var(--t-bg-card)) 60%,
+    var(--t-bg-card) 100%) !important;
+  border-color: var(--t-border) !important;
+  border-radius: var(--t-radius) !important;
+}
+.web-item {
+  background: color-mix(in srgb, var(--t-bg-card) 88%, transparent) !important;
+  border-color: var(--t-border) !important;
+  border-radius: calc(var(--t-radius) - 4px) !important;
+}
+.web-item:hover {
+  border-color: var(--t-accent) !important;
+  background: var(--t-bg-card) !important;
+  box-shadow: var(--t-glow) !important;
+}
+.web-item .web-title { color: var(--t-text) !important; }
+.web-item .web-desc,
+.web-item .web-label { color: var(--t-text-muted) !important; }
+.web-icon.public,
+.web-icon.featured {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
+  color: var(--t-bg) !important;
+}
+.web-icon.private {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text-muted) !important;
+  border-color: var(--t-border) !important;
+}
+.web-item.web-item-featured {
+  background: linear-gradient(135deg,
+    var(--t-bg-card) 0%,
+    color-mix(in srgb, var(--t-accent) 8%, var(--t-bg-card)) 100%) !important;
+  border: 1.5px solid var(--t-accent) !important;
+}
+.web-item.web-item-featured .web-title { color: var(--t-accent) !important; }
+.web-link { color: var(--t-accent) !important; }
+.web-link:hover { color: var(--t-accent-2) !important; }
+
+/* ============================================================
+   PDF + MAP
+   ============================================================ */
+.pdf-preview-wrapper { background: var(--t-bg-muted) !important; }
+.map-container { border-color: var(--t-border) !important; }
+
+/* ============================================================
+   LANG BUTTONS
+   ============================================================ */
+.lang-btn {
+  color: var(--t-text-muted) !important;
+  border-color: transparent !important;
+}
+.lang-btn:hover { color: var(--t-accent) !important; }
+.lang-btn.active {
+  background: var(--t-accent) !important;
+  color: var(--t-bg) !important;
+  border-color: var(--t-accent) !important;
+}
+.lang-btn:not(.active):hover { border-color: var(--t-border) !important; }
+.lang-divider { color: var(--t-border) !important; }
+
+/* ============================================================
+   CHATBOT
+   ============================================================ */
+#chat-toggle {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
+  color: var(--t-bg) !important;
+  box-shadow: var(--t-glow) !important;
+}
+#chat-window {
+  background: var(--t-bg-card) !important;
+  border-color: var(--t-border) !important;
+  border-radius: var(--t-radius) !important;
+}
+#chat-header {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
+  color: var(--t-bg) !important;
+}
+#chat-messages { background: var(--t-bg) !important; }
+.message.bot {
+  background: var(--t-bg-card) !important;
   color: var(--t-text) !important;
   border-color: var(--t-border) !important;
 }
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--t-bg-muted); }
-::-webkit-scrollbar-thumb { background: var(--t-accent); border-radius: 4px; }
-
-/* ============================================================
-   CLASSICAL DECORATIONS
-   ============================================================ */
-[data-theme="classical"] h1,
-[data-theme="classical"] h2 {
-  letter-spacing: 0.01em;
-  border-bottom: 2px double var(--t-accent);
-  padding-bottom: 0.35rem;
-  display: inline-block;
+.message.user {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
+  color: var(--t-bg) !important;
 }
-[data-theme="classical"] .card-blog,
-[data-theme="classical"] .sidebar-card {
-  border-width: 1px !important;
-  border-style: double !important;
+.message.typing {
+  background: var(--t-bg-card) !important;
   border-color: var(--t-border) !important;
 }
-[data-theme="classical"] .btn-primary {
-  font-family: var(--t-font-head) !important;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 2px solid var(--t-accent-2) !important;
+.typing-dots span { background: var(--t-accent) !important; }
+#chat-input-area {
+  background: var(--t-bg-card) !important;
+  border-color: var(--t-border) !important;
+}
+#chat-input-area input {
+  background: var(--t-bg) !important;
+  color: var(--t-text) !important;
+  border-color: var(--t-border) !important;
+}
+#chat-input-area input:focus {
+  border-color: var(--t-accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 15%, transparent) !important;
+}
+#chat-input-area button {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
+  color: var(--t-bg) !important;
 }
 
 /* ============================================================
-   CYBERPUNK DECORATIONS
+   MODAL
    ============================================================ */
-[data-theme="cyberpunk"] body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9998;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0 2px,
-    rgba(0, 0, 0, 0.22) 2px 4px
-  );
-}
-[data-theme="cyberpunk"] h1,
-[data-theme="cyberpunk"] h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-shadow:
-    1px 0 0 var(--t-accent),
-   -1px 0 0 var(--t-accent-2),
-    0 0 12px rgba(10, 175, 105, 0.6);
-}
-[data-theme="cyberpunk"] .card-blog,
-[data-theme="cyberpunk"] .sidebar-card {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 14px) 0,
-    100% 14px,
-    100% 100%,
-    14px 100%,
-    0 calc(100% - 14px)
-  );
-  border: 1px solid var(--t-accent) !important;
-  box-shadow:
-    0 0 0 1px var(--t-accent),
-    0 0 12px rgba(10, 175, 105, 0.55),
-    0 0 28px rgba(6, 182, 212, 0.25);
-}
-[data-theme="cyberpunk"] .btn-primary {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 10px) 0,
-    100% 10px,
-    100% 100%,
-    10px 100%,
-    0 calc(100% - 10px)
-  );
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-[data-theme="cyberpunk"] a:hover { text-shadow: 0 0 10px var(--t-accent-2); }
+.modal-overlay img { border-radius: var(--t-radius) !important; }
+.modal-close { color: var(--t-text) !important; }
 
 /* ============================================================
-   RETRO DECORATIONS
+   SCROLLBAR
    ============================================================ */
-[data-theme="retro"] body {
-  background-image:
-    linear-gradient(rgba(255, 46, 136, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 46, 136, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-[data-theme="retro"] h1,
-[data-theme="retro"] h2 {
-  text-shadow:
-    0 0 8px var(--t-accent),
-    2px 2px 0 var(--t-accent-2);
-  letter-spacing: 0.04em;
-}
-[data-theme="retro"] .card-blog,
-[data-theme="retro"] .sidebar-card {
-  border: 2px solid var(--t-accent) !important;
-  box-shadow:
-    4px 4px 0 var(--t-accent-2),
-    0 0 20px rgba(255, 46, 136, 0.5);
-}
-[data-theme="retro"] .btn-primary {
-  border: 2px solid var(--t-accent-2) !important;
-  box-shadow:
-    3px 3px 0 var(--t-accent-2),
-    0 0 15px var(--t-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--t-bg-muted) !important; }
+::-webkit-scrollbar-thumb {
+  background: var(--t-accent) !important;
+  border-radius: 4px;
 }
 
 /* ============================================================
@@ -298,29 +431,23 @@ input, textarea, select {
   border-radius: var(--t-radius);
   box-shadow: var(--t-shadow);
   padding: 6px;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0; visibility: hidden;
   transform: translateY(-8px);
   transition: all 0.2s ease;
   z-index: 100;
 }
 .theme-switcher.open .theme-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  opacity: 1; visibility: visible; transform: translateY(0);
 }
 
 .theme-option {
   display: flex; align-items: center; gap: 10px;
-  width: 100%;
-  padding: 8px 12px;
-  background: transparent;
-  border: none;
+  width: 100%; padding: 8px 12px;
+  background: transparent; border: none;
   border-radius: 6px;
   color: var(--t-text);
   font-family: var(--t-font-body);
-  font-size: 14px;
-  text-align: left;
+  font-size: 14px; text-align: left;
   cursor: pointer;
 }
 .theme-option:hover { background: var(--t-bg-muted); }
@@ -328,7 +455,6 @@ input, textarea, select {
   background: var(--t-accent);
   color: var(--t-bg);
 }
-
 .theme-swatch {
   width: 16px; height: 16px;
   border-radius: 4px;
@@ -341,11 +467,90 @@ input, textarea, select {
 .swatch-retro     { background: linear-gradient(135deg, #ff2e88, #f7f000); }
 
 /* ============================================================
-   ACCESSIBILITY
+   CYBERPUNK DECORATIONS
+   ============================================================ */
+[data-theme="cyberpunk"] body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    rgba(0, 0, 0, 0.22) 2px 4px
+  );
+}
+[data-theme="cyberpunk"] h1,
+[data-theme="cyberpunk"] h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow:
+    1px 0 0 var(--t-accent),
+   -1px 0 0 var(--t-accent-2),
+    0 0 12px rgba(10, 175, 105, 0.6);
+}
+[data-theme="cyberpunk"] .card-blog,
+[data-theme="cyberpunk"] .web-showcase {
+  clip-path: polygon(
+    0 0, calc(100% - 14px) 0, 100% 14px,
+    100% 100%, 14px 100%, 0 calc(100% - 14px)
+  );
+}
+[data-theme="cyberpunk"] .btn-primary,
+[data-theme="cyberpunk"] .btn-outline {
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px,
+    100% 100%, 10px 100%, 0 calc(100% - 10px)
+  );
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+[data-theme="cyberpunk"] .tag { border-radius: 0 !important; }
+
+/* ============================================================
+   RETRO DECORATIONS
+   ============================================================ */
+[data-theme="retro"] body {
+  background-image:
+    linear-gradient(rgba(255, 46, 136, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 46, 136, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+[data-theme="retro"] h1,
+[data-theme="retro"] h2 {
+  text-shadow:
+    0 0 8px var(--t-accent),
+    2px 2px 0 var(--t-accent-2);
+}
+[data-theme="retro"] .card-blog {
+  border: 2px solid var(--t-accent) !important;
+  box-shadow:
+    4px 4px 0 var(--t-accent-2),
+    0 0 20px rgba(255, 46, 136, 0.5) !important;
+}
+
+/* ============================================================
+   CLASSICAL DECORATIONS
+   ============================================================ */
+[data-theme="classical"] h1,
+[data-theme="classical"] h2 {
+  letter-spacing: 0.01em;
+  border-bottom: 2px double var(--t-accent);
+  padding-bottom: 0.35rem;
+  display: inline-block;
+}
+[data-theme="classical"] .card-blog {
+  border-style: double !important;
+}
+
+/* ============================================================
+   A11Y
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition: none !important;
     animation: none !important;
   }
+  [data-theme="cyberpunk"] body::after { display: none; }
 }
