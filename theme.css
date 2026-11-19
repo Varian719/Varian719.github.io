@@ -1,9 +1,14 @@
 /* ============================================================
-   THEMES v4 — UNIFIED COLOR PALETTE
-   Semua tema pakai warna identik. Hanya dekorasi yang beda.
+   THEMES v5 — Varian719 Portfolio
+   • Unified palette (same colors across ALL themes)
+   • Cyberpunk 2077: HUD/terminal/glitch on light canvas
+   • Retro: Windows 98 (bevel 3D, Tahoma, no animations)
+   • Classical: serif + double border
    ============================================================ */
 
-/* ---------- PALETTE (sama untuk SEMUA tema) ---------- */
+/* ============================================================
+   1. PALETTE — IDENTICAL FOR ALL THEMES
+   ============================================================ */
 :root,
 [data-theme="default"],
 [data-theme="classical"],
@@ -19,51 +24,58 @@
   --t-border:    #d0e8d8;
 }
 
-/* ---------- DEFAULT: Font sans + radius besar ---------- */
+/* ============================================================
+   2. PER-THEME SETTINGS (fonts, radius, shadows only)
+   ============================================================ */
+
+/* ---------- DEFAULT ---------- */
 [data-theme="default"] {
   --t-font-body: 'Inter', system-ui, sans-serif;
   --t-font-head: 'Inter', system-ui, sans-serif;
+  --t-font-mono: 'JetBrains Mono', monospace;
   --t-radius:    16px;
   --t-shadow:    0 4px 20px rgba(10, 175, 105, 0.08);
   --t-glow:      none;
 }
 
-/* ---------- CLASSICAL: Font serif + radius kecil ---------- */
+/* ---------- CLASSICAL ---------- */
 [data-theme="classical"] {
   --t-font-body: 'Lora', 'Georgia', serif;
   --t-font-head: 'Playfair Display', 'Georgia', serif;
+  --t-font-mono: 'Lora', 'Georgia', serif;
   --t-radius:    4px;
   --t-shadow:    0 2px 14px rgba(13, 17, 13, 0.08);
   --t-glow:      none;
 }
 
-/* ---------- CYBERPUNK: Font industri + radius 0 + glow ---------- */
+/* ---------- CYBERPUNK 2077 ---------- */
 [data-theme="cyberpunk"] {
   --t-font-body: 'Inter', system-ui, sans-serif;
   --t-font-head: 'Rajdhani', 'Inter', sans-serif;
+  --t-font-mono: 'JetBrains Mono', 'Courier New', monospace;
   --t-radius:    0px;
-  --t-shadow:    0 0 20px rgba(10, 175, 105, 0.25);
-  --t-glow:      0 0 12px rgba(10, 175, 105, 0.55),
-                 0 0 28px rgba(6, 182, 212, 0.2);
+  --t-shadow:    0 0 20px rgba(10, 175, 105, 0.4);
+  --t-glow:      0 0 10px rgba(10, 175, 105, 0.75),
+                 0 0 24px rgba(10, 175, 105, 0.45),
+                 0 0 48px rgba(6, 182, 212, 0.3);
 }
 
-/* ---------- RETRO: Font pixel + radius 2px ---------- */
+/* ---------- RETRO — WINDOWS 98 ---------- */
 [data-theme="retro"] {
-  --t-font-body: 'VT323', 'Courier New', monospace;
-  --t-font-head: 'Press Start 2P', 'VT323', monospace;
-  --t-radius:    2px;
-  --t-shadow:    0 0 12px rgba(10, 175, 105, 0.3);
-  --t-glow:      0 0 8px rgba(10, 175, 105, 0.55),
-                 0 0 20px rgba(6, 182, 212, 0.3);
+  --t-font-body: 'Tahoma', 'MS Sans Serif', 'Verdana', sans-serif;
+  --t-font-head: 'Tahoma', 'MS Sans Serif', 'Verdana', sans-serif;
+  --t-font-mono: 'Lucida Console', 'Courier New', monospace;
+  --t-radius:    0px;
+  --t-shadow:    none;
+  --t-glow:      none;
 }
 
 /* ============================================================
-   BASE
+   3. BASE
    ============================================================ */
 html { transition: background-color 0.4s ease; }
 
-body,
-body.bg-\[\#f8faf9\] {
+body {
   background-color: var(--t-bg) !important;
   color: var(--t-text) !important;
   font-family: var(--t-font-body) !important;
@@ -75,17 +87,21 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--t-text) !important;
 }
 
+.font-mono {
+  font-family: var(--t-font-mono) !important;
+}
+
 /* ============================================================
-   TEKS
+   4. TEXT COLOR MAPPINGS
    ============================================================ */
 .text-dark-950, .text-dark-900, .text-dark-800,
 .text-primary-950, .text-primary-900,
-.text-cyan-950               { color: var(--t-text) !important; }
+.text-cyan-950 { color: var(--t-text) !important; }
 
 .text-dark-700, .text-dark-600, .text-dark-500,
 .text-dark-400, .text-primary-700, .text-cyan-700,
 .text-primary-800, .text-cyan-800
-                              { color: var(--t-text-muted) !important; }
+  { color: var(--t-text-muted) !important; }
 
 .text-primary-600, .text-primary-500 { color: var(--t-accent) !important; }
 .text-cyan-600, .text-cyan-500       { color: var(--t-accent-2) !important; }
@@ -94,13 +110,14 @@ h1, h2, h3, h4, h5, h6 {
 .hover\:text-dark-900:hover          { color: var(--t-text) !important; }
 
 /* ============================================================
-   BACKGROUND
+   5. BACKGROUND MAPPINGS
    ============================================================ */
-.bg-white, .bg-\[\#ffffff\],
-.bg-white\/98                        { background-color: var(--t-bg-card) !important; }
+.bg-white, .bg-\[\#ffffff\], .bg-white\/98
+  { background-color: var(--t-bg-card) !important; }
 
 .bg-dark-50, .bg-\[\#f1f5f2\],
-.bg-dark-50\/30, .bg-dark-50\/50     { background-color: var(--t-bg-muted) !important; }
+.bg-dark-50\/30, .bg-dark-50\/50
+  { background-color: var(--t-bg-muted) !important; }
 
 .bg-primary-50 {
   background-color: color-mix(in srgb, var(--t-accent) 12%, var(--t-bg-card)) !important;
@@ -112,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: color-mix(in srgb, var(--t-accent-2) 15%, var(--t-bg-card)) !important;
 }
 .bg-primary-500 { background-color: var(--t-accent) !important; }
-.text-white     { color: var(--t-bg) !important; }
+.text-white     { color: var(--t-bg-card) !important; }
 
 .hover\:bg-primary-50:hover {
   background-color: color-mix(in srgb, var(--t-accent) 10%, transparent) !important;
@@ -124,23 +141,22 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   BORDER
+   6. BORDER MAPPINGS
    ============================================================ */
-.border-dark-100, .border-dark-200, .border-dark-300 {
-  border-color: var(--t-border) !important;
-}
+.border-dark-100, .border-dark-200, .border-dark-300
+  { border-color: var(--t-border) !important; }
+
 .border-primary-100, .border-primary-200 {
   border-color: color-mix(in srgb, var(--t-accent) 45%, var(--t-border)) !important;
 }
 .border-cyan-100, .border-cyan-200 {
   border-color: color-mix(in srgb, var(--t-accent-2) 45%, var(--t-border)) !important;
 }
-.border-amber-200, .border-purple-200 {
-  border-color: var(--t-border) !important;
-}
+.border-amber-200, .border-purple-200
+  { border-color: var(--t-border) !important; }
 
 /* ============================================================
-   NAVBAR
+   7. NAVBAR
    ============================================================ */
 .nav-blur {
   background: color-mix(in srgb, var(--t-bg) 92%, transparent) !important;
@@ -158,7 +174,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   BUTTONS
+   8. BUTTONS
    ============================================================ */
 .btn-primary {
   background: var(--t-accent) !important;
@@ -186,7 +202,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   TAGS
+   9. TAGS
    ============================================================ */
 .tag {
   background: var(--t-bg-muted) !important;
@@ -210,7 +226,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   CARDS
+   10. CARDS
    ============================================================ */
 .card-blog {
   background: var(--t-bg-card) !important;
@@ -228,7 +244,7 @@ section.bg-dark-50\/30 {
 .icon-placeholder i[data-lucide="flame"] { color: var(--t-accent-2) !important; }
 
 /* ============================================================
-   HERO + DECORATIVE
+   11. HERO + DECORATIVE
    ============================================================ */
 .gradient-hero {
   background: linear-gradient(180deg, var(--t-bg) 0%, var(--t-bg-card) 100%) !important;
@@ -246,7 +262,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   PROGRESS BAR
+   12. PROGRESS BAR
    ============================================================ */
 .progress-bar-bg { background: var(--t-bg-muted) !important; }
 .progress-bar-fill {
@@ -254,7 +270,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   WEB SHOWCASE
+   13. WEB SHOWCASE
    ============================================================ */
 .web-showcase {
   background: linear-gradient(135deg,
@@ -277,8 +293,7 @@ section.bg-dark-50\/30 {
 .web-item .web-title { color: var(--t-text) !important; }
 .web-item .web-desc,
 .web-item .web-label { color: var(--t-text-muted) !important; }
-.web-icon.public,
-.web-icon.featured {
+.web-icon.public, .web-icon.featured {
   background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
   color: var(--t-bg-card) !important;
 }
@@ -298,13 +313,13 @@ section.bg-dark-50\/30 {
 .web-link:hover { color: var(--t-accent-2) !important; }
 
 /* ============================================================
-   PDF + MAP
+   14. PDF + MAP
    ============================================================ */
 .pdf-preview-wrapper { background: var(--t-bg-muted) !important; }
 .map-container { border-color: var(--t-border) !important; }
 
 /* ============================================================
-   LANG BUTTONS
+   15. LANG BUTTONS
    ============================================================ */
 .lang-btn {
   color: var(--t-text-muted) !important;
@@ -320,7 +335,7 @@ section.bg-dark-50\/30 {
 .lang-divider { color: var(--t-border) !important; }
 
 /* ============================================================
-   CHATBOT
+   16. CHATBOT
    ============================================================ */
 #chat-toggle {
   background: linear-gradient(135deg, var(--t-accent), var(--t-accent-2)) !important;
@@ -370,7 +385,7 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   MODAL + SCROLLBAR
+   17. MODAL + SCROLLBAR
    ============================================================ */
 .modal-overlay img { border-radius: var(--t-radius) !important; }
 .modal-close { color: var(--t-bg-card) !important; }
@@ -383,140 +398,892 @@ section.bg-dark-50\/30 {
 }
 
 /* ============================================================
-   THEME SELECT (native dropdown)
+   18. THEME SELECT (base + default)
    ============================================================ */
 .theme-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding: 0.45rem 1.8rem 0.45rem 0.7rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    border: 1px solid var(--t-border, #d0e8d8);
-    background-color: var(--t-bg-muted, #f1f5f2);
-    color: var(--t-text, #0d110d);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23415541' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 12px;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s ease;
-    min-width: 130px;
-    max-width: 170px;
-    font-family: var(--t-font-body, 'Inter', sans-serif);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0.45rem 1.8rem 0.45rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid var(--t-border);
+  background-color: var(--t-bg-muted);
+  color: var(--t-text);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23415541' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  min-width: 130px;
+  max-width: 170px;
+  font-family: var(--t-font-body);
 }
 .theme-select:hover {
-    border-color: var(--t-accent, #0aaf69);
-    background-color: var(--t-bg-card, #ffffff);
+  border-color: var(--t-accent);
+  background-color: var(--t-bg-card);
 }
 .theme-select:focus {
-    border-color: var(--t-accent, #0aaf69);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent, #0aaf69) 18%, transparent);
+  border-color: var(--t-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 18%, transparent);
 }
 @media (max-width: 640px) {
-    .theme-select {
-        min-width: 100px;
-        max-width: 130px;
-        font-size: 0.7rem;
-        padding: 0.35rem 1.5rem 0.35rem 0.5rem;
-    }
+  .theme-select {
+    min-width: 100px;
+    max-width: 130px;
+    font-size: 0.7rem;
+    padding: 0.35rem 1.5rem 0.35rem 0.5rem;
+  }
 }
 
 /* ============================================================
-   DEKORASI: CLASSICAL (serif + border double)
+   19. DEKORASI: CLASSICAL (serif, border double)
    ============================================================ */
 [data-theme="classical"] h1,
 [data-theme="classical"] h2 {
-    letter-spacing: 0.01em;
-    border-bottom: 2px double var(--t-accent);
-    padding-bottom: 0.35rem;
-    display: inline-block;
+  letter-spacing: 0.01em;
+  border-bottom: 2px double var(--t-accent);
+  padding-bottom: 0.35rem;
+  display: inline-block;
 }
 [data-theme="classical"] .card-blog {
-    border-style: double !important;
+  border-style: double !important;
+  border-width: 3px !important;
+}
+[data-theme="classical"] .btn-primary,
+[data-theme="classical"] .btn-outline {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 2px solid var(--t-accent-2) !important;
+}
+[data-theme="classical"] .tag {
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
 /* ============================================================
-   DEKORASI: CYBERPUNK (scanline + clip-path + glitch)
+   20. DEKORASI: CYBERPUNK 2077 — MAXIMUM HUD/TERMINAL
    ============================================================ */
+
+/* ---- Layer 1: static scanline + circuit grid ---- */
 [data-theme="cyberpunk"] body::after {
-    content: "";
-    position: fixed; inset: 0;
-    pointer-events: none;
-    z-index: 9998;
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent 0 2px,
-        rgba(0, 0, 0, 0.06) 2px 4px
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 2px,
+      rgba(0, 0, 0, 0.055) 2px 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 80px,
+      rgba(10, 175, 105, 0.028) 80px 81px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 80px,
+      rgba(6, 182, 212, 0.02) 80px 81px
     );
 }
+
+/* ---- Layer 2: moving scan-sweep bar ---- */
+[data-theme="cyberpunk"] body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent),
+    transparent);
+  opacity: 0.7;
+  z-index: 9999;
+  pointer-events: none;
+  animation: cp-scan 7s linear infinite;
+  box-shadow: 0 0 24px var(--t-accent);
+}
+@keyframes cp-scan {
+  0%   { transform: translateY(-10px); opacity: 0; }
+  8%   { opacity: 0.7; }
+  92%  { opacity: 0.7; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ---- Headings: chrome + glitch on hover ---- */
 [data-theme="cyberpunk"] h1,
 [data-theme="cyberpunk"] h2 {
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    text-shadow:
-        1px 0 0 var(--t-accent),
-       -1px 0 0 var(--t-accent-2),
-        0 0 10px rgba(10, 175, 105, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-shadow:
+    1px 0 0 var(--t-accent),
+   -1px 0 0 var(--t-accent-2),
+    0 0 14px rgba(10, 175, 105, 0.55),
+    0 0 28px rgba(6, 182, 212, 0.3);
+  position: relative;
 }
+[data-theme="cyberpunk"] h1:hover,
+[data-theme="cyberpunk"] h2:hover {
+  animation: cp-glitch 0.3s steps(2) infinite;
+}
+@keyframes cp-glitch {
+  0%, 100% { transform: translate(0, 0); text-shadow:
+    1px 0 0 var(--t-accent),
+   -1px 0 0 var(--t-accent-2),
+    0 0 14px rgba(10, 175, 105, 0.55); }
+  20% { transform: translate(-2px, 1px); text-shadow:
+   -2px 0 0 var(--t-accent-2),
+    2px 0 0 var(--t-accent),
+    0 0 18px rgba(6, 182, 212, 0.7); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(1px, 2px); }
+}
+
+/* ---- Section titles: terminal prompt + cursor ---- */
+[data-theme="cyberpunk"] section h2 {
+  display: inline-block;
+}
+[data-theme="cyberpunk"] section h2::before {
+  content: "> ";
+  color: var(--t-accent);
+  font-family: var(--t-font-mono);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-right: 4px;
+  text-shadow: none;
+}
+[data-theme="cyberpunk"] section h2::after {
+  content: "▮";
+  color: var(--t-accent);
+  margin-left: 6px;
+  font-size: 0.85em;
+  animation: cp-blink 1.1s step-end infinite;
+}
+@keyframes cp-blink {
+  0%, 50%    { opacity: 1; }
+  51%, 100%  { opacity: 0; }
+}
+
+/* ---- Cards: notched + HUD corner brackets ---- */
 [data-theme="cyberpunk"] .card-blog,
 [data-theme="cyberpunk"] .web-showcase {
-    clip-path: polygon(
-        0 0, calc(100% - 14px) 0, 100% 14px,
-        100% 100%, 14px 100%, 0 calc(100% - 14px)
-    );
-    border: 1px solid var(--t-accent) !important;
+  clip-path: polygon(
+    0 0, calc(100% - 14px) 0, 100% 14px,
+    100% 100%, 14px 100%, 0 calc(100% - 14px)
+  );
+  border: 1px solid var(--t-accent) !important;
+  position: relative;
+  box-shadow:
+    0 0 0 1px var(--t-accent),
+    0 0 20px rgba(10, 175, 105, 0.25),
+    0 0 40px rgba(6, 182, 212, 0.1) !important;
 }
+[data-theme="cyberpunk"] .card-blog::before,
+[data-theme="cyberpunk"] .card-blog::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--t-accent-2);
+  border-style: solid;
+  z-index: 3;
+  pointer-events: none;
+}
+[data-theme="cyberpunk"] .card-blog::before {
+  top: 3px; left: 3px;
+  border-width: 2px 0 0 2px;
+  box-shadow: 0 0 6px var(--t-accent-2);
+}
+[data-theme="cyberpunk"] .card-blog::after {
+  bottom: 3px; right: 3px;
+  border-width: 0 2px 2px 0;
+  box-shadow: 0 0 6px var(--t-accent-2);
+}
+[data-theme="cyberpunk"] .card-blog:hover {
+  box-shadow:
+    0 0 0 1px var(--t-accent),
+    0 0 24px var(--t-accent),
+    0 0 60px rgba(6, 182, 212, 0.4),
+    0 0 90px rgba(10, 175, 105, 0.15) !important;
+}
+
+/* Card titles as data labels */
+[data-theme="cyberpunk"] .card-blog h3 {
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--t-accent) 40%, transparent);
+}
+
+/* Card content text as monospace */
+[data-theme="cyberpunk"] .card-blog p,
+[data-theme="cyberpunk"] .card-blog .text-dark-500 {
+  font-family: var(--t-font-body);
+  font-size: 0.8rem;
+}
+
+/* ---- Tags: angular data chips + sweep ---- */
+[data-theme="cyberpunk"] .tag {
+  border-radius: 0 !important;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0, calc(100% - 6px) 0, 100% 6px,
+    100% 100%, 6px 100%, 0 calc(100% - 6px)
+  );
+  font-family: var(--t-font-mono) !important;
+  letter-spacing: 0.06em;
+  font-size: 0.65rem !important;
+  padding: 2px 8px !important;
+}
+[data-theme="cyberpunk"] .tag-primary::before,
+[data-theme="cyberpunk"] .tag-cyan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    currentColor,
+    transparent);
+  opacity: 0.3;
+  transform: translateX(-100%);
+  animation: cp-sweep 3.5s infinite;
+}
+@keyframes cp-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* ---- Buttons: chrome bevel + pulse + glitch on hover ---- */
 [data-theme="cyberpunk"] .btn-primary,
 [data-theme="cyberpunk"] .btn-outline {
-    clip-path: polygon(
-        0 0, calc(100% - 10px) 0, 100% 10px,
-        100% 100%, 10px 100%, 0 calc(100% - 10px)
-    );
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px,
+    100% 100%, 10px 100%, 0 calc(100% - 10px)
+  );
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.72rem !important;
+  position: relative;
+  border: none !important;
 }
-[data-theme="cyberpunk"] .tag { border-radius: 0 !important; }
+[data-theme="cyberpunk"] .btn-primary {
+  animation: cp-neon 3s ease-in-out infinite;
+}
+@keyframes cp-neon {
+  0%, 100% {
+    box-shadow:
+      0 0 8px var(--t-accent),
+      0 0 16px rgba(10, 175, 105, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 14px var(--t-accent),
+      0 0 32px var(--t-accent-2),
+      0 0 48px rgba(6, 182, 212, 0.4);
+  }
+}
+[data-theme="cyberpunk"] .btn-primary:hover,
+[data-theme="cyberpunk"] .btn-outline:hover {
+  text-shadow:
+   -1px 0 0 var(--t-accent-2),
+    1px 0 0 var(--t-accent),
+    0 0 8px var(--t-accent-2);
+}
+
+/* ---- Navbar ---- */
+[data-theme="cyberpunk"] .nav-blur {
+  background: color-mix(in srgb, var(--t-bg) 92%, transparent) !important;
+  border-bottom: 1px solid var(--t-accent) !important;
+  box-shadow:
+    0 1px 0 var(--t-accent),
+    0 4px 20px rgba(10, 175, 105, 0.25),
+    0 8px 40px rgba(6, 182, 212, 0.08) !important;
+}
+[data-theme="cyberpunk"] #navbar a:not(.theme-option) {
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+[data-theme="cyberpunk"] #navbar a:not(.theme-option):hover {
+  text-shadow: 0 0 8px var(--t-accent);
+}
+
+/* Logo — data-bracket look */
+[data-theme="cyberpunk"] #navbar a[href="#home"] span.text-2xl {
+  font-family: var(--t-font-mono) !important;
+  letter-spacing: 0.1em;
+}
+[data-theme="cyberpunk"] #navbar a[href="#home"] span.text-2xl::before {
+  content: "[";
+  color: var(--t-accent-2);
+  margin-right: 2px;
+  font-weight: 400;
+}
+[data-theme="cyberpunk"] #navbar a[href="#home"] span.text-2xl::after {
+  content: "]";
+  color: var(--t-accent-2);
+  margin-left: 2px;
+  font-weight: 400;
+}
+
+/* ---- Portrait: HUD frame ---- */
+[data-theme="cyberpunk"] .profile-photo-wrapper {
+  border-color: var(--t-accent) !important;
+  box-shadow:
+    0 0 0 1px var(--t-accent),
+    0 0 20px var(--t-accent),
+    0 0 40px rgba(6, 182, 212, 0.35) !important;
+  clip-path: polygon(
+    0 0, calc(100% - 22px) 0, 100% 22px,
+    100% 100%, 22px 100%, 0 calc(100% - 22px)
+  );
+  animation: cp-breathe 4s ease-in-out infinite;
+}
+@keyframes cp-breathe {
+  0%, 100% { box-shadow:
+    0 0 0 1px var(--t-accent),
+    0 0 16px var(--t-accent),
+    0 0 32px rgba(6, 182, 212, 0.25) !important; }
+  50%      { box-shadow:
+    0 0 0 1px var(--t-accent),
+    0 0 24px var(--t-accent),
+    0 0 56px rgba(6, 182, 212, 0.45) !important; }
+}
+
+/* #Engineer badge → hex chip */
+[data-theme="cyberpunk"] .profile-photo-wrapper + div {
+  background: var(--t-accent) !important;
+  color: var(--t-bg-card) !important;
+  clip-path: polygon(
+    0 0, calc(100% - 8px) 0, 100% 8px,
+    100% 100%, 8px 100%, 0 calc(100% - 8px)
+  );
+  border-radius: 0 !important;
+  font-family: var(--t-font-mono) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px var(--t-accent);
+}
+
+/* ---- Progress bar: flowing gradient ---- */
+[data-theme="cyberpunk"] .progress-bar-bg {
+  background: var(--t-bg-muted) !important;
+  border: 1px solid color-mix(in srgb, var(--t-accent) 30%, transparent);
+  box-shadow: inset 0 0 8px rgba(10, 175, 105, 0.15);
+}
+[data-theme="cyberpunk"] .progress-bar-fill {
+  background: linear-gradient(90deg,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent)) !important;
+  background-size: 200% 100% !important;
+  animation: cp-flow 2.5s linear infinite;
+  box-shadow: 0 0 8px var(--t-accent);
+}
+@keyframes cp-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ---- Divider ---- */
+[data-theme="cyberpunk"] .divider-custom {
+  background: linear-gradient(90deg,
+    transparent,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent),
+    transparent) !important;
+  opacity: 0.85;
+  box-shadow: 0 0 12px var(--t-accent);
+  animation: cp-pulse 2s ease-in-out infinite;
+}
+@keyframes cp-pulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+/* ---- Web showcase items ---- */
+[data-theme="cyberpunk"] .web-item {
+  clip-path: polygon(
+    0 0, calc(100% - 10px) 0, 100% 10px,
+    100% 100%, 10px 100%, 0 calc(100% - 10px)
+  );
+  border: 1px solid color-mix(in srgb, var(--t-accent) 40%, transparent) !important;
+}
+[data-theme="cyberpunk"] .web-item-featured {
+  border-width: 2px !important;
+  border-color: var(--t-accent) !important;
+  box-shadow:
+    0 0 14px rgba(10, 175, 105, 0.35),
+    inset 0 0 12px rgba(10, 175, 105, 0.08) !important;
+}
+[data-theme="cyberpunk"] .web-item .web-label {
+  font-family: var(--t-font-mono) !important;
+  color: var(--t-accent-2) !important;
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+}
+[data-theme="cyberpunk"] .web-item .web-label::before {
+  content: ":: ";
+  color: var(--t-accent);
+}
+
+/* ---- Input fields: terminal style ---- */
+[data-theme="cyberpunk"] input:not([type="hidden"]),
+[data-theme="cyberpunk"] textarea {
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.82rem;
+  border-color: var(--t-accent) !important;
+  box-shadow: inset 0 0 6px rgba(10, 175, 105, 0.1);
+  border-radius: 0 !important;
+}
+[data-theme="cyberpunk"] input:not([type="hidden"]):focus,
+[data-theme="cyberpunk"] textarea:focus {
+  box-shadow:
+    inset 0 0 6px rgba(10, 175, 105, 0.15),
+    0 0 12px var(--t-accent) !important;
+  border-color: var(--t-accent) !important;
+}
+
+/* Form labels → terminal prompts */
+[data-theme="cyberpunk"] form label {
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t-accent) !important;
+}
+[data-theme="cyberpunk"] form label::before {
+  content: "▸ ";
+  color: var(--t-accent-2);
+}
+
+/* ---- Chat window: neon border ---- */
+[data-theme="cyberpunk"] #chat-window {
+  border: 1px solid var(--t-accent) !important;
+  box-shadow:
+    0 0 20px rgba(10, 175, 105, 0.3),
+    0 0 40px rgba(6, 182, 212, 0.15) !important;
+}
+[data-theme="cyberpunk"] #chat-header {
+  border-bottom: 1px solid var(--t-accent-2);
+  box-shadow: 0 2px 12px rgba(6, 182, 212, 0.3);
+  font-family: var(--t-font-mono) !important;
+  letter-spacing: 0.06em;
+}
+[data-theme="cyberpunk"] #chat-toggle {
+  box-shadow:
+    0 0 12px var(--t-accent),
+    0 0 28px var(--t-accent-2) !important;
+  clip-path: polygon(
+    0 0, calc(100% - 12px) 0, 100% 12px,
+    100% 100%, 12px 100%, 0 calc(100% - 12px)
+  );
+  border-radius: 12px !important;
+  animation: cp-breathe 3s ease-in-out infinite;
+}
+
+/* ---- Theme select: angular ---- */
+[data-theme="cyberpunk"] .theme-select {
+  clip-path: polygon(
+    0 0, calc(100% - 8px) 0, 100% 8px,
+    100% 100%, 8px 100%, 0 calc(100% - 8px)
+  );
+  border-radius: 0 !important;
+  font-family: var(--t-font-mono) !important;
+  letter-spacing: 0.06em;
+  border-color: var(--t-accent) !important;
+}
+
+/* ---- Sidebar cards ---- */
+[data-theme="cyberpunk"] .sidebar-card {
+  clip-path: polygon(
+    0 0, calc(100% - 12px) 0, 100% 12px,
+    100% 100%, 12px 100%, 0 calc(100% - 12px)
+  );
+  border: 1px solid color-mix(in srgb, var(--t-accent) 40%, transparent) !important;
+  border-radius: 0 !important;
+}
+[data-theme="cyberpunk"] .sidebar-card h4 {
+  font-family: var(--t-font-mono) !important;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--t-accent) !important;
+}
+[data-theme="cyberpunk"] .sidebar-card h4::before {
+  content: "▸ ";
+  color: var(--t-accent-2);
+}
+
+/* ---- Experience timeline ---- */
+[data-theme="cyberpunk"] .border-l-2 {
+  border-left-width: 2px !important;
+  border-image: linear-gradient(180deg, var(--t-accent), var(--t-accent-2)) 1 !important;
+}
+[data-theme="cyberpunk"] .rounded-full.bg-primary-500 {
+  box-shadow: 0 0 10px var(--t-accent);
+}
+[data-theme="cyberpunk"] .rounded-full.bg-cyan-500 {
+  box-shadow: 0 0 10px var(--t-accent-2);
+}
+
+/* ---- Hero name + tags ---- */
+[data-theme="cyberpunk"] #home h1 span.text-primary-600 {
+  text-shadow:
+    0 0 14px var(--t-accent),
+    0 0 28px rgba(10, 175, 105, 0.5);
+}
+
+/* ---- Footer ---- */
+[data-theme="cyberpunk"] footer {
+  border-top: 1px solid var(--t-accent) !important;
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text-muted) !important;
+  box-shadow: 0 -2px 20px rgba(10, 175, 105, 0.15);
+}
 
 /* ============================================================
-   DEKORASI: RETRO (grid + hard shadow)
+   21. DEKORASI: RETRO — WINDOWS 98
    ============================================================ */
+
+/* Desktop = Win98 gray canvas */
 [data-theme="retro"] body {
-    background-image:
-        linear-gradient(rgba(10, 175, 105, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(10, 175, 105, 0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
+  background: var(--t-bg-muted) !important;
+  background-image: none !important;
 }
+
+/* Headings: no shadow, plain */
 [data-theme="retro"] h1,
 [data-theme="retro"] h2 {
-    text-shadow:
-        0 0 6px var(--t-accent),
-        2px 2px 0 var(--t-accent-2);
+  text-shadow: none !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: var(--t-text) !important;
+  font-weight: 700;
 }
-[data-theme="retro"] .card-blog {
-    border: 2px solid var(--t-accent) !important;
-    box-shadow:
-        4px 4px 0 var(--t-accent-2),
-        0 0 16px rgba(10, 175, 105, 0.35) !important;
+
+/* Section title bar (Win98 window caption) */
+[data-theme="retro"] section h2 {
+  display: inline-block;
+  background: var(--t-accent);
+  color: var(--t-bg-card) !important;
+  padding: 3px 26px 3px 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  position: relative;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.35);
 }
+[data-theme="retro"] section h2::after {
+  content: "_  ❐  ✕";
+  font-size: 0.65rem;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  letter-spacing: 1px;
+  font-family: var(--t-font-mono);
+  opacity: 0.9;
+}
+
+/* Cards: raised window panels */
+[data-theme="retro"] .card-blog,
+[data-theme="retro"] .sidebar-card,
+[data-theme="retro"] .web-showcase,
+[data-theme="retro"] .web-item {
+  background: var(--t-bg-muted) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-text-muted),
+    2px 2px 0 var(--t-text-muted) !important;
+  transform: none !important;
+  transition: none !important;
+}
+[data-theme="retro"] .card-blog:hover {
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-text-muted),
+    2px 2px 0 var(--t-accent) !important;
+}
+
+/* Card image: sunken frame */
+[data-theme="retro"] .card-blog .card-image {
+  margin: 4px;
+  border: 2px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  background: var(--t-bg-card) !important;
+}
+
+/* Card content padding */
+[data-theme="retro"] .card-blog > div:last-child {
+  padding: 6px 10px 10px !important;
+  background: var(--t-bg-muted) !important;
+}
+
+/* Card title */
+[data-theme="retro"] .card-blog h3 {
+  border-bottom: 1px solid var(--t-text-muted);
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-shadow: none !important;
+}
+
+/* Sidebar card heading: raised button */
+[data-theme="retro"] .sidebar-card h4 {
+  background: var(--t-bg-card);
+  color: var(--t-text) !important;
+  padding: 2px 8px;
+  border-bottom: none !important;
+  display: inline-block;
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-text-muted);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+/* Web showcase inner items */
+[data-theme="retro"] .web-item {
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-text-muted) !important;
+  border: none !important;
+}
+[data-theme="retro"] .web-item.web-item-featured {
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-accent) !important;
+}
+
+/* Buttons: Win98 raised bevel */
 [data-theme="retro"] .btn-primary,
-[data-theme="retro"] .btn-outline {
-    border: 2px solid var(--t-accent-2) !important;
-    box-shadow: 3px 3px 0 var(--t-accent-2);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+[data-theme="retro"] .btn-outline,
+[data-theme="retro"] #chat-input-area button,
+[data-theme="retro"] .lang-btn.active {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text) !important;
+  border: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+  font-family: var(--t-font-body) !important;
+  transform: none !important;
+  padding: 4px 14px !important;
+}
+[data-theme="retro"] .btn-primary:hover,
+[data-theme="retro"] .btn-outline:hover {
+  background: var(--t-bg-card) !important;
+  color: var(--t-text) !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+}
+[data-theme="retro"] .btn-primary:active,
+[data-theme="retro"] .btn-outline:active {
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  padding: 5px 13px 3px 15px !important;
+}
+
+/* Tags: tiny raised chips */
+[data-theme="retro"] .tag,
+[data-theme="retro"] .tag-primary,
+[data-theme="retro"] .tag-cyan,
+[data-theme="retro"] .tag-office,
+[data-theme="retro"] .tag-google {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text) !important;
+  border: 1px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  border-radius: 0 !important;
+  padding: 2px 8px !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+}
+
+/* Navbar: menu bar */
+[data-theme="retro"] .nav-blur,
+[data-theme="retro"] #mobile-menu {
+  background: var(--t-bg-muted) !important;
+  backdrop-filter: none !important;
+  border-bottom: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) var(--t-bg-card) !important;
+  box-shadow:
+    inset 0 -1px 0 var(--t-bg-card),
+    0 1px 0 var(--t-bg-card) !important;
+}
+
+/* Portrait: raised icon frame */
+[data-theme="retro"] .profile-photo-wrapper {
+  border: 4px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  border-radius: 0 !important;
+  box-shadow: 2px 2px 0 var(--t-bg-muted) !important;
+  transform: none !important;
+  background: var(--t-bg-card);
+  padding: 2px;
+}
+
+/* #Engineer badge */
+[data-theme="retro"] .profile-photo-wrapper + div {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text) !important;
+  border: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-weight: 700;
+}
+
+/* Input fields: sunken */
+[data-theme="retro"] input:not([type="hidden"]),
+[data-theme="retro"] textarea,
+[data-theme="retro"] #chat-input-area input {
+  border: 2px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  border-radius: 0 !important;
+  background: var(--t-bg-card) !important;
+  color: var(--t-text) !important;
+  box-shadow: none !important;
+  font-family: var(--t-font-body) !important;
+}
+[data-theme="retro"] input:focus,
+[data-theme="retro"] textarea:focus {
+  outline: 1px dotted var(--t-text) !important;
+  outline-offset: -4px !important;
+  box-shadow: none !important;
+}
+
+/* Progress bar: Win98 progress */
+[data-theme="retro"] .progress-bar-bg {
+  background: var(--t-bg-card) !important;
+  border: 2px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  border-radius: 0 !important;
+  height: 18px !important;
+  padding: 2px !important;
+}
+[data-theme="retro"] .progress-bar-fill {
+  background: var(--t-accent) !important;
+  border-radius: 0 !important;
+  height: 100% !important;
+}
+
+/* Divider: etched line */
+[data-theme="retro"] .divider-custom {
+  background: none !important;
+  opacity: 1 !important;
+  height: 2px !important;
+  background-image: linear-gradient(90deg,
+    var(--t-text-muted) 0%, var(--t-text-muted) 50%,
+    var(--t-bg-card) 50%, var(--t-bg-card) 100%) !important;
+  background-size: 2px 2px !important;
+}
+
+/* Chat window: Win98 dialog */
+[data-theme="retro"] #chat-window {
+  background: var(--t-bg-muted) !important;
+  border: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 var(--t-text-muted) !important;
+}
+[data-theme="retro"] #chat-header {
+  background: var(--t-accent) !important;
+  color: var(--t-bg-card) !important;
+  border-radius: 0 !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 6px 10px !important;
+}
+[data-theme="retro"] #chat-messages {
+  background: var(--t-bg-card) !important;
+  border: 2px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+  margin: 6px;
+  border-radius: 0 !important;
+}
+[data-theme="retro"] .message.bot,
+[data-theme="retro"] .message.user,
+[data-theme="retro"] .message.typing {
+  border-radius: 0 !important;
+  border: 1px solid !important;
+  border-color: var(--t-text-muted) var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) !important;
+}
+[data-theme="retro"] #chat-input-area {
+  background: var(--t-bg-muted) !important;
+  border-top: 1px solid var(--t-text-muted) !important;
+  padding: 8px !important;
+}
+
+/* Chat toggle: round system button */
+[data-theme="retro"] #chat-toggle {
+  background: var(--t-bg-muted) !important;
+  color: var(--t-text) !important;
+  border: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  border-radius: 50% !important;
+  box-shadow: 2px 2px 0 var(--t-text-muted) !important;
+}
+
+/* Theme select: system dropdown */
+[data-theme="retro"] .theme-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d110d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+  border-radius: 0 !important;
+  border: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-text-muted) var(--t-text-muted) var(--t-bg-card) !important;
+  padding: 2px 22px 2px 6px !important;
+  min-width: 120px !important;
+  max-width: 160px !important;
+  box-shadow:
+    inset 1px 1px 0 var(--t-bg-card),
+    inset -1px -1px 0 var(--t-text-muted) !important;
+}
+
+/* Footer */
+[data-theme="retro"] footer {
+  background: var(--t-bg-muted) !important;
+  border-top: 2px solid !important;
+  border-color: var(--t-bg-card) var(--t-bg-card) var(--t-text-muted) var(--t-bg-card) !important;
+  color: var(--t-text) !important;
+}
+
+/* Kill all animations/transitions */
+[data-theme="retro"] *,
+[data-theme="retro"] *::before,
+[data-theme="retro"] *::after {
+  animation: none !important;
+  transition: none !important;
 }
 
 /* ============================================================
-   A11Y
+   22. A11Y — reduced motion
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-    }
-    [data-theme="cyberpunk"] body::after { display: none; }
+  [data-theme="cyberpunk"] *,
+  [data-theme="cyberpunk"] *::before,
+  [data-theme="cyberpunk"] *::after {
+    animation: none !important;
+  }
+  [data-theme="cyberpunk"] body::before,
+  [data-theme="cyberpunk"] body::after {
+    display: none;
+  }
 }
