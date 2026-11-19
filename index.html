@@ -32,7 +32,7 @@
 
     <!-- ===== TAILWIND CSS ===== -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link rel="stylesheet" href="/themes.css">
     <!-- ===== LUCIDE ICONS ===== -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -585,7 +585,31 @@
                     <a href="#proficiency" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_proficiency">Penguasaan</a>
                     <a href="#experience" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_experience">Perjalanan</a>
                     <a href="#contact" class="text-dark-600 hover:text-primary-600 transition-colors font-medium whitespace-nowrap" data-i18n="nav_contact">Kontak</a>
-
+                    <div class="theme-switcher" id="themeSwitcher">
+  <button class="theme-btn" aria-label="Change theme" aria-haspopup="true" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+      <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+      <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+      <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+    </svg>
+  </button>
+  <div class="theme-menu" role="menu">
+    <button class="theme-option" data-theme-value="default" role="menuitem">
+      <span class="theme-swatch swatch-default"></span><span>Light</span>
+    </button>
+    <button class="theme-option" data-theme-value="classical" role="menuitem">
+      <span class="theme-swatch swatch-classical"></span><span>Classical</span>
+    </button>
+    <button class="theme-option" data-theme-value="cyberpunk" role="menuitem">
+      <span class="theme-swatch swatch-cyberpunk"></span><span>Cyberpunk 2077</span>
+    </button>
+    <button class="theme-option" data-theme-value="retro" role="menuitem">
+      <span class="theme-swatch swatch-retro"></span><span>Retro</span>
+    </button>
+  </div>
+</div>
                     <span class="flex items-center gap-1 ml-2 border-l border-dark-200 pl-3">
                         <button class="lang-btn active" data-lang="id" onclick="setLanguage('id')">ID</button>
                         <span class="lang-divider">|</span>
@@ -1639,5 +1663,6 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script src="app.js"></script>
+    <script src="theme-switcher.js"></script>
 </body>
 </html>
