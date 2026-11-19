@@ -554,3 +554,68 @@ section.bg-dark-50\/30 {
   }
   [data-theme="cyberpunk"] body::after { display: none; }
 }
+/* ============================================================
+   THEME SELECT (native dropdown)
+   ============================================================ */
+.theme-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0.5rem 1.9rem 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: 1px solid var(--t-border, #d0e8d8);
+    background-color: var(--t-bg-muted, #f1f5f2);
+    color: var(--t-text, #0d110d);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23415541' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.55rem center;
+    background-size: 12px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    max-width: 180px;
+    font-family: var(--t-font-body, 'Inter', sans-serif);
+}
+
+.theme-select:hover {
+    border-color: var(--t-accent, #0aaf69);
+    background-color: var(--t-bg-card, #ffffff);
+}
+
+.theme-select:focus {
+    border-color: var(--t-accent, #0aaf69);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent, #0aaf69) 18%, transparent);
+}
+
+/* Dark themes: panah jadi terang */
+[data-theme="cyberpunk"] .theme-select,
+[data-theme="retro"] .theme-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e6f7f0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+/* Warna option dropdown (browser-dependent, tapi Firefox menghormati ini) */
+[data-theme="cyberpunk"] .theme-select option {
+    background: #161d16;
+    color: #e6f7f0;
+}
+[data-theme="retro"] .theme-select option {
+    background: #2a1245;
+    color: #f5d5e8;
+}
+[data-theme="classical"] .theme-select option {
+    background: #fbf5e6;
+    color: #2a1f14;
+}
+
+/* Mobile: lebih kecil */
+@media (max-width: 640px) {
+    .theme-select {
+        min-width: 110px;
+        max-width: 140px;
+        font-size: 0.7rem;
+        padding: 0.4rem 1.6rem 0.4rem 0.55rem;
+    }
+}

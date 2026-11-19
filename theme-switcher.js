@@ -1,79 +1,49 @@
 /* ============================================================
-   THEME SWITCHER — Varian719 Portfolio
+   THEME SWITCHER — Varian719 Portfolio (native <select>)
    ============================================================ */
 (function () {
-  'use strict';
+    'use strict';
 
-  var STORAGE_KEY = 'v719-theme';
-  var THEMES = ['default', 'classical', 'cyberpunk', 'retro'];
-  var LABELS = {
-    default: 'Light',
-    classical: 'Classical',
-    cyberpunk: 'Cyberpunk',
-    retro: 'Retro'
-  };
+    var STORAGE_KEY = 'v719-theme';
+    var THEMES = ['default', 'classical', 'cyberpunk', 'retro'];
 
-  function getStored() {
-    try {
-      var t = localStorage.getItem(STORAGE_KEY);
-      return THEMES.indexOf(t) !== -1 ? t : null;
-    } catch (e) { return null; }
-  }
-
-  function setTheme(theme) {
-    if (THEMES.indexOf(theme) === -1) theme = 'default';
-    document.documentElement.setAttribute('data-theme', theme);
-    try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
-
-    document.querySelectorAll('.theme-option').forEach(function (el) {
-      el.classList.toggle('active', el.dataset.themeValue === theme);
-    });
-
-    var btn = document.querySelector('.theme-btn');
-    if (btn) {
-      btn.setAttribute('aria-label', 'Theme: ' + LABELS[theme]);
-      btn.title = LABELS[theme];
+    function getStored() {
+        try {
+            var t = localStorage.getItem(STORAGE_KEY);
+            return THEMES.indexOf(t) !== -1 ? t : null;
+        } catch (e) { return null; }
     }
 
-    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: theme } }));
-  }
+    function applyTheme(theme, persist) {
+        if (THEMES.indexOf(theme) === -1) theme = 'default';
+        document.documentElement.setAttribute('data-theme', theme);
 
-  /* Apply immediately — avoid FOUC */
-  setTheme(getStored() || 'default');
+        if (persist !== false) {
+            try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
+        }
 
-  /* Wire after DOM ready */
-  document.addEventListener('DOMContentLoaded', function () {
-    var switcher = document.getElementById('themeSwitcher');
-    if (!switcher) return;
+        // Sync select value
+        var sel = document.getElementById('themeSwitcher');
+        if (sel && sel.value !== theme) sel.value = theme;
 
-    var btn = switcher.querySelector('.theme-btn');
+        window.dispatchEvent(new CustomEvent('themechange', {
+            detail: { theme: theme }
+        }));
+    }
 
-    switcher.querySelectorAll('.theme-option').forEach(function (opt) {
-      opt.addEventListener('click', function () {
-        setTheme(this.dataset.themeValue);
-        switcher.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
+    /* Apply sebelum DOM siap — cegah FOUC */
+    applyTheme(getStored() || 'default', false);
+
+    /* Wire setelah DOM siap */
+    document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('themeSwitcher');
+        if (!sel) return;
+
+        // Pastikan select menampilkan nilai saat ini
+        sel.value = document.documentElement.getAttribute('data-theme') || 'default';
+
+        sel.addEventListener('change', function () {
+            applyTheme(this.value, true);
+        });
     });
-
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = switcher.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(open));
-    });
-
-    document.addEventListener('click', function () {
-      if (switcher.classList.contains('open')) {
-        switcher.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        switcher.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
 })();
